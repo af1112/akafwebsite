@@ -1,0 +1,46 @@
+{
+  "HomePage": {
+    "title": "Welcome to Our Website",
+    "description": "A professional, fast, and SEO-friendly multilingual website",
+    "cta": "Get Started",
+    "features": {
+      "title": "Features",
+      "fast": "Lightning Fast",
+      "seo": "SEO Optimized",
+      "responsive": "Fully Responsive",
+      "multilingual": "Multilingual Support"
+    },
+    "about": {
+      "title": "About Us",
+      "description": "We create amazing digital experiences"
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "LanguageSwitcher": {
+    "switchLanguage": "Switch Language"
+  },
+  "Footer": {
+    "rights": "All rights reserved",
+    "year": "2024"
+  },
+  "AboutPage": {
+    "title": "About Us",
+    "description": "We are a team of passionate developers and designers dedicated to creating amazing digital experiences. Our mission is to help businesses grow through innovative web solutions."
+  },
+  "ServicesPage": {
+    "title": "Our Services",
+    "description": "We offer a wide range of services including web development, design, SEO optimization, and multilingual website solutions."
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "description": "Get in touch with us. We'd love to hear from you!",
+    "email": "Email",
+    "phone": "Phone"
+  }
+}
+
