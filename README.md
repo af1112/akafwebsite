@@ -14,6 +14,7 @@ A professional, fast, and SEO-optimized multilingual website (Persian, Arabic, E
 - ✅ **SEO بهینه**: sitemap.xml، robots.txt، metadata
 - ✅ **RTL Support**: پشتیبانی کامل از راست‌به‌چپ
 - ✅ **Responsive Design**: طراحی واکنش‌گرا
+- ✅ **Online Payments**: PayPal + Thawani checkout integration
 - ✅ **Static Export**: آماده برای GitHub Pages
 - ✅ **Vercel Ready**: آماده برای deploy روی Vercel
 
@@ -112,11 +113,32 @@ Vercel به صورت خودکار هر push به main branch را deploy می‌
 
 ## 📝 متغیرهای محیطی / Environment Variables / متغيرات البيئة
 
-فایل `.env.local` ایجاد کنید:
+فایل `.env.local` ایجاد کنید و متغیرهای زیر را تعریف کنید:
 
 ```env
+# App URLs
 NEXT_PUBLIC_BASE_URL=https://yourdomain.com
+
+# PayPal
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_paypal_client_id
+
+# Thawani payment gateway
+THAWANI_SECRET_KEY=sk_live_xxx
+THAWANI_PUBLISHABLE_KEY=pk_live_xxx
+THAWANI_USE_SANDBOX=true
+THAWANI_SUCCESS_URL=https://yourdomain.com/thank-you
+THAWANI_CANCEL_URL=https://yourdomain.com/signup?status=cancelled
 ```
+
+> نکته: اگر از محیط واقعی Thawani استفاده می‌کنید مقدار `THAWANI_USE_SANDBOX` را به `false` تغییر دهید.
+
+### پرداخت آنلاین (Thawani + PayPal)
+
+- دکمه PayPal با استفاده از `@paypal/react-paypal-js` پیاده‌سازی شده و از متغیر `NEXT_PUBLIC_PAYPAL_CLIENT_ID` استفاده می‌کند.
+- پرداخت Thawani از طریق API داخلی (`/api/payments/thawani`) انجام می‌شود.
+  - اطلاعات پلن و کاربر جمع‌آوری می‌شود.
+  - یک جلسه Thawani ساخته می‌شود و کاربر به صفحه پرداخت هدایت می‌گردد.
+  - برای استفاده از حساب تجاری خود، کلیدهای `secret` و `publishable` را از داشبورد Thawani وارد کنید.
 
 ## 🎨 سفارشی‌سازی / Customization / التخصيص
 

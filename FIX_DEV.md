@@ -47,3 +47,4 @@ http://localhost:3000
 در dev mode، middleware فعال است و routing به درستی کار می‌کند.
 در build time، از `build:static` استفاده کنید تا فایل‌های static تولید شوند.
 
+

@@ -1,0 +1,20 @@
+# کپی این فایل به .env.local و مقادیر را پر کنید
+
+# Base URL (برای localhost یا domain واقعی)
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+# Thawani Configuration
+# کلیدهای خود را از پنل Thawani دریافت کنید: https://dashboard.thawani.om
+THAWANI_SECRET_KEY=sk_live_YOUR_SECRET_KEY_HERE
+THAWANI_PUBLISHABLE_KEY=pk_live_YOUR_PUBLISHABLE_KEY_HERE
+
+# حالت Sandbox (true برای تست، false برای Production)
+THAWANI_USE_SANDBOX=false
+
+# URL های Callback (اختیاری - اگر ندهید خودکار ساخته می‌شود)
+THAWANI_SUCCESS_URL=http://localhost:3000/thank-you
+THAWANI_CANCEL_URL=http://localhost:3000/signup?status=cancelled
+
+# PayPal (اختیاری - اگر می‌خواهید استفاده کنید)
+# NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_paypal_client_id
+
