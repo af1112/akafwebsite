@@ -307,6 +307,10 @@
       "secure": "Your payment is secure and encrypted"
     }
   },
+  "LoginPage": {
+    "title": "Welcome Back",
+    "subtitle": "Sign in to your account"
+  },
   "Testimonials": {
     "title": "What Our Customers Say",
     "subtitle": "Join hundreds of satisfied restaurants"
