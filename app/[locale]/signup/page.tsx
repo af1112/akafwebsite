@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import SignupForm from '@/components/SignupForm';
 
 export async function generateMetadata({
@@ -25,7 +26,9 @@ export default async function SignupPage() {
             <h1>Create Your Account</h1>
             <p>Start your free trial today</p>
           </div>
-          <SignupForm />
+          <Suspense fallback={<div>Loading...</div>}>
+            <SignupForm />
+          </Suspense>
         </div>
       </div>
     </section>
