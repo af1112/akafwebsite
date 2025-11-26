@@ -3,6 +3,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/routing';
 import { ReactNode } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Navigation from '@/components/Navigation';
@@ -79,6 +80,7 @@ export default async function LocaleLayout({
           <Navigation />
           <main>{children}</main>
           <Footer />
+          <Analytics />
           <SpeedInsights />
         </NextIntlClientProvider>
       </body>
