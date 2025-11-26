@@ -47,7 +47,7 @@ export default function PayPalButton({ amount, currency = 'USD', description, on
       <PayPalScriptProvider options={{ clientId, currency }}>
         <PayPalButtons
           style={{ layout: 'horizontal', shape: 'pill', label: 'pay' }}
-          createOrder={(_, actions) => {
+          createOrder={(_data: any, actions: any) => {
             return actions.order.create({
               purchase_units: [
                 {
@@ -60,7 +60,7 @@ export default function PayPalButton({ amount, currency = 'USD', description, on
               ]
             });
           }}
-          onApprove={(_, actions) => {
+          onApprove={(_data: any, actions: any) => {
             return actions.order?.capture().then(() => {
               onSuccess?.();
             });
