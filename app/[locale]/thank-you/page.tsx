@@ -42,7 +42,7 @@ export default async function ThankYouPage({
           )}
 
           <div className="next-steps">
-            <h2>What's Next?</h2>
+            <h2>What&apos;s Next?</h2>
             <ul>
               <li>Check your email for account details</li>
               <li>Login to your dashboard</li>
