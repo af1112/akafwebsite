@@ -2,13 +2,14 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/routing';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ClientLayout from '@/components/ClientLayout';
+import RouteProgressBar from '@/components/RouteProgressBar';
 import './fonts.css';
 import './globals.css';
 
@@ -78,6 +79,9 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <ClientLayout>
+            <Suspense fallback={null}>
+              <RouteProgressBar />
+            </Suspense>
             <AnnouncementBar />
             <Navigation />
             <main>{children}</main>
