@@ -93,6 +93,12 @@ export default function ContactPage() {
                       </a>
                     </div>
                     <div className="office-item">
+                      <span className="office-label">{t('whatsapp')}:</span>
+                      <a href={`https://wa.me/${t('offices.iran.whatsapp').replace(/\s/g, '')}`} className="office-value office-link" target="_blank" rel="noopener noreferrer">
+                        {t('offices.iran.whatsapp')}
+                      </a>
+                    </div>
+                    <div className="office-item">
                       <span className="office-label">{t('email')}:</span>
                       <a href={`mailto:${t('offices.iran.email')}`} className="office-value office-link">
                         {t('offices.iran.email')}
@@ -113,4 +119,3 @@ export default function ContactPage() {
     </>
   );
 }
-

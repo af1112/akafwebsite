@@ -101,29 +101,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
-      <section className="about-contact">
-        <div className="container">
-          <h2 className="section-title">{t('contact.title')}</h2>
-          <div className="contact-grid">
-            <div className="contact-card">
-              <h3>{t('contact.iran.title')}</h3>
-              <p className="contact-address">{t('contact.iran.address')}</p>
-              <p className="contact-phone">{t('contact.iran.phone')}</p>
-            </div>
-            <div className="contact-card">
-              <h3>{t('contact.oman.title')}</h3>
-              <p className="contact-address">{t('contact.oman.address')}</p>
-              <p className="contact-phone">{t('contact.oman.phone')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
-
-
-
-
