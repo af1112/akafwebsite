@@ -42,37 +42,3 @@ export default function SupportSection() {
     </section>
   );
 }
-
-
-
-                    className="support-icon"
-                  />
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
-
-                    className="support-icon"
-                  />
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
