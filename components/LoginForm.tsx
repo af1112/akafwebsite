@@ -2,15 +2,26 @@
 
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { Link } from '@/routing';
+import { Link, useRouter } from '@/routing';
+import { useAuth } from '@/contexts/AuthContext';
+import { useSearchParams } from 'next/navigation';
 
 export default function LoginForm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { login } = useAuth();
+  
+  const redirectTo = searchParams.get('redirect') || '/';
+  const plan = searchParams.get('plan');
+  const billing = searchParams.get('billing');
+  
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -25,18 +36,42 @@ export default function LoginForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would integrate with your authentication system
-    alert('Login integration will be implemented here. This is a demo.');
-    // In production, you would:
-    // 1. Validate credentials
-    // 2. Create session
-    // 3. Redirect to dashboard
+    setLoading(true);
+    setErrors({});
+
+    try {
+      const success = await login(formData.email, formData.password);
+      
+      if (success) {
+        // Redirect based on context
+        if (plan) {
+          // Coming from pricing page, go to payment
+          const billingParam = billing ? `&billing=${billing}` : '';
+          router.push(`/payment?plan=${plan}${billingParam}`);
+        } else {
+          // Regular login, go to redirect destination
+          router.push(redirectTo);
+        }
+      } else {
+        setErrors({ general: 'Invalid email or password' });
+      }
+    } catch (error) {
+      setErrors({ general: 'An error occurred. Please try again.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
+      {errors.general && (
+        <div className="error-message mb-4">
+          {errors.general}
+        </div>
+      )}
+      
       <div className="form-group">
         <label htmlFor="email">Email Address</label>
         <input
@@ -47,6 +82,7 @@ export default function LoginForm() {
           onChange={handleChange}
           required
           placeholder="your@email.com"
+          disabled={loading}
         />
       </div>
 
@@ -60,6 +96,7 @@ export default function LoginForm() {
           onChange={handleChange}
           required
           placeholder="Enter your password"
+          disabled={loading}
         />
       </div>
 
@@ -73,15 +110,17 @@ export default function LoginForm() {
         </Link>
       </div>
 
-      <button type="submit" className="btn btn-primary btn-block">
-        Sign In
+      <button 
+        type="submit" 
+        className="btn btn-primary btn-block"
+        disabled={loading}
+      >
+        {loading ? 'Signing in...' : 'Sign In'}
       </button>
 
       <p className="form-footer">
-        Don&apos;t have an account? <Link href="/signup">Sign up here</Link>
+        Don&apos;t have an account? <Link href={`/signup${plan ? `?plan=${plan}${billing ? `&billing=${billing}` : ''}` : ''}`}>Sign up here</Link>
       </p>
     </form>
   );
 }
-
-

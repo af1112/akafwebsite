@@ -1,7 +1,22 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect, useRef } from 'react';
+
+declare global {
+  interface Window {
+    turnstile: {
+      render: (element: HTMLElement, options: {
+        sitekey: string;
+        theme?: 'light' | 'dark' | 'auto';
+        callback?: (token: string) => void;
+        'error-callback'?: () => void;
+      }) => string;
+      reset: (widgetId: string) => void;
+      remove: (widgetId: string) => void;
+    };
+  }
+}
 
 export default function ContactForm() {
   const t = useTranslations('ContactPage.form');
@@ -14,6 +29,57 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [turnstileToken, setTurnstileToken] = useState<string>('');
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const turnstileWidgetId = useRef<string | null>(null);
+
+  // بارگذاری Cloudflare Turnstile
+  useEffect(() => {
+    // بارگذاری اسکریپت Turnstile
+    if (typeof window !== 'undefined' && !window.turnstile) {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        const siteKey = process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY;
+        if (siteKey && turnstileRef.current) {
+          turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+            sitekey: siteKey,
+            theme: 'light',
+            callback: (token: string) => {
+              setTurnstileToken(token);
+            },
+            'error-callback': () => {
+              setTurnstileToken('');
+            },
+          });
+        }
+      };
+      document.body.appendChild(script);
+    } else if (typeof window !== 'undefined' && window.turnstile) {
+      // اگر اسکریپت از قبل بارگذاری شده
+      const siteKey = process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY;
+      if (siteKey && turnstileRef.current) {
+        turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+          sitekey: siteKey,
+          theme: 'light',
+          callback: (token: string) => {
+            setTurnstileToken(token);
+          },
+          'error-callback': () => {
+            setTurnstileToken('');
+          },
+        });
+      }
+    }
+    
+    return () => {
+      if (turnstileWidgetId.current && typeof window !== 'undefined' && window.turnstile) {
+        window.turnstile.remove(turnstileWidgetId.current);
+      }
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -22,6 +88,15 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // بررسی CAPTCHA
+    const siteKey = process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY;
+    if (siteKey && !turnstileToken) {
+      setSubmitStatus('error');
+      alert('Please complete the CAPTCHA verification');
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -31,7 +106,10 @@ export default function ContactForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          turnstileToken: turnstileToken,
+        }),
       });
 
       if (response.ok) {
@@ -43,14 +121,29 @@ export default function ContactForm() {
           subject: '',
           message: ''
         });
+        setTurnstileToken('');
+        // Reset CAPTCHA
+        if (turnstileWidgetId.current && typeof window !== 'undefined' && window.turnstile) {
+          window.turnstile.reset(turnstileWidgetId.current);
+        }
         // Reset success message after 5 seconds
         setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
         setSubmitStatus('error');
+        // Reset CAPTCHA on error
+        if (turnstileWidgetId.current && typeof window !== 'undefined' && window.turnstile) {
+          window.turnstile.reset(turnstileWidgetId.current);
+        }
+        setTurnstileToken('');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
+      // Reset CAPTCHA on error
+      if (turnstileWidgetId.current && typeof window !== 'undefined' && window.turnstile) {
+        window.turnstile.reset(turnstileWidgetId.current);
+      }
+      setTurnstileToken('');
     } finally {
       setIsSubmitting(false);
     }
@@ -145,6 +238,12 @@ export default function ContactForm() {
           />
         </div>
 
+        {process.env.NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY && (
+          <div className="form-group">
+            <div ref={turnstileRef} className="turnstile-widget"></div>
+          </div>
+        )}
+
         {submitStatus === 'success' && (
           <div className="form-message form-success">
             <span className="success-icon">✓</span>
@@ -170,7 +269,3 @@ export default function ContactForm() {
     </div>
   );
 }
-
-
-
-

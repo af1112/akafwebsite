@@ -40,3 +40,35 @@ export default function ClientLogos() {
 }
 
 
+
+                  src={logo}
+                  alt={brands[index] || `Client ${index + 1}`}
+                  fill
+                  className="client-logo-image"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
+                  src={logo}
+                  alt={brands[index] || `Client ${index + 1}`}
+                  fill
+                  className="client-logo-image"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+

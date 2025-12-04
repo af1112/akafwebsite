@@ -154,3 +154,73 @@ export async function POST(request: Request) {
   }
 }
 
+
+      clientReferenceId: `${plan}-${Date.now()}`
+    });
+
+    return NextResponse.json({
+      paymentUrl: session.paymentUrl,
+      sessionId: session.sessionId
+    });
+  } catch (error: any) {
+    console.error('Thawani payment error:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name
+    });
+    
+    // پیغام خطای دقیق‌تر
+    let errorMessage = 'Unable to initiate payment';
+    if (error.message?.includes('keys')) {
+      errorMessage = 'Thawani API keys are missing. Please check your .env.local file.';
+    } else if (error.message?.includes('session')) {
+      errorMessage = `Thawani API error: ${error.message}`;
+    } else {
+      errorMessage = error.message || 'Unable to initiate payment';
+    }
+    
+    return NextResponse.json(
+      { 
+        message: errorMessage,
+        debug: process.env.NODE_ENV === 'development' ? error.message : undefined
+      },
+      { status: 500 }
+    );
+  }
+}
+
+
+      clientReferenceId: `${plan}-${Date.now()}`
+    });
+
+    return NextResponse.json({
+      paymentUrl: session.paymentUrl,
+      sessionId: session.sessionId
+    });
+  } catch (error: any) {
+    console.error('Thawani payment error:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name
+    });
+    
+    // پیغام خطای دقیق‌تر
+    let errorMessage = 'Unable to initiate payment';
+    if (error.message?.includes('keys')) {
+      errorMessage = 'Thawani API keys are missing. Please check your .env.local file.';
+    } else if (error.message?.includes('session')) {
+      errorMessage = `Thawani API error: ${error.message}`;
+    } else {
+      errorMessage = error.message || 'Unable to initiate payment';
+    }
+    
+    return NextResponse.json(
+      { 
+        message: errorMessage,
+        debug: process.env.NODE_ENV === 'development' ? error.message : undefined
+      },
+      { status: 500 }
+    );
+  }
+}
+

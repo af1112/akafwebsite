@@ -1,14 +1,27 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Link } from '@/routing';
+import { Link, useRouter } from '@/routing';
 import { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function PricingSection() {
   const t = useTranslations('PricingPage');
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
 
   const plans = ['starter', 'professional', 'enterprise'] as const;
+
+  const handlePlanSelect = (planKey: string) => {
+    if (isAuthenticated) {
+      // User is logged in, redirect to payment page
+      router.push(`/payment?plan=${planKey}&billing=${billingCycle}`);
+    } else {
+      // User not logged in, redirect to signup page with plan
+      router.push(`/signup?plan=${planKey}&billing=${billingCycle}`);
+    }
+  };
 
   return (
     <section className="pricing-section">
@@ -65,12 +78,12 @@ export default function PricingSection() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href={`/pricing?plan=${planKey}`}
+                <button
+                  onClick={() => handlePlanSelect(planKey)}
                   className={`btn ${isPopular ? 'btn-primary' : 'btn-outline'}`}
                 >
                   {t('getStarted')}
-                </Link>
+                </button>
               </div>
             );
           })}
@@ -79,5 +92,3 @@ export default function PricingSection() {
     </section>
   );
 }
-
-

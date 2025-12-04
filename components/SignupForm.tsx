@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 import PayPalButton from './PayPalButton';
 
 const PLAN_PRICING: Record<string, number> = {
@@ -28,7 +29,9 @@ export default function SignupForm() {
   const t = useTranslations('SignupPage.form');
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { signup } = useAuth();
   const selectedPlan = searchParams.get('plan') || 'starter';
+  const billing = searchParams.get('billing') || 'monthly';
 
   const [formData, setFormData] = useState<SignupFormValues>({
     ...defaultFormState,
@@ -80,10 +83,18 @@ export default function SignupForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      setStep('payment');
+      // Register user
+      const success = await signup(formData);
+      if (success) {
+        // Redirect to payment page with plan info
+        const billingParam = billing ? `&billing=${billing}` : '';
+        router.push(`/payment?plan=${formData.plan}${billingParam}`);
+      } else {
+        setErrors({ general: 'Failed to create account. Please try again.' });
+      }
     }
   };
 

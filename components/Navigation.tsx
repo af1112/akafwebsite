@@ -63,3 +63,39 @@ export default function Navigation() {
   );
 }
 
+
+            <Link href="/contact">{t('contact')}</Link>
+          </li>
+          <li>
+            <Link href="/login" className="nav-login">{t('login')}</Link>
+          </li>
+          <li>
+            <Link href="/signup" className="btn btn-small btn-primary">{t('signup')}</Link>
+          </li>
+          <li>
+            <LanguageSwitcher />
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+
+            <Link href="/contact">{t('contact')}</Link>
+          </li>
+          <li>
+            <Link href="/login" className="nav-login">{t('login')}</Link>
+          </li>
+          <li>
+            <Link href="/signup" className="btn btn-small btn-primary">{t('signup')}</Link>
+          </li>
+          <li>
+            <LanguageSwitcher />
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+

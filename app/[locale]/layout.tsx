@@ -8,6 +8,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import AnnouncementBar from '@/components/AnnouncementBar';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ClientLayout from '@/components/ClientLayout';
 import './fonts.css';
 import './globals.css';
 
@@ -76,12 +77,14 @@ export default async function LocaleLayout({
       </head>
       <body>
         <NextIntlClientProvider messages={messages}>
-          <AnnouncementBar />
-          <Navigation />
-          <main>{children}</main>
-          <Footer />
-          <Analytics />
-          <SpeedInsights />
+          <ClientLayout>
+            <AnnouncementBar />
+            <Navigation />
+            <main>{children}</main>
+            <Footer />
+            <Analytics />
+            <SpeedInsights />
+          </ClientLayout>
         </NextIntlClientProvider>
       </body>
     </html>

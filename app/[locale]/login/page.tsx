@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import LoginForm from '@/components/LoginForm';
 
 export async function generateMetadata({
@@ -25,11 +26,11 @@ export default async function LoginPage() {
             <h1>Welcome Back</h1>
             <p>Sign in to your account</p>
           </div>
-          <LoginForm />
+          <Suspense fallback={<div>Loading...</div>}>
+            <LoginForm />
+          </Suspense>
         </div>
       </div>
     </section>
   );
 }
-
-
