@@ -145,18 +145,3 @@ export function getThawaniPaymentUrl(
 
   return `${checkoutBase}/pay/${sessionId}?key=${publishableKey}`;
 }
-
-
-    ? 'https://uatcheckout.thawani.om'
-    : 'https://checkout.thawani.om';
-
-  return `${checkoutBase}/pay/${sessionId}?key=${publishableKey}`;
-}
-
-
-    ? 'https://uatcheckout.thawani.om'
-    : 'https://checkout.thawani.om';
-
-  return `${checkoutBase}/pay/${sessionId}?key=${publishableKey}`;
-}
-
