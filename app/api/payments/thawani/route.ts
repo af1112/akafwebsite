@@ -155,7 +155,7 @@ export async function POST(request: Request) {
 }
 
 
-      clientReferenceId: `${plan}-${Date.now()}`
+      clientReferenceId: `${plan}-${Date.now()}`,
     });
 
     return NextResponse.json({
