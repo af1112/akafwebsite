@@ -3,9 +3,9 @@
     "title": "AKAF Digital Menu for Restaurants & Cafes",
     "subtitle": "Transform your Restaurant/Cafe with a modern digital menu system",
     "description": "Professional digital menu solution for restaurants and cafes. Increase sales, improve customer experience, and manage your menu effortlessly.",
+    "heroImageAlt": "Preview of AKAF Digital Menu on mobile and tablet in restaurant setting",
     "cta": "Start Free Trial",
     "ctaSecondary": "View Demo",
-    "heroImageAlt": "Preview of AKAF digital menu on mobile and tablet screens inside a restaurant",
     "features": {
       "title": "Why Choose Our Digital Menu?",
       "subtitle": "Everything you need to modernize your restaurant",
@@ -57,33 +57,33 @@
   },
   "AboutPage": {
     "title": "About Us",
+    "description": "We are a team of passionate developers and designers dedicated to creating amazing digital experiences. Our mission is to help businesses grow through innovative web solutions.",
     "breadcrumb": "Home / About Us",
-    "subtitle": "We are ready to share our expertise and introduce the latest digital and artificial intelligence technologies for use in your organization",
-    "description": "AKAF System Software Group, with over two decades of experience in software development, is a team of distinguished IT professionals who have become a trusted partner for factories, companies, and business centers.",
+    "subtitle": "We are ready to share our experiences and introduce the latest technologies in digital and artificial intelligence for use in your organization",
     "intro": {
       "title": "Get to Know AKAF Group",
-      "paragraph1": "AKAF System began its operations in 1988 in Gorgan, a city in Golestan Province, Iran, focusing on developing computer software in the fields of accounting and management. After successfully developing and launching several software products and serving dozens of satisfied customers, the company was officially established as \"Arman Kabir Andisheh Forouzan\" with registration number 7346.",
-      "paragraph2": "In 2003, the company was recognized as the top software design company in Iran and received the Golden Medal of IT Elites. This achievement is a testament to the quality and innovation of AKAF System's products and services.",
-      "paragraph3": "Currently, AKAF System has become a trusted and reputable partner for factories, companies, and business centers across the country by designing and developing dozens of specialized software, websites, and practical applications.",
-      "paragraph4": "In line with expanding its international activities and after a successful experience in Turkey, AKAF System decided to expand its operations in the Persian Gulf countries. Accordingly, in 2023, by establishing a new office in Muscat, the capital of Oman, under the name \"AKAF Investment & Integrated Projects,\" the company expanded its international activities in the fields of industrial robot production, AI-based software, and business application development."
+      "paragraph1": "AKAF System began its operations in 1988 in Gorgan, Golestan Province, Iran, focusing on developing computer software for accounting and management. After successfully developing and launching several software products and gaining the satisfaction of dozens of clients, the company was officially registered as 'Arman Kabir Andisheh Forouzan' with registration number 7346.",
+      "paragraph2": "In 2003, the company was recognized as the top software design company in Iran and received the Golden Medal of IT Elite. This achievement is a testament to the quality and innovation of AKAF System's products and services.",
+      "paragraph3": "Today, AKAF System has become a trusted and reputable partner for factories, companies, and business centers across the country by designing and developing dozens of specialized software, websites, and applications.",
+      "paragraph4": "In line with expanding its international activities and after a successful experience in Turkey, AKAF System decided to expand its operations in the Gulf countries. Accordingly, in 2023, by establishing a new office in Muscat, the capital of Oman, under the name 'AKAF Investment & Integrated Projects', it expanded its international activities in the fields of industrial robotics, AI-based software, and business application development."
     },
     "strengths": {
       "title": "Our Strengths",
       "twoDecades": {
         "title": "Two Decades of Experience",
-        "description": "The valuable experience of our team's two decades of activity in the digital technology field is the main factor in our customers' trust and confidence. This deep experience has enabled us to provide efficient solutions tailored to the real needs of businesses."
+        "description": "The valuable experience of our team's two decades of activity in digital technology is the main factor in our customers' trust and confidence in us. This deep experience has enabled us to provide efficient solutions tailored to the real needs of businesses."
       },
       "latestTech": {
         "title": "Latest Ideas and Technology",
-        "description": "We always utilize innovative and creative ideas and the latest equipment and cutting-edge technologies in the digital technology field to deliver our products and services at the highest level of quality and efficiency."
+        "description": "We always leverage innovative and creative ideas and the latest equipment and technologies in digital technology to deliver our products and services at the highest level of quality and efficiency."
       },
       "ai": {
         "title": "Artificial Intelligence",
-        "description": "In today's world where technology is advancing at an astonishing pace, success in competition is impossible without the use of artificial intelligence. By incorporating AI into our products, we provide intelligent and advanced solutions for our customers."
+        "description": "In today's world where technology is advancing at a breakneck pace, success in competition is impossible without the use of artificial intelligence. By incorporating AI into our products, we provide smart and advanced solutions for our customers."
       },
       "ambitious": {
         "title": "Ambitious Goals",
-        "description": "Based on our annual strategic goals, we are constantly striving to achieve higher positions in the digital technology business market, and with careful planning and continuous effort, we are moving towards our ambitious goals."
+        "description": "Based on annual strategic goal-setting, we are always striving to achieve higher positions in the digital technology business market, and with careful planning and continuous effort, we are moving towards our great goals."
       }
     },
     "values": {
@@ -94,28 +94,28 @@
       },
       "quality": {
         "title": "Quality",
-        "description": "Our commitment to delivering products with global standards and superior quality is always a priority in our activities."
+        "description": "Our commitment to delivering products with international standards and superior quality is always a priority in our activities."
       },
       "customerFocus": {
         "title": "Customer Focus",
         "description": "The satisfaction and success of our customers is our main goal. We do our best to meet their needs in the best possible way."
       },
       "webDesign": {
-        "title": "Website Design",
-        "description": "We help businesses establish an effective presence in the digital space by designing professional and user-friendly websites."
+        "title": "Web Design",
+        "description": "We help businesses have an effective presence in the digital space by designing professional and user-friendly websites."
       }
     },
     "contact": {
       "title": "Contact Us",
       "iran": {
         "title": "Iran Office",
-        "address": "Golestan Province – Gorgan – Sorkhojeh Street – Aftab Complex 2 – 4th Floor – Unit 590",
-        "phone": "02191302682"
+        "address": "Golestan Province – Gorgan – Sar Khajeh Street – Aftab 2 Complex – 4th Floor – Unit 590",
+        "phone": "+98 21 9130 2682"
       },
       "oman": {
         "title": "Oman Office",
-        "address": "Muscat – Mazoon Boulevard – Building No. 225 – Unit 46",
-        "phone": "0096894063021"
+        "address": "Muscat – Al Mazon Boulevard – Building No. 225 – Unit 46",
+        "phone": "+968 9406 3021"
       }
     }
   },
@@ -154,16 +154,16 @@
       "title": "Our Offices",
       "oman": {
         "title": "Oman Office",
-        "address": "Mazoon Boulevard - Building No. 225 - Unit 46",
+        "address": "Al Mazon Boulevard - Building No. 225 - Unit 46",
         "phone": "+968 9406 3021",
         "email": "Info@akafco.com"
       },
       "iran": {
         "title": "Iran Office",
-        "address": "Golestan - Gorgan - Sar Khajeh Street - Aftab Commercial Complex 2 - 4th Floor - Unit 590",
+        "address": "Golestan - Gorgan - Sar Khajeh Street - Aftab 2 Commercial Complex - 4th Floor - Unit 590",
         "postalCode": "Postal Code: 4917673323",
-        "phone": "00981732204298",
-        "whatsapp": "00989124433347",
+        "phone": "+98 17 3220 4298",
+        "whatsapp": "+98 912 443 3347",
         "email": "Info@akafco.com"
       }
     },
@@ -191,6 +191,7 @@
           "Digital Menu",
           "Management Dashboard",
           "Ordering on mobile by waiters",
+          "QR code generation",
           "Ability for personnel to use smart braceles",
           "Professional Sales Report",
           "Online support",
@@ -238,6 +239,7 @@
           "Profit and loss management reports",
           "Free Photography and videography of menu items",
           "Automatic Management reports to managers emails",
+          "Dedicated support",
           "Perfomance analysis with AI",
           "Free gift of 10 Set of NFC & QR desk tissue holder"
         ]
@@ -250,35 +252,35 @@
     "sections": {
       "menuManagement": {
         "title": "Menu Management",
-        "description": "Easily add, edit, and organize menu items with categories, modifiers, images, and rich descriptions."
+        "description": "Easily add, edit, and organize your menu items with categories, images, and descriptions."
       },
       "orderTracking": {
         "title": "Order Tracking",
-        "description": "Track dine‑in, takeaway, and delivery orders in real time and manage your kitchen workflow efficiently."
+        "description": "Track orders in real-time and manage your kitchen workflow efficiently."
       },
       "payment": {
         "title": "Payment Integration",
-        "description": "Accept online payments with multiple gateways such as Thawani and PayPal, fully integrated with your menu."
+        "description": "Accept online payments with multiple payment gateways."
       },
       "reports": {
         "title": "Reports & Analytics",
-        "description": "Get insights into sales, popular items, repeat guests, and campaign performance from one dashboard."
+        "description": "Get insights into your sales, popular items, and customer behavior."
       },
       "marketing": {
-        "title": "Built‑in Marketing & Campaigns",
-        "description": "Run promotions, upsell signature items, and send targeted offers via WhatsApp, SMS, or inside the digital menu."
+        "title": "In-Menu Campaigns & Marketing",
+        "description": "Run special offers, banners, and pop-ups for specific items and send targeted promotions via WhatsApp and SMS."
       },
       "loyalty": {
-        "title": "Loyalty & Stamp Cards",
-        "description": "Reward loyal guests with digital stamp cards and cashback so they return to your restaurant more often."
+        "title": "Customer Club & Digital Stamp Cards",
+        "description": "Encourage your loyal customers to return more often with digital stamp cards and cashback programs."
       },
       "crm": {
-        "title": "Guest Profiles & CRM",
-        "description": "Capture guest contact details, track visits, and build a simple CRM around your digital menu users."
+        "title": "Guest Profile & Simple CRM",
+        "description": "Store guest contact information, view their visit history, and build a simple CRM based on your digital menu users."
       },
       "aiContent": {
-        "title": "AI‑Assisted Content",
-        "description": "Use AI to help write attractive menu descriptions and highlight the strengths of your dishes in multiple languages."
+        "title": "AI-Powered Content Generation",
+        "description": "Use AI to generate professional and engaging descriptions for menu items in multiple languages and better showcase food advantages."
       }
     }
   },
@@ -295,6 +297,7 @@
       "confirmPassword": "Confirm Password",
       "agree": "I agree to the Terms and Conditions",
       "submit": "Create Account & Continue to Payment",
+      "submitting": "Signing up...",
       "alreadyHaveAccount": "Already have an account?",
       "login": "Login here"
     },
@@ -306,12 +309,11 @@
       "cvv": "CVV",
       "cardholderName": "Cardholder Name",
       "payNow": "Pay Now",
-      "secure": "Your payment is secure and encrypted"
+      "secure": "Your payment is secure and encrypted",
+      "activating": "Activating...",
+      "redirecting": "Redirecting...",
+      "processing": "Processing..."
     }
-  },
-  "LoginPage": {
-    "title": "Welcome Back",
-    "subtitle": "Sign in to your account"
   },
   "Testimonials": {
     "title": "What Our Customers Say",
@@ -400,55 +402,23 @@
   },
   "FAQ": {
     "title": "Frequently asked questions",
-    "subtitle": "Purchase and payment information before you start",
+    "subtitle": "Everything you need to know before getting started",
     "items": [
       {
-        "question": "Is the digital menu helpful for my business?",
-        "answer": "Absolutely. The AKAF digital menu is built for restaurants and cafés to increase sales, reduce printing costs, and deliver a modern guest experience."
+        "question": "How long does it take to launch?",
+        "answer": "Most restaurants launch within 24 hours. Import your menu, print QR codes, and start receiving orders instantly."
       },
       {
-        "question": "After payment, how long does setup take?",
-        "answer": "Depending on the package, setup usually takes 72 hours to one week. Our team captures your menu, uploads every item, and performs full testing before launch."
+        "question": "Can I integrate with my POS?",
+        "answer": "Yes. We integrate with the most popular POS systems and also provide an open API for custom workflows."
       },
       {
-        "question": "What happens right after I purchase the software?",
-        "answer": "Our specialists contact you, collect all required information, and if needed schedule an on-site visit to shoot photos, videos, and content so your panel is perfectly configured."
+        "question": "Is there onboarding or training?",
+        "answer": "Every plan includes onboarding videos, template kits, and live training sessions for your staff."
       },
       {
-        "question": "Do you handle photographing the menu items?",
-        "answer": "Yes. The AKAF media crew can produce professional photos and videos of your dishes, drinks, and venue to showcase inside the digital menu."
-      },
-      {
-        "question": "How do I report an issue or request support?",
-        "answer": "Submit a ticket through the support portal, reach us via WhatsApp, phone, or email, and our success team will respond immediately. Support is included in every plan."
-      },
-      {
-        "question": "Can I pay monthly?",
-        "answer": "Yes. All plans can be billed monthly or annually, and you always receive full platform access plus support."
-      },
-      {
-        "question": "Do I get a discount for annual payments?",
-        "answer": "Paying for a full year upfront lowers the effective monthly rate and unlocks bonus services, gifts, and exclusive feature updates."
-      },
-      {
-        "question": "Is there an extra fee for support?",
-        "answer": "No. Premium support is bundled with every subscription, so you never pay anything additional for assistance."
-      },
-      {
-        "question": "Which payment methods are available?",
-        "answer": "You can pay via bank transfer, direct deposit, card-to-card payments, or our secure online gateways connected to AKAF corporate accounts."
-      },
-      {
-        "question": "Can I enable online payments inside the menu?",
-        "answer": "Yes. For Oman and GCC customers we activate bank gateways and Thawani so guests can pay online and funds settle straight into your account."
-      },
-      {
-        "question": "Do you offer refunds?",
-        "answer": "You may request a refund within 24 hours of payment. After content production and gateway activation begin, the fee becomes non-refundable."
-      },
-      {
-        "question": "How do I receive invoices or contracts?",
-        "answer": "Once your order is confirmed we issue a digital contract and official invoice instantly, and we can mail a printed copy if needed."
+        "question": "How secure is the platform?",
+        "answer": "All data is encrypted, hosted on ISO-certified infrastructure, and protected by role-based access controls."
       }
     ]
   },
@@ -518,31 +488,77 @@
     ]
   },
   "ServicesHighlights": {
-    "title": "Premium services around your digital menu",
-    "subtitle": "Beyond software – AKAF helps you with content, photos, and implementation so you launch faster and look professional from day one.",
+    "title": "Complementary Services for Your Digital Menu",
+    "subtitle": "It's not just software; AKAF helps you with content, photography, and implementation so your project looks professional from day one.",
     "items": [
-      { "key": "photoVideo", "icon": "📸" },
-      { "key": "translation", "icon": "🌍" },
-      { "key": "consulting", "icon": "🤝" },
-      { "key": "hardware", "icon": "💻" }
+      {
+        "key": "photoVideo",
+        "icon": "📸"
+      },
+      {
+        "key": "translation",
+        "icon": "🌍"
+      },
+      {
+        "key": "consulting",
+        "icon": "🤝"
+      },
+      {
+        "key": "hardware",
+        "icon": "💻"
+      }
     ],
     "itemsText": {
       "photoVideo": {
-        "title": "Food photography & video",
-        "description": "Professional photos and short videos of your dishes, drinks, and venue so your digital menu really sells your food."
+        "title": "Professional Food Photography & Videography",
+        "description": "We capture professional photos and videos of your dishes, beverages, and restaurant ambiance to turn your digital menu into a powerful sales tool."
       },
       "translation": {
-        "title": "Menu translation & localization",
-        "description": "Translate and adapt your menu for Arabic, Persian, English and more, using correct culinary terms for local guests and tourists."
+        "title": "Menu Translation & Localization",
+        "description": "Translate your menu to Arabic, Persian, English, and other languages using correct restaurant terminology for local guests and tourists."
       },
       "consulting": {
-        "title": "Implementation & training",
-        "description": "We help you configure the menu, connect payment gateways, design QR cards and train your staff step by step."
+        "title": "Setup Consulting & Training",
+        "description": "We help you set up the menu, connect payment gateways, design QR cards, and train your staff step by step."
       },
       "hardware": {
-        "title": "Tablets, stands & QR design",
-        "description": "Get advice on tablets, stands, NFC/QR cards and digital signage so the experience in your restaurant looks modern and consistent."
+        "title": "Hardware & QR/NFC Consulting",
+        "description": "We guide you in choosing tablets, stands, NFC/QR cards, and display screens to provide a modern and consistent experience inside your restaurant."
       }
     }
+  },
+  "LoginPage": {
+    "title": "Welcome",
+    "subtitle": "Sign in to your account"
+  },
+  "SuccessPage": {
+    "trial": {
+      "title": "Your Request Has Been Submitted!",
+      "subtitle": "14-Day Free Trial",
+      "message": "Your request for the {plan} plan has been successfully sent to the AKAF team.",
+      "details": [
+        "✓ Your request has been queued for activation",
+        "✓ Our team will activate your panel as soon as possible",
+        "✓ You will receive an email with menu link and login credentials",
+        "✓ Your 14-day trial will start from activation time"
+      ]
+    },
+    "payment": {
+      "title": "Payment Successful!",
+      "subtitle": "{plan} Plan",
+      "message": "Your payment was successful and your account has been activated.",
+      "details": [
+        "✓ Your payment has been confirmed",
+        "✓ Your account is now active",
+        "✓ Confirmation email has been sent",
+        "✓ You can now use all features"
+      ]
+    },
+    "default": {
+      "title": "Success!",
+      "message": "Operation completed successfully."
+    },
+    "needHelp": "Need Help?",
+    "backToHome": "Back to Home"
   }
 }

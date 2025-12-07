@@ -21,8 +21,7 @@
 
 @font-face {
   font-family: 'IranYekan';
-  src: url('/fonts/IranYekan/IRANYekanWebMedium.woff2') format('woff2'),
-       url('/fonts/IranYekan/iranyekanwebmedium.woff') format('woff'),
+  src: url('/fonts/IranYekan/iranyekanwebmedium.woff') format('woff'),
        url('/fonts/IranYekan/IRANYekanWebMedium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
@@ -107,8 +106,7 @@
 
 @font-face {
   font-family: 'IranYekan';
-  src: url('/fonts/IranYekan/IRANYekanWebMedium.woff2') format('woff2'),
-       url('/fonts/IranYekan/iranyekanwebmedium.woff') format('woff'),
+  src: url('/fonts/IranYekan/iranyekanwebmedium.woff') format('woff'),
        url('/fonts/IranYekan/IRANYekanWebMedium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
@@ -165,6 +163,9 @@
   font-style: normal;
   font-display: swap;
 }
+
+
+
 
 
 

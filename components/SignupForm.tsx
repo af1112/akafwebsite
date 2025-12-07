@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import PayPalButton from './PayPalButton';
@@ -40,6 +40,16 @@ export default function SignupForm() {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [step, setStep] = useState<'signup' | 'payment'>('signup');
+  const [loading, setLoading] = useState(false);
+  
+  // Scroll to first error when errors change (after submit)
+  useEffect(() => {
+    if (Object.keys(errors).length > 0) {
+      setTimeout(() => {
+        scrollToFirstError();
+      }, 100);
+    }
+  }, [errors]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -63,38 +73,170 @@ export default function SignupForm() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.name.trim()) newErrors.name = 'Full name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email address is required';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = 'Please enter a valid email address';
     }
-    if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
-    if (!formData.restaurantName.trim()) newErrors.restaurantName = 'Restaurant name is required';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    if (!formData.restaurantName.trim()) newErrors.restaurantName = 'Restaurant/Cafe name is required';
     if (!formData.password) newErrors.password = 'Password is required';
     else if (formData.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters';
+      newErrors.password = 'Password must be at least 8 characters long';
     }
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
-    if (!formData.agree) newErrors.agree = 'You must agree to the terms';
+    if (!formData.agree) newErrors.agree = 'You must agree to the Terms and Conditions';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  const checkExistingUser = async (email: string, phone: string): Promise<{ exists: boolean; duplicateField?: 'email' | 'phone' | 'both' }> => {
+    try {
+      const response = await fetch('/api/auth/check-existing', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, phone }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        return {
+          exists: data.exists === true,
+          duplicateField: data.duplicateField || (data.exists ? 'both' : undefined)
+        };
+      }
+      
+      // If endpoint doesn't exist (404), return false (allow signup to proceed)
+      // The backend signup will catch duplicate errors
+      if (response.status === 404) {
+        console.warn('Check-existing endpoint not found, proceeding with signup...');
+        return { exists: false };
+      }
+      
+      return { exists: false };
+    } catch (error) {
+      console.error('Check existing user error:', error);
+      // On error, return false (allow signup to proceed)
+      // The backend signup will catch duplicate errors
+      return { exists: false };
+    }
+  };
+
+  const scrollToFirstError = () => {
+    // Find the first field with an error
+    const errorFields = [
+      'name',
+      'email',
+      'phone',
+      'restaurantName',
+      'password',
+      'confirmPassword',
+      'agree'
+    ];
+
+    for (const fieldName of errorFields) {
+      if (errors[fieldName]) {
+        const fieldElement = document.getElementById(fieldName) || 
+                           document.querySelector(`[name="${fieldName}"]`);
+        if (fieldElement) {
+          fieldElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Focus on the input field
+          setTimeout(() => {
+            (fieldElement as HTMLElement).focus();
+            // Highlight the field
+            fieldElement.classList.add('error-highlight');
+            setTimeout(() => {
+              fieldElement.classList.remove('error-highlight');
+            }, 2000);
+          }, 300);
+          break;
+        }
+      }
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
+    setErrors({}); // Clear previous errors
+    
+    if (!validateForm()) {
+      // Scroll to first validation error
+      setTimeout(scrollToFirstError, 100);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      
+      // Check if user already exists
+      const checkResult = await checkExistingUser(formData.email, formData.phone);
+      if (checkResult.exists) {
+        const newErrors: Record<string, string> = {};
+        
+        // Set error on specific field(s)
+        if (checkResult.duplicateField === 'email' || checkResult.duplicateField === 'both') {
+          newErrors.email = 'This email is already registered. Please use login or enter a different email.';
+        }
+        if (checkResult.duplicateField === 'phone' || checkResult.duplicateField === 'both') {
+          newErrors.phone = 'This phone number is already registered. Please use login or enter a different phone number.';
+        }
+        
+        // If we don't know which field, set both
+        if (!checkResult.duplicateField) {
+          newErrors.email = 'This email or phone number is already registered.';
+          newErrors.phone = 'This email or phone number is already registered.';
+        }
+        
+        setErrors(newErrors);
+        setLoading(false);
+        // Scroll will happen automatically via useEffect
+        return;
+      }
+
       // Register user
       const success = await signup(formData);
       if (success) {
         // Redirect to payment page with plan info
         const billingParam = billing ? `&billing=${billing}` : '';
         router.push(`/payment?plan=${formData.plan}${billingParam}`);
-      } else {
-        setErrors({ general: 'Failed to create account. Please try again.' });
       }
+    } catch (error: any) {
+      console.error('Signup error:', error);
+      const errorMessage = error.message || 'An error occurred during signup. Please try again.';
+      
+      const newErrors: Record<string, string> = {};
+      
+      // Check if it's a duplicate error
+      if (errorMessage.toLowerCase().includes('already exists') || 
+          errorMessage.toLowerCase().includes('duplicate') || 
+          errorMessage.toLowerCase().includes('email')) {
+        newErrors.email = 'This email is already registered. Please use login or enter a different email.';
+      }
+      if (errorMessage.toLowerCase().includes('phone') || 
+          errorMessage.toLowerCase().includes('duplicate')) {
+        newErrors.phone = 'This phone number is already registered. Please use login or enter a different phone number.';
+      }
+      
+      // If we can't determine which field, set general error
+      if (Object.keys(newErrors).length === 0) {
+        newErrors.general = errorMessage;
+      } else {
+        // If we have field-specific errors, set both email and phone if it's a general duplicate
+        if (errorMessage.toLowerCase().includes('already') && !newErrors.email && !newErrors.phone) {
+          newErrors.email = 'This email or phone number is already registered.';
+          newErrors.phone = 'This email or phone number is already registered.';
+        }
+      }
+      
+      setErrors(newErrors);
+      // Scroll will happen automatically via useEffect
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -217,8 +359,15 @@ export default function SignupForm() {
         {errors.agree && <span className="error-message">{errors.agree}</span>}
       </div>
 
-      <button type="submit" className="btn btn-primary btn-block">
-        {t('submit')}
+      {errors.general && (
+        <div className="error-message-general">
+          <span className="error-icon">⚠️</span>
+          <span>{errors.general}</span>
+        </div>
+      )}
+
+      <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+        {loading ? t('submitting') : t('submit')}
       </button>
 
       <p className="form-footer">

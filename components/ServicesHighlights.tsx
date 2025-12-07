@@ -5,7 +5,8 @@ import { useTranslations } from 'next-intl';
 
 export default function ServicesHighlights() {
   const t = useTranslations('ServicesHighlights');
-  const services = t.raw('items') as {
+  const servicesRaw = t.raw('items');
+  const services = (Array.isArray(servicesRaw) ? servicesRaw : []) as {
     key: string;
     icon: string;
   }[];
@@ -16,6 +17,11 @@ export default function ServicesHighlights() {
     consulting: 'icon-consulting.png',
     hardware: 'icon-hardware.png'
   };
+
+  // If no services, return null or empty section
+  if (!services || services.length === 0) {
+    return null;
+  }
 
   return (
     <section className="services-highlights">
