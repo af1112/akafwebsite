@@ -97,7 +97,7 @@ function PaymentContent() {
         body: JSON.stringify({
           userName: user?.name || '',
           userEmail: user?.email || '',
-          userPhone: user?.phone || '',
+        //  userPhone: user?.phone || '',
           restaurantName: user?.restaurantName || '',
           plan: plan,
           billingCycle: '14-Day Free Trial',
