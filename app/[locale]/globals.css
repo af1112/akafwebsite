@@ -6348,3 +6348,33 @@ html[lang='en'] .success-details li:hover {
   transition: all 0.3s ease;
   cursor: not-allowed;
 }
+/* œ—”  ò—œ‰ dropdown “»«‰ ó ¬Ì „ùÂ« “Ì— Â„ »«‘‰ */
+.language-dropdown,
+.lang-dropdown-menu {
+  display: flex !important;
+  flex-direction: column !important;   /* ? «Ì‰ Œÿ „Â„ù —Ì‰Â: “Ì— Â„ */
+  gap: 4px !important;
+  padding: 8px 0 !important;
+  min-width: 80px !important;
+}
+
+.language-option,
+.lang-dropdown-item {
+  display: flex !important;
+  align-items: center !important;
+  padding: 6px 12px !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.language-option:hover,
+.lang-dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.language-option.selected,
+.lang-dropdown-item.active {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  font-weight: 600 !important;
+}
