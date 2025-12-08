@@ -96,9 +96,6 @@ export default function Navigation() {
 
         {/* Navigation Links */}
         <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
-          <li className="mobile-lang-switcher">
-            <LanguageSwitcher />
-          </li>
           
           <li>
             <Link href="/" onClick={closeMobileMenu}>{t('home')}</Link>
@@ -135,7 +132,9 @@ export default function Navigation() {
             </>
           )}
         </ul>
-
+        <div className="hidden md:block">
+          <LanguageSwitcher />
+        </div>
         {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
           <div 
