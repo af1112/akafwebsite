@@ -63,8 +63,12 @@ export default function LanguageSwitcher() {
               className={`language-option ${currentLanguage.code === lang.code ? 'selected' : ''}`}
               onClick={() => setIsOpen(false)}
             >
-              <span className="language-flag text-xs font-medium mr-1">{lang.flag}</span>  {/* ← تغییر: text-xs font-medium mr-1 — flag کوچیک‌تر + فاصله */}
-              <span className="language-name text-sm font-medium">{lang.name}</span>  {/* name همون قبلی */}
+              <span 
+                className="language-flag text-sm font-semibold"
+                title={lang.name}   // ← این خط اضافه شد: tooltip با نام زبان
+              >
+                {lang.flag}
+              </span>
             </Link>
           ))}
         </div>
