@@ -116,7 +116,13 @@ export default function Navigation() {
             <Link href="/contact" onClick={closeMobileMenu}>{t('contact')}</Link>
           </li>
           
-          {isAuthenticated ? (
+          {!isAuthenticated ? (
+            <li>
+              <Link href="/signup" className="nav-link">  {/* ← تغییر: فقط nav-link، بدون btn classes */}
+                Sign Up
+              </Link>
+            </li>
+          ) : (
             <>
               <li className="user-info">
                 <span className="user-name">👤 {user?.name}</span>
@@ -125,15 +131,6 @@ export default function Navigation() {
                 <button onClick={handleLogout} className="btn btn-small btn-logout">
                   Logout
                 </button>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link href="/login" className="nav-login" onClick={closeMobileMenu}>{t('login')}</Link>
-              </li>
-              <li>
-                <Link href="/signup" className="btn btn-small btn-primary" onClick={closeMobileMenu}>{t('signup')}</Link>
               </li>
             </>
           )}
