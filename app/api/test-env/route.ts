@@ -66,3 +66,4 @@ export async function GET() {
 
   return NextResponse.json(results, { status: 200 });
 }
+
