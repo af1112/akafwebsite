@@ -5,20 +5,20 @@ import { Link, usePathname } from '@/routing';
 import { useState, useEffect, useRef } from 'react';
 
 const languages = [
-  { code: 'en', name: 'English', flag: 'EN' },
-  { code: 'fa', name: 'فارسی', flag: 'FA' },
-  { code: 'ar', name: 'العربية', flag: 'AR' }
+  { code: 'en', flag: 'EN' },
+  { code: 'fa', flag: 'FA' },
+  { code: 'ar', flag: 'AR' }
 ];
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -27,27 +27,27 @@ export default function LanguageSwitcher() {
   }, []);
 
   return (
-    <div className="language-switcher-dropdown" ref={dropdownRef}>
+    <div className="relative" ref={ref}>
       <button
-        className="lang-toggle-button"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Change language"
+        className="flex items-center gap-1 px-3 py-2 text-sm font-medium hover:bg-white/10 rounded-md transition"
       >
-        <span className="lang-current-flag">{languages.find(l => l.code === locale)?.flag || 'EN'}</span>
-        <svg className={`lang-chevron ${isOpen ? 'open' : ''}`} width="10" height="10" viewBox="0 0 12 12" fill="none">
-          <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <span>{languages.find(l => l.code === locale)?.flag || 'EN'}</span>
+        <svg className={`w-3 h-3 transition ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>
       </button>
 
-      {/* این قسمت مهم: position absolute + زیر هم */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-20 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+        <div className="absolute top-full mt-2 right-0 w-16 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50">
           {languages.map((lang) => (
             <Link
               key={lang.code}
               href={pathname}
               locale={lang.code}
-              className={`block px-4 py-2 text-sm hover:bg-gray-100 text-center ${locale === lang.code ? 'font-bold bg-gray-50' : ''}`}
+              className={`block px-4 py-3 text-sm font-medium text-center hover:bg-gray-100 transition ${
+                locale === lang.code ? 'bg-blue-50 text-blue-700' : 'text-gray-800'
+              }`}
               onClick={() => setIsOpen(false)}
             >
               {lang.flag}
