@@ -18,7 +18,7 @@ export default function LanguageSwitcher() {
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside — درست شده: cleanup function کامل
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -27,7 +27,9 @@ export default function LanguageSwitcher() {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };  // ← درست شده: return کامل
   }, []);
 
   return (
@@ -52,23 +54,26 @@ export default function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-          <div className="language-dropdown">
-            {languages.map((lang) => (
-              <Link
-                key={lang.code}
-                href={pathname}
-                locale={lang.code}
-                className={`language-option ${currentLanguage.code === lang.code ? 'selected' : ''}`}
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="language-flag">{lang.flag}</span>
-                <span className="language-name text-sm font-medium">{lang.name}</span>  // ← تغییر: text-sm font-medium
-              </Link>
-            ))}
-          </div>
-        )}
+        <div className="lang-dropdown-menu">
+          {languages.map((lang) => (
+            <Link
+              key={lang.code}
+              href={pathname}
+              locale={lang.code}
+              className={`lang-dropdown-item ${locale === lang.code ? 'active' : ''}`}
+              onClick={() => setIsOpen(false)}  // ← dropdown رو می‌بنده بعد از کلیک
+            >
+              <span className="lang-flag">{lang.flag}</span>
+              <span className="lang-name text-sm font-medium">{lang.name}</span>  // ← سایز کوچیک‌تر
+              {locale === lang.code && (
+                <svg className="lang-check" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M13 4L6 11L3 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
-
-
