@@ -6378,3 +6378,59 @@ html[lang='en'] .success-details li:hover {
   background-color: rgba(255, 255, 255, 0.2) !important;
   font-weight: 600 !important;
 }
+/* œ—”  ò—œ‰ dropdown “»«‰ ó »œÊ‰  √ÀÌ— —ÊÌ «— ›«⁄ navbar */
+.language-switcher-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.language-switcher-dropdown .language-dropdown,
+.language-switcher-dropdown .lang-dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  z-index: 1000 !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  min-width: 80px !important;
+  padding: 8px 0 !important;
+  margin-top: 8px !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease !important;
+}
+
+.language-switcher-dropdown.is-open .language-dropdown,
+.language-switcher-dropdown[aria-expanded="true"] ~ .language-dropdown,
+.language-switcher-dropdown .language-dropdown[style*="block"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* ¬Ì „ùÂ« “Ì— Â„ + ›«’·Â Ê hover */
+.language-option,
+.lang-dropdown-item {
+  display: flex !important;
+  align-items: center !important;
+  padding: 8px 16px !important;
+  white-space: nowrap !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: background 0.2s ease !important;
+}
+
+.language-option:hover,
+.lang-dropdown-item:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+
+.language-option.selected,
+.lang-dropdown-item.active {
+  background: rgba(0, 0, 0, 0.12) !important;
+  font-weight: 600 !important;
+}
