@@ -1,16 +1,19 @@
+'use client';
+
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface User {
   id?: string;
-  name?: string | null;
-  email?: string | null;
-  phone?: string | null;
-  restaurantName?: string | null;
-  plan?: string | null;
+  email: string;
+  name: string;
+  plan?: string;
+  phone?: string | null;  // اضافه شد برای TypeScript
+  restaurantName?: string | null;  // اضافه شد برای TypeScript
 }
 
 interface AuthContextType {
   user: User | null;
+  isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<boolean>;
   signup: (userData: any) => Promise<boolean>;
   logout: () => void;
@@ -21,7 +24,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Check if user is logged in from localStorage
@@ -36,8 +39,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.akafco.com';
       
-      console.log('[LOGIN] Sending request to:', `${apiUrl}/api/auth/login`);
-      console.log('[LOGIN] Email:', email);
+      console.log('🔵 [LOGIN] Sending request to:', `${apiUrl}/api/auth/login`);
+      console.log('🔵 [LOGIN] Email:', email);
       
       const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: 'POST',
@@ -47,36 +50,36 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         body: JSON.stringify({ email, password }),
       });
 
-      console.log('[LOGIN] Response status:', response.status, response.statusText);
+      console.log('🔵 [LOGIN] Response status:', response.status, response.statusText);
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error('[LOGIN] Failed:', errorData);
-        console.error('[LOGIN] Error message:', errorData.message);
+        console.error('❌ [LOGIN] Failed:', errorData);
+        console.error('❌ [LOGIN] Error message:', errorData.message);
         return false;
       }
 
       const data = await response.json();
-      console.log('[LOGIN] Success! Response data:', data);
-      console.log('[LOGIN] User ID:', data.user?.id);
-      console.log('[LOGIN] User from database:', data.user);
+      console.log('✅ [LOGIN] Success! Response data:', data);
+      console.log('✅ [LOGIN] User ID:', data.user?.id);
+      console.log('✅ [LOGIN] User from database:', data.user);
       
       const userData: User = {
         email: data.user.email,
         name: data.user.name,
         plan: data.user.plan,
-        phone: data.user.phone || '',  // اگر API داره، ازش بگیر
-        restaurantName: data.user.restaurantName || ''  // اگر API داره، ازش بگیر
+        phone: data.user.phone || '',  // placeholder — بعداً از API بگیر
+        restaurantName: data.user.restaurantName || ''  // placeholder — بعداً از API بگیر
       };
       
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData));
       localStorage.setItem('token', data.token);
       
-      console.log('[LOGIN] User saved to localStorage');
+      console.log('✅ [LOGIN] User saved to localStorage');
       return true;
     } catch (error) {
-      console.error('[LOGIN] Network/Error:', error);
+      console.error('❌ [LOGIN] Network/Error:', error);
       return false;
     }
   };
@@ -85,8 +88,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.akafco.com';
       
-      console.log('[SIGNUP] Sending request to:', `${apiUrl}/api/auth/signup`);
-      console.log('[SIGNUP] User data:', {
+      console.log('🔵 [SIGNUP] Sending request to:', `${apiUrl}/api/auth/signup`);
+      console.log('🔵 [SIGNUP] User data:', {
         name: userData.name,
         email: userData.email,
         phone: userData.phone,
@@ -110,12 +113,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }),
       });
 
-      console.log('[SIGNUP] Response status:', response.status, response.statusText);
+      console.log('🔵 [SIGNUP] Response status:', response.status, response.statusText);
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error('[SIGNUP] Failed:', errorData);
-        console.error('[SIGNUP] Error message:', errorData.message);
+        console.error('❌ [SIGNUP] Failed:', errorData);
+        console.error('❌ [SIGNUP] Error message:', errorData.message);
         
         // Throw error with message so it can be caught in the component
         const errorMessage = errorData.message || 'خطایی در ثبت نام رخ داد';
@@ -123,26 +126,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       const data = await response.json();
-      console.log('[SIGNUP] Success! Response data:', data);
-      console.log('[SIGNUP] User ID:', data.user?.id);
-      console.log('[SIGNUP] User saved to database:', data.user);
+      console.log('✅ [SIGNUP] Success! Response data:', data);
+      console.log('✅ [SIGNUP] User ID:', data.user?.id);
+      console.log('✅ [SIGNUP] User saved to database:', data.user);
       
       const newUser: User = {
         email: data.user.email,
         name: data.user.name,
         plan: data.user.plan,
-        phone: data.user.phone || '',
-        restaurantName: data.user.restaurantName || ''
+        phone: data.user.phone || '',  // placeholder — از فرم signup بگیر
+        restaurantName: data.user.restaurantName || ''  // placeholder — از فرم signup بگیر
       };
       
       setUser(newUser);
       localStorage.setItem('user', JSON.stringify(newUser));
       localStorage.setItem('token', data.token);
       
-      console.log('[SIGNUP] User saved to localStorage');
+      console.log('✅ [SIGNUP] User saved to localStorage');
       return true;
     } catch (error: any) {
-      console.error('[SIGNUP] Network/Error:', error);
+      console.error('❌ [SIGNUP] Network/Error:', error);
       // Re-throw the error so component can catch it
       throw error;
     }
@@ -155,7 +158,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout, loading }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        isAuthenticated: !!user,  // تضمین می‌کنه که همیشه boolean باشه
+        login,
+        signup,
+        logout,
+        loading
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
