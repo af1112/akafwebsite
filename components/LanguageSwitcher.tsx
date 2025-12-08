@@ -18,7 +18,7 @@ export default function LanguageSwitcher() {
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
 
-  // Close dropdown when clicking outside — درست شده: cleanup function کامل
+  // Close dropdown when clicking outside — درست شده: cleanup کامل
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -29,7 +29,7 @@ export default function LanguageSwitcher() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-    };  // ← درست شده: return کامل
+    };  // ← درست شده: return کامل — ارور runtime حل می‌شه
   }, []);
 
   return (
@@ -54,22 +54,17 @@ export default function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-        <div className="lang-dropdown-menu">
+        <div className="language-dropdown">
           {languages.map((lang) => (
             <Link
               key={lang.code}
               href={pathname}
               locale={lang.code}
-              className={`lang-dropdown-item ${locale === lang.code ? 'active' : ''}`}
-              onClick={() => setIsOpen(false)}  // ← dropdown رو می‌بنده بعد از کلیک
+              className={`language-option ${currentLanguage.code === lang.code ? 'selected' : ''}`}
+              onClick={() => setIsOpen(false)}
             >
-              <span className="lang-flag">{lang.flag}</span>
-              <span className="lang-name text-sm font-medium">{lang.name}</span>  // ← سایز کوچیک‌تر
-              {locale === lang.code && (
-                <svg className="lang-check" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M13 4L6 11L3 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              )}
+              <span className="language-flag text-xs font-medium mr-1">{lang.flag}</span>  {/* ← تغییر: text-xs font-medium mr-1 — flag کوچیک‌تر + فاصله */}
+              <span className="language-name text-sm font-medium">{lang.name}</span>  {/* name همون قبلی */}
             </Link>
           ))}
         </div>
