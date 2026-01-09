@@ -47,37 +47,39 @@ export default function LanguageSwitcher() {
       </button>
 
       {/* Dropdown */}
-      <div
-        className={`
-          absolute top-full mt-2 w-40 bg-white/95 backdrop-blur-sm rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden transition-all duration-200 origin-top-right
-          ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'}
-          ${locale === 'fa' || locale === 'ar' ? 'left-0' : 'right-0'}
-        `}
-      >
-        <div className="p-1.5">
-          {languages.map((lang) => (
-            <Link
-              key={lang.code}
-              href={pathname}
-              locale={lang.code}
-              className={`
-                flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-colors
-                ${locale === lang.code 
-                  ? 'bg-indigo-50 text-indigo-600 font-medium' 
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'}
-              `}
-              onClick={() => setIsOpen(false)}
-              style={{ fontFamily: lang.font }}
-              dir={lang.dir}
-            >
-              <span>{lang.name}</span>
-              {locale === lang.code && (
-                <div className="w-1.5 h-1.5 rounded-full bg-indigo-600"></div>
-              )}
-            </Link>
-          ))}
+      {isOpen && (
+        <div
+          className={`
+            absolute top-full mt-2 w-40 bg-white/95 backdrop-blur-sm rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden transition-all duration-200 origin-top-right
+            animate-in fade-in zoom-in-95 slide-in-from-top-2
+            ${locale === 'fa' || locale === 'ar' ? 'left-0' : 'right-0'}
+          `}
+        >
+          <div className="p-1.5">
+            {languages.map((lang) => (
+              <Link
+                key={lang.code}
+                href={pathname}
+                locale={lang.code}
+                className={`
+                  flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-colors
+                  ${locale === lang.code 
+                    ? 'bg-indigo-50 text-indigo-600 font-medium' 
+                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'}
+                `}
+                onClick={() => setIsOpen(false)}
+                style={{ fontFamily: lang.font }}
+                dir={lang.dir}
+              >
+                <span>{lang.name}</span>
+                {locale === lang.code && (
+                  <div className="w-1.5 h-1.5 rounded-full bg-indigo-600"></div>
+                )}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
