@@ -41,7 +41,7 @@ export default function LanguageSwitcher() {
         aria-label="Change Language"
         title={currentLang.name}
       >
-        <Image
+        <img
           src="/icons/globe.svg"
           alt="Change Language"
           width={20}
