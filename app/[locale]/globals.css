@@ -6348,11 +6348,11 @@ html[lang='en'] .success-details li:hover {
   transition: all 0.3s ease;
   cursor: not-allowed;
 }
-/* ÏÑÓÊ ˜ÑÏä dropdown ÒÈÇä — ÂíÊãåÇ ÒíÑ åã ÈÇÔä */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ dropdown ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 .language-dropdown,
 .lang-dropdown-menu {
   display: flex !important;
-  flex-direction: column !important;   /* ? Çíä ÎØ ãåãÊÑíäå: ÒíÑ åã */
+  flex-direction: column !important;   /* ? ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ ï¿½ï¿½ */
   gap: 4px !important;
   padding: 8px 0 !important;
   min-width: 80px !important;
@@ -6378,7 +6378,7 @@ html[lang='en'] .success-details li:hover {
   background-color: rgba(255, 255, 255, 0.2) !important;
   font-weight: 600 !important;
 }
-/* ÏÑÓÊ ˜ÑÏä dropdown ÒÈÇä — ÈÏæä ÊÃËíÑ Ñæí ÇÑÊİÇÚ navbar */
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ dropdown ï¿½ï¿½ï¿½ï¿½ ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ navbar */
 .language-switcher-dropdown {
   position: relative;
   display: inline-block;
@@ -6412,7 +6412,7 @@ html[lang='en'] .success-details li:hover {
   transform: translateY(0) !important;
 }
 
-/* ÂíÊãåÇ ÒíÑ åã + İÇÕáå æ hover */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ + ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ hover */
 .language-option,
 .lang-dropdown-item {
   display: flex !important;
