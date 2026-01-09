@@ -1,5 +1,4 @@
 'use client';
-
 import { useLocale } from 'next-intl';
 import { Link, usePathname } from '@/routing';
 import { useState, useEffect, useRef } from 'react';
@@ -27,17 +26,13 @@ export default function LanguageSwitcher() {
   }, []);
 
   const currentLang = languages.find(l => l.code === locale) || languages[0];
+  const isRtl = locale === 'fa' || locale === 'ar';
 
   return (
-    <div className="relative z-50" ref={ref}>
+    <div className="language-switcher" ref={ref}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`
-          flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
-          ${isOpen 
-            ? 'bg-indigo-50 text-indigo-600 shadow-sm ring-2 ring-indigo-100' 
-            : 'hover:bg-gray-100 text-gray-600 hover:text-gray-900'}
-        `}
+        className={`language-btn ${isOpen ? 'active' : ''}`}
         aria-label="Change Language"
         title={currentLang.name}
       >
@@ -46,42 +41,31 @@ export default function LanguageSwitcher() {
           alt="Change Language"
           width={20}
           height={20}
-          className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity"
+          style={{ opacity: isOpen ? 1 : 0.7, width: '20px', height: '20px', transition: 'opacity 0.2s' }}
         />
       </button>
 
-      {/* Dropdown */}
       {isOpen && (
         <div
-          className={`
-            absolute top-full mt-2 w-40 bg-white/95 backdrop-blur-sm rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden transition-all duration-200 origin-top-right
-            animate-in fade-in zoom-in-95 slide-in-from-top-2
-            ${locale === 'fa' || locale === 'ar' ? 'left-0' : 'right-0'}
-          `}
+          className="language-dropdown"
+          style={isRtl ? { left: 0 } : { right: 0 }}
         >
-          <div className="p-1.5">
-            {languages.map((lang) => (
-              <Link
-                key={lang.code}
-                href={pathname}
-                locale={lang.code}
-                className={`
-                  flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-colors
-                  ${locale === lang.code 
-                    ? 'bg-indigo-50 text-indigo-600 font-medium' 
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'}
-                `}
-                onClick={() => setIsOpen(false)}
-                style={{ fontFamily: lang.font }}
-                dir={lang.dir}
-              >
-                <span>{lang.name}</span>
-                {locale === lang.code && (
-                  <div className="w-1.5 h-1.5 rounded-full bg-indigo-600"></div>
-                )}
-              </Link>
-            ))}
-          </div>
+          {languages.map((lang) => (
+            <Link
+              key={lang.code}
+              href={pathname}
+              locale={lang.code}
+              className={`language-item ${locale === lang.code ? 'active' : ''}`}
+              onClick={() => setIsOpen(false)}
+              style={{ fontFamily: lang.font }}
+              dir={lang.dir}
+            >
+              <span>{lang.name}</span>
+              {locale === lang.code && (
+                <div className="language-dot"></div>
+              )}
+            </Link>
+          ))}
         </div>
       )}
     </div>
