@@ -10,6 +10,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ClientLayout from '@/components/ClientLayout';
 import RouteProgressBar from '@/components/RouteProgressBar';
+import ChatWidget from '@/components/ChatWidget';
 import './fonts.css';
 import './globals.css';
 
@@ -86,6 +87,7 @@ export default async function LocaleLayout({
             <Navigation />
             <main>{children}</main>
             <Footer />
+            <ChatWidget />
             <Analytics />
             <SpeedInsights />
           </ClientLayout>
