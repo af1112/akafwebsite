@@ -39,6 +39,12 @@
       "description": "ما به رستوران‌ها و کافی‌شاپ‌ها کمک می‌کنیم سیستم منوی خود را دیجیتالی کنند و تجربه بی‌نقصی برای صاحبان و مشتریان فراهم کنند."
     }
   },
+  "Demo": {
+    "subtitle": "نمایش دمو سیستم منوی دیجیتال",
+    "title": "چطور سیستم منوی دیجیتال کار می‌کند؟",
+    "cta": "شروع آزمایشی رایگان",
+    "videoUrl": "https://www.youtube.com/embed/wJL1CEZMC6Q"
+  },
   "Navigation": {
     "home": "خانه",
     "features": "قابلیت‌ها",
@@ -490,7 +496,7 @@
   "Demo": {
     "title": "دموی زنده را ببینید",
     "subtitle": "ببینید مهمان در کمتر از ۶۰ ثانیه چگونه سفارش می‌دهد.",
-    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "videoUrl": "https://www.youtube.com/embed/wJL1CEZMC6Q",
     "cta": "درخواست دمو اختصاصی"
   },
   "Blog": {

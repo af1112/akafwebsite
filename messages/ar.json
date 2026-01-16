@@ -39,6 +39,12 @@
       "description": "نساعد المطاعم والمقاهي على رقمنة نظام قوائمها، مما يوفر تجربة سلسة لأصحابها وعملائها."
     }
   },
+  "Demo": {
+    "subtitle": "عرض تجريبي لنظام القائمة الرقمية",
+    "title": "كيف يعمل نظام القائمة الرقمية لدينا؟",
+    "cta": "ابدأ التجربة المجانية",
+    "videoUrl": "https://www.youtube.com/embed/wJL1CEZMC6Q"
+  },
   "Navigation": {
     "home": "الرئيسية",
     "features": "المميزات",
@@ -460,7 +466,7 @@
   "Demo": {
     "title": "شاهد الديمو المباشر",
     "subtitle": "تعرف كيف يطلب الضيف ويدفع في أقل من 60 ثانية.",
-    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "videoUrl": "https://www.youtube.com/embed/wJL1CEZMC6Q",
     "cta": "احجز ديمو مخصص"
   },
   "Blog": {

@@ -39,6 +39,12 @@
       "description": "We help restaurants and cafes digitize their menu system, providing a seamless experience for both owners and customers."
     }
   },
+  "Demo": {
+    "subtitle": "Digital Menu System Demo",
+    "title": "How Our Digital Menu System Works",
+    "cta": "Start Free Trial",
+    "videoUrl": "https://www.youtube.com/embed/wJL1CEZMC6Q"
+  },
   "Navigation": {
     "home": "Home",
     "features": "Features",
@@ -425,7 +431,7 @@
   "Demo": {
     "title": "Watch the live demo",
     "subtitle": "See how guests browse, order, and pay in under 60 seconds.",
-    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "videoUrl": "https://www.youtube.com/embed/wJL1CEZMC6Q",
     "cta": "Book a personalized demo"
   },
   "Blog": {
