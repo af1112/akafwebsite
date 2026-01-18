@@ -6,8 +6,7 @@ import SaaSFeatures from '@/components/SaaSFeatures';
 import WorkflowSection from '@/components/WorkflowSection';
 import DemoSection from '@/components/DemoSection';
 import ServicesHighlights from '@/components/ServicesHighlights';
-import PricingSection from '@/components/PricingSection';
-import PlanComparison from '@/components/PlanComparison';
+import UseCasesSection from '@/components/UseCasesSection';
 import Testimonials from '@/components/Testimonials';
 import FAQSection from '@/components/FAQSection';
 import BlogSection from '@/components/BlogSection';
@@ -56,8 +55,7 @@ export default async function HomePage({
       <WorkflowSection />
       <ServicesHighlights />
       <DemoSection />
-      <PricingSection />
-      <PlanComparison />
+      <UseCasesSection />
       <Testimonials />
       <FAQSection />
       <BlogSection />
@@ -69,8 +67,6 @@ export default async function HomePage({
     </>
   );
 }
-
-
 
 
 

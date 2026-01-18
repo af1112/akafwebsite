@@ -1,49 +1,49 @@
 {
   "HomePage": {
-    "title": "AKAF Digital Menu for Restaurants & Cafes",
-    "subtitle": "Transform your Restaurant/Cafe with a modern digital menu system",
-    "description": "Professional digital menu solution for restaurants and cafes. Increase sales, improve customer experience, and manage your menu effortlessly.",
-    "heroImageAlt": "Preview of AKAF Digital Menu on mobile and tablet in restaurant setting",
-    "cta": "Start Free Trial",
-    "ctaSecondary": "View Demo",
+    "title": "Turn Your Instagram Visitors Into Real Customers",
+    "subtitle": "One online menu link with photos & prices",
+    "description": "Designed for restaurants and cafés in Oman",
+    "heroImageAlt": "Mobile phone on restaurant table showing a scrolling digital menu",
+    "cta": "Get My Free Digital Menu",
+    "ctaSecondary": "View Sample Menu",
     "features": {
-      "title": "Why Choose Our Digital Menu?",
-      "subtitle": "Everything you need to modernize your restaurant",
+      "title": "Why AKAF Digital Menu?",
+      "subtitle": "Built for restaurants and cafés in Oman",
       "easySetup": {
-        "title": "Easy Setup",
-        "description": "Get started in minutes with our intuitive interface"
+        "title": "Fast Setup (24–48h)",
+        "description": "We create your digital menu and upload all items and photos for you."
       },
       "multilingual": {
-        "title": "Multilingual Support",
-        "description": "Support for multiple languages including Arabic, Persian, and English"
+        "title": "Multi-language Menu",
+        "description": "Arabic, English and Persian for tourists and local guests."
       },
       "qrCode": {
-        "title": "QR Code Integration",
-        "description": "Customers scan QR code to view menu instantly"
+        "title": "One Link + QR Code",
+        "description": "Share one clickable menu link and QR on Instagram, Google Maps and WhatsApp."
       },
       "realTime": {
-        "title": "Real-time Updates",
-        "description": "Update menu items, prices, and availability in real-time"
+        "title": "Easy Price Updates",
+        "description": "Change prices and items anytime without reprinting anything."
       },
       "analytics": {
-        "title": "Analytics & Reports",
-        "description": "Track orders, popular items, and customer preferences"
+        "title": "See What Customers Click",
+        "description": "Understand which dishes people open and where they come from online."
       },
       "mobileFriendly": {
-        "title": "Mobile Optimized",
-        "description": "Perfect experience on all devices"
+        "title": "Perfect On Any Phone",
+        "description": "Fast-loading menu that looks great on all modern smartphones."
       }
     },
     "about": {
-      "title": "About Our Solution",
-      "description": "We help restaurants and cafes digitize their menu system, providing a seamless experience for both owners and customers."
+      "title": "A Simple Online Menu Link",
+      "description": "Most customers check your Instagram before visiting. With one beautiful menu link, they can see photos, prices and descriptions in seconds and decide to visit you."
     }
   },
   "Demo": {
-    "subtitle": "Digital Menu System Demo",
-    "title": "How Our Digital Menu System Works",
-    "cta": "Start Free Trial",
-    "videoUrl": "https://www.youtube.com/embed/wJL1CEZMC6Q"
+    "subtitle": "See a real digital menu on your phone",
+    "title": "See What Your Customers Will See",
+    "cta": "View Sample Menu",
+    "videoUrl": "https://youtu.be/gb2ZtU2zKr0"
   },
   "Navigation": {
     "home": "Home",
@@ -330,8 +330,8 @@
     "cta": "See Updates"
   },
   "Clients": {
-    "title": "Trusted by leading hospitality brands",
-    "subtitle": "Restaurants and cafes across the GCC rely on our platform every day",
+    "title": "Trusted by Restaurants in Oman",
+    "subtitle": "Restaurants and cafés in Muscat and across Oman are already using AKAF.",
     "brands": [
       "Akaf Lounge",
       "Sushian",
@@ -342,24 +342,25 @@
     ]
   },
   "Workflow": {
-    "title": "Launch your digital menu in 4 simple steps",
-    "subtitle": "No complicated setup or coding required",
+    "title": "One Simple Link. Your Full Menu Online.",
+    "subtitle": "Show photos, prices and descriptions before customers visit.",
+    "scrollImageAlt": "Guest scrolling through a digital menu on their phone",
     "steps": {
       "createMenu": {
-        "title": "Create your menu",
-        "description": "Add items, categories, images, prices, and descriptions in minutes."
+        "title": "Photos",
+        "description": "Beautiful images of your dishes that load fast on any phone."
       },
       "generateQR": {
-        "title": "Generate QR & NFC",
-        "description": "Print branded QR codes or order NFC cards for every table."
+        "title": "Prices",
+        "description": "Clear prices for every item so customers can decide quickly."
       },
       "customerOrder": {
-        "title": "Customers order instantly",
-        "description": "Guests scan, browse, and place orders from any device."
+        "title": "Descriptions",
+        "description": "Short descriptions in multiple languages for tourists and locals."
       },
       "trackGrowth": {
-        "title": "Track sales & growth",
-        "description": "View real-time dashboards, best sellers, and customer behavior."
+        "title": "Works everywhere",
+        "description": "One menu link that works on Instagram, Google Maps and WhatsApp."
       }
     }
   },
@@ -429,10 +430,10 @@
     ]
   },
   "Demo": {
-    "title": "Watch the live demo",
-    "subtitle": "See how guests browse, order, and pay in under 60 seconds.",
-    "videoUrl": "https://www.youtube.com/embed/wJL1CEZMC6Q",
-    "cta": "Book a personalized demo"
+    "subtitle": "See a real digital menu on your phone",
+    "title": "See What Your Customers Will See",
+    "videoUrl": "https://youtu.be/gb2ZtU2zKr0",
+    "cta": "View Sample Menu"
   },
   "Blog": {
     "title": "Resources & insights",
@@ -457,28 +458,28 @@
     ]
   },
   "ContactCTA": {
-    "title": "Need a tailored plan?",
-    "description": "Speak with our restaurant success team for enterprise pricing or franchise deployments.",
-    "primary": "Talk to sales",
-    "secondary": "Schedule a demo"
+    "title": "Ready to try AKAF in your restaurant?",
+    "description": "Get your digital menu and QR set up for free with a 14-day trial. Contact us on WhatsApp or phone in Oman.",
+    "primary": "Chat on WhatsApp",
+    "secondary": "Call our team"
   },
   "Support": {
-    "title": "We’re with you at every step",
-    "subtitle": "Local support teams across GCC & MENA",
+    "title": "Why AKAF?",
+    "subtitle": "Built for restaurants and cafés in Oman.",
     "items": [
       {
-        "title": "24/7 WhatsApp Support",
-        "description": "+968 9123 4567",
+        "title": "Built for Oman",
+        "description": "Designed around the needs of local restaurants, guests and payment methods.",
         "icon": "💬"
       },
       {
-        "title": "Implementation Specialists",
-        "description": "Menu migration, QR design, staff training",
+        "title": "Multi-language Support",
+        "description": "Arabic, English and Persian menus for tourists and local customers.",
         "icon": "🧑‍💻"
       },
       {
-        "title": "Account Managers",
-        "description": "Dedicated success manager for Pro & Enterprise",
+        "title": "Fast Setup & Local Help",
+        "description": "We create your menu, upload items and support you in your timezone.",
         "icon": "🤝"
       }
     ]
@@ -494,42 +495,44 @@
     ]
   },
   "ServicesHighlights": {
-    "title": "Complementary Services for Your Digital Menu",
-    "subtitle": "It's not just software; AKAF helps you with content, photography, and implementation so your project looks professional from day one.",
+    "title": "Most Restaurants Lose Customers Online",
+    "subtitle": "When there is no clear, mobile-friendly menu link, people leave.",
     "items": [
-      {
-        "key": "photoVideo",
-        "icon": "📸"
-      },
-      {
-        "key": "translation",
-        "icon": "🌍"
-      },
-      {
-        "key": "consulting",
-        "icon": "🤝"
-      },
-      {
-        "key": "hardware",
-        "icon": "💻"
-      }
+      { "key": "photoVideo", "icon": "📸" },
+      { "key": "translation", "icon": "🌍" },
+      { "key": "consulting", "icon": "🤝" },
+      { "key": "hardware", "icon": "💻" }
     ],
     "itemsText": {
       "photoVideo": {
-        "title": "Professional Food Photography & Videography",
-        "description": "We capture professional photos and videos of your dishes, beverages, and restaurant ambiance to turn your digital menu into a powerful sales tool."
+        "title": "Menu photos or PDFs",
+        "description": "Customers must zoom and pinch to read your menu. Many give up on mobile."
       },
       "translation": {
-        "title": "Menu Translation & Localization",
-        "description": "Translate your menu to Arabic, Persian, English, and other languages using correct restaurant terminology for local guests and tourists."
+        "title": "No prices on Instagram",
+        "description": "Posts show nice photos but no clear prices, so serious buyers never decide."
       },
       "consulting": {
-        "title": "Setup Consulting & Training",
-        "description": "We help you set up the menu, connect payment gateways, design QR cards, and train your staff step by step."
+        "title": "No clickable menu link",
+        "description": "Bio and Google Maps have no simple menu link, so people cannot explore easily."
       },
       "hardware": {
-        "title": "Hardware & QR/NFC Consulting",
-        "description": "We guide you in choosing tablets, stands, NFC/QR cards, and display screens to provide a modern and consistent experience inside your restaurant."
+        "title": "Customers leave without ordering",
+        "description": "Without a clear online menu, visitors close your profile and choose another place."
+      }
+    }
+  },
+  "UseCases": {
+    "title": "Who Is AKAF Digital Menu For?",
+    "subtitle": "Ideal for restaurants and cafés that want more customers from Instagram and Google.",
+    "items": {
+      "restaurant": {
+        "title": "Restaurants",
+        "description": "Show your full menu with photos and prices so guests decide before they arrive."
+      },
+      "cafe": {
+        "title": "Cafés & coffee shops",
+        "description": "Promote drinks, desserts and specials with a simple digital menu link."
       }
     }
   },

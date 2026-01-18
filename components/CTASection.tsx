@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Link } from '@/routing';
 
 export default function CTASection() {
   const t = useTranslations('ContactCTA');
@@ -13,16 +12,20 @@ export default function CTASection() {
           <h2>{t('title')}</h2>
           <p>{t('description')}</p>
           <div className="cta-buttons">
-            <Link href="/signup" className="btn btn-primary btn-large">
+            <a
+              href="https://wa.me/989124433347"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary btn-large"
+            >
               {t('primary')}
-            </Link>
-            <Link href="/contact" className="btn btn-secondary btn-large">
+            </a>
+            <a href="tel:+96894063021" className="btn btn-secondary btn-large">
               {t('secondary')}
-            </Link>
+            </a>
           </div>
         </div>
       </div>
     </section>
   );
 }
-

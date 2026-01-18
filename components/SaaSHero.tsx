@@ -18,15 +18,20 @@ export default function SaaSHero() {
             <Link href="/pricing" className="btn btn-primary">
               {t('cta')}
             </Link>
-            <Link href="/contact" className="btn btn-secondary">
+            <a
+              href="https://youtu.be/gb2ZtU2zKr0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-secondary"
+            >
               {t('ctaSecondary')}
-            </Link>
+            </a>
           </div>
         </div>
         <div className="hero-image">
           <div className="hero-image-frame">
             <Image
-              src="/images/hero-digital-menu.png"
+              src="/images/hero/hero.png"
               alt={t('heroImageAlt')}
               fill
               className="hero-main-image"
@@ -38,5 +43,3 @@ export default function SaaSHero() {
     </section>
   );
 }
-
-

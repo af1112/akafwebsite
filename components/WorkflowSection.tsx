@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 const stepKeys = ['createMenu', 'generateQR', 'customerOrder', 'trackGrowth'] as const;
@@ -13,6 +14,15 @@ export default function WorkflowSection() {
         <div className="section-header">
           <p className="eyebrow">{t('subtitle')}</p>
           <h2>{t('title')}</h2>
+        </div>
+        <div className="workflow-illustration">
+          <Image
+            src="/images/homepage/scroll.png"
+            alt={t('scrollImageAlt')}
+            width={640}
+            height={400}
+            className="workflow-image"
+          />
         </div>
         <div className="workflow-grid">
           {stepKeys.map((step, index) => (
