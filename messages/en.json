@@ -2,13 +2,13 @@
   "HomePage": {
     "title": "Turn Your Instagram Visitors Into Real Customers",
     "subtitle": "One online menu link with photos & prices",
-    "description": "Designed for restaurants and cafés in Oman",
+    "description": "Designed for restaurants and cafés that want more customers from Instagram and Google",
     "heroImageAlt": "Mobile phone on restaurant table showing a scrolling digital menu",
     "cta": "Get My Free Digital Menu",
     "ctaSecondary": "View Sample Menu",
     "features": {
       "title": "Why AKAF Digital Menu?",
-      "subtitle": "Built for restaurants and cafés in Oman",
+      "subtitle": "Built for restaurants and cafés that want more online customers",
       "easySetup": {
         "title": "Fast Setup (24–48h)",
         "description": "We create your digital menu and upload all items and photos for you."
@@ -330,8 +330,8 @@
     "cta": "See Updates"
   },
   "Clients": {
-    "title": "Trusted by Restaurants in Oman",
-    "subtitle": "Restaurants and cafés in Muscat and across Oman are already using AKAF.",
+    "title": "Trusted by Restaurants",
+    "subtitle": "Restaurants and cafés already use AKAF Digital Menu to show their menus online.",
     "brands": [
       "Akaf Lounge",
       "Sushian",
@@ -459,17 +459,17 @@
   },
   "ContactCTA": {
     "title": "Ready to try AKAF in your restaurant?",
-    "description": "Get your digital menu and QR set up for free with a 14-day trial. Contact us on WhatsApp or phone in Oman.",
+    "description": "Get your digital menu and QR set up for free with a 14-day trial. Contact us on WhatsApp or by phone.",
     "primary": "Chat on WhatsApp",
     "secondary": "Call our team"
   },
   "Support": {
     "title": "Why AKAF?",
-    "subtitle": "Built for restaurants and cafés in Oman.",
+    "subtitle": "Built for restaurants and cafés.",
     "items": [
       {
-        "title": "Built for Oman",
-        "description": "Designed around the needs of local restaurants, guests and payment methods.",
+        "title": "Built for modern restaurants",
+        "description": "Designed around the needs of restaurants, guests and payment methods.",
         "icon": "💬"
       },
       {
