@@ -1,42 +1,141 @@
 const translations = {
     en: {
         name: "Ali Fekri",
-        role: "Mechanical Engineer & Industrial IT Expert",
+        role: "Senior Project Manager & Industrial Expert",
         company: "AKAF Group",
         location: "Muscat, Oman",
         saveContact: "Save Contact",
         downloadResume: "Download Resume",
         skillsTitle: "Technical Expertise",
-        summaryTitle: "Professional Profile",
-        summary: "Mechanical Engineer with over 15 years of technical experience in industrial projects, specializing in Fluid Mechanics, Commissioning (ICAPS), and Industrial IT Infrastructure. Proven track record in gas production facilities (2 billion cu.ft/day) and complex engineering solutions.",
+        summaryTitle: "Executive Summary",
+        summary: "Senior Project Manager and Mechanical Engineer with over 20 years of elite experience in leading Mega-Projects (EPC/Greenfield) for global giants like TOTAL (France), HYUNDAI E&C, and DAELIM. Expert in Full Plant Commissioning, Industrial Automation, and ICAPS/OPERCOM methodology. Proven leadership in managing high-scale facilities ($2B+ Gas Projects, 2B cu.ft/day) and automated manufacturing lines. Recipient of the National Excellence Award for IT.",
+        experienceTitle: "Professional Experience",
         copyright: "© 2026 Ali Fekri. Industrial Engineering Solutions.",
-        typingTexts: ["Fluid Mechanics Specialist", "Industrial Automation", "ICAPS Commissioning", "IT Infrastructure"]
+        typingTexts: ["Senior Project Manager", "Commissioning Manager", "Industrial IT Expert", "Fluid Mechanics Specialist"],
+        experiences: [
+            {
+                role: "Senior Project Manager",
+                company: "SHAFAGH DANA (Automotive Plant)",
+                period: "2016 – 2020",
+                desc: "Led Greenfield development of a Top-10 automotive plant. Managed 370+ personnel and 28 advanced production lines for Peugeot/Renault parts. Established Iran's largest ABS electroplating line."
+            },
+            {
+                role: "Project Manager",
+                company: "REMER (Italy License)",
+                period: "2012 – 2016",
+                desc: "Orchestrated setup of a 6,000 sqm fully automated sanitary ware factory. Managed installation of robotic assembly lines and served as lead liaison with Italian engineering teams."
+            },
+            {
+                role: "Lead Software Developer & IT Consultant",
+                company: "AKAF Company",
+                period: "2007 – 2011",
+                desc: "Winner of 'National Elite Medal' (2011). Developed large-scale Project Control Software used by 15+ major industrial construction giants. Led multidisciplinary engineering & IT teams."
+            },
+            {
+                role: "Commissioning Leader (Mechanical)",
+                company: "TOTAL (France) - Dorood 3",
+                period: "2003 – 2006",
+                desc: "Key leader in $600M+ EOR Mega-Project (86,000 bbd). Authorized TOTAL Inspector for international FATs. Managed start-up of HP Gas Injection Compressors & Turbines using ICAPS."
+            },
+            {
+                role: "Mechanical Supervisor",
+                company: "HYUNDAI E&C / DAELIM",
+                period: "1999 – 2003",
+                desc: "Supervised mechanical works for South Pars Gas Field ($2B+ Development). Ensured 100% readiness for 2 billion cu.ft/day gas production facilities."
+            }
+        ]
     },
     fa: {
         name: "علی فکری",
-        role: "مهندس مکانیک و متخصص IT صنعتی",
+        role: "مدیر ارشد پروژه و متخصص صنعت",
         company: "گروه آکاف",
         location: "مسقط، عمان",
         saveContact: "ذخیره مخاطب",
         downloadResume: "دانلود رزومه",
         skillsTitle: "تخصص‌های فنی",
-        summaryTitle: "خلاصه سوابق",
-        summary: "مهندس مکانیک با بیش از ۱۵ سال تجربه فنی در پروژه‌های صنعتی، متخصص در مکانیک سیالات، راه‌اندازی (ICAPS) و زیرساخت‌های IT صنعتی. دارای سابقه درخشان در تاسیسات تولید گاز (۲ میلیارد فوت مکعب در روز) و راهکارهای مهندسی پیچیده.",
+        summaryTitle: "خلاصه سوابق مدیریتی",
+        summary: "مدیر ارشد پروژه و مهندس مکانیک با بیش از ۲۰ سال تجربه درخشان در مدیریت ابرپروژه‌های EPC و گرین‌فیلد برای غول‌های جهانی مانند TOTAL فرانسه، HYUNDAI و DAELIM. متخصص در راه‌اندازی کامل کارخانجات، اتوماسیون صنعتی و متدولوژی ICAPS. دارای سابقه رهبری در تاسیسات عظیم نفت و گاز (۲ میلیارد فوت مکعب در روز) و خطوط تولید رباتیک. برنده جایزه ملی نخبگان در حوزه فناوری اطلاعات.",
+        experienceTitle: "سوابق حرفه‌ای",
         copyright: "© ۲۰۲۶ علی فکری. راهکارهای مهندسی صنعتی.",
-        typingTexts: ["متخصص مکانیک سیالات", "اتوماسیون صنعتی", "راه‌اندازی ICAPS", "زیرساخت‌های IT"]
+        typingTexts: ["مدیر ارشد پروژه", "مدیر راه‌اندازی (Commissioning)", "متخصص IT صنعتی", "متخصص مکانیک سیالات"],
+        experiences: [
+            {
+                role: "مدیر ارشد پروژه",
+                company: "شفق دانا (کارخانه قطعات خودرو)",
+                period: "۲۰۱۶ – ۲۰۲۰",
+                desc: "مدیریت احداث کارخانه از صفر (Greenfield). مدیریت ۳۷۰ پرسنل و ۲۸ خط تولید پیشرفته برای قطعات پژو/رنو. راه‌اندازی بزرگترین خط آبکاری ABS در ایران."
+            },
+            {
+                role: "مدیر پروژه",
+                company: "REMER (تحت لیسانس ایتالیا)",
+                period: "۲۰۱۲ – ۲۰۱۶",
+                desc: "مدیریت احداث کارخانه ۶۰۰۰ متری تمام اتوماتیک شیرآلات. نصب خطوط مونتاژ رباتیک و مدیریت تیم فنی به عنوان رابط اصلی با مهندسین ایتالیایی."
+            },
+            {
+                role: "مدیر توسعه نرم‌افزار و مشاور IT",
+                company: "شرکت آکاف",
+                period: "۲۰۰۷ – ۲۰۱۱",
+                desc: "برنده 'مدال ملی نخبگان' (۲۰۱۱). توسعه نرم‌افزار کنترل پروژه کلان مورد استفاده در ۱۵+ شرکت بزرگ ساختمانی. رهبری تیم‌های چندرشته‌ای مهندسی و IT."
+            },
+            {
+                role: "رهبر راه‌اندازی مکانیک",
+                company: "TOTAL (فرانسه) - پروژه درود ۳",
+                period: "۲۰۰۳ – ۲۰۰۶",
+                desc: "رهبری در ابرپروژه ۶۰۰ میلیون دلاری EOR. بازرس مجاز توتال برای تست‌های FAT بین‌المللی. مدیریت راه‌اندازی کمپرسورهای تزریق گاز فشار قوی و توربین‌ها با متد ICAPS."
+            },
+            {
+                role: "سوپروایزر مکانیک",
+                company: "HYUNDAI E&C / DAELIM",
+                period: "۱۹۹۹ – ۲۰۰۳",
+                desc: "نظارت بر عملیات مکانیکال فازهای پارس جنوبی (پروژه ۲ میلیارد دلاری). تضمین آمادگی ۱۰۰٪ برای تولید ۲ میلیارد فوت مکعب گاز در روز."
+            }
+        ]
     },
     ar: {
         name: "علي فكري",
-        role: "مهندس ميكانيكا وخبير تكنولوجيا المعلومات الصناعية",
+        role: "مدير مشاريع أول وخبير صناعي",
         company: "مجموعة آكاف",
         location: "مسقط، عمان",
         saveContact: "حفظ جهة الاتصال",
         downloadResume: "تحميل السيرة الذاتية",
         skillsTitle: "الخبرات التقنية",
-        summaryTitle: "الملف المهني",
-        summary: "مهندس ميكانيكي يتمتع بخبرة فنية تزيد عن ١٥ عامًا في المشاريع الصناعية، متخصص في ميكانيكا الموائع والتشغيل (ICAPS) والبنية التحتية لتكنولوجيا المعلومات الصناعية. سجل حافل في مرافق إنتاج الغاز (٢ مليار قدم مكعب/يوم) والحلول الهندسية المعقدة.",
+        summaryTitle: "الملف التنفيذي",
+        summary: "مدير مشاريع أول ومهندس ميكانيكي بخبرة تزيد عن ٢٠ عامًا في قيادة المشاريع الضخمة (EPC) للشركات العالمية مثل TOTAL (فرنسا) و HYUNDAI و DAELIM. خبير في التشغيل الكامل للمصانع، الأتمتة الصناعية، ومنهجية ICAPS. سجل حافل في إدارة مرافق الغاز الضخمة (٢ مليار قدم مكعب/يوم) وخطوط التصنيع الآلية. حائز على جائزة التميز الوطني في تكنولوجيا المعلومات.",
+        experienceTitle: "الخبرة المهنية",
         copyright: "© ٢٠٢٦ علي فكري. حلول الهندسة الصناعية.",
-        typingTexts: ["أخصائي ميكانيكا الموائع", "الأتمتة الصناعية", "تشغيل ICAPS", "البنية التحتية لتكنولوجيا المعلومات"]
+        typingTexts: ["مدير مشاريع أول", "مدير التشغيل (Commissioning)", "خبير تكنولوجيا المعلومات الصناعية", "أخصائي ميكانيكا الموائع"],
+        experiences: [
+            {
+                role: "مدير مشاريع أول",
+                company: "شفق دانا (مصنع قطع غيار السيارات)",
+                period: "٢٠١٦ – ٢٠٢٠",
+                desc: "قيادة تطوير مصنع متكامل من الصفر. إدارة ٣٧٠ موظفًا و ٢٨ خط إنتاج متطور لقطع غيار بيجو/رينو. إنشاء أكبر خط طلاء كهربائي ABS في إيران."
+            },
+            {
+                role: "مدير المشروع",
+                company: "REMER (ترخيص إيطالي)",
+                period: "٢٠١٢ – ٢٠١٦",
+                desc: "إدارة إنشاء مصنع أدوات صحية مؤتمت بالكامل بمساحة ٦٠٠٠ متر مربع. تركيب خطوط تجميع روبوتية والعمل كحلقة وصل رئيسية مع المهندسين الإيطاليين."
+            },
+            {
+                role: "كبير مطوري البرمجيات ومستشار تكنولوجيا المعلومات",
+                company: "شركة آكاف",
+                period: "٢٠٠٧ – ٢٠١١",
+                desc: "الفائز بـ 'الميدالية الوطنية للنخبة' (٢٠١١). تطوير برمجيات إدارة المشاريع الضخمة المستخدمة من قبل ١٥+ شركة إنشاءات كبرى. قيادة فرق هندسية وتقنية متعددة التخصصات."
+            },
+            {
+                role: "قائد التشغيل الميكانيكي",
+                company: "TOTAL (فرنسا) - مشروع دورود ٣",
+                period: "٢٠٠٣ – ٢٠٠٦",
+                desc: "قيادة في مشروع EOR ضخم بقيمة ٦٠٠ مليون دولار. مفتش معتمد من توتال لاختبارات FAT الدولية. إدارة تشغيل ضواغط حقن الغاز عالي الضغط والتوربينات باستخدام ICAPS."
+            },
+            {
+                role: "مشرف ميكانيكي",
+                company: "HYUNDAI E&C / DAELIM",
+                period: "١٩٩٩ – ٢٠٠٣",
+                desc: "الإشراف على الأعمال الميكانيكية لحقل غاز بارس الجنوبي (تطوير بقيمة ٢ مليار دولار). ضمان الجاهزية بنسبة ١٠٠٪ لمرافق إنتاج الغاز بسعة ٢ مليار قدم مكعب/يوم."
+            }
+        ]
     }
 };
 
@@ -148,10 +247,11 @@ FN:${translations[currentLang].name}
 N:Fekri;Ali;;;
 ORG:${translations[currentLang].company}
 TITLE:${translations[currentLang].role}
-EMAIL;TYPE=WORK,INTERNET:info@akafco.com
+TEL;TYPE=CELL,VOICE,PREF:+96894063021
+EMAIL;TYPE=WORK,INTERNET:af1112@gmail.com
 URL:https://akafco.com
 ADR;TYPE=WORK:;;Al Mauj Street, Seeb;Muscat;;;Oman
-NOTE:15+ Years Exp | Fluid Mechanics | Industrial IT
+NOTE:20+ Years Exp | Senior Project Manager | Industrial IT Expert | ICAPS Specialist
 END:VCARD`;
 
             const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
@@ -170,6 +270,26 @@ END:VCARD`;
     // 5. Industrial Particle System (Nodes & Flows)
     initParticles();
 });
+
+function renderExperience(lang) {
+    const container = document.getElementById('experience-list');
+    if (!container) return;
+
+    container.innerHTML = '';
+    translations[lang].experiences.forEach(exp => {
+        const item = document.createElement('div');
+        item.className = 'experience-item';
+        item.innerHTML = `
+            <div class="exp-header">
+                <span class="exp-role">${exp.role}</span>
+                <span class="exp-period">${exp.period}</span>
+            </div>
+            <div class="exp-company">${exp.company}</div>
+            <div class="exp-desc">${exp.desc}</div>
+        `;
+        container.appendChild(item);
+    });
+}
 
 function initParticles() {
     const container = document.getElementById('particles-js');
@@ -252,7 +372,8 @@ function initParticles() {
     animate();
 }
 
-// VanillaTilt Init
+// VanillaTilt removed as requested
+/*
 if (typeof VanillaTilt !== 'undefined') {
     VanillaTilt.init(document.querySelectorAll(".glass-panel"), {
         max: 5,
@@ -261,3 +382,5 @@ if (typeof VanillaTilt !== 'undefined') {
         "max-glare": 0.1,
     });
 }
+*/
+
