@@ -317,7 +317,7 @@ function initGallery() {
         {
             title: { en: "Robotic Assembly Lines", fa: "خطوط مونتاژ رباتیک", ar: "خطوط التجميع الروبوتية" },
             desc: { en: "Installation of fully automated sanitary ware factory lines.", fa: "نصب خطوط تمام اتوماتیک کارخانه شیرآلات.", ar: "تركيب خطوط مصنع أدوات صحية مؤتمتة بالكامل." },
-            image: "https://via.placeholder.com/800x600/10b981/000000?text=Robotic+Assembly"
+            image: "Robots.webp"
         },
         {
             title: { en: "Dorood 3 Mega Project", fa: "ابرپروژه درود ۳", ar: "مشروع دورود 3 العملاق" },
