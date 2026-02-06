@@ -312,7 +312,7 @@ function initGallery() {
         {
             title: { en: "South Pars Gas Field Phase", fa: "فازهای پارس جنوبی", ar: "حقل غاز بارس الجنوبي" },
             desc: { en: "Mechanical supervision of $2B+ gas development project.", fa: "نظارت مکانیکال پروژه ۲ میلیارد دلاری توسعه گاز.", ar: "الإشراف الميكانيكي على مشروع تطوير الغاز بقيمة 2 مليار دولار." },
-            image: "https://via.placeholder.com/800x600/3b82f6/000000?text=Gas+Field+Project"
+            image: "SouthPars.webp"
         },
         {
             title: { en: "Robotic Assembly Lines", fa: "خطوط مونتاژ رباتیک", ar: "خطوط التجميع الروبوتية" },
