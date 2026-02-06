@@ -1,36 +1,42 @@
 const translations = {
     en: {
         name: "Ali Fekri",
-        role: "Tech Lead & Robotics Engineer",
+        role: "Mechanical Engineer & Industrial IT Expert",
         company: "AKAF Group",
         location: "Muscat, Oman",
         saveContact: "Save Contact",
         downloadResume: "Download Resume",
-        skillsTitle: "Core Systems",
-        copyright: "© 2026 Ali Fekri. Powered by Future Tech.",
-        typingTexts: ["System Architect", "Robotics Engineer", "Full Stack Developer"]
+        skillsTitle: "Technical Expertise",
+        summaryTitle: "Professional Profile",
+        summary: "Mechanical Engineer with over 15 years of technical experience in industrial projects, specializing in Fluid Mechanics, Commissioning (ICAPS), and Industrial IT Infrastructure. Proven track record in gas production facilities (2 billion cu.ft/day) and complex engineering solutions.",
+        copyright: "© 2026 Ali Fekri. Industrial Engineering Solutions.",
+        typingTexts: ["Fluid Mechanics Specialist", "Industrial Automation", "ICAPS Commissioning", "IT Infrastructure"]
     },
     fa: {
         name: "علی فکری",
-        role: "مدیر فنی و مهندس رباتیک",
+        role: "مهندس مکانیک و متخصص IT صنعتی",
         company: "گروه آکاف",
         location: "مسقط، عمان",
         saveContact: "ذخیره مخاطب",
         downloadResume: "دانلود رزومه",
-        skillsTitle: "سیستم‌های اصلی",
-        copyright: "© ۲۰۲۶ علی فکری. قدرت گرفته از تکنولوژی آینده.",
-        typingTexts: ["معمار سیستم", "مهندس رباتیک", "برنامه‌نویس فول‌استک"]
+        skillsTitle: "تخصص‌های فنی",
+        summaryTitle: "خلاصه سوابق",
+        summary: "مهندس مکانیک با بیش از ۱۵ سال تجربه فنی در پروژه‌های صنعتی، متخصص در مکانیک سیالات، راه‌اندازی (ICAPS) و زیرساخت‌های IT صنعتی. دارای سابقه درخشان در تاسیسات تولید گاز (۲ میلیارد فوت مکعب در روز) و راهکارهای مهندسی پیچیده.",
+        copyright: "© ۲۰۲۶ علی فکری. راهکارهای مهندسی صنعتی.",
+        typingTexts: ["متخصص مکانیک سیالات", "اتوماسیون صنعتی", "راه‌اندازی ICAPS", "زیرساخت‌های IT"]
     },
     ar: {
         name: "علي فكري",
-        role: "القائد التقني ومهندس الروبوتات",
+        role: "مهندس ميكانيكا وخبير تكنولوجيا المعلومات الصناعية",
         company: "مجموعة آكاف",
         location: "مسقط، عمان",
         saveContact: "حفظ جهة الاتصال",
         downloadResume: "تحميل السيرة الذاتية",
-        skillsTitle: "الأنظمة الأساسية",
-        copyright: "© ٢٠٢٦ علي فكري. بدعم من تكنولوجيا المستقبل.",
-        typingTexts: ["مهندس نظم", "مهندس روبوتات", "مطور شامل"]
+        skillsTitle: "الخبرات التقنية",
+        summaryTitle: "الملف المهني",
+        summary: "مهندس ميكانيكي يتمتع بخبرة فنية تزيد عن ١٥ عامًا في المشاريع الصناعية، متخصص في ميكانيكا الموائع والتشغيل (ICAPS) والبنية التحتية لتكنولوجيا المعلومات الصناعية. سجل حافل في مرافق إنتاج الغاز (٢ مليار قدم مكعب/يوم) والحلول الهندسية المعقدة.",
+        copyright: "© ٢٠٢٦ علي فكري. حلول الهندسة الصناعية.",
+        typingTexts: ["أخصائي ميكانيكا الموائع", "الأتمتة الصناعية", "تشغيل ICAPS", "البنية التحتية لتكنولوجيا المعلومات"]
     }
 };
 
@@ -62,10 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update Glitch Name
-        const nameEl = document.querySelector('.glitch');
+        // Update Name
+        const nameEl = document.querySelector('.tech-title');
         if (nameEl) {
-            nameEl.setAttribute('data-text', translations[lang].name);
             nameEl.innerText = translations[lang].name;
         }
 
@@ -90,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        let typeSpeed = 100;
+        let typeSpeed = 80;
 
         function type() {
             const currentText = texts[textIndex];
@@ -98,11 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isDeleting) {
                 typingElement.textContent = currentText.substring(0, charIndex - 1);
                 charIndex--;
-                typeSpeed = 50;
+                typeSpeed = 40;
             } else {
                 typingElement.textContent = currentText.substring(0, charIndex + 1);
                 charIndex++;
-                typeSpeed = 100;
+                typeSpeed = 80;
             }
 
             if (!isDeleting && charIndex === currentText.length) {
@@ -111,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 textIndex = (textIndex + 1) % texts.length;
-                typeSpeed = 500;
+                typeSpeed = 300;
             }
 
             typingInterval = setTimeout(type, typeSpeed);
@@ -122,10 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Skill Bar Animation
     function animateSkills() {
-        const bars = document.querySelectorAll('.progress-line');
+        const bars = document.querySelectorAll('.progress-fill');
         bars.forEach(bar => {
             const width = bar.dataset.width;
-            bar.querySelector('span').style.width = width;
+            bar.style.width = width;
         });
     }
     // Delay slightly to ensure load
@@ -146,7 +151,7 @@ TITLE:${translations[currentLang].role}
 EMAIL;TYPE=WORK,INTERNET:info@akafco.com
 URL:https://akafco.com
 ADR;TYPE=WORK:;;Al Mauj Street, Seeb;Muscat;;;Oman
-NOTE:Generated by Future Tech Card
+NOTE:15+ Years Exp | Fluid Mechanics | Industrial IT
 END:VCARD`;
 
             const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
@@ -162,7 +167,7 @@ END:VCARD`;
         });
     }
 
-    // 5. Particle System (Simple Canvas)
+    // 5. Industrial Particle System (Nodes & Flows)
     initParticles();
 });
 
@@ -190,8 +195,8 @@ function initParticles() {
             this.y = Math.random() * height;
             this.vx = (Math.random() - 0.5) * 0.5;
             this.vy = (Math.random() - 0.5) * 0.5;
-            this.size = Math.random() * 2;
-            this.color = Math.random() > 0.5 ? '#00f3ff' : '#bc13fe';
+            this.size = Math.random() * 2 + 1;
+            this.color = '#f59e0b'; // Amber
         }
 
         update() {
@@ -211,23 +216,24 @@ function initParticles() {
     }
 
     // Create particles
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 60; i++) {
         particles.push(new Particle());
     }
 
     function animate() {
         ctx.clearRect(0, 0, width, height);
         
-        // Draw connections
-        ctx.strokeStyle = 'rgba(0, 243, 255, 0.05)';
+        // Draw Technical Grid Lines
+        ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)'; // Blue technical lines
         ctx.lineWidth = 0.5;
+        
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 150) {
+                if (dist < 100) {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
@@ -246,12 +252,12 @@ function initParticles() {
     animate();
 }
 
-// VanillaTilt Init (Automatic if class is data-tilt, but explicit ensures it)
+// VanillaTilt Init
 if (typeof VanillaTilt !== 'undefined') {
     VanillaTilt.init(document.querySelectorAll(".glass-panel"), {
-        max: 10,
+        max: 5,
         speed: 400,
         glare: true,
-        "max-glare": 0.2,
+        "max-glare": 0.1,
     });
 }
