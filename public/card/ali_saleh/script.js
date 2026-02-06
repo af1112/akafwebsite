@@ -48,7 +48,7 @@ const translations = {
         addressTitle: "عنوان المكتب",
         address: "عمان، مسقط، الخوير، شارع المها، مبنى ٤٧٦٨، الطابق الثاني، مكتب رقم ٢١",
         viewMap: "عرض على الخريطة",
-        copyright: "© ٢٠٢٤ Global Trade Consultant Oman. جميع الحقوق محفوظة.",
+        copyright: "© ٢٠٢٦ AKAF Group Oman. جميع الحقوق محفوظة.",
         services: [
             "التصدير والاستيراد",
             "التخليص الجمركي",
