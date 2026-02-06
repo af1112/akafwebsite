@@ -8,7 +8,7 @@ const translations = {
         email: "ایمیل",
         servicesTitle: "خدمات ما",
         addressTitle: "آدرس دفتر",
-        address: "عمان، مسقط، الخویر، خیابان المها، ساختمان ۴۷۶۸، طبقه دوم، دفتر شماره ۲۱",
+        address: "عمان، مسقط، الخویر، خیابان المها",
         viewMap: "مشاهده روی نقشه",
         copyright: "© ۲۰۲۴ Global Trade Consultant Oman. تمامی حقوق محفوظ است.",
         services: [
@@ -137,7 +137,7 @@ TITLE:CEO
 TEL;TYPE=CELL,VOICE,PREF:+96877170998
 EMAIL;TYPE=WORK,INTERNET:almadad@gmail.com
 URL:https://akafco.com
-ADR;TYPE=WORK:;;Al Maha Street, Building 4768, 2nd floor, Office No.21;Alkhuwair;Muscat;;Oman
+ADR;TYPE=WORK:;;Al Maha Street;Alkhuwair;Muscat;;Oman
 X-SOCIALPROFILE;type=facebook:https://www.facebook.com/profile.php?id=61555491073869
 X-SOCIALPROFILE;type=instagram:ali_saleh.77
 NOTE:Services: Export & Import, Customs Clearance, Investment
