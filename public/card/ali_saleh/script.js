@@ -2,13 +2,13 @@ const translations = {
     fa: {
         name: "علی صالح",
         companyName: "مدیر عامل Global Trade Consultant Oman",
-        bio: "کارشناس تجارت بین‌الملل، ترخیص کالا و سرمایه‌گذاری در عمان",
+        bio: "🌏 تجارت بین‌الملل<br>واردات و صادرات | بازرگانی | کارخانجات<br>🤝 کارخانه‌های معتبر | قیمت‌های رقابتی<br>💼 ما فرصت‌ها را به معاملات سودآور تبدیل می‌کنیم<br>💬 استعلام امروز... سرمایه‌گذاری فرداست.",
         saveContact: "ذخیره در مخاطبین",
         whatsapp: "واتس‌اپ",
         email: "ایمیل",
         servicesTitle: "خدمات ما",
         addressTitle: "آدرس دفتر",
-        address: "عمان، مسقط، الخویر، خیابان المها",
+        address: "عمان، مسقط، الخویر، خیابان المها، بالای رستوران بیت العمانی، طبقه 6، واحد 603",
         viewMap: "مشاهده روی نقشه",
         copyright: "© ۲۰۲۴ Global Trade Consultant Oman. تمامی حقوق محفوظ است.",
         services: [
@@ -21,13 +21,13 @@ const translations = {
     en: {
         name: "Ali Saleh",
         companyName: "CEO - Global Trade Consultant Oman",
-        bio: "Expert in International Trade, Customs Clearance, and Investment in Oman",
+        bio: "🌏 International Trade<br>Import & Export | Trading | Factories<br>🤝 Trusted factories | Competitive prices<br>💼 We turn opportunities into profitable deals<br>💬 Today’s inquiry… is tomorrow’s investment.",
         saveContact: "Save Contact",
         whatsapp: "WhatsApp",
         email: "Email",
         servicesTitle: "Our Services",
         addressTitle: "Office Address",
-        address: "Oman, Muscat, Alkhuwair, Al Maha Street",
+        address: "Oman, Muscat, Alkhuwair, Al Maha Street, Above Al Bait Al Omani Restaurant, 6th Floor, Flat 603",
         viewMap: "View on Map",
         copyright: "© 2026 AKAF Group Oman. All rights reserved.",
         services: [
@@ -40,13 +40,13 @@ const translations = {
     ar: {
         name: "علي صالح",
         companyName: "الرئيس التنفيذي لـ Global Trade Consultant Oman",
-        bio: "خبير في التجارة الدولية والتخليص الجمركي والاستثمار في عمان",
+        bio: "🌏 التجارة الدولية<br>استيراد وتصدير | تجارة | مصانع<br>🤝 مصانع موثوقة | أسعار تنافسية<br>💼 نحول الفرص إلى صفقات مربحة<br>💬 استفسار اليوم... هو استثمار الغد.",
         saveContact: "حفظ جهة الاتصال",
         whatsapp: "واتساب",
         email: "البريد الإلكتروني",
         servicesTitle: "خدماتنا",
         addressTitle: "عنوان المكتب",
-        address: "عمان، مسقط، الخوير، شارع المها",
+        address: "عمان، مسقط، الخوير، شارع المها، فوق مطعم البيت العماني، طابق 6، شقة 603",
         viewMap: "عرض على الخريطة",
         copyright: "© ٢٠٢٦ AKAF Group Oman. جميع الحقوق محفوظة.",
         services: [
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const elements = document.querySelectorAll('[data-i18n]');
         elements.forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
+            if (translations[lang] && translations[lang][key]) {
                 el.innerHTML = translations[lang][key];
             }
         });
@@ -137,7 +137,7 @@ TITLE:CEO
 TEL;TYPE=CELL,VOICE,PREF:+96877170998
 EMAIL;TYPE=WORK,INTERNET:almadad@gmail.com
 URL:https://akafco.com
-ADR;TYPE=WORK:;;Al Maha Street;Alkhuwair;Muscat;;Oman
+ADR;TYPE=WORK:;;Al Maha Street, Above Al Bait Al Omani Restaurant, 6th Floor, Flat 603;Alkhuwair;Muscat;;Oman
 X-SOCIALPROFILE;type=facebook:https://www.facebook.com/profile.php?id=61555491073869
 X-SOCIALPROFILE;type=instagram:ali_saleh.77
 NOTE:Services: Export & Import, Customs Clearance, Investment
