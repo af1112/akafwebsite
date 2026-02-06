@@ -27,7 +27,7 @@ const translations = {
         email: "Email",
         servicesTitle: "Our Services",
         addressTitle: "Office Address",
-        address: "Oman, Muscat, Alkhuwair, Al Maha Street, Building 4768, 2nd floor, Office No.21",
+        address: "Oman, Muscat, Alkhuwair, Al Maha Street",
         viewMap: "View on Map",
         copyright: "© 2026 AKAF Group Oman. All rights reserved.",
         services: [
@@ -46,7 +46,7 @@ const translations = {
         email: "البريد الإلكتروني",
         servicesTitle: "خدماتنا",
         addressTitle: "عنوان المكتب",
-        address: "عمان، مسقط، الخوير، شارع المها، مبنى ٤٧٦٨، الطابق الثاني، مكتب رقم ٢١",
+        address: "عمان، مسقط، الخوير، شارع المها",
         viewMap: "عرض على الخريطة",
         copyright: "© ٢٠٢٦ AKAF Group Oman. جميع الحقوق محفوظة.",
         services: [
