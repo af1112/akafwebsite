@@ -29,7 +29,7 @@ const translations = {
         addressTitle: "Office Address",
         address: "Oman, Muscat, Alkhuwair, Al Maha Street, Building 4768, 2nd floor, Office No.21",
         viewMap: "View on Map",
-        copyright: "© 2024 Global Trade Consultant Oman. All rights reserved.",
+        copyright: "© 2026 AKAF Group Oman. All rights reserved.",
         services: [
             "Export & Import",
             "Customs Clearance",
