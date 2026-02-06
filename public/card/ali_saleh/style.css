@@ -24,9 +24,9 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Changed from center to allow scrolling from top */
+    align-items: flex-start;
     overflow-x: hidden;
-    padding: 80px 20px 20px; /* Added top padding for fixed header */
+    padding: 80px 20px 20px;
 }
 
 /* RTL Support */
@@ -39,7 +39,7 @@ html[dir="ltr"] body {
 }
 
 html[lang="ar"] body {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Tajawal', sans-serif; /* Changed from Cairo to Tajawal */
 }
 
 /* Background Animation */

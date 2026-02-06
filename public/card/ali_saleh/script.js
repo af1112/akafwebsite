@@ -1,7 +1,7 @@
 const translations = {
     fa: {
         name: "علی صالح",
-        companyName: "Global Trade Consultant Oman",
+        companyName: "مدیر عامل Global Trade Consultant Oman",
         bio: "کارشناس تجارت بین‌الملل، ترخیص کالا و سرمایه‌گذاری در عمان",
         saveContact: "ذخیره در مخاطبین",
         whatsapp: "واتس‌اپ",
@@ -20,7 +20,7 @@ const translations = {
     },
     en: {
         name: "Ali Saleh",
-        companyName: "Global Trade Consultant Oman",
+        companyName: "CEO - Global Trade Consultant Oman",
         bio: "Expert in International Trade, Customs Clearance, and Investment in Oman",
         saveContact: "Save Contact",
         whatsapp: "WhatsApp",
@@ -39,7 +39,7 @@ const translations = {
     },
     ar: {
         name: "علي صالح",
-        companyName: "Global Trade Consultant Oman",
+        companyName: "الرئيس التنفيذي لـ Global Trade Consultant Oman",
         bio: "خبير في التجارة الدولية والتخليص الجمركي والاستثمار في عمان",
         saveContact: "حفظ جهة الاتصال",
         whatsapp: "واتساب",
@@ -133,14 +133,13 @@ VERSION:3.0
 FN:${translations['en'].name}
 N:Saleh;Ali;;;
 ORG:Global Trade Consultant Oman
-TITLE:Manager
+TITLE:CEO
 TEL;TYPE=CELL,VOICE,PREF:+96877170998
-TEL;TYPE=CELL,VOICE:+96890603075
 EMAIL;TYPE=WORK,INTERNET:almadad@gmail.com
 URL:https://akafco.com
 ADR;TYPE=WORK:;;Al Maha Street, Building 4768, 2nd floor, Office No.21;Alkhuwair;Muscat;;Oman
 X-SOCIALPROFILE;type=facebook:https://www.facebook.com/profile.php?id=61555491073869
-X-SOCIALPROFILE;type=instagram:almadad_oman
+X-SOCIALPROFILE;type=instagram:ali_saleh.77
 NOTE:Services: Export & Import, Customs Clearance, Investment
 END:VCARD`;
 
