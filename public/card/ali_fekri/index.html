@@ -28,15 +28,16 @@
         </div>
 
         <!-- Profile Section -->
-        <section class="glass-panel" data-tilt>
+        <section class="glass-panel">
             <div class="profile-header">
                 <div class="avatar-container">
                     <div class="gear-loader"></div>
-                    <img src="profile_placeholder.jpg" alt="Ali Fekri" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Ali+Fekri&background=f59e0b&color=000&size=200'">
+                    <!-- Added query string to force reload -->
+                    <img src="profile.webp?v=2" alt="Ali Fekri" class="avatar">
                 </div>
                 <h1 class="tech-title">Ali Fekri</h1>
                 <div class="typing-container">
-                    <span class="typing-text">Mechanical Engineer</span>
+                    <span class="typing-text">Senior Project Manager</span>
                 </div>
             </div>
 
@@ -44,6 +45,10 @@
             <div class="resume-summary">
                 <strong data-i18n="summaryTitle">Professional Profile</strong><br>
                 <span data-i18n="summary">Mechanical Engineer with over 15 years of technical experience in industrial projects, specializing in Fluid Mechanics, Commissioning (ICAPS), and Industrial IT Infrastructure.</span>
+                <br><br>
+                <div class="special-highlight" data-i18n="zeroToHundred">
+                    Specialized in Zero-to-Hundred Industrial Project Setup in Oman & Arab Countries with high-quality execution standards based on extensive proven track record.
+                </div>
             </div>
 
             <!-- Stats/Info Grid -->
@@ -60,14 +65,18 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span data-i18n="location">Muscat, Oman</span>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>af1112@gmail.com</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+968 9406 3021</span>
-                </div>
+            </div>
+
+            <!-- Contact Buttons (Big & Prominent) -->
+            <div class="contact-buttons-container" style="margin: 20px 0;">
+                <a href="https://wa.me/96894063021" class="tech-btn whatsapp-btn" target="_blank" style="width: 100%; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; background: #25D366; color: white; border: none;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.5rem; margin-right: 10px;"></i>
+                    <span data-i18n="whatsappBtn" style="font-size: 1.1rem; font-weight: bold;">Message on WhatsApp</span>
+                </a>
+                <a href="mailto:af1112@gmail.com" class="tech-btn email-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; background: #EA4335; color: white; border: none;">
+                    <i class="fas fa-envelope" style="font-size: 1.5rem; margin-right: 10px;"></i>
+                    <span data-i18n="emailBtn" style="font-size: 1.1rem; font-weight: bold;">Send Email</span>
+                </a>
             </div>
 
             <!-- Actions -->
@@ -79,12 +88,17 @@
                     <span data-i18n="downloadResume">Download Resume</span>
                 </a>
             </div>
+        </section>
 
-            <!-- Social Links -->
-            <div style="text-align: center; margin-bottom: 20px;">
-                <a href="#" style="color: #f59e0b; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
-                <a href="#" style="color: #f59e0b; font-size: 1.5rem; margin: 0 10px;"><i class="fab fa-github"></i></a>
-                <a href="mailto:info@akafco.com" style="color: #f59e0b; font-size: 1.5rem; margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+        <!-- Project Gallery Section -->
+        <section class="glass-panel">
+            <h3 class="section-title">
+                <i class="fas fa-images"></i> <span data-i18n="galleryTitle">Project Gallery</span>
+            </h3>
+            <div style="text-align: center;">
+                <button id="open-gallery-btn" class="tech-btn" style="width: 100%;">
+                    <i class="fas fa-layer-group"></i> <span data-i18n="viewGallery">View Project Portfolio</span>
+                </button>
             </div>
         </section>
 

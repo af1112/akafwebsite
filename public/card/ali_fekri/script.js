@@ -8,6 +8,11 @@ const translations = {
         downloadResume: "Download Resume",
         skillsTitle: "Technical Expertise",
         summaryTitle: "Executive Summary",
+        whatsappBtn: "Message on WhatsApp",
+        emailBtn: "Send Email",
+        galleryTitle: "Project Portfolio",
+        viewGallery: "View Project Gallery",
+        zeroToHundred: "Specialized in Zero-to-Hundred Industrial Project Setup in Oman & Arab Countries with high-quality execution standards based on extensive proven track record.",
         summary: "Senior Project Manager and Mechanical Engineer with over 20 years of elite experience in leading Mega-Projects (EPC/Greenfield) for global giants like TOTAL (France), HYUNDAI E&C, and DAELIM. Expert in Full Plant Commissioning, Industrial Automation, and ICAPS/OPERCOM methodology. Proven leadership in managing high-scale facilities ($2B+ Gas Projects, 2B cu.ft/day) and automated manufacturing lines. Recipient of the National Excellence Award for IT.",
         experienceTitle: "Professional Experience",
         copyright: "© 2026 Ali Fekri. Industrial Engineering Solutions.",
@@ -54,6 +59,11 @@ const translations = {
         downloadResume: "دانلود رزومه",
         skillsTitle: "تخصص‌های فنی",
         summaryTitle: "خلاصه سوابق مدیریتی",
+        whatsappBtn: "ارسال پیام در واتس‌اپ",
+        emailBtn: "ارسال ایمیل",
+        galleryTitle: "آلبوم پروژه‌ها",
+        viewGallery: "مشاهده گالری پروژه‌ها",
+        zeroToHundred: "تخصص ویژه در راه‌اندازی صفر تا صد پروژه‌های صنعتی در عمان و کشورهای عربی با استانداردهای اجرایی بالا و تضمین کیفیت بر اساس سوابق درخشان گذشته.",
         summary: "مدیر ارشد پروژه و مهندس مکانیک با بیش از ۲۰ سال تجربه درخشان در مدیریت ابرپروژه‌های EPC و گرین‌فیلد برای غول‌های جهانی مانند TOTAL فرانسه، HYUNDAI و DAELIM. متخصص در راه‌اندازی کامل کارخانجات، اتوماسیون صنعتی و متدولوژی ICAPS. دارای سابقه رهبری در تاسیسات عظیم نفت و گاز (۲ میلیارد فوت مکعب در روز) و خطوط تولید رباتیک. برنده جایزه ملی نخبگان در حوزه فناوری اطلاعات.",
         experienceTitle: "سوابق حرفه‌ای",
         copyright: "© ۲۰۲۶ علی فکری. راهکارهای مهندسی صنعتی.",
@@ -100,6 +110,11 @@ const translations = {
         downloadResume: "تحميل السيرة الذاتية",
         skillsTitle: "الخبرات التقنية",
         summaryTitle: "الملف التنفيذي",
+        whatsappBtn: "رسالة على واتساب",
+        emailBtn: "إرسال بريد إلكتروني",
+        galleryTitle: "معرض المشاريع",
+        viewGallery: "عرض معرض المشاريع",
+        zeroToHundred: "تخصص في إنشاء المشاريع الصناعية من الصفر إلى النهاية في عمان والدول العربية بمعايير تنفيذ عالية الجودة بناءً على سجل حافل من الإنجازات.",
         summary: "مدير مشاريع أول ومهندس ميكانيكي بخبرة تزيد عن ٢٠ عامًا في قيادة المشاريع الضخمة (EPC) للشركات العالمية مثل TOTAL (فرنسا) و HYUNDAI و DAELIM. خبير في التشغيل الكامل للمصانع، الأتمتة الصناعية، ومنهجية ICAPS. سجل حافل في إدارة مرافق الغاز الضخمة (٢ مليار قدم مكعب/يوم) وخطوط التصنيع الآلية. حائز على جائزة التميز الوطني في تكنولوجيا المعلومات.",
         experienceTitle: "الخبرة المهنية",
         copyright: "© ٢٠٢٦ علي فكري. حلول الهندسة الصناعية.",
@@ -269,7 +284,112 @@ END:VCARD`;
 
     // 5. Industrial Particle System (Nodes & Flows)
     initParticles();
+
+    // 6. Gallery Logic
+    initGallery();
 });
+
+function initGallery() {
+    const modal = document.getElementById('gallery-modal');
+    const openBtn = document.getElementById('open-gallery-btn');
+    const closeBtn = document.querySelector('.close-modal');
+    const track = document.getElementById('gallery-track');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const slideTitle = document.getElementById('slide-title');
+    const slideDesc = document.getElementById('slide-desc');
+    const currentSlideEl = document.getElementById('current-slide');
+    const totalSlidesEl = document.getElementById('total-slides');
+
+    // Sample Project Data (To be replaced with real images)
+    // Using placeholder images for now
+    const projects = [
+        {
+            title: { en: "Automotive Plant Setup (Greenfield)", fa: "راه‌اندازی کارخانه خودروسازی", ar: "إنشاء مصنع السيارات" },
+            desc: { en: "Complete setup of 28 production lines and 370 personnel management.", fa: "راه‌اندازی کامل ۲۸ خط تولید و مدیریت ۳۷۰ پرسنل.", ar: "الإعداد الكامل لـ 28 خط إنتاج وإدارة 370 موظفًا." },
+            image: "https://via.placeholder.com/800x600/f59e0b/000000?text=Automotive+Plant"
+        },
+        {
+            title: { en: "South Pars Gas Field Phase", fa: "فازهای پارس جنوبی", ar: "حقل غاز بارس الجنوبي" },
+            desc: { en: "Mechanical supervision of $2B+ gas development project.", fa: "نظارت مکانیکال پروژه ۲ میلیارد دلاری توسعه گاز.", ar: "الإشراف الميكانيكي على مشروع تطوير الغاز بقيمة 2 مليار دولار." },
+            image: "https://via.placeholder.com/800x600/3b82f6/000000?text=Gas+Field+Project"
+        },
+        {
+            title: { en: "Robotic Assembly Lines", fa: "خطوط مونتاژ رباتیک", ar: "خطوط التجميع الروبوتية" },
+            desc: { en: "Installation of fully automated sanitary ware factory lines.", fa: "نصب خطوط تمام اتوماتیک کارخانه شیرآلات.", ar: "تركيب خطوط مصنع أدوات صحية مؤتمتة بالكامل." },
+            image: "https://via.placeholder.com/800x600/10b981/000000?text=Robotic+Assembly"
+        },
+        {
+            title: { en: "Dorood 3 Mega Project", fa: "ابرپروژه درود ۳", ar: "مشروع دورود 3 العملاق" },
+            desc: { en: "Commissioning of HP Gas Injection Compressors.", fa: "راه‌اندازی کمپرسورهای تزریق گاز فشار قوی.", ar: "تشغيل ضواغط حقن الغاز عالي الضغط." },
+            image: "https://via.placeholder.com/800x600/ef4444/000000?text=Dorood+3+Project"
+        },
+        {
+            title: { en: "Industrial IT Infrastructure", fa: "زیرساخت IT صنعتی", ar: "البنية التحتية لتكنولوجيا المعلومات الصناعية" },
+            desc: { en: "Implementation of project control software for 15+ companies.", fa: "پیاده‌سازی نرم‌افزار کنترل پروژه برای ۱۵+ شرکت.", ar: "تطبيق برامج مراقبة المشاريع لأكثر من 15 شركة." },
+            image: "https://via.placeholder.com/800x600/8b5cf6/000000?text=IT+Infrastructure"
+        }
+    ];
+
+    if (!modal || !openBtn) return;
+
+    let currentIndex = 0;
+    let currentLang = document.documentElement.lang || 'en';
+
+    // Update content based on language
+    function updateSlideContent() {
+        currentLang = document.documentElement.lang || 'en';
+        const project = projects[currentIndex];
+        
+        slideTitle.innerText = project.title[currentLang];
+        slideDesc.innerText = project.desc[currentLang];
+        currentSlideEl.innerText = currentIndex + 1;
+        totalSlidesEl.innerText = projects.length;
+        
+        // Move track
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // Create Slides
+    projects.forEach(proj => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        const img = document.createElement('img');
+        img.src = proj.image;
+        img.alt = "Project Image";
+        slide.appendChild(img);
+        track.appendChild(slide);
+    });
+
+    openBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+        updateSlideContent();
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % projects.length;
+        updateSlideContent();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+        updateSlideContent();
+    });
+
+    // Listen for language changes to update slide text
+    const observer = new MutationObserver(() => {
+        updateSlideContent();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+}
 
 function renderExperience(lang) {
     const container = document.getElementById('experience-list');
