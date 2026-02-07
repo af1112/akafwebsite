@@ -138,8 +138,16 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+# Vercel Configuration
+if os.environ.get('VERCEL'):
+    FORCE_SCRIPT_NAME = '/pc_software'
+    STATIC_URL = '/pc_software/static/'
+    MEDIA_URL = '/pc_software/media/'
+
 # Add Media Settings
-MEDIA_URL = '/media/'
+if not os.environ.get('VERCEL'):
+    MEDIA_URL = '/media/'
+
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
