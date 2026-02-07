@@ -16,6 +16,14 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/pc_software/:path*',
+        destination: `${process.env.PC_SOFTWARE_URL || 'http://localhost:8000'}/:path*`,
+      },
+    ];
+  },
 };
 
 module.exports = withNextIntl(nextConfig);
