@@ -1,0 +1,9 @@
+Django>=5.0
+Pillow
+pandas
+numpy
+openpyxl
+pytesseract
+opencv-python-headless
+scikit-learn
+networkx
