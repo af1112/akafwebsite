@@ -307,7 +307,7 @@ function initGallery() {
         {
             title: { en: "Automotive Plant Setup (Greenfield)", fa: "راه‌اندازی کارخانه خودروسازی", ar: "إنشاء مصنع السيارات" },
             desc: { en: "Complete setup of 28 production lines and 370 personnel management.", fa: "راه‌اندازی کامل ۲۸ خط تولید و مدیریت ۳۷۰ پرسنل.", ar: "الإعداد الكامل لـ 28 خط إنتاج وإدارة 370 موظفًا." },
-            image: "https://via.placeholder.com/800x600/f59e0b/000000?text=Automotive+Plant"
+            image: "automative.webp"
         },
         {
             title: { en: "South Pars Gas Field Phase", fa: "فازهای پارس جنوبی", ar: "حقل غاز بارس الجنوبي" },
