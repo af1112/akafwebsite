@@ -20,7 +20,7 @@ const nextConfig = {
     return [
       {
         source: '/pc_software/:path*',
-        destination: `${process.env.PC_SOFTWARE_URL || 'http://localhost:8000'}/:path*`,
+        destination: `${process.env.PC_SOFTWARE_URL || 'https://pcsoftware.vercel.app'}/:path*`,
       },
     ];
   },
