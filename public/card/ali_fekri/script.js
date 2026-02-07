@@ -317,17 +317,17 @@ function initGallery() {
         {
             title: { en: "Robotic Assembly Lines", fa: "خطوط مونتاژ رباتیک", ar: "خطوط التجميع الروبوتية" },
             desc: { en: "Installation of fully automated sanitary ware factory lines.", fa: "نصب خطوط تمام اتوماتیک کارخانه شیرآلات.", ar: "تركيب خطوط مصنع أدوات صحية مؤتمتة بالكامل." },
-            image: "Robots.webp"
+            image: "industri.webp"
         },
         {
             title: { en: "Dorood 3 Mega Project", fa: "ابرپروژه درود ۳", ar: "مشروع دورود 3 العملاق" },
             desc: { en: "Commissioning of HP Gas Injection Compressors.", fa: "راه‌اندازی کمپرسورهای تزریق گاز فشار قوی.", ar: "تشغيل ضواغط حقن الغاز عالي الضغط." },
-            image: "https://via.placeholder.com/800x600/ef4444/000000?text=Dorood+3+Project"
+            image: "doroud3.webp"
         },
         {
             title: { en: "Industrial IT Infrastructure", fa: "زیرساخت IT صنعتی", ar: "البنية التحتية لتكنولوجيا المعلومات الصناعية" },
             desc: { en: "Implementation of project control software for 15+ companies.", fa: "پیاده‌سازی نرم‌افزار کنترل پروژه برای ۱۵+ شرکت.", ar: "تطبيق برامج مراقبة المشاريع لأكثر من 15 شركة." },
-            image: "https://via.placeholder.com/800x600/8b5cf6/000000?text=IT+Infrastructure"
+            image: "AKAFOffice.webp"
         }
     ];
 
