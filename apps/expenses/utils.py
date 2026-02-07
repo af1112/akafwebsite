@@ -1,11 +1,19 @@
 from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
-from xhtml2pdf import pisa
 from django.conf import settings
 import os
 
+try:
+    from xhtml2pdf import pisa
+    PDF_AVAILABLE = True
+except ImportError:
+    PDF_AVAILABLE = False
+
 def render_to_pdf(template_src, context_dict={}):
+    if not PDF_AVAILABLE:
+        return HttpResponse("PDF generation is not available in this environment (missing libraries).", status=503)
+
     template = get_template(template_src)
     html  = template.render(context_dict)
     result = BytesIO()
@@ -29,19 +37,15 @@ def render_to_pdf(template_src, context_dict={}):
 
         # make sure that file exists
         if not os.path.isfile(path):
-            raise Exception(
-                'media URI must start with %s or %s' % (sUrl, mUrl)
-            )
+             # Don't crash on missing files, just return uri
+             return uri
         return path
 
-    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result) # ISO-8859-1 for simple chars, need proper encoding for Farsi if needed, usually UTF-8
-    
-    # For Farsi/Arabic support, we might need a specific font and encoding.
-    # xhtml2pdf has limited support for RTL. We might need to use a font like DejaVuSans or similar that supports it.
-    # For now, let's try basic UTF-8.
-    
-    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
-    
-    if not pdf.err:
-        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    try:
+        pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result, link_callback=link_callback)
+        if not pdf.err:
+            return HttpResponse(result.getvalue(), content_type='application/pdf')
+    except Exception as e:
+        return HttpResponse(f"PDF Generation Error: {str(e)}", status=500)
+        
     return None
