@@ -29,6 +29,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # Allow all hosts for Vercel/Dev
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://www.akafco.com',
+    'https://pcsoftware.vercel.app',
+    'http://localhost:3000',
+]
+
 
 # Application definition
 
