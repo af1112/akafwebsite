@@ -6,7 +6,8 @@ import type { NextRequest } from 'next/server';
 export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   
-  // Explicitly skip middleware for pc_software
+  // Force skip for pc_software to prevent ANY next-intl processing
+  // This logic is explicit and independent of matcher
   if (pathname.startsWith('/pc_software')) {
     return NextResponse.next();
   }
@@ -17,9 +18,7 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/',
-    '/(fa|ar|en)/:path*',
-    '/((?!api|_next|_vercel|card|pc_software|static|media|.*\\..*).*)'
-  ]
+  // Match everything except static assets and API
+  // We handle pc_software exclusion explicitly in the function above
+  matcher: ['/((?!api|_next|_vercel|static|media|.*\\..*).*)']
 };
