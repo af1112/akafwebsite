@@ -38,6 +38,8 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+APPEND_SLASH = False
+
 # Application definition
 
 INSTALLED_APPS = [
