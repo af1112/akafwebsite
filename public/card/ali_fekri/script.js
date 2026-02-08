@@ -307,27 +307,27 @@ function initGallery() {
         {
             title: { en: "Automotive Plant Setup (Greenfield)", fa: "راه‌اندازی کارخانه خودروسازی", ar: "إنشاء مصنع السيارات" },
             desc: { en: "Complete setup of 28 production lines and 370 personnel management.", fa: "راه‌اندازی کامل ۲۸ خط تولید و مدیریت ۳۷۰ پرسنل.", ar: "الإعداد الكامل لـ 28 خط إنتاج وإدارة 370 موظفًا." },
-            image: "automative.webp"
+            image: "/card/ali_fekri/automative.webp"
         },
         {
             title: { en: "South Pars Gas Field Phase", fa: "فازهای پارس جنوبی", ar: "حقل غاز بارس الجنوبي" },
             desc: { en: "Mechanical supervision of $2B+ gas development project.", fa: "نظارت مکانیکال پروژه ۲ میلیارد دلاری توسعه گاز.", ar: "الإشراف الميكانيكي على مشروع تطوير الغاز بقيمة 2 مليار دولار." },
-            image: "SouthPars.webp"
+            image: "/card/ali_fekri/SouthPars.webp"
         },
         {
             title: { en: "Robotic Assembly Lines", fa: "خطوط مونتاژ رباتیک", ar: "خطوط التجميع الروبوتية" },
             desc: { en: "Installation of fully automated sanitary ware factory lines.", fa: "نصب خطوط تمام اتوماتیک کارخانه شیرآلات.", ar: "تركيب خطوط مصنع أدوات صحية مؤتمتة بالكامل." },
-            image: "industri.webp"
+            image: "/card/ali_fekri/industri.webp"
         },
         {
             title: { en: "Dorood 3 Mega Project", fa: "ابرپروژه درود ۳", ar: "مشروع دورود 3 العملاق" },
             desc: { en: "Commissioning of HP Gas Injection Compressors.", fa: "راه‌اندازی کمپرسورهای تزریق گاز فشار قوی.", ar: "تشغيل ضواغط حقن الغاز عالي الضغط." },
-            image: "doroud3.webp"
+            image: "/card/ali_fekri/doroud3.webp"
         },
         {
             title: { en: "Industrial IT Infrastructure", fa: "زیرساخت IT صنعتی", ar: "البنية التحتية لتكنولوجيا المعلومات الصناعية" },
             desc: { en: "Implementation of project control software for 15+ companies.", fa: "پیاده‌سازی نرم‌افزار کنترل پروژه برای ۱۵+ شرکت.", ar: "تطبيق برامج مراقبة المشاريع لأكثر من 15 شركة." },
-            image: "AKAFOffice.webp"
+            image: "/card/ali_fekri/AKAFOffice.webp"
         }
     ];
 
