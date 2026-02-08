@@ -35,6 +35,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://akafco.com',
     'https://pcsoftware.vercel.app',
     'http://localhost:3000',
+    'https://akafbusiness.com',
+    'https://www.akafbusiness.com',
 ]
 
 
@@ -143,10 +145,10 @@ STATICFILES_DIRS = [
 
 # Vercel Configuration
 if os.environ.get('VERCEL'):
-    FORCE_SCRIPT_NAME = '/pc_software'
-    STATIC_URL = '/pc_software/static/'
-    MEDIA_URL = '/pc_software/media/'
-    # Trust Vercel Proxy
+    # FORCE_SCRIPT_NAME = '/pc_software'  # Disabled for custom domain akafbusiness.com
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+    # Trust Vercel Proxy - Updated 2026-02-08
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     USE_X_FORWARDED_HOST = True
     USE_X_FORWARDED_PORT = True
