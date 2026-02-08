@@ -146,6 +146,10 @@ if os.environ.get('VERCEL'):
     FORCE_SCRIPT_NAME = '/pc_software'
     STATIC_URL = '/pc_software/static/'
     MEDIA_URL = '/pc_software/media/'
+    # Trust Vercel Proxy
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    USE_X_FORWARDED_HOST = True
+    USE_X_FORWARDED_PORT = True
 
 # Add Media Settings
 if not os.environ.get('VERCEL'):
