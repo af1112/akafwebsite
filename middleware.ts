@@ -7,8 +7,7 @@ export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   console.log(`[Middleware Debug] Incoming request: ${pathname}`);
 
-  // Force skip for pc_software to prevent ANY next-intl processing
-  // Forced Update for Vercel Deploy: 2026-02-08T08:58:35.115Z
+  // Fallback: If matcher misses (shouldn't happen), skip explicitly
   if (pathname.startsWith('/pc_software')) {
     console.log(`[Middleware Debug] Skipping next-intl for: ${pathname}`);
     const response = NextResponse.next();
@@ -23,6 +22,7 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Match everything except static assets and API
-  matcher: ['/((?!api|_next|_vercel|static|media|.*\\..*).*)']
+  // Match everything except static assets, API, and pc_software
+  // Added pc_software to exclusion list to prevent next-intl from running
+  matcher: ['/((?!api|_next|_vercel|static|media|pc_software|.*\\..*).*)']
 };
