@@ -8,6 +8,7 @@ export default function middleware(request: NextRequest) {
   console.log(`[Middleware Debug] Incoming request: ${pathname}`);
 
   // Force skip for pc_software to prevent ANY next-intl processing
+  // Forced Update for Vercel Deploy: 2026-02-08T08:58:35.115Z
   if (pathname.startsWith('/pc_software')) {
     console.log(`[Middleware Debug] Skipping next-intl for: ${pathname}`);
     const response = NextResponse.next();
