@@ -29,6 +29,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # Allow all hosts for Vercel/Dev
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://akafbusiness.com',
+    'https://www.akafbusiness.com',
+    'https://akafco.com',
+    'https://www.akafco.com',
+]
+
 
 # Application definition
 
