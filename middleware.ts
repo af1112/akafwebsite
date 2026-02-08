@@ -5,20 +5,23 @@ import type { NextRequest } from 'next/server';
 
 export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  
+  console.log(`[Middleware Debug] Incoming request: ${pathname}`);
+
   // Force skip for pc_software to prevent ANY next-intl processing
-  // This logic is explicit and independent of matcher
   if (pathname.startsWith('/pc_software')) {
-    return NextResponse.next();
+    console.log(`[Middleware Debug] Skipping next-intl for: ${pathname}`);
+    const response = NextResponse.next();
+    response.headers.set('X-Debug-Middleware', 'Skipped-Explicitly');
+    return response;
   }
 
   // Use next-intl middleware for other routes
+  console.log(`[Middleware Debug] Applying next-intl for: ${pathname}`);
   const handleI18nRouting = createMiddleware(routing);
   return handleI18nRouting(request);
 }
 
 export const config = {
   // Match everything except static assets and API
-  // We handle pc_software exclusion explicitly in the function above
   matcher: ['/((?!api|_next|_vercel|static|media|.*\\..*).*)']
 };
