@@ -7,8 +7,8 @@ export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   console.log(`[Middleware Debug] Incoming request: ${pathname}`);
 
-  // Fallback: If matcher misses (shouldn't happen), skip explicitly
-  if (pathname.startsWith('/pc_software')) {
+  // Fallback: Explicit skip for excluded paths if matcher misses
+  if (pathname.startsWith('/pc_software') || pathname.startsWith('/card')) {
     console.log(`[Middleware Debug] Skipping next-intl for: ${pathname}`);
     const response = NextResponse.next();
     response.headers.set('X-Debug-Middleware', 'Skipped-Explicitly');
@@ -22,7 +22,6 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Match everything except static assets, API, and pc_software
-  // Added pc_software to exclusion list to prevent next-intl from running
-  matcher: ['/((?!api|_next|_vercel|static|media|pc_software|.*\\..*).*)']
+  // Match everything except static assets, API, pc_software, and card
+  matcher: ['/((?!api|_next|_vercel|static|media|pc_software|card|.*\\..*).*)']
 };
