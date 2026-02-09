@@ -1,5 +1,7 @@
 from django.utils import translation
 from django.conf import settings
+from django.shortcuts import redirect
+from django.urls import reverse
 from .models import UserProfile
 
 class UserLanguageMiddleware:
@@ -33,3 +35,36 @@ class UserLanguageMiddleware:
         
         response = self.get_response(request)
         return response
+
+class LoginRequiredMiddleware:
+    """
+    Middleware to ensure user is logged in for all pages except login, logout, and static files.
+    """
+    def __init__(self, get_response):
+        self.get_response = get_response
+        self.login_url = reverse('login')
+        self.exempt_urls = [
+            self.login_url,
+            reverse('admin:login'),
+            '/admin/', # Allow admin panel access to handle its own auth
+            '/static/',
+            '/media/',
+            '/card/', # Allow digital business cards to be public if needed
+            '/favicon.ico',
+        ]
+
+    def __call__(self, request):
+        if not request.user.is_authenticated:
+            path = request.path_info
+            
+            # Check if path is exempt
+            is_exempt = False
+            for url in self.exempt_urls:
+                if path.startswith(url):
+                    is_exempt = True
+                    break
+            
+            if not is_exempt:
+                return redirect(f"{self.login_url}?next={request.path}")
+
+        return self.get_response(request)
