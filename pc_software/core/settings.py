@@ -95,6 +95,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 import pymysql
 pymysql.install_as_MySQLdb()
+import MySQLdb
+# Spoof mysqlclient version to bypass Django 5+ check
+if not hasattr(MySQLdb, 'version_info') or MySQLdb.version_info < (2, 2, 1):
+    MySQLdb.version_info = (2, 2, 1, 'final', 0)
+    MySQLdb.__version__ = '2.2.1'
 
 DATABASES = {
     'default': {
@@ -106,6 +111,18 @@ DATABASES = {
 # Use MySQL if environment variables are set (e.g., in Vercel)
 import os
 if os.environ.get('DB_NAME'):
+    db_options = {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    }
+    
+    # Enable SSL for TiDB Cloud
+    if os.environ.get('DB_OPTIONS_SSL_MODE') == 'REQUIRED':
+        import ssl
+        db_options['ssl'] = {
+            'check_hostname': False,
+            'verify_mode': ssl.CERT_NONE
+        }
+
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('DB_NAME'),
@@ -113,9 +130,7 @@ if os.environ.get('DB_NAME'):
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': os.environ.get('DB_HOST'),
         'PORT': os.environ.get('DB_PORT', '3306'),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'OPTIONS': db_options,
     }
 
 
