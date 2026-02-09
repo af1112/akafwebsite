@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from .models import ExpenseItem, ExpenseReport, Trip, Advance
 
 class TripForm(forms.ModelForm):
@@ -6,9 +7,20 @@ class TripForm(forms.ModelForm):
         model = Trip
         fields = ['name', 'travel_type', 'business_purpose']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Trip Name'}),
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Statement Name')}),
             'travel_type': forms.RadioSelect(attrs={'class': 'form-check-input'}),
-            'business_purpose': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'business_purpose': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': _('Describe the business purpose...')}),
+        }
+
+class ExpenseReportForm(forms.ModelForm):
+    class Meta:
+        model = ExpenseReport
+        fields = ['title', 'business_purpose', 'start_date', 'end_date']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Statement Name')}),
+            'business_purpose': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': _('Describe the business purpose...')}),
+            'start_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'end_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
         }
 
 class AdvanceForm(forms.ModelForm):
@@ -19,7 +31,7 @@ class AdvanceForm(forms.ModelForm):
             'amount': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.001', 'placeholder': '0.000'}),
             'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'paid_through': forms.Select(attrs={'class': 'form-select'}),
-            'reference_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tap to Enter'}),
+            'reference_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Tap to Enter')}),
             'notes': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'trip': forms.Select(attrs={'class': 'form-select'}),
         }
@@ -27,6 +39,46 @@ class AdvanceForm(forms.ModelForm):
 class ExpenseItemForm(forms.ModelForm):
     # Field to trigger file input separately if needed, but standard widget works
     receipt_image_trigger = forms.ImageField(required=False, widget=forms.FileInput(attrs={'style': 'display: none;', 'capture': 'environment', 'accept': 'image/*'}))
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(ExpenseItemForm, self).__init__(*args, **kwargs)
+        
+        # Rename Report to Statement
+        self.fields['report'].label = _("Statement")
+        self.fields['report'].widget.attrs.update({'class': 'form-select'})
+        
+        if user:
+            # Filter for open statements (draft) for this user
+            self.fields['report'].queryset = ExpenseReport.objects.filter(
+                submitted_by=user, 
+                status='draft'
+            ).order_by('-created_at')
+            
+            # Custom label for the dropdown options
+            # Format: Statement Name (Start - End) | Ref: #... | Total: ...
+            self.fields['report'].label_from_instance = lambda obj: (
+                f"{obj.title} "
+                f"({obj.start_date.strftime('%Y-%m-%d') if obj.start_date else '?'}-{obj.end_date.strftime('%Y-%m-%d') if obj.end_date else '?'}) | "
+                f"{_('Ref')}: {str(obj.id)[:6].upper()} | "
+                f"{_('Total')}: {float(obj.total_amount):.3f} {obj.currency}"
+            )
+            
+            # Set currency and decimal places based on user profile
+            if hasattr(user, 'profile'):
+                currency_code = user.profile.currency_code
+                decimal_places = user.profile.currency_decimal_places
+                
+                # Update Amount field widget step
+                step_value = '0.' + '0' * (decimal_places - 1) + '1'
+                self.fields['amount'].widget.attrs.update({
+                    'step': step_value,
+                    'placeholder': '0.' + '0' * decimal_places
+                })
+                
+                # Update Currency field initial value
+                self.fields['currency'].initial = currency_code
+                self.fields['currency'].widget.attrs.update({'value': currency_code})
 
     class Meta:
         model = ExpenseItem
@@ -37,13 +89,13 @@ class ExpenseItemForm(forms.ModelForm):
         widgets = {
             'report': forms.Select(attrs={'class': 'form-select'}),
             'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
-            'merchant': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tap to select'}),
-            'category': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tap to select', 'list': 'category-list'}),
+            'merchant': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Tap to select')}),
+            'category': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Tap to select'), 'list': 'category-list'}),
             'amount': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.001', 'placeholder': '0.000'}),
-            'currency': forms.TextInput(attrs={'class': 'form-control', 'value': 'OMR', 'readonly': 'readonly'}),
-            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Description'}),
+            'currency': forms.HiddenInput(),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': _('Description')}),
             'payment_mode': forms.Select(attrs={'class': 'form-select'}),
-            'reference_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tap to Enter'}),
+            'reference_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Tap to Enter')}),
             'receipt_image': forms.ClearableFileInput(attrs={'class': 'd-none', 'accept': 'image/*'}),
             'claim_reimbursement': forms.CheckboxInput(attrs={'class': 'form-check-input', 'role': 'switch'}),
         }

@@ -1,0 +1,232 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-09 00:00+0000\n"
+"PO-Revision-Date: 2026-02-09 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Arabic <ar@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=0;\n"
+
+msgid "Expense Dashboard"
+msgstr "لوحة تحكم المصاريف"
+
+msgid "Home"
+msgstr "الرئيسية"
+
+msgid "Trips"
+msgstr "الكشوفات"
+
+msgid "Expenses"
+msgstr "المصاريف"
+
+msgid "Reports"
+msgstr "التقارير"
+
+msgid "Advances"
+msgstr "السلف"
+
+msgid "Cards"
+msgstr "البطاقات"
+
+msgid "Trips Approval"
+msgstr "الموافقة على الكشوفات"
+
+msgid "Reports Approval"
+msgstr "الموافقة على التقارير"
+
+msgid "Settings"
+msgstr "الإعدادات"
+
+msgid "New Expense"
+msgstr "مصروف جديد"
+
+msgid "New Trip"
+msgstr "كشف جديد"
+
+msgid "New Advance"
+msgstr "سلفة جديدة"
+
+msgid "Unreported Expenses"
+msgstr "مصاريف غير مبلغ عنها"
+
+msgid "Unsubmitted Reports"
+msgstr "تقارير غير مرسلة"
+
+msgid "Submitted Reports"
+msgstr "تقارير مرسلة"
+
+msgid "Recent Draft Reports"
+msgstr "مسودات التقارير الأخيرة"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "No draft reports found."
+msgstr "لا توجد مسودات تقارير."
+
+msgid "Recent Trips"
+msgstr "الكشوفات الأخيرة"
+
+msgid "No recent trips."
+msgstr "لا توجد كشوفات حديثة."
+
+msgid "Recent Advances"
+msgstr "السلف الأخيرة"
+
+msgid "No recent advances."
+msgstr "لا توجد سلف حديثة."
+
+msgid "Expense Manager"
+msgstr "مدير المصاريف"
+
+msgid "Request Advance"
+msgstr "طلب سلفة"
+
+msgid "Amount (OMR)"
+msgstr "المبلغ (ريال عماني)"
+
+msgid "Date"
+msgstr "التاريخ"
+
+msgid "Payment Mode"
+msgstr "طريقة الدفع"
+
+msgid "Reference Number"
+msgstr "رقم المرجع"
+
+msgid "Statement Name"
+msgstr "اسم الكشف"
+
+msgid "Save Statement"
+msgstr "حفظ الكشف"
+
+msgid "Create New Statement"
+msgstr "إنشاء كشف جديد"
+
+msgid "Statement (Optional)"
+msgstr "الكشف (اختياري)"
+
+msgid "Travel Type"
+msgstr "نوع السفر"
+
+msgid "Business Purpose"
+msgstr "غرض العمل"
+
+msgid "Language settings updated successfully."
+msgstr "تم تحديث إعدادات اللغة بنجاح."
+
+msgid "Statement"
+msgstr "كشف"
+
+msgid "Ref"
+msgstr "مرجع"
+
+msgid "Total"
+msgstr "الإجمالي"
+
+msgid "Describe the business purpose..."
+msgstr "صف غرض العمل..."
+
+msgid "Tap to Enter"
+msgstr "اضغط للإدخال"
+
+msgid "Tap to select"
+msgstr "اضغط للاختيار"
+
+msgid "Description"
+msgstr "الوصف"
+
+msgid "Notes"
+msgstr "ملاحظات"
+
+msgid "Submit"
+msgstr "إرسال"
+
+msgid "Trip"
+msgstr "كشف"
+
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+msgid "End Date"
+msgstr "تاريخ الانتهاء"
+
+msgid "Purpose"
+msgstr "الغرض"
+
+msgid "Status"
+msgstr "الحالة"
+
+msgid "Action"
+msgstr "إجراء"
+
+msgid "Edit"
+msgstr "تعديل"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Welcome"
+msgstr "مرحباً"
+
+msgid "User"
+msgstr "مستخدم"
+
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+msgid "Logout"
+msgstr "خروج"
+
+msgid "Sign In"
+msgstr "تسجيل الدخول"
+
+msgid "Manage your expenses efficiently and track your trips with ease."
+msgstr "أدر مصاريفك بكفاءة وتابع كشوفاتك بسهولة."
+
+msgid "Invalid username or password."
+msgstr "اسم المستخدم أو كلمة المرور غير صالحة."
+
+msgid "Username"
+msgstr "اسم المستخدم"
+
+msgid "Enter your username"
+msgstr "أدخل اسم المستخدم"
+
+msgid "Password"
+msgstr "كلمة المرور"
+
+msgid "Enter your password"
+msgstr "أدخل كلمة المرور"
+
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+msgid "Language Settings"
+msgstr "إعدادات اللغة"
+
+msgid "Language"
+msgstr "اللغة"
+
+msgid "Save Settings"
+msgstr "حفظ الإعدادات"
+
+msgid "Your language preference has been updated."
+msgstr "تم تحديث تفضيلات اللغة الخاصة بك."
+
+msgid "All Statements"
+msgstr "جميع الكشوفات"
+
+msgid "No statements found."
+msgstr "لم يتم العثور على كشوفات."
+
+msgid "New Statement"
+msgstr "كشف جديد"
+
+msgid "Recent Statements"
+msgstr "الكشوفات الأخيرة"

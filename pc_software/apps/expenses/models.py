@@ -29,6 +29,10 @@ class ExpenseReport(models.Model):
         ('rejected', _('Rejected')),
     ]
 
+    class Meta:
+        verbose_name = _("Statement")
+        verbose_name_plural = _("Statements")
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(_("Report Title"), max_length=200, help_text=_("e.g. Site Visit Expenses 2026-02-07"))
     business_purpose = models.TextField(_("Business Purpose"), blank=True, null=True)
@@ -41,7 +45,7 @@ class ExpenseReport(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft')
-    total_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
+    total_amount = models.DecimalField(max_digits=12, decimal_places=3, default=0.000)
     currency = models.CharField(max_length=10, default='OMR')
     notes = models.TextField(blank=True, null=True)
 
@@ -61,7 +65,7 @@ class Advance(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='advances')
-    amount = models.DecimalField(_("Amount"), max_digits=12, decimal_places=2)
+    amount = models.DecimalField(_("Amount"), max_digits=12, decimal_places=3)
     currency = models.CharField(_("Currency"), max_length=10, default='OMR')
     date = models.DateField(_("Date"))
     paid_through = models.CharField(_("Paid Through"), max_length=50, choices=PAYMENT_MODES, blank=True, null=True)
@@ -93,7 +97,7 @@ class ExpenseItem(models.Model):
     description = models.CharField(_("Description"), max_length=255, blank=True, null=True)
     reference_number = models.CharField(_("Reference #"), max_length=50, blank=True, null=True)
     
-    amount = models.DecimalField(_("Amount"), max_digits=10, decimal_places=2)
+    amount = models.DecimalField(_("Amount"), max_digits=10, decimal_places=3)
     currency = models.CharField(_("Currency"), max_length=10, default='OMR')
     
     claim_reimbursement = models.BooleanField(_("Claim Reimbursement"), default=True)
@@ -106,6 +110,7 @@ class ExpenseItem(models.Model):
     ai_confidence = models.FloatField(default=0.0, help_text="AI Confidence Score (0-1)")
     raw_ocr_text = models.TextField(blank=True, null=True, help_text="Raw text extracted from receipt")
 
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='expenses', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
