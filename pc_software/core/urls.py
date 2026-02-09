@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),  # Add Django auth URLs
     path('', views.main_dashboard, name='main_dashboard'), # Main Landing Dashboard
+    path('restore-data/', views.restore_data_view, name='restore_data'), # Emergency Data Restore
     path('expenses/', include('expenses.urls')), # Move expenses to sub-path
     path('users/', include('users.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
