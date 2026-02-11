@@ -10,11 +10,21 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
-from pathlib import Path
+import os
 import sys
+from pathlib import Path
+
+# Fix for MySQL on Vercel/Shared Hosting
+import pymysql
+pymysql.install_as_MySQLdb()
+import MySQLdb
+if not hasattr(MySQLdb, 'version_info') or MySQLdb.version_info < (2, 2, 1):
+    MySQLdb.version_info = (2, 2, 1, 'final', 0)
+    MySQLdb.__version__ = '2.2.1'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(BASE_DIR / 'apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -91,14 +101,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-
-import pymysql
-pymysql.install_as_MySQLdb()
-import MySQLdb
-# Spoof mysqlclient version to bypass Django 5+ check
-if not hasattr(MySQLdb, 'version_info') or MySQLdb.version_info < (2, 2, 1):
-    MySQLdb.version_info = (2, 2, 1, 'final', 0)
-    MySQLdb.__version__ = '2.2.1'
 
 DATABASES = {
     'default': {
