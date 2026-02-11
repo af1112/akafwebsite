@@ -51,9 +51,22 @@ def restore_data_view(request):
             output.append(f"✅ Database {db_conf['NAME']} is ready!")
 
         # Run migrate first to ensure tables exist
-        output.append("Running migrate...")
-        call_command('migrate', interactive=False)
-        output.append("✅ Migration successful!")
+                output.append("Checking for existing tables and running migrate...")
+                try:
+                    # Force fake-initial if tables already exist but migration history is missing
+                    call_command('migrate', interactive=False, fake_initial=True)
+                    output.append("✅ Migration successful (with fake-initial)!")
+                except Exception as mig_err:
+                    if "already exists" in str(mig_err):
+                        output.append("⚠️ Some tables already exist. Attempting to clear database for a fresh start...")
+                        with connection.cursor() as cursor:
+                            cursor.execute(f"DROP DATABASE IF EXISTS {db_name}")
+                            cursor.execute(f"CREATE DATABASE {db_name}")
+                        output.append("✅ Database cleared. Retrying migration...")
+                        call_command('migrate', interactive=False)
+                        output.append("✅ Fresh migration successful!")
+                    else:
+                        raise mig_err
         
         # Load data
         data_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data.json')
