@@ -11,36 +11,26 @@ import os
 import sys
 import traceback
 
-# Setup basic logging to a string so we can potentially see it if application fails
+# For Vercel, we need to make sure the root and apps directories are in sys.path
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+APPS_DIR = os.path.join(BASE_DIR, 'apps')
+if APPS_DIR not in sys.path:
+    sys.path.insert(0, APPS_DIR)
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+
 try:
-    # Add apps directory to path for Vercel
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
-
     from django.core.wsgi import get_wsgi_application
-
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
-
-    # Wrap application creation to catch early startup errors
-    try:
-        application = get_wsgi_application()
-    except Exception as e:
-        error_msg = traceback.format_exc()
-        print(f"CRITICAL: WSGI Application failed to start:\n{error_msg}")
-        
-        # Fallback application to show the error in browser if Vercel allows
-        def application(environ, start_response):
-            status = '500 Internal Server Error'
-            output = f"<h1>Startup Error</h1><pre>{error_msg}</pre>".encode('utf-8')
-            response_headers = [('Content-type', 'text/html'), ('Content-Length', str(len(output)))]
-            start_response(status, response_headers)
-            return [output]
-except Exception as e:
+    application = get_wsgi_application()
+except Exception:
     error_msg = traceback.format_exc()
-    print(f"CRITICAL: Outer WSGI failure:\n{error_msg}")
+    print(error_msg)
+    
     def application(environ, start_response):
         status = '500 Internal Server Error'
-        output = f"<h1>Critical Startup Error</h1><pre>{error_msg}</pre>".encode('utf-8')
-        response_headers = [('Content-type', 'text/html'), ('Content-Length', str(len(output)))]
-        start_response(status, response_headers)
-        return [output]
+        body = f"<h1>Vercel Deployment Error</h1><pre>{error_msg}</pre>".encode('utf-8')
+        headers = [('Content-Type', 'text/html'), ('Content-Length', str(len(body)))]
+        start_response(status, headers)
+        return [body]
