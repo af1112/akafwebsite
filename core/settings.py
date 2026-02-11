@@ -102,17 +102,24 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# Use Environment Variables from Vercel (preferred) or Fallback to hardcoded for testing
+DB_NAME = os.environ.get('DB_NAME', 'akaf_db')
+DB_USER = os.environ.get('DB_USER', '2n7VpWz69k7A6Wq.root')
+DB_PASSWORD = os.environ.get('DB_PASSWORD', 'AKAF_PASSWORD_2026')
+DB_HOST = os.environ.get('DB_HOST', 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com')
+DB_PORT = os.environ.get('DB_PORT', '4000')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'akaf_db',
-        'USER': '2n7VpWz69k7A6Wq.root',
-        'PASSWORD': 'AKAF_PASSWORD_2026',
-        'HOST': 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com',
-        'PORT': '4000',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
         'OPTIONS': {
             'ssl': {
-                'ca': None,  # TiDB Cloud requires SSL
+                'ca': None,
             },
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
