@@ -8,6 +8,11 @@ https://docs.djangoproject.com/en/6.0/howto/deployment/wsgi/
 """
 
 import os
+import sys
+
+# Add apps directory to path for Vercel
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 from django.core.wsgi import get_wsgi_application
 

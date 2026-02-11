@@ -53,13 +53,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Custom Apps
-    'projects',
-    'reports',
-    'ai_engine',
-    'dms',
-    'users',
-    'expenses',
-    'ticketing',
+    'apps.projects',
+    'apps.reports',
+    'apps.ai_engine',
+    'apps.dms',
+    'apps.users',
+    'apps.expenses',
+    'apps.ticketing',
 ]
 
 MIDDLEWARE = [

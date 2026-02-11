@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from expenses.models import ExpenseItem
+from .models import ExpenseItem
 from apps.ai_engine.ocr import extract_receipt_data
 from datetime import datetime
 
