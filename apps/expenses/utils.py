@@ -1,23 +1,34 @@
 from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
-from xhtml2pdf import pisa
+try:
+    from xhtml2pdf import pisa
+except ImportError:
+    pisa = None
 from django.conf import settings
 import os
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
+try:
+    from reportlab.pdfbase import pdfmetrics
+    from reportlab.pdfbase.ttfonts import TTFont
+except ImportError:
+    pdfmetrics = None
+    TTFont = None
 
 def render_to_pdf(template_src, context_dict={}):
+    if pisa is None:
+        return HttpResponse("PDF Generation is temporarily disabled due to server compatibility issues. Please contact admin.", status=503)
+
     # Register Persian font
-    try:
-        font_path = os.path.join(str(settings.BASE_DIR), 'static', 'fonts', 'IRANYekanWebRegular.ttf')
-        if os.path.exists(font_path):
-            pdfmetrics.registerFont(TTFont('IranYekan', font_path))
-        else:
-            print(f"DEBUG: Font file not found at {font_path}")
-    except Exception as e:
-        # Ignore if already registered
-        pass
+    if pdfmetrics:
+        try:
+            font_path = os.path.join(str(settings.BASE_DIR), 'static', 'fonts', 'IRANYekanWebRegular.ttf')
+            if os.path.exists(font_path):
+                pdfmetrics.registerFont(TTFont('IranYekan', font_path))
+            else:
+                print(f"DEBUG: Font file not found at {font_path}")
+        except Exception as e:
+            # Ignore if already registered
+            pass
 
     template = get_template(template_src)
     html  = template.render(context_dict)
