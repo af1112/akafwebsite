@@ -1,0 +1,63 @@
+from django.db import models
+from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
+
+User = get_user_model()
+
+class Ticket(models.Model):
+    STATUS_CHOICES = [
+        ('open', _('Open')),
+        ('in_progress', _('In Progress')),
+        ('resolved', _('Resolved')),
+        ('closed', _('Closed')),
+    ]
+
+    PRIORITY_CHOICES = [
+        ('low', _('Low')),
+        ('medium', _('Medium')),
+        ('high', _('High')),
+        ('critical', _('Critical')),
+    ]
+
+    CATEGORY_CHOICES = [
+        ('bug', _('Bug')),
+        ('feature', _('Feature Request')),
+        ('support', _('Support')),
+        ('other', _('Other')),
+    ]
+
+    title = models.CharField(_("Title"), max_length=200)
+    description = models.TextField(_("Description"))
+    
+    status = models.CharField(_("Status"), max_length=20, choices=STATUS_CHOICES, default='open')
+    priority = models.CharField(_("Priority"), max_length=20, choices=PRIORITY_CHOICES, default='medium')
+    category = models.CharField(_("Category"), max_length=20, choices=CATEGORY_CHOICES, default='support')
+    
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_tickets', verbose_name=_("Created By"))
+    assigned_to = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='assigned_tickets', verbose_name=_("Assigned To"))
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    attachment = models.FileField(_("Attachment"), upload_to='tickets/%Y/%m/', blank=True, null=True)
+
+    class Meta:
+        verbose_name = _("Ticket")
+        verbose_name_plural = _("Tickets")
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"#{self.id} - {self.title}"
+
+class TicketComment(models.Model):
+    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField(_("Comment"))
+    created_at = models.DateTimeField(auto_now_add=True)
+    attachment = models.FileField(_("Attachment"), upload_to='ticket_comments/%Y/%m/', blank=True, null=True)
+
+    class Meta:
+        ordering = ['created_at']
+
+    def __str__(self):
+        return f"Comment by {self.user} on #{self.ticket.id}"

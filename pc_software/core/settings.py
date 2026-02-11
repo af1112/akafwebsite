@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'dms',
     'users',
     'expenses',
+    'ticketing',
 ]
 
 MIDDLEWARE = [

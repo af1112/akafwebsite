@@ -35,6 +35,11 @@
                 <i class="fas fa-wallet"></i>
                 <span>{% trans "Expenses" %}</span>
             </a>
+
+            <a href="{% url 'ticket_list' %}" class="nav-link {% if 'ticketing' in request.path %}active{% endif %}">
+                <i class="fas fa-ticket-alt"></i>
+                <span>{% trans "Ticketing" %}</span>
+            </a>
             
             <a href="#" class="nav-link text-muted" style="cursor: not-allowed">
                 <i class="fas fa-project-diagram"></i>

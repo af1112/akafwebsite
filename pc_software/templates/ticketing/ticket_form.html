@@ -1,0 +1,61 @@
+{% extends 'dashboard_base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "New Ticket" %}{% endblock %}
+{% block page_title %}{% trans "Support" %}{% endblock %}
+{% block content_title %}{% trans "Create New Ticket" %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Subject" %}</label>
+                        <input type="text" name="title" class="form-control" required placeholder="Brief summary of the issue">
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">{% trans "Category" %}</label>
+                            <select name="category" class="form-select">
+                                <option value="support">Support</option>
+                                <option value="bug">Bug Report</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">{% trans "Priority" %}</label>
+                            <select name="priority" class="form-select">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                                <option value="critical">Critical</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Description" %}</label>
+                        <textarea name="description" class="form-control" rows="6" required placeholder="Please describe the issue in detail..."></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">{% trans "Attachment (Optional)" %}</label>
+                        <input type="file" name="attachment" class="form-control">
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'ticket_list' %}" class="btn btn-light">{% trans "Cancel" %}</a>
+                        <button type="submit" class="btn btn-primary px-4">{% trans "Submit Ticket" %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

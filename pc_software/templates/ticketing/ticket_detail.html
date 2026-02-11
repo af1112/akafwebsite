@@ -1,0 +1,112 @@
+{% extends 'dashboard_base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Ticket Details" %}{% endblock %}
+{% block page_title %}{% trans "Support" %}{% endblock %}
+{% block content_title %}{% trans "Ticket" %} #{{ ticket.id }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Ticket Info -->
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+                <h5 class="mb-0">{{ ticket.title }}</h5>
+                <span class="badge bg-secondary">{{ ticket.get_category_display }}</span>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-4">{{ ticket.description|linebreaks }}</p>
+                
+                {% if ticket.attachment %}
+                <div class="alert alert-light border">
+                    <i class="fas fa-paperclip me-2"></i>
+                    <a href="{{ ticket.attachment.url }}" target="_blank">{% trans "View Attachment" %}</a>
+                </div>
+                {% endif %}
+                
+                <div class="d-flex gap-3 text-sm text-muted mt-4 pt-3 border-top">
+                    <div><i class="fas fa-user me-1"></i> {{ ticket.created_by.username }}</div>
+                    <div><i class="fas fa-calendar me-1"></i> {{ ticket.created_at|date:"M d, Y H:i" }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comments -->
+        <h6 class="mb-3">{% trans "Discussion" %}</h6>
+        
+        {% for comment in ticket.comments.all %}
+        <div class="card mb-3 {% if comment.user.is_staff %}border-primary{% endif %}">
+            <div class="card-body py-3">
+                <div class="d-flex justify-content-between mb-2">
+                    <div class="fw-bold {% if comment.user.is_staff %}text-primary{% endif %}">
+                        {{ comment.user.username }}
+                        {% if comment.user.is_staff %}
+                        <span class="badge bg-primary-subtle text-primary ms-1" style="font-size: 0.7em">SUPPORT</span>
+                        {% endif %}
+                    </div>
+                    <small class="text-muted">{{ comment.created_at|timesince }} ago</small>
+                </div>
+                <p class="mb-0">{{ comment.content|linebreaks }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <div class="text-center text-muted py-3 mb-4">
+            <small>{% trans "No comments yet." %}</small>
+        </div>
+        {% endfor %}
+
+        <!-- Add Comment -->
+        {% if ticket.status != 'closed' %}
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Add Reply" %}</label>
+                        <textarea name="content" class="form-control" rows="3" required placeholder="Type your reply here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{% trans "Post Reply" %}</button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-warning">
+            {% trans "This ticket is closed. You cannot add new comments." %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Sidebar Info -->
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title text-muted mb-3">{% trans "Properties" %}</h6>
+                
+                <div class="mb-3">
+                    <label class="small text-muted d-block">{% trans "Status" %}</label>
+                    <span class="badge bg-success fs-6">{{ ticket.get_status_display }}</span>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="small text-muted d-block">{% trans "Priority" %}</label>
+                    <span class="fw-bold">{{ ticket.get_priority_display }}</span>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="small text-muted d-block">{% trans "Assigned To" %}</label>
+                    {% if ticket.assigned_to %}
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-sm bg-light text-primary rounded-circle me-2 d-flex align-items-center justify-content-center" style="width:30px;height:30px">
+                                {{ ticket.assigned_to.first_name.0|default:ticket.assigned_to.username.0 }}
+                            </div>
+                            <span>{{ ticket.assigned_to.get_full_name|default:ticket.assigned_to.username }}</span>
+                        </div>
+                    {% else %}
+                        <span class="text-muted fst-italic">{% trans "Unassigned" %}</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
