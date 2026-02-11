@@ -64,6 +64,10 @@ class LoginRequiredMiddleware:
                     is_exempt = True
                     break
             
+            # SPECIAL CASE: Always exempt restore-data to fix deployment issues
+            if path.startswith('/restore-data/'):
+                is_exempt = True
+
             if not is_exempt:
                 return redirect(f"{self.login_url}?next={request.path}")
 

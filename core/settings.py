@@ -25,9 +25,15 @@ sys.path.insert(0, str(BASE_DIR / 'apps'))
 SECRET_KEY = 'django-insecure-24^fn&q)8!c3q!jv*pf&mu!r5k9a2+_%b25*pmdao_og6v0#pv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']  # Allow all hosts for Vercel/Dev
+ALLOWED_HOSTS = [
+    'akafbusiness.com',
+    'www.akafbusiness.com',
+    'akafco.com',
+    'www.akafco.com',
+    '.vercel.app'
+]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://akafbusiness.com',
