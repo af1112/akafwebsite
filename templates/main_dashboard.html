@@ -1,0 +1,131 @@
+{% extends 'dashboard_base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Main Dashboard" %}{% endblock %}
+{% block page_title %}{% trans "Dashboard" %}{% endblock %}
+{% block content_title %}{% trans "Main Dashboard" %}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Welcome Banner -->
+    <div class="col-12">
+        <div class="welcome-banner">
+            <div class="welcome-content">
+                <h2 class="welcome-title">{% trans "Welcome back" %}, {{ user.first_name|default:user.username }}!</h2>
+                <p class="welcome-subtitle">
+                    {% trans "Manage your business modules, track expenses, and monitor performance all in one place." %}
+                </p>
+            </div>
+            <!-- Decorative Circles -->
+            <div class="decorative-circle" style="width: 300px; height: 300px; top: -100px; right: -50px;"></div>
+            <div class="decorative-circle" style="width: 200px; height: 200px; bottom: -50px; left: 10%;"></div>
+        </div>
+    </div>
+</div>
+
+<h5 class="mb-4 fw-bold text-dark">{% trans "Business Modules" %}</h5>
+
+<div class="row g-4">
+    <!-- Expense Manager -->
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <a href="{% url 'dashboard' %}" class="text-decoration-none">
+            <div class="dashboard-card">
+                <div class="card-icon-wrapper bg-light-primary">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <h3 class="card-title-lg">{% trans "Expense Manager" %}</h3>
+                <p class="card-desc">{% trans "Track daily expenses and petty cash." %}</p>
+                <div class="card-action text-primary">
+                    {% trans "Open Module" %} <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Ticketing System -->
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <a href="{% url 'ticket_list' %}" class="text-decoration-none">
+            <div class="dashboard-card">
+                <div class="card-icon-wrapper bg-light-success">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <h3 class="card-title-lg">{% trans "Ticketing System" %}</h3>
+                <p class="card-desc">{% trans "Manage support tickets and issues." %}</p>
+                <div class="card-action text-success">
+                    {% trans "Open Module" %} <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Project Control -->
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="dashboard-card opacity-75" style="cursor: not-allowed">
+            <div class="card-icon-wrapper bg-light-info">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3 class="card-title-lg">{% trans "Project Control" %}</h3>
+            <p class="card-desc">{% trans "Manage tasks and timelines." %}</p>
+            <div class="card-action text-muted">
+                {% trans "Coming Soon" %} <i class="fas fa-lock"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Document Management -->
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="dashboard-card opacity-75" style="cursor: not-allowed">
+            <div class="card-icon-wrapper bg-light-danger">
+                <i class="fas fa-folder-open"></i>
+            </div>
+            <h3 class="card-title-lg">{% trans "Document DMS" %}</h3>
+            <p class="card-desc">{% trans "Secure document storage." %}</p>
+            <div class="card-action text-muted">
+                {% trans "Coming Soon" %} <i class="fas fa-lock"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Engine -->
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="dashboard-card opacity-75" style="cursor: not-allowed">
+            <div class="card-icon-wrapper bg-light-warning">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3 class="card-title-lg">{% trans "AI Engine" %}</h3>
+            <p class="card-desc">{% trans "Intelligent data analysis." %}</p>
+            <div class="card-action text-muted">
+                {% trans "Coming Soon" %} <i class="fas fa-lock"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Digital Menu -->
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="dashboard-card opacity-75" style="cursor: not-allowed">
+            <div class="card-icon-wrapper bg-light-success">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <h3 class="card-title-lg">{% trans "Digital Menu" %}</h3>
+            <p class="card-desc">{% trans "Restaurant menu management." %}</p>
+            <div class="card-action text-muted">
+                {% trans "Coming Soon" %} <i class="fas fa-lock"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Customer Club -->
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <div class="dashboard-card opacity-75" style="cursor: not-allowed">
+            <div class="card-icon-wrapper bg-light-warning">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3 class="card-title-lg">{% trans "Customer Club" %}</h3>
+            <p class="card-desc">{% trans "Loyalty and CRM." %}</p>
+            <div class="card-action text-muted">
+                {% trans "Coming Soon" %} <i class="fas fa-lock"></i>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

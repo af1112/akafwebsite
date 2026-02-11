@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import sys
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,16 +30,12 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']  # Allow all hosts for Vercel/Dev
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://www.akafco.com',
-    'https://akafco.com',
-    'https://pcsoftware.vercel.app',
-    'http://localhost:3000',
     'https://akafbusiness.com',
     'https://www.akafbusiness.com',
+    'https://akafco.com',
+    'https://www.akafco.com',
 ]
 
-
-APPEND_SLASH = False
 
 # Application definition
 
@@ -58,16 +53,19 @@ INSTALLED_APPS = [
     'dms',
     'users',
     'expenses',
+    'ticketing',
 ]
 
 MIDDLEWARE = [
-    'core.middleware.RequestLoggingMiddleware',  # Custom Logging
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # Add WhiteNoise
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.locale.LocaleMiddleware', # Add LocaleMiddleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'users.middleware.UserLanguageMiddleware', # Custom Language Middleware
+    'users.middleware.LoginRequiredMiddleware', # Custom Login Requirement
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -84,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.users.context_processors.user_settings', # Custom context processor
             ],
         },
     },
@@ -95,12 +94,45 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+import pymysql
+pymysql.install_as_MySQLdb()
+import MySQLdb
+# Spoof mysqlclient version to bypass Django 5+ check
+if not hasattr(MySQLdb, 'version_info') or MySQLdb.version_info < (2, 2, 1):
+    MySQLdb.version_info = (2, 2, 1, 'final', 0)
+    MySQLdb.__version__ = '2.2.1'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Use MySQL if environment variables are set (e.g., in Vercel)
+import os
+if os.environ.get('DB_NAME'):
+    db_options = {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    }
+    
+    # Enable SSL for TiDB Cloud
+    if os.environ.get('DB_OPTIONS_SSL_MODE') == 'REQUIRED':
+        import ssl
+        db_options['ssl'] = {
+            'check_hostname': False,
+            'verify_mode': ssl.CERT_NONE
+        }
+
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT', '3306'),
+        'OPTIONS': db_options,
+    }
 
 
 # Password validation
@@ -133,36 +165,32 @@ USE_I18N = True
 
 USE_TZ = True
 
+from django.utils.translation import gettext_lazy as _
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('fa', _('Persian')),
+    ('ar', _('Arabic')),
+    ('ur', _('Urdu')),
+    ('hi', _('Hindi')),
+    ('tr', _('Turkish')),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+STATIC_ROOT = BASE_DIR / 'static_root'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# Vercel Configuration
-if os.environ.get('VERCEL'):
-    # FORCE_SCRIPT_NAME = '/pc_software'  # Disabled for custom domain akafbusiness.com
-    STATIC_URL = '/static/'
-    MEDIA_URL = '/media/'
-    # Trust Vercel Proxy - Updated 2026-02-08
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    USE_X_FORWARDED_HOST = True
-    USE_X_FORWARDED_PORT = True
-
-# Add Media Settings
-if not os.environ.get('VERCEL'):
-    MEDIA_URL = '/media/'
-
+MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/6.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Use signed cookies for sessions to avoid DB writes on every visit
-SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'main_dashboard'
+LOGOUT_REDIRECT_URL = 'login'

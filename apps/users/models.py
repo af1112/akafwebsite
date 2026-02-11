@@ -1,3 +1,29 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.conf import settings
 
-# Create your models here.
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    preferred_language = models.CharField(
+        max_length=10,
+        choices=settings.LANGUAGES,
+        default='en'
+    )
+    # Currency Settings
+    currency_code = models.CharField(max_length=10, default='OMR', help_text="ISO 4217 Currency Code (e.g. OMR, USD)")
+    currency_symbol = models.CharField(max_length=10, default='ر.ع.', help_text="Currency Symbol (e.g. $, €)")
+    currency_decimal_places = models.IntegerField(default=3, help_text="Number of decimal places (e.g. 3 for OMR, 2 for USD)")
+
+    def __str__(self):
+        return f"{self.user.username} Profile"
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()

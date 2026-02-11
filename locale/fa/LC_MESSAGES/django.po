@@ -1,0 +1,232 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-09 00:00+0000\n"
+"PO-Revision-Date: 2026-02-09 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Persian <fa@li.org>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Expense Dashboard"
+msgstr "داشبورد هزینه‌ها"
+
+msgid "Home"
+msgstr "خانه"
+
+msgid "Trips"
+msgstr "صورت وضعیت‌ها"
+
+msgid "Expenses"
+msgstr "هزینه‌ها"
+
+msgid "Reports"
+msgstr "گزارش‌ها"
+
+msgid "Advances"
+msgstr "مساعده‌ها"
+
+msgid "Cards"
+msgstr "کارت‌ها"
+
+msgid "Trips Approval"
+msgstr "تایید صورت وضعیت"
+
+msgid "Reports Approval"
+msgstr "تایید گزارش‌ها"
+
+msgid "Settings"
+msgstr "تنظیمات"
+
+msgid "New Expense"
+msgstr "هزینه جدید"
+
+msgid "New Trip"
+msgstr "صورت وضعیت جدید"
+
+msgid "New Advance"
+msgstr "مساعده جدید"
+
+msgid "Unreported Expenses"
+msgstr "هزینه‌های گزارش نشده"
+
+msgid "Unsubmitted Reports"
+msgstr "گزارش‌های ارسال نشده"
+
+msgid "Submitted Reports"
+msgstr "گزارش‌های ارسال شده"
+
+msgid "Recent Draft Reports"
+msgstr "پیش‌نویس گزارش‌های اخیر"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "No draft reports found."
+msgstr "هیچ پیش‌نویس گزارشی یافت نشد."
+
+msgid "Recent Trips"
+msgstr "صورت وضعیت‌های اخیر"
+
+msgid "No recent trips."
+msgstr "هیچ صورت وضعیتی یافت نشد."
+
+msgid "Recent Advances"
+msgstr "مساعده‌های اخیر"
+
+msgid "No recent advances."
+msgstr "هیچ مساعده‌ای یافت نشد."
+
+msgid "Expense Manager"
+msgstr "مدیریت هزینه‌ها"
+
+msgid "Request Advance"
+msgstr "درخواست مساعده"
+
+msgid "Amount (OMR)"
+msgstr "مبلغ (ریال عمان)"
+
+msgid "Date"
+msgstr "تاریخ"
+
+msgid "Payment Mode"
+msgstr "شیوه پرداخت"
+
+msgid "Reference Number"
+msgstr "شماره مرجع"
+
+msgid "Statement Name"
+msgstr "نام صورت وضعیت"
+
+msgid "Save Statement"
+msgstr "ذخیره صورت وضعیت"
+
+msgid "Create New Statement"
+msgstr "ساختن صورت وضعیت جدید"
+
+msgid "Statement (Optional)"
+msgstr "صورت وضعیت (اختیاری)"
+
+msgid "Travel Type"
+msgstr "نوع سفر"
+
+msgid "Business Purpose"
+msgstr "هدف ماموریت"
+
+msgid "Language settings updated successfully."
+msgstr "تنظیمات زبان با موفقیت بروزرسانی شد."
+
+msgid "Statement"
+msgstr "صورت وضعیت"
+
+msgid "Ref"
+msgstr "مرجع"
+
+msgid "Total"
+msgstr "جمع"
+
+msgid "Describe the business purpose..."
+msgstr "هدف از ماموریت یا پروژه را شرح دهید..."
+
+msgid "Tap to Enter"
+msgstr "برای ورود ضربه بزنید"
+
+msgid "Tap to select"
+msgstr "برای انتخاب ضربه بزنید"
+
+msgid "Description"
+msgstr "توضیحات"
+
+msgid "Notes"
+msgstr "یادداشت‌ها"
+
+msgid "Submit"
+msgstr "ثبت"
+
+msgid "Trip"
+msgstr "صورت وضعیت"
+
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+msgid "Purpose"
+msgstr "هدف"
+
+msgid "Status"
+msgstr "وضعیت"
+
+msgid "Action"
+msgstr "عملیات"
+
+msgid "Edit"
+msgstr "ویرایش"
+
+msgid "Delete"
+msgstr "حذف"
+
+msgid "Welcome"
+msgstr "خوش آمدید"
+
+msgid "User"
+msgstr "کاربر"
+
+msgid "Dashboard"
+msgstr "داشبورد"
+
+msgid "Logout"
+msgstr "خروج"
+
+msgid "Sign In"
+msgstr "ورود"
+
+msgid "Manage your expenses efficiently and track your trips with ease."
+msgstr "هزینه‌های خود را به سادگی مدیریت کنید و صورت وضعیت‌های خود را پیگیری نمایید."
+
+msgid "Invalid username or password."
+msgstr "نام کاربری یا رمز عبور اشتباه است."
+
+msgid "Username"
+msgstr "نام کاربری"
+
+msgid "Enter your username"
+msgstr "نام کاربری خود را وارد کنید"
+
+msgid "Password"
+msgstr "رمز عبور"
+
+msgid "Enter your password"
+msgstr "رمز عبور خود را وارد کنید"
+
+msgid "Login"
+msgstr "ورود"
+
+msgid "Language Settings"
+msgstr "تنظیمات زبان"
+
+msgid "Language"
+msgstr "زبان"
+
+msgid "Save Settings"
+msgstr "ذخیره تنظیمات"
+
+msgid "Your language preference has been updated."
+msgstr "تنظیمات زبان شما به‌روزرسانی شد."
+
+msgid "All Statements"
+msgstr "همه صورت وضعیت‌ها"
+
+msgid "No statements found."
+msgstr "هیچ صورت وضعیتی یافت نشد."
+
+msgid "New Statement"
+msgstr "صورت وضعیت جدید"
+
+msgid "Recent Statements"
+msgstr "صورت وضعیت‌های اخیر"

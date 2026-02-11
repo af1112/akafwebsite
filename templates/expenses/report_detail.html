@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-6 text-end">
                     <p class="mb-1 text-muted">{% trans "Total Amount" %}</p>
-                    <h3 class="text-primary">{{ report.total_amount|floatformat:3 }} <small class="fs-6">OMR</small></h3>
+                    <h3 class="text-primary">{{ report.total_amount|floatformat:3 }} <small class="fs-6">{{ report.currency }}</small></h3>
                 </div>
             </div>
         </div>
