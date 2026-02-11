@@ -28,11 +28,28 @@ def restore_data_view(request):
     try:
         # Check DB Connection Info (Safe)
         from django.conf import settings
+        from django.db import connection
         db_conf = settings.DATABASES['default']
         output.append(f"DB Engine: {db_conf['ENGINE']}")
         output.append(f"DB Host: {db_conf.get('HOST', 'N/A')}")
         output.append(f"DB User: {db_conf.get('USER', 'N/A')}")
         
+        # Try to create database if it doesn't exist (MySQL/TiDB specific)
+        if 'mysql' in db_conf['ENGINE']:
+            import pymysql
+            output.append(f"Ensuring database {db_conf['NAME']} exists...")
+            temp_conn = pymysql.connect(
+                host=db_conf['HOST'],
+                user=db_conf['USER'],
+                password=db_conf['PASSWORD'],
+                port=int(db_conf.get('PORT', 3306)),
+                ssl={'ca': None} if 'ssl' in db_conf.get('OPTIONS', {}) else None
+            )
+            with temp_conn.cursor() as cursor:
+                cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_conf['NAME']}")
+            temp_conn.close()
+            output.append(f"✅ Database {db_conf['NAME']} is ready!")
+
         # Run migrate first to ensure tables exist
         output.append("Running migrate...")
         call_command('migrate', interactive=False)
