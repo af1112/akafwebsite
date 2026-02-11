@@ -1,8 +1,15 @@
-import pytesseract
+try:
+    import pytesseract
+except ImportError:
+    pytesseract = None
+
 try:
     from PIL import Image
 except ImportError:
-    import Image
+    try:
+        import Image
+    except ImportError:
+        Image = None
 import re
 import os
 from django.conf import settings
@@ -11,10 +18,11 @@ from django.conf import settings
 tesseract_path_user = os.path.expandvars(r'%LOCALAPPDATA%\Programs\Tesseract-OCR\tesseract.exe')
 tesseract_path_program_files = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-if os.path.exists(tesseract_path_user):
-    pytesseract.pytesseract.tesseract_cmd = tesseract_path_user
-elif os.path.exists(tesseract_path_program_files):
-    pytesseract.pytesseract.tesseract_cmd = tesseract_path_program_files
+if pytesseract:
+    if os.path.exists(tesseract_path_user):
+        pytesseract.pytesseract.tesseract_cmd = tesseract_path_user
+    elif os.path.exists(tesseract_path_program_files):
+        pytesseract.pytesseract.tesseract_cmd = tesseract_path_program_files
 
 def detect_category(text):
     """
@@ -52,16 +60,16 @@ def extract_receipt_data(image_path):
 
     try:
         # 1. Check if Tesseract is available
-        if not os.path.exists(pytesseract.pytesseract.tesseract_cmd):
+        if pytesseract is None or Image is None or not os.path.exists(pytesseract.pytesseract.tesseract_cmd):
             # Fallback for demo/dev if Tesseract is not installed
-            print("WARNING: Tesseract not found. Using mock data.")
+            print("WARNING: Tesseract or Pillow not found. Using mock data.")
             return {
                 'date': '2023-10-25',
                 'amount': 15.500,
                 'description': 'Mock Restaurant Receipt',
                 'category': 'Food',
                 'merchant': 'Tasty Bites',
-                'raw_text': 'Mock data: Tesseract OCR is not installed on the server.'
+                'raw_text': 'Mock data: OCR dependencies are not installed on the server.'
             }
 
         # 2. OCR Scan
