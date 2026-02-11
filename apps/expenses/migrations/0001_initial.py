@@ -16,6 +16,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='Trip',
+            fields=[
+                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('name', models.CharField(max_length=200, verbose_name='Trip Name')),
+                ('travel_type', models.CharField(choices=[('domestic', 'Domestic'), ('international', 'International')], default='domestic', max_length=20, verbose_name='Travel Type')),
+                ('business_purpose', models.TextField(blank=True, null=True, verbose_name='Business Purpose')),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='trips', to=settings.AUTH_USER_MODEL)),
+            ],
+        ),
+        migrations.CreateModel(
             name='ExpenseReport',
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
@@ -30,6 +41,7 @@ class Migration(migrations.Migration):
                 ('currency', models.CharField(default='OMR', max_length=10)),
                 ('notes', models.TextField(blank=True, null=True)),
                 ('submitted_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='expense_reports', to=settings.AUTH_USER_MODEL)),
+                ('trip', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='reports', to='expenses.trip')),
             ],
             options={
                 'verbose_name': 'Statement',
@@ -57,22 +69,6 @@ class Migration(migrations.Migration):
                 ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='expenses', to=settings.AUTH_USER_MODEL)),
                 ('report', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='items', to='expenses.expensereport')),
             ],
-        ),
-        migrations.CreateModel(
-            name='Trip',
-            fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=200, verbose_name='Trip Name')),
-                ('travel_type', models.CharField(choices=[('domestic', 'Domestic'), ('international', 'International')], default='domestic', max_length=20, verbose_name='Travel Type')),
-                ('business_purpose', models.TextField(blank=True, null=True, verbose_name='Business Purpose')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='trips', to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
-        migrations.AddField(
-            model_name='expensereport',
-            name='trip',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='reports', to='expenses.trip'),
         ),
         migrations.CreateModel(
             name='Advance',
