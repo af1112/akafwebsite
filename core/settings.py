@@ -104,35 +104,20 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'akaf_db',
+        'USER': '2n7VpWz69k7A6Wq.root',
+        'PASSWORD': 'AKAF_PASSWORD_2026',
+        'HOST': 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com',
+        'PORT': '4000',
+        'OPTIONS': {
+            'ssl': {
+                'ca': None,  # TiDB Cloud requires SSL
+            },
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
-
-# Use MySQL if environment variables are set (e.g., in Vercel)
-import os
-if os.environ.get('DB_NAME'):
-    db_options = {
-        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-    }
-    
-    # Enable SSL for TiDB Cloud
-    if os.environ.get('DB_OPTIONS_SSL_MODE') == 'REQUIRED':
-        import ssl
-        db_options['ssl'] = {
-            'check_hostname': False,
-            'verify_mode': ssl.CERT_NONE
-        }
-
-    DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT', '3306'),
-        'OPTIONS': db_options,
-    }
 
 
 # Password validation
