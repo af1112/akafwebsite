@@ -4,6 +4,8 @@ from django.utils import timezone
 from django.contrib import messages
 from .models import Attendance
 from django.utils.translation import gettext as _
+import base64
+from django.core.files.base import ContentFile
 
 @login_required
 def attendance_dashboard(request):
@@ -27,6 +29,22 @@ def clock_in(request):
         
         if not attendance.clock_in:
             attendance.clock_in = timezone.now()
+            
+            # Save location if provided
+            lat = request.POST.get('latitude')
+            lng = request.POST.get('longitude')
+            if lat and lng:
+                attendance.latitude = lat
+                attendance.longitude = lng
+            
+            # Save photo if provided
+            photo_data = request.POST.get('photo')
+            if photo_data:
+                format, imgstr = photo_data.split(';base64,')
+                ext = format.split('/')[-1]
+                data = ContentFile(base64.b64decode(imgstr), name=f"in_{request.user.id}_{today}.{ext}")
+                attendance.photo_in = data
+            
             # Get IP address
             x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
             if x_forwarded_for:
@@ -49,6 +67,22 @@ def clock_out(request):
             attendance = Attendance.objects.get(user=request.user, date=today)
             if attendance.clock_in and not attendance.clock_out:
                 attendance.clock_out = timezone.now()
+                
+                # Update location if provided (exit location)
+                lat = request.POST.get('latitude')
+                lng = request.POST.get('longitude')
+                if lat and lng:
+                    attendance.latitude = lat
+                    attendance.longitude = lng
+                
+                # Save photo if provided
+                photo_data = request.POST.get('photo')
+                if photo_data:
+                    format, imgstr = photo_data.split(';base64,')
+                    ext = format.split('/')[-1]
+                    data = ContentFile(base64.b64decode(imgstr), name=f"out_{request.user.id}_{today}.{ext}")
+                    attendance.photo_out = data
+
                 attendance.save()
                 messages.success(request, _("Clock-out recorded successfully!"))
             elif not attendance.clock_in:

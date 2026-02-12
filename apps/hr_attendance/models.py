@@ -8,6 +8,15 @@ class Attendance(models.Model):
     date = models.DateField(_("Date"), default=timezone.now)
     clock_in = models.DateTimeField(_("Clock In"), null=True, blank=True)
     clock_out = models.DateTimeField(_("Clock Out"), null=True, blank=True)
+    
+    # Location tracking
+    latitude = models.DecimalField(_("Latitude"), max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(_("Longitude"), max_digits=9, decimal_places=6, null=True, blank=True)
+    
+    # Photo proof
+    photo_in = models.ImageField(_("Photo In"), upload_to='attendance_photos/%Y/%m/', null=True, blank=True)
+    photo_out = models.ImageField(_("Photo Out"), upload_to='attendance_photos/%Y/%m/', null=True, blank=True)
+    
     ip_address = models.GenericIPAddressField(_("IP Address"), null=True, blank=True)
     note = models.TextField(_("Note"), null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

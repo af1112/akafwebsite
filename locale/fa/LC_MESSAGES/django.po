@@ -473,3 +473,39 @@ msgstr "شما قبلاً خروج خود را ثبت کرده‌اید."
 
 msgid "No attendance record found for today. Please clock in first."
 msgstr "رکورد حضور و غیابی برای امروز یافت نشد. لطفاً ابتدا ورود بزنید."
+
+msgid "Location captured"
+msgstr "موقعیت مکانی ثبت شد"
+
+msgid "Location access denied"
+msgstr "دسترسی به موقعیت مکانی داده نشد"
+
+msgid "Take Selfie & Clock In"
+msgstr "گرفتن عکس سلفی و ثبت ورود"
+
+msgid "Take Selfie & Clock Out"
+msgstr "گرفتن عکس سلفی و ثبت خروج"
+
+msgid "Capture Photo"
+msgstr "گرفتن عکس"
+
+msgid "Confirm Clock In"
+msgstr "تایید و ثبت نهایی ورود"
+
+msgid "Confirm Clock Out"
+msgstr "تایید و ثبت نهایی خروج"
+
+msgid "Camera access is required for attendance."
+msgstr "دسترسی به دوربین برای ثبت حضور و غیاب الزامی است."
+
+msgid "Detecting location..."
+msgstr "در حال شناسایی موقعیت مکانی..."
+
+msgid "No history."
+msgstr "تاریخچه‌ای وجود ندارد."
+
+msgid "Entry"
+msgstr "ورود"
+
+msgid "Exit"
+msgstr "خروج"
