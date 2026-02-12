@@ -31,17 +31,23 @@ class LanguageSettingsForm(forms.ModelForm):
         fields = ['preferred_language', 'currency_code', 'currency_symbol', 'currency_decimal_places']
 
 class UserCreateForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}), label="Password")
-    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}), label="Confirm Password")
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'autocomplete': 'new-password'}), 
+        label="Password"
+    )
+    confirm_password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'autocomplete': 'new-password'}), 
+        label="Confirm Password"
+    )
 
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'password']
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'username': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'autocomplete': 'off'}),
         }
 
     def clean(self):

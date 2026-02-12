@@ -12,7 +12,7 @@
                 <h5 class="mb-0 fw-bold">{{ title }}</h5>
             </div>
             <div class="card-body">
-                <form method="post">
+                <form method="post" autocomplete="off">
                     {% csrf_token %}
                     
                     {% if user_form %}
