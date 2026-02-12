@@ -15,6 +15,10 @@
                 <form method="post" autocomplete="off">
                     {% csrf_token %}
                     
+                    <!-- Hidden fields to prevent browser autofill of admin credentials -->
+                    <input type="text" style="display:none" aria-hidden="true">
+                    <input type="password" style="display:none" aria-hidden="true">
+                    
                     {% if user_form %}
                     <h6 class="text-primary fw-bold mb-3">{% trans "Account Information" %}</h6>
                     <div class="row g-3 mb-4">

@@ -72,9 +72,10 @@ class UserPermissionsForm(forms.Form):
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
         if user:
-            # Check if user has these custom permissions
-            # We will use simple codenames for these permissions
-            for field in self.fields:
-                perm_codename = field.lower()
-                if user.has_perm(f'users.{perm_codename}'):
-                    self.fields[field].initial = True
+            # Get all codenames of permissions assigned directly to this user
+            # This is more reliable than has_perm for the edit form
+            user_perms = set(user.user_permissions.values_list('codename', flat=True))
+            for field_name in self.fields:
+                perm_codename = field_name.lower()
+                if perm_codename in user_perms:
+                    self.initial[field_name] = True

@@ -50,27 +50,32 @@ def user_create(request):
             # Create profile for new user
             UserProfile.objects.get_or_create(user=user)
             
+            # We need the ContentType for UserProfile since that's where perms are defined
+            from django.contrib.contenttypes.models import ContentType
+            content_type = ContentType.objects.get_for_model(UserProfile)
+            
             # Save permissions
             for field, value in perm_form.cleaned_data.items():
                 if value:
                     perm_codename = field.lower()
                     try:
-                        # Search for permission with this codename in ANY app
-                        permission = Permission.objects.filter(codename=perm_codename).first()
-                        if permission:
-                            user.user_permissions.add(permission)
-                        else:
-                            # Fallback: create permission if it doesn't exist
-                            # This is helpful if permissions weren't synced yet
-                            content_type = ContentType.objects.get_for_model(UserProfile)
+                        # Find the permission specifically for our model
+                        permission = Permission.objects.filter(
+                            codename=perm_codename,
+                            content_type=content_type
+                        ).first()
+                        
+                        if not permission:
+                            # Create if missing
                             permission = Permission.objects.create(
                                 codename=perm_codename,
                                 name=f'Can access {perm_codename.split("_")[-1].capitalize()}',
                                 content_type=content_type,
                             )
-                            user.user_permissions.add(permission)
+                        
+                        user.user_permissions.add(permission)
                     except Exception as e:
-                        print(f"DEBUG: Error adding permission: {e}")
+                        print(f"DEBUG: Error adding permission {perm_codename}: {e}")
             
             messages.success(request, _('User created successfully.'))
             return redirect('user_list')
@@ -89,6 +94,7 @@ def user_create(request):
 def user_edit(request, pk):
     user = get_object_or_404(User, pk=pk)
     if request.method == 'POST':
+        # Update basic info
         user.first_name = request.POST.get('first_name', user.first_name)
         user.last_name = request.POST.get('last_name', user.last_name)
         user.email = request.POST.get('email', user.email)
@@ -96,29 +102,39 @@ def user_edit(request, pk):
         
         perm_form = UserPermissionsForm(request.POST)
         if perm_form.is_valid():
+            # Clear existing permissions and add new ones
             user.user_permissions.clear()
+            
+            # We need the ContentType for UserProfile since that's where perms are defined
+            from django.contrib.contenttypes.models import ContentType
+            content_type = ContentType.objects.get_for_model(UserProfile)
+            
             for field, value in perm_form.cleaned_data.items():
                 if value:
                     perm_codename = field.lower()
                     try:
-                        # Search for permission with this codename in ANY app
-                        permission = Permission.objects.filter(codename=perm_codename).first()
-                        if permission:
-                            user.user_permissions.add(permission)
-                        else:
-                            # Fallback: create permission if it doesn't exist
-                            content_type = ContentType.objects.get_for_model(UserProfile)
+                        # Find the permission specifically for our model
+                        permission = Permission.objects.filter(
+                            codename=perm_codename,
+                            content_type=content_type
+                        ).first()
+                        
+                        if not permission:
+                            # Create if missing
                             permission = Permission.objects.create(
                                 codename=perm_codename,
                                 name=f'Can access {perm_codename.split("_")[-1].capitalize()}',
                                 content_type=content_type,
                             )
-                            user.user_permissions.add(permission)
-                    except Exception:
-                        pass
+                        
+                        user.user_permissions.add(permission)
+                    except Exception as e:
+                        print(f"DEBUG: Error adding permission {perm_codename}: {e}")
             
             messages.success(request, _('User updated successfully.'))
             return redirect('user_list')
+        else:
+            messages.error(request, _('Please correct the errors below.'))
     else:
         perm_form = UserPermissionsForm(user=user)
     
