@@ -32,57 +32,44 @@ def restore_data_view(request):
         db_conf = settings.DATABASES['default']
         output.append(f"DB Engine: {db_conf['ENGINE']}")
         output.append(f"DB Host: {db_conf.get('HOST', 'N/A')}")
-        output.append(f"DB User: {db_conf.get('USER', 'N/A')}")
         
-        # Try to create database if it doesn't exist (MySQL/TiDB specific)
-        if 'mysql' in db_conf['ENGINE']:
-            import pymysql
-            output.append(f"Ensuring database {db_conf['NAME']} exists...")
-            temp_conn = pymysql.connect(
-                host=db_conf['HOST'],
-                user=db_conf['USER'],
-                password=db_conf['PASSWORD'],
-                port=int(db_conf.get('PORT', 3306)),
-                ssl={'ca': None} if 'ssl' in db_conf.get('OPTIONS', {}) else None
-            )
-            with temp_conn.cursor() as cursor:
-                cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_conf['NAME']}")
-            temp_conn.close()
-            output.append(f"✅ Database {db_conf['NAME']} is ready!")
-
-        # Run migrate first to ensure tables exist
-        output.append("Checking for existing tables and running migrate...")
-        db_name = db_conf['NAME']
+        # Step 1: Just try to connect and run a simple query
+        output.append("Testing database connection...")
         try:
-            # Force fake-initial if tables already exist but migration history is missing
+            with connection.cursor() as cursor:
+                cursor.execute("SELECT 1")
+                output.append("✅ Database connection test successful!")
+        except Exception as conn_err:
+            output.append(f"⚠️ Direct connection failed: {str(conn_err)}")
+            output.append("Attempting to ensure database exists via pymysql...")
+            try:
+                import pymysql
+                temp_conn = pymysql.connect(
+                    host=db_conf['HOST'],
+                    user=db_conf['USER'],
+                    password=db_conf['PASSWORD'],
+                    port=int(db_conf.get('PORT', 4000)),
+                    ssl={'ca': None} if 'ssl' in db_conf.get('OPTIONS', {}) else None,
+                    connect_timeout=5
+                )
+                with temp_conn.cursor() as cursor:
+                    cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_conf['NAME']}")
+                temp_conn.close()
+                output.append(f"✅ Database {db_conf['NAME']} verified/created.")
+            except Exception as py_err:
+                output.append(f"❌ Pymysql connection failed: {str(py_err)}")
+                # Don't raise yet, try migrate anyway
+        
+        # Step 2: Run migrate
+        output.append("Running migrations...")
+        try:
             call_command('migrate', interactive=False, fake_initial=True)
-            output.append("✅ Migration successful (with fake-initial)!")
+            output.append("✅ Migration successful!")
         except Exception as mig_err:
-            output.append(f"⚠️ Migration failed: {str(mig_err)}")
+            output.append(f"❌ Migration failed: {str(mig_err)}")
             if "already exists" in str(mig_err):
-                output.append("Attempting to clear existing tables for a fresh start...")
-                try:
-                    import pymysql
-                    temp_conn = pymysql.connect(
-                        host=db_conf['HOST'],
-                        user=db_conf['USER'],
-                        password=db_conf['PASSWORD'],
-                        port=int(db_conf.get('PORT', 3306)),
-                        ssl={'ca': None} if 'ssl' in db_conf.get('OPTIONS', {}) else None
-                    )
-                    with temp_conn.cursor() as cursor:
-                        # Drop and recreate database is the cleanest way to clear all tables
-                        cursor.execute(f"DROP DATABASE IF EXISTS {db_name}")
-                        cursor.execute(f"CREATE DATABASE {db_name}")
-                    temp_conn.close()
-                    output.append("✅ Database cleared. Retrying migration...")
-                    call_command('migrate', interactive=False)
-                    output.append("✅ Fresh migration successful!")
-                except Exception as clear_err:
-                    output.append(f"❌ Failed to clear database: {str(clear_err)}")
-                    raise mig_err
-            else:
-                raise mig_err
+                output.append("Tip: Use fake-initial if tables already exist.")
+            raise mig_err
         
         # Load data
         data_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data.json')
