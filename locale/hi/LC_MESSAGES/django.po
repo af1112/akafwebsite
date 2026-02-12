@@ -369,6 +369,39 @@ msgstr "दशमलव स्थान"
 msgid "Usually 2 or 3"
 msgstr "आमतौर पर 2 या 3"
 
+msgid "Remote Software Name"
+msgstr "रिमोट सॉफ्टवेयर का नाम"
+
+msgid "Remote Software ID"
+msgstr "रिमोट सॉफ्टवेयर आईडी"
+
+msgid "Attachments"
+msgstr "संलग्नक"
+
+msgid "You can select multiple files."
+msgstr "आप कई फाइलें चुन सकते हैं।"
+
+msgid "Voice & Video Messages"
+msgstr "वॉयस और वीडियो संदेश"
+
+msgid "Record Voice"
+msgstr "आवाज रिकॉर्ड करें"
+
+msgid "Record Video"
+msgstr "वीडियो रिकॉर्ड करें"
+
+msgid "View Attachment"
+msgstr "संलग्नक देखें"
+
+msgid "Voice Message"
+msgstr "वॉयस मैसेज"
+
+msgid "Video Message"
+msgstr "वीडियो मैसेज"
+
+msgid "Record voice or video"
+msgstr "आवाज या वीडियो रिकॉर्ड करें"
+
 msgid "Language Settings"
 msgstr "भाषा सेटिंग्स"
 

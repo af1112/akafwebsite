@@ -197,3 +197,36 @@ msgstr "اعشاریہ کے مقامات"
 
 msgid "Usually 2 or 3"
 msgstr "عام طور پر 2 یا 3"
+
+msgid "Remote Software Name"
+msgstr "ریموٹ سافٹ ویئر کا نام"
+
+msgid "Remote Software ID"
+msgstr "ریموٹ سافٹ ویئر آئی ڈی"
+
+msgid "Attachments"
+msgstr "منسلکات"
+
+msgid "You can select multiple files."
+msgstr "آپ ایک سے زیادہ فائلیں منتخب کر سکتے ہیں۔"
+
+msgid "Voice & Video Messages"
+msgstr "وائس اور ویڈیو پیغامات"
+
+msgid "Record Voice"
+msgstr "آواز ریکارڈ کریں"
+
+msgid "Record Video"
+msgstr "ویڈیو ریکارڈ کریں"
+
+msgid "View Attachment"
+msgstr "منسلک فائل دیکھیں"
+
+msgid "Voice Message"
+msgstr "وائس پیغام"
+
+msgid "Video Message"
+msgstr "ویڈیو پیغام"
+
+msgid "Record voice or video"
+msgstr "آواز یا ویڈیو ریکارڈ کریں"

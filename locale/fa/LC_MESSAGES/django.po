@@ -365,3 +365,36 @@ msgstr "تعداد اعشار"
 
 msgid "Usually 2 or 3"
 msgstr "معمولاً ۲ یا ۳"
+
+msgid "Remote Software Name"
+msgstr "نام نرم‌افزار ریموت"
+
+msgid "Remote Software ID"
+msgstr "آیدی نرم‌افزار ریموت"
+
+msgid "Attachments"
+msgstr "فایل‌های ضمیمه"
+
+msgid "You can select multiple files."
+msgstr "می‌توانید چندین فایل را انتخاب کنید."
+
+msgid "Voice & Video Messages"
+msgstr "پیام‌های صوتی و تصویری"
+
+msgid "Record Voice"
+msgstr "ضبط صدا"
+
+msgid "Record Video"
+msgstr "ضبط ویدیو"
+
+msgid "View Attachment"
+msgstr "مشاهده ضمیمه"
+
+msgid "Voice Message"
+msgstr "پیام صوتی"
+
+msgid "Video Message"
+msgstr "پیام ویدیویی"
+
+msgid "Record voice or video"
+msgstr "ضبط صدا یا ویدیو"

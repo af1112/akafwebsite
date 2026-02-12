@@ -197,3 +197,36 @@ msgstr "Ondalık Basamaklar"
 
 msgid "Usually 2 or 3"
 msgstr "Genellikle 2 veya 3"
+
+msgid "Remote Software Name"
+msgstr "Uzak Masaüstü Yazılım Adı"
+
+msgid "Remote Software ID"
+msgstr "Uzak Masaüstü Yazılım ID"
+
+msgid "Attachments"
+msgstr "Ekler"
+
+msgid "You can select multiple files."
+msgstr "Birden fazla dosya seçebilirsiniz."
+
+msgid "Voice & Video Messages"
+msgstr "Sesli ve Görüntülü Mesajlar"
+
+msgid "Record Voice"
+msgstr "Ses Kaydet"
+
+msgid "Record Video"
+msgstr "Video Kaydet"
+
+msgid "View Attachment"
+msgstr "Eki Görüntüle"
+
+msgid "Voice Message"
+msgstr "Sesli Mesaj"
+
+msgid "Video Message"
+msgstr "Görüntülü Mesaj"
+
+msgid "Record voice or video"
+msgstr "Ses veya video kaydet"

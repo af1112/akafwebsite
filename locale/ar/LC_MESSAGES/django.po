@@ -365,3 +365,36 @@ msgstr "الفاصلة العشرية"
 
 msgid "Usually 2 or 3"
 msgstr "عادة 2 أو 3"
+
+msgid "Remote Software Name"
+msgstr "اسم برنامج التحكم عن بعد"
+
+msgid "Remote Software ID"
+msgstr "معرف برنامج التحكم عن بعد"
+
+msgid "Attachments"
+msgstr "المرفقات"
+
+msgid "You can select multiple files."
+msgstr "يمكنك تحديد ملفات متعددة."
+
+msgid "Voice & Video Messages"
+msgstr "رسائل الصوت والفيديو"
+
+msgid "Record Voice"
+msgstr "تسجيل صوت"
+
+msgid "Record Video"
+msgstr "تسجيل فيديو"
+
+msgid "View Attachment"
+msgstr "عرض المرفق"
+
+msgid "Voice Message"
+msgstr "رسالة صوتية"
+
+msgid "Video Message"
+msgstr "رسالة فيديو"
+
+msgid "Record voice or video"
+msgstr "تسجيل صوت أو فيديو"
