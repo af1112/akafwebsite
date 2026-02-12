@@ -230,3 +230,138 @@ msgstr "صورت وضعیت جدید"
 
 msgid "Recent Statements"
 msgstr "صورت وضعیت‌های اخیر"
+
+msgid "User Management"
+msgstr "مدیریت کاربران"
+
+msgid "Modules"
+msgstr "ماژول‌ها"
+
+msgid "Ticketing"
+msgstr "تیکتینگ"
+
+msgid "Projects"
+msgstr "پروژه‌ها"
+
+msgid "Documents"
+msgstr "اسناد"
+
+msgid "AI Engine"
+msgstr "موتور هوش مصنوعی"
+
+msgid "Digital Menu"
+msgstr "منوی دیجیتال"
+
+msgid "Customer Club"
+msgstr "باشگاه مشتریان"
+
+msgid "System"
+msgstr "سیستم"
+
+msgid "Pages"
+msgstr "صفحات"
+
+msgid "Main Dashboard"
+msgstr "داشبورد اصلی"
+
+msgid "Search..."
+msgstr "جستجو..."
+
+msgid "Profile Settings"
+msgstr "تنظیمات پروفایل"
+
+msgid "System Users"
+msgstr "کاربران سیستم"
+
+msgid "Create New User"
+msgstr "ایجاد کاربر جدید"
+
+msgid "Permissions"
+msgstr "دسترسی‌ها"
+
+msgid "Superuser"
+msgstr "مدیر کل"
+
+msgid "No Module Access"
+msgstr "بدون دسترسی به ماژول"
+
+msgid "Active"
+msgstr "فعال"
+
+msgid "Inactive"
+msgstr "غیرفعال"
+
+msgid "Are you sure you want to delete this user?"
+msgstr "آیا از حذف این کاربر مطمئن هستید؟"
+
+msgid "No users found."
+msgstr "هیچ کاربری یافت نشد."
+
+msgid "Configure user profile, language, and access level"
+msgstr "پیکربندی پروفایل کاربر، زبان و سطح دسترسی"
+
+msgid "Back to List"
+msgstr "بازگشت به لیست"
+
+msgid "Account Information"
+msgstr "اطلاعات حساب"
+
+msgid "Module Access Permissions"
+msgstr "دسترسی‌های ماژول"
+
+msgid "Toggle switches to grant or revoke access to specific system modules."
+msgstr "برای اعطا یا لغو دسترسی به ماژول‌های خاص سیستم، سوئیچ‌ها را تغییر دهید."
+
+msgid "Save User"
+msgstr "ذخیره کاربر"
+
+msgid "Cancel"
+msgstr "انصراف"
+
+msgid "First Name"
+msgstr "نام"
+
+msgid "Last Name"
+msgstr "نام خانوادگی"
+
+msgid "Email"
+msgstr "ایمیل"
+
+msgid "Default Language"
+msgstr "زبان پیش‌فرض"
+
+msgid "User Role"
+msgstr "نقش کاربر"
+
+msgid "Supervisor"
+msgstr "ناظر"
+
+msgid "Admin"
+msgstr "مدیر"
+
+msgid "User Settings"
+msgstr "تنظیمات کاربر"
+
+msgid "Manage your account preferences and regional settings"
+msgstr "مدیریت تنظیمات حساب و تنظیمات منطقه‌ای"
+
+msgid "Localization"
+msgstr "بومی‌سازی"
+
+msgid "Preferred Language"
+msgstr "زبان مورد نظر"
+
+msgid "Currency & Financials"
+msgstr "ارز و امور مالی"
+
+msgid "Currency Code"
+msgstr "کد ارز"
+
+msgid "Currency Symbol"
+msgstr "نماد ارز"
+
+msgid "Decimal Places"
+msgstr "تعداد اعشار"
+
+msgid "Usually 2 or 3"
+msgstr "معمولاً ۲ یا ۳"

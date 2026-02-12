@@ -92,3 +92,108 @@ msgstr "زبان کی ترتیبات"
 
 msgid "Save Settings"
 msgstr "ترتیبات محفوظ کریں"
+
+msgid "Modules"
+msgstr "ماڈیولز"
+
+msgid "Ticketing"
+msgstr "ٹکٹنگ سسٹم"
+
+msgid "Projects"
+msgstr "پروجیکٹس"
+
+msgid "Documents"
+msgstr "دستاویزات"
+
+msgid "System"
+msgstr "سسٹم"
+
+msgid "Pages"
+msgstr "صفحات"
+
+msgid "Main Dashboard"
+msgstr "مین ڈیش بورڈ"
+
+msgid "Search..."
+msgstr "تلاش کریں..."
+
+msgid "Profile Settings"
+msgstr "پروفائل کی ترتیبات"
+
+msgid "Superuser"
+msgstr "سپر یوزر"
+
+msgid "No Module Access"
+msgstr "کوئی ماڈیول رسائی نہیں"
+
+msgid "Active"
+msgstr "فعال"
+
+msgid "Inactive"
+msgstr "غیر فعال"
+
+msgid "Are you sure you want to delete this user?"
+msgstr "کیا آپ واقعی اس صارف کو حذف کرنا چاہتے ہیں؟"
+
+msgid "No users found."
+msgstr "کوئی صارف نہیں ملا۔"
+
+msgid "Configure user profile, language, and access level"
+msgstr "صارف کا پروفائل، زبان اور رسائی کی سطح ترتیب دیں"
+
+msgid "Back to List"
+msgstr "فہرست پر واپس جائیں"
+
+msgid "Account Information"
+msgstr "اکاؤنٹ کی معلومات"
+
+msgid "Module Access Permissions"
+msgstr "ماڈیول رسائی کے اختیارات"
+
+msgid "Toggle switches to grant or revoke access to specific system modules."
+msgstr "مخصوص سسٹم ماڈیولز تک رسائی دینے یا واپس لینے کے لیے سوئچز کا استعمال کریں۔"
+
+msgid "First Name"
+msgstr "پہلا نام"
+
+msgid "Last Name"
+msgstr "آخری نام"
+
+msgid "Default Language"
+msgstr "بنیادی زبان"
+
+msgid "User Role"
+msgstr "صارف کا کردار"
+
+msgid "Supervisor"
+msgstr "سپروائزر"
+
+msgid "Admin"
+msgstr "ایڈمن"
+
+msgid "User Settings"
+msgstr "صارف کی ترتیبات"
+
+msgid "Manage your account preferences and regional settings"
+msgstr "اپنے اکاؤنٹ کی ترجیحات اور علاقائی ترتیبات کا انتظام کریں"
+
+msgid "Localization"
+msgstr "مقامی ترتیب"
+
+msgid "Preferred Language"
+msgstr "پسندیدہ زبان"
+
+msgid "Currency & Financials"
+msgstr "کرنسی اور مالیات"
+
+msgid "Currency Code"
+msgstr "کرنسی کوڈ"
+
+msgid "Currency Symbol"
+msgstr "کرنسی کی علامت"
+
+msgid "Decimal Places"
+msgstr "اعشاریہ کے مقامات"
+
+msgid "Usually 2 or 3"
+msgstr "عام طور پر 2 یا 3"
