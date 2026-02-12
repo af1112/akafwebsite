@@ -13,9 +13,6 @@
     "functions": {
         "api/index.py": {
             "maxDuration": 10
-        },
-        "core/wsgi.py": {
-            "maxDuration": 10
         }
     },
     "routes": [
