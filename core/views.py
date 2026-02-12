@@ -71,6 +71,19 @@ def restore_data_view(request):
                 output.append("Tip: Use fake-initial if tables already exist.")
             raise mig_err
         
+        # Step 3: Create Superuser if not exists
+        output.append("Checking for admin user...")
+        try:
+            from django.contrib.auth import get_user_model
+            User = get_user_model()
+            if not User.objects.filter(username='admin').exists():
+                User.objects.create_superuser('admin', 'admin@example.com', 'admin123456')
+                output.append("✅ Admin user created (admin / admin123456)")
+            else:
+                output.append("ℹ️ Admin user already exists.")
+        except Exception as user_err:
+            output.append(f"⚠️ Could not create admin: {str(user_err)}")
+
         # Load data
         data_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data.json')
         if os.path.exists(data_file):
