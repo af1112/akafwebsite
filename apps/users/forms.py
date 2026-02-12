@@ -39,6 +39,12 @@ class UserCreateForm(forms.ModelForm):
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'autocomplete': 'new-password'}), 
         label="Confirm Password"
     )
+    preferred_language = forms.ChoiceField(
+        choices=settings.LANGUAGES,
+        widget=forms.Select(attrs={'class': 'form-select'}),
+        label="Default Language",
+        initial='en'
+    )
 
     class Meta:
         model = User

@@ -47,8 +47,10 @@ def user_create(request):
             user.set_password(user_form.cleaned_data['password'])
             user.save()
             
-            # Create profile for new user
-            UserProfile.objects.get_or_create(user=user)
+            # Create profile for new user with selected language
+            profile, created = UserProfile.objects.get_or_create(user=user)
+            profile.preferred_language = user_form.cleaned_data.get('preferred_language', 'en')
+            profile.save()
             
             # We need the ContentType for UserProfile since that's where perms are defined
             from django.contrib.contenttypes.models import ContentType
@@ -93,12 +95,21 @@ def user_create(request):
 @user_passes_test(is_admin)
 def user_edit(request, pk):
     user = get_object_or_404(User, pk=pk)
+    try:
+        profile = user.profile
+    except UserProfile.DoesNotExist:
+        profile = UserProfile.objects.create(user=user)
+
     if request.method == 'POST':
         # Update basic info
         user.first_name = request.POST.get('first_name', user.first_name)
         user.last_name = request.POST.get('last_name', user.last_name)
         user.email = request.POST.get('email', user.email)
         user.save()
+        
+        # Update profile language
+        profile.preferred_language = request.POST.get('preferred_language', profile.preferred_language)
+        profile.save()
         
         perm_form = UserPermissionsForm(request.POST)
         if perm_form.is_valid():
