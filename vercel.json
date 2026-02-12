@@ -10,6 +10,14 @@
             }
         }
     ],
+    "functions": {
+        "api/index.py": {
+            "maxDuration": 30
+        },
+        "core/wsgi.py": {
+            "maxDuration": 30
+        }
+    },
     "routes": [
         {
             "src": "/static/(.*)",
