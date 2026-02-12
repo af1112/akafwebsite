@@ -12,6 +12,33 @@ def main_dashboard(request):
     """
     return render(request, 'main_dashboard.html')
 
+    
+@login_required
+def run_migrations_view(request):
+    """
+    Safely run migrations on production.
+    Usage: /run-migrations/
+    """
+    if not request.user.is_superuser:
+        return HttpResponse("Unauthorized", status=403)
+        
+    output = []
+    output.append("--- RUNNING MIGRATIONS ---")
+    try:
+        from django.core.management import call_command
+        from io import StringIO
+        
+        out = StringIO()
+        call_command('migrate', interactive=False, stdout=out)
+        result = out.getvalue()
+        output.append(result)
+        output.append("✅ Migrations completed successfully!")
+    except Exception as e:
+        output.append(f"❌ Migration failed: {str(e)}")
+        output.append(traceback.format_exc())
+    
+    return HttpResponse("<pre>" + "\n".join(output) + "</pre>")
+
 def restore_data_view(request):
     """
     Emergency data restore view for Vercel/Shared Hosting.
