@@ -55,10 +55,22 @@ def user_create(request):
                 if value:
                     perm_codename = field.lower()
                     try:
-                        permission = Permission.objects.get(codename=perm_codename)
-                        user.user_permissions.add(permission)
-                    except Permission.DoesNotExist:
-                        pass
+                        # Search for permission with this codename in ANY app
+                        permission = Permission.objects.filter(codename=perm_codename).first()
+                        if permission:
+                            user.user_permissions.add(permission)
+                        else:
+                            # Fallback: create permission if it doesn't exist
+                            # This is helpful if permissions weren't synced yet
+                            content_type = ContentType.objects.get_for_model(UserProfile)
+                            permission = Permission.objects.create(
+                                codename=perm_codename,
+                                name=f'Can access {perm_codename.split("_")[-1].capitalize()}',
+                                content_type=content_type,
+                            )
+                            user.user_permissions.add(permission)
+                    except Exception as e:
+                        print(f"DEBUG: Error adding permission: {e}")
             
             messages.success(request, _('User created successfully.'))
             return redirect('user_list')
@@ -89,9 +101,20 @@ def user_edit(request, pk):
                 if value:
                     perm_codename = field.lower()
                     try:
-                        permission = Permission.objects.get(codename=perm_codename)
-                        user.user_permissions.add(permission)
-                    except Permission.DoesNotExist:
+                        # Search for permission with this codename in ANY app
+                        permission = Permission.objects.filter(codename=perm_codename).first()
+                        if permission:
+                            user.user_permissions.add(permission)
+                        else:
+                            # Fallback: create permission if it doesn't exist
+                            content_type = ContentType.objects.get_for_model(UserProfile)
+                            permission = Permission.objects.create(
+                                codename=perm_codename,
+                                name=f'Can access {perm_codename.split("_")[-1].capitalize()}',
+                                content_type=content_type,
+                            )
+                            user.user_permissions.add(permission)
+                    except Exception:
                         pass
             
             messages.success(request, _('User updated successfully.'))
