@@ -45,6 +45,12 @@ class UserCreateForm(forms.ModelForm):
         label="Default Language",
         initial='en'
     )
+    role = forms.ChoiceField(
+        choices=UserProfile.ROLE_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-select'}),
+        label="User Role",
+        initial='user'
+    )
 
     class Meta:
         model = User

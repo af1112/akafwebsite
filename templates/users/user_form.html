@@ -73,18 +73,26 @@
                                 <input type="text" name="last_name" class="form-control" value="{{ edit_user.last_name }}">
                             </div>
                             <div class="col-md-3">
-                                <label class="form-label fw-bold text-dark small">{% trans "Email" %}</label>
-                                <input type="email" name="email" class="form-control" value="{{ edit_user.email }}">
-                            </div>
-                            <div class="col-md-3">
-                                <label class="form-label fw-bold text-dark small">{% trans "Default Language" %}</label>
-                                <select name="preferred_language" class="form-select">
-                                    {% for code, name in LANGUAGES %}
-                                    <option value="{{ code }}" {% if edit_user.profile.preferred_language == code %}selected{% endif %}>{{ name }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
+                            <label class="form-label fw-bold text-dark small">{% trans "Email" %}</label>
+                            <input type="email" name="email" class="form-control" value="{{ edit_user.email }}">
                         </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold text-dark small">{% trans "User Role" %}</label>
+                            <select name="role" class="form-select">
+                                {% for code, name in ROLES %}
+                                <option value="{{ code }}" {% if edit_user.profile.role == code %}selected{% endif %}>{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label fw-bold text-dark small">{% trans "Default Language" %}</label>
+                            <select name="preferred_language" class="form-select">
+                                {% for code, name in LANGUAGES %}
+                                <option value="{{ code }}" {% if edit_user.profile.preferred_language == code %}selected{% endif %}>{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
                         {% endif %}
                     </div>
 
@@ -102,7 +110,7 @@
                                 <div class="permission-card p-3 rounded-3 border h-100 transition-all">
                                     <div class="form-check form-switch d-flex align-items-center justify-content-between p-0">
                                         <div class="d-flex align-items-center">
-                                            <div class="module-icon me-3 text-success">
+                                            <div class="module-icon me-3 text-secondary opacity-50">
                                                 {% if 'expenses' in field.name %}<i class="fas fa-wallet fs-5"></i>
                                                 {% elif 'ticketing' in field.name %}<i class="fas fa-ticket-alt fs-5"></i>
                                                 {% elif 'projects' in field.name %}<i class="fas fa-project-diagram fs-5"></i>
@@ -110,7 +118,7 @@
                                                 {% elif 'ai' in field.name %}<i class="fas fa-brain fs-5"></i>
                                                 {% elif 'menu' in field.name %}<i class="fas fa-utensils fs-5"></i>
                                                 {% elif 'club' in field.name %}<i class="fas fa-users fs-5"></i>
-                                                {% else %}<i class="fas fa-check-circle fs-5"></i>{% endif %}
+                                                {% else %}<i class="fas fa-layer-group fs-5"></i>{% endif %}
                                             </div>
                                             <label class="form-check-label fw-bold text-dark small mb-0 cursor-pointer" for="{{ field.id_for_label }}">
                                                 {{ field.label }}
@@ -149,8 +157,9 @@
     .x-small { font-size: 0.75rem; }
     .cursor-pointer { cursor: pointer; }
     .permission-card { background: #f8f9fa; border-color: #e0e5f2; }
-    .permission-card:hover { background: #ffffff; border-color: #28a745; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .form-check-input { width: 3em; height: 1.5em; cursor: pointer; }
+    .permission-card:hover { background: #ffffff; border-color: #4318ff; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+            .permission-card:hover .module-icon { color: #4318ff !important; opacity: 1 !important; }
+            .form-check-input { width: 3em; height: 1.5em; cursor: pointer; }
     .form-check-input:checked { background-color: #28a745; border-color: #28a745; }
     .transition-all { transition: all 0.2s ease-in-out; }
 </style>

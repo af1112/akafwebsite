@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
+from django.conf import settings
 from .models import UserProfile
 from .forms import LanguageSettingsForm, UserCreateForm, UserPermissionsForm
 from django.utils.translation import activate
@@ -47,10 +48,16 @@ def user_create(request):
             user.set_password(user_form.cleaned_data['password'])
             user.save()
             
-            # Create profile for new user with selected language
+            # Create profile for new user with selected language and role
             profile, created = UserProfile.objects.get_or_create(user=user)
             profile.preferred_language = user_form.cleaned_data.get('preferred_language', 'en')
+            profile.role = user_form.cleaned_data.get('role', 'user')
             profile.save()
+            
+            # Update user staff status based on role
+            if profile.role in ['admin', 'supervisor']:
+                user.is_staff = True
+                user.save()
             
             # We need the ContentType for UserProfile since that's where perms are defined
             from django.contrib.contenttypes.models import ContentType
@@ -88,7 +95,9 @@ def user_create(request):
     return render(request, 'users/user_form.html', {
         'user_form': user_form,
         'perm_form': perm_form,
-        'title': _('Create New User')
+        'title': _('Create New User'),
+        'LANGUAGES': settings.LANGUAGES,
+        'ROLES': UserProfile.ROLE_CHOICES
     })
 
 @login_required
@@ -107,9 +116,17 @@ def user_edit(request, pk):
         user.email = request.POST.get('email', user.email)
         user.save()
         
-        # Update profile language
+        # Update profile language and role
         profile.preferred_language = request.POST.get('preferred_language', profile.preferred_language)
+        profile.role = request.POST.get('role', profile.role)
         profile.save()
+        
+        # Update user staff status based on role
+        if profile.role in ['admin', 'supervisor']:
+            user.is_staff = True
+        else:
+            user.is_staff = False
+        user.save()
         
         perm_form = UserPermissionsForm(request.POST)
         if perm_form.is_valid():
@@ -152,7 +169,9 @@ def user_edit(request, pk):
     return render(request, 'users/user_form.html', {
         'edit_user': user,
         'perm_form': perm_form,
-        'title': _('Edit User')
+        'title': _('Edit User'),
+        'LANGUAGES': settings.LANGUAGES,
+        'ROLES': UserProfile.ROLE_CHOICES
     })
 
 @login_required

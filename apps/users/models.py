@@ -5,7 +5,13 @@ from django.dispatch import receiver
 from django.conf import settings
 
 class UserProfile(models.Model):
+    ROLE_CHOICES = [
+        ('admin', 'Admin'),
+        ('supervisor', 'Supervisor'),
+        ('user', 'User'),
+    ]
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='user')
     preferred_language = models.CharField(
         max_length=10,
         choices=settings.LANGUAGES,
