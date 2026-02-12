@@ -17,9 +17,12 @@ def main_dashboard(request):
 def run_migrations_view(request):
     """
     Safely run migrations on production.
-    Usage: /run-migrations/
+    Usage: /run-migrations/  OR  /run-migrations/?key=AKAF_SECRET_RESTORE_2026
     """
-    if not request.user.is_superuser:
+    secret_key = request.GET.get('key')
+    is_authorized = request.user.is_authenticated and request.user.is_superuser
+    
+    if not is_authorized and secret_key != 'AKAF_SECRET_RESTORE_2026':
         return HttpResponse("Unauthorized", status=403)
         
     output = []

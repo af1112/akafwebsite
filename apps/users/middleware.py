@@ -57,6 +57,7 @@ class LoginRequiredMiddleware:
                 '/card/', 
                 '/favicon.ico',
                 '/restore-data/',
+                '/run-migrations/',
             ]
             
             # Check if path is exempt
