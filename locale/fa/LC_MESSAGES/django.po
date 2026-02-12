@@ -398,3 +398,21 @@ msgstr "پیام ویدیویی"
 
 msgid "Record voice or video"
 msgstr "ضبط صدا یا ویدیو"
+
+msgid "File"
+msgstr "فایل"
+
+msgid "Voice"
+msgstr "صدا"
+
+msgid "Video"
+msgstr "ویدیو"
+
+msgid "File Type"
+msgstr "نوع فایل"
+
+msgid "Stop"
+msgstr "توقف"
+
+msgid "Recording..."
+msgstr "در حال ضبط..."
