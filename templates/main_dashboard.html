@@ -7,6 +7,15 @@
 
 {% block content %}
 <div class="row">
+    <!-- Test Banner to confirm new deployment -->
+    <div class="col-12 mb-4">
+        <div class="alert alert-info border-0 shadow-sm d-flex align-items-center" role="alert">
+            <i class="fas fa-rocket me-3 fa-lg"></i>
+            <div>
+                <strong>🚀 سیستم بروزرسانی شد!</strong> این نسخه جدید (fix-deployment-v2) است که برای حل مشکل دیتابیس تنظیم شده است.
+            </div>
+        </div>
+    </div>
     <!-- Welcome Banner -->
     <div class="col-12">
         <div class="welcome-banner">
@@ -100,22 +109,22 @@
         </div>
     </div>
 
-    <!-- Digital Ads System (External Link) -->
+    <!-- Digital Menu Advertising -->
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-        <a href="https://digitalmenu.akafbusiness.com" target="_blank" class="text-decoration-none">
-            <div class="dashboard-card">
-                <div class="card-icon-wrapper" style="background-color: #fff4e5; color: #ff9800;">
+        <a href="https://digitalmenu.akafbusiness.com/" target="_blank" class="text-decoration-none">
+            <div class="dashboard-card border-primary border-top border-4">
+                <div class="card-icon-wrapper bg-primary text-white">
                     <i class="fas fa-ad"></i>
                 </div>
-                <h3 class="card-title-lg">{% trans "Digital Ads System" %}</h3>
-                <p class="card-desc">{% trans "AKAF Digital Marketing & Sales Platform." %}</p>
-                <div class="card-action" style="color: #ff9800;">
-                    {% trans "Open Platform" %} <i class="fas fa-external-link-alt"></i>
+                <h3 class="card-title-lg">{% trans "Digital Ads" %}</h3>
+                <p class="card-desc">{% trans "Akaf Digital Sales Advertising System." %}</p>
+                <div class="card-action text-primary">
+                    {% trans "Open System" %} <i class="fas fa-external-link-alt"></i>
                 </div>
             </div>
         </a>
     </div>
-    
+
     <!-- Digital Menu -->
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <div class="dashboard-card opacity-75" style="cursor: not-allowed">
