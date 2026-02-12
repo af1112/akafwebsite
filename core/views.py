@@ -63,13 +63,21 @@ def restore_data_view(request):
         # Step 2: Run migrate
         output.append("Running migrations...")
         try:
+            # Try normal migrate first with fake-initial
             call_command('migrate', interactive=False, fake_initial=True)
             output.append("✅ Migration successful!")
         except Exception as mig_err:
-            output.append(f"❌ Migration failed: {str(mig_err)}")
             if "already exists" in str(mig_err):
-                output.append("Tip: Use fake-initial if tables already exist.")
-            raise mig_err
+                output.append("⚠️ Tables already exist, attempting to fake migrations...")
+                try:
+                    # If tables exist, fake the migrations so Django thinks they are done
+                    call_command('migrate', interactive=False, fake=True)
+                    output.append("✅ Migrations faked successfully!")
+                except Exception as fake_err:
+                    output.append(f"❌ Fake migration failed: {str(fake_err)}")
+            else:
+                output.append(f"❌ Migration failed: {str(mig_err)}")
+                raise mig_err
         
         # Step 3: Create Superuser if not exists
         output.append("Checking for admin user...")
