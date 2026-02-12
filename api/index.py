@@ -1,7 +1,10 @@
-# Vercel Deployment Trigger: 2026-02-12 12:20
+# Vercel Deployment Trigger: 2026-02-12 12:25
 import os
 import sys
 import traceback
+from django.core.wsgi import get_wsgi_application
+from django.conf import settings
+from django.contrib.staticfiles.handlers import StaticFilesHandler
 
 # Add current directory to path
 path = os.path.dirname(os.path.abspath(__file__))
@@ -9,10 +12,13 @@ parent_path = os.path.dirname(path)
 if parent_path not in sys.path:
     sys.path.insert(0, parent_path)
 
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+
 try:
     print("STARTING VERCEL BOOT...")
-    from core.wsgi import application
-    app = application
+    django_app = get_wsgi_application()
+    # Wrap with StaticFilesHandler for Vercel
+    app = StaticFilesHandler(django_app)
     print("VERCEL BOOT SUCCESSFUL")
 except Exception as e:
     error_msg = traceback.format_exc()
