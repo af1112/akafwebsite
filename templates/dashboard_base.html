@@ -69,6 +69,11 @@
                 <span>{% trans "Ticketing" %}</span>
             </a>
             {% endif %}
+
+            <a href="{% url 'hr_attendance:dashboard' %}" class="nav-link {% if 'attendance' in request.path %}active{% endif %}">
+                <i class="fas fa-clock"></i>
+                <span>{% trans "Attendance" %}</span>
+            </a>
             
             {% if perms.users.can_access_projects or user.is_superuser %}
             <a href="#" class="nav-link {% if 'projects' in request.path %}active{% endif %}">

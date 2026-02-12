@@ -30,5 +30,6 @@ urlpatterns = [
     path('ping/', lambda r: HttpResponse("pong"), name='ping'),
     path('expenses/', include('apps.expenses.urls')), # Move expenses to sub-path
     path('ticketing/', include('apps.ticketing.urls')), # Ticketing System
+    path('attendance/', include('apps.hr_attendance.urls')), # Attendance System
     path('users/', include('apps.users.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

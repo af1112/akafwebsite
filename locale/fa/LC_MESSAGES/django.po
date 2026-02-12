@@ -416,3 +416,60 @@ msgstr "توقف"
 
 msgid "Recording..."
 msgstr "در حال ضبط..."
+
+msgid "Attendance"
+msgstr "حضور و غیاب"
+
+msgid "Attendance System"
+msgstr "سیستم حضور و غیاب"
+
+msgid "Attendance Dashboard"
+msgstr "داشبورد حضور و غیاب"
+
+msgid "Clock In"
+msgstr "ثبت ورود"
+
+msgid "Clock Out"
+msgstr "ثبت خروج"
+
+msgid "Not Clocked In"
+msgstr "وارد نشده"
+
+msgid "Working"
+msgstr "در حال کار"
+
+msgid "Finished"
+msgstr "پایان کار"
+
+msgid "Today's work completed."
+msgstr "کار امروز به پایان رسیده است."
+
+msgid "Entry Time"
+msgstr "ساعت ورود"
+
+msgid "Exit Time"
+msgstr "ساعت خروج"
+
+msgid "Recent History"
+msgstr "تاریخچه اخیر"
+
+msgid "No history found."
+msgstr "تاریخچه‌ای یافت نشد."
+
+msgid "Clock-in recorded successfully!"
+msgstr "ساعت ورود با موفقیت ثبت شد!"
+
+msgid "Clock-out recorded successfully!"
+msgstr "ساعت خروج با موفقیت ثبت شد!"
+
+msgid "You have already clocked in today."
+msgstr "شما قبلاً ورود خود را ثبت کرده‌اید."
+
+msgid "You must clock in first."
+msgstr "ابتدا باید ساعت ورود را ثبت کنید."
+
+msgid "You have already clocked out today."
+msgstr "شما قبلاً خروج خود را ثبت کرده‌اید."
+
+msgid "No attendance record found for today. Please clock in first."
+msgstr "رکورد حضور و غیابی برای امروز یافت نشد. لطفاً ابتدا ورود بزنید."
