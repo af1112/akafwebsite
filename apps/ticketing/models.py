@@ -7,8 +7,11 @@ User = get_user_model()
 class Ticket(models.Model):
     STATUS_CHOICES = [
         ('open', _('Open')),
+        ('waiting_response', _('Waiting for Response')),
+        ('under_review', _('Under Review')),
+        ('referred', _('Referred to Expert')),
         ('in_progress', _('In Progress')),
-        ('resolved', _('Resolved')),
+        ('needs_info', _('Needs More Info')),
         ('closed', _('Closed')),
     ]
 

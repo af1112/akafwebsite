@@ -249,6 +249,63 @@ msgstr "اسناد"
 msgid "AI Engine"
 msgstr "موتور هوش مصنوعی"
 
+msgid "Main Dashboard"
+msgstr "داشبورد اصلی"
+
+msgid "Welcome back"
+msgstr "خوش آمدید"
+
+msgid "Manage your business modules, track expenses, and monitor performance all in one place."
+msgstr "ماژول‌های کسب‌وکار خود را مدیریت کنید، هزینه‌ها را پیگیری کنید و عملکرد را در یک جا نظارت کنید."
+
+msgid "Business Modules"
+msgstr "ماژول‌های کسب‌وکار"
+
+msgid "Track daily expenses and petty cash."
+msgstr "هزینه‌های روزانه و تنخواه‌گردان را پیگیری کنید."
+
+msgid "Ticketing System"
+msgstr "سیستم تیکتینگ"
+
+msgid "Manage support tickets and issues."
+msgstr "تیکت‌های پشتیبانی و مشکلات را مدیریت کنید."
+
+msgid "Open Module"
+msgstr "ورود به ماژول"
+
+msgid "Attendance"
+msgstr "حضور و غیاب"
+
+msgid "Clock in/out and track attendance."
+msgstr "ثبت ورود/خروج و پیگیری حضور و غیاب."
+
+msgid "Coming Soon"
+msgstr "به زودی"
+
+msgid "Project Control"
+msgstr "کنترل پروژه"
+
+msgid "Manage tasks and timelines."
+msgstr "مدیریت وظایف و زمان‌بندی‌ها."
+
+msgid "Document DMS"
+msgstr "سیستم مدیریت اسناد"
+
+msgid "Secure document storage."
+msgstr "ذخیره‌سازی امن اسناد."
+
+msgid "Restaurant Digital Menu"
+msgstr "منوی دیجیتال رستوران"
+
+msgid "Restaurant menu management."
+msgstr "مدیریت منوی رستوران."
+
+msgid "Customer Club"
+msgstr "باشگاه مشتریان"
+
+msgid "Loyalty and CRM."
+msgstr "وفاداری و مدیریت ارتباط با مشتری."
+
 msgid "Digital Menu"
 msgstr "منوی دیجیتال"
 
@@ -285,8 +342,137 @@ msgstr "مدیر کل"
 msgid "No Module Access"
 msgstr "بدون دسترسی به ماژول"
 
+msgid "Detecting location..."
+msgstr "در حال شناسایی موقعیت..."
+
+msgid "Photo Preview"
+msgstr "پیش‌نمایش عکس"
+
+msgid "Take Selfie & Clock In"
+msgstr "گرفتن سلفی و ثبت ورود"
+
+msgid "Confirm Clock In"
+msgstr "تأیید ثبت ورود"
+
+msgid "Take Selfie & Clock Out"
+msgstr "گرفتن سلفی و ثبت خروج"
+
+msgid "Confirm Clock Out"
+msgstr "تأیید ثبت خروج"
+
+msgid "Today's work completed."
+msgstr "کار امروز به پایان رسیده است."
+
+msgid "Camera access is required for attendance."
+msgstr "دسترسی به دوربین برای حضور و غیاب الزامی است."
+
 msgid "Active"
 msgstr "فعال"
+
+msgid "Open"
+msgstr "باز"
+
+msgid "Waiting for Response"
+msgstr "منتظر پاسخگویی"
+
+msgid "Under Review"
+msgstr "در حال بررسی"
+
+msgid "Referred to Expert"
+msgstr "ارجاع به کارشناس"
+
+msgid "In Progress"
+msgstr "در دست انجام"
+
+msgid "Needs More Info"
+msgstr "نیاز به اطلاعات بیشتر"
+
+msgid "Closed"
+msgstr "بسته شده"
+
+msgid "Intelligent data analysis."
+msgstr "تجزیه و تحلیل هوشمند داده‌ها."
+
+msgid "Akaf Digital Sales Advertising System."
+msgstr "سیستم تبلیغات فروش دیجیتال آکاف."
+
+msgid "Open System"
+msgstr "ورود به سیستم"
+
+msgid "Digital Ads"
+msgstr "تبلیغات دیجیتال"
+
+msgid "Main Attachment"
+msgstr "پیوست اصلی"
+
+msgid "Discussion"
+msgstr "گفتگو"
+
+msgid "No comments yet."
+msgstr "هنوز پیامی ثبت نشده است."
+
+msgid "Add Reply"
+msgstr "ارسال پاسخ"
+
+msgid "Post Reply"
+msgstr "ثبت پاسخ"
+
+msgid "This ticket is closed. You cannot add new comments."
+msgstr "این تیکت بسته شده است. شما نمی‌توانید پیام جدیدی ارسال کنید."
+
+msgid "Properties"
+msgstr "ویژگی‌ها"
+
+msgid "Priority"
+msgstr "اولویت"
+
+msgid "Assigned To"
+msgstr "ارجاع شده به"
+
+msgid "Unassigned"
+msgstr "ارجاع نشده"
+
+msgid "Assign"
+msgstr "ارجاع دادن"
+
+msgid "Remote Access"
+msgstr "دسترسی ریموت"
+
+msgid "Software"
+msgstr "نرم‌افزار"
+
+msgid "ID"
+msgstr "آیدی"
+
+msgid "Subject"
+msgstr "موضوع"
+
+msgid "Category"
+msgstr "دسته بندی"
+
+msgid "Create New Ticket"
+msgstr "ایجاد تیکت جدید"
+
+msgid "New Ticket"
+msgstr "تیکت جدید"
+
+msgid "Tickets"
+msgstr "تیکت‌ها"
+
+msgid "My Tickets"
+msgstr "تیکت‌های من"
+
+msgid "No tickets found."
+msgstr "تیکتی یافت نشد."
+
+msgid "Reopen & Send Message"
+msgstr "بازگشایی و ارسال پیام"
+
+msgid "Type a message to reopen the ticket..."
+msgstr "پیامی برای بازگشایی تیکت بنویسید..."
+
+msgid "This ticket is closed."
+msgstr "این تیکت بسته شده است."
 
 msgid "Inactive"
 msgstr "غیرفعال"

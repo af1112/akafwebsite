@@ -13,9 +13,9 @@ class Attendance(models.Model):
     latitude = models.DecimalField(_("Latitude"), max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(_("Longitude"), max_digits=9, decimal_places=6, null=True, blank=True)
     
-    # Photo proof
-    photo_in = models.ImageField(_("Photo In"), upload_to='attendance_photos/%Y/%m/', null=True, blank=True)
-    photo_out = models.ImageField(_("Photo Out"), upload_to='attendance_photos/%Y/%m/', null=True, blank=True)
+    # Photo proof (Stored as Base64 because of Read-only filesystem on production)
+    photo_in = models.TextField(_("Photo In"), null=True, blank=True)
+    photo_out = models.TextField(_("Photo Out"), null=True, blank=True)
     
     ip_address = models.GenericIPAddressField(_("IP Address"), null=True, blank=True)
     note = models.TextField(_("Note"), null=True, blank=True)

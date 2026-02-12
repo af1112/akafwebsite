@@ -5,7 +5,6 @@ from django.contrib import messages
 from .models import Attendance
 from django.utils.translation import gettext as _
 import base64
-from django.core.files.base import ContentFile
 
 @login_required
 def attendance_dashboard(request):
@@ -40,10 +39,9 @@ def clock_in(request):
             # Save photo if provided
             photo_data = request.POST.get('photo')
             if photo_data:
-                format, imgstr = photo_data.split(';base64,')
-                ext = format.split('/')[-1]
-                data = ContentFile(base64.b64decode(imgstr), name=f"in_{request.user.id}_{today}.{ext}")
-                attendance.photo_in = data
+                # Save the raw base64 string directly to the database
+                # since the filesystem is read-only on production
+                attendance.photo_in = photo_data
             
             # Get IP address
             x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -78,10 +76,9 @@ def clock_out(request):
                 # Save photo if provided
                 photo_data = request.POST.get('photo')
                 if photo_data:
-                    format, imgstr = photo_data.split(';base64,')
-                    ext = format.split('/')[-1]
-                    data = ContentFile(base64.b64decode(imgstr), name=f"out_{request.user.id}_{today}.{ext}")
-                    attendance.photo_out = data
+                    # Save the raw base64 string directly to the database
+                    # since the filesystem is read-only on production
+                    attendance.photo_out = photo_data
 
                 attendance.save()
                 messages.success(request, _("Clock-out recorded successfully!"))

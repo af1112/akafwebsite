@@ -20,10 +20,10 @@ def run_migrations_view(request):
     Usage: /run-migrations/  OR  /run-migrations/?key=AKAF_SECRET_RESTORE_2026
     """
     secret_key = request.GET.get('key')
-    is_authorized = request.user.is_authenticated and request.user.is_superuser
+    is_authorized = request.user.is_authenticated and (request.user.is_superuser or request.user.is_staff)
     
     if not is_authorized and secret_key != 'AKAF_SECRET_RESTORE_2026':
-        return HttpResponse("Unauthorized", status=403)
+        return HttpResponse("Unauthorized. Please use the secret key or login as staff.", status=403)
         
     output = []
     output.append("--- RUNNING MIGRATIONS ---")

@@ -62,6 +62,22 @@
     </div>
     {% endif %}
 
+    <!-- Attendance System -->
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+        <a href="{% url 'hr_attendance:dashboard' %}" class="text-decoration-none">
+            <div class="dashboard-card">
+                <div class="card-icon-wrapper bg-light-warning">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="card-title-lg">{% trans "Attendance" %}</h3>
+                <p class="card-desc">{% trans "Clock in/out and track attendance." %}</p>
+                <div class="card-action text-warning">
+                    {% trans "Open Module" %} <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+
     <!-- Project Control -->
     {% if perms.users.can_access_projects or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
