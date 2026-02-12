@@ -60,24 +60,28 @@ def restore_data_view(request):
                 output.append(f"❌ Pymysql connection failed: {str(py_err)}")
                 # Don't raise yet, try migrate anyway
         
-        # Step 2: Run migrate
-        output.append("Running migrations...")
+        # Step 1: Force Clean Database (Drop all tables)
+        output.append("🧹 Cleaning database (dropping all tables)...")
         try:
-            # Try normal migrate first with fake-initial
-            call_command('migrate', interactive=False, fake_initial=True)
-            output.append("✅ Migration successful!")
+            with connection.cursor() as cursor:
+                cursor.execute("SET FOREIGN_KEY_CHECKS = 0;")
+                cursor.execute("SHOW TABLES")
+                tables = cursor.fetchall()
+                for table in tables:
+                    cursor.execute(f"DROP TABLE IF EXISTS {table[0]}")
+                cursor.execute("SET FOREIGN_KEY_CHECKS = 1;")
+            output.append("✅ Database cleaned successfully.")
+        except Exception as clean_err:
+            output.append(f"⚠️ Clean failed: {str(clean_err)}")
+
+        # Step 2: Run fresh migrate
+        output.append("Running fresh migrations...")
+        try:
+            call_command('migrate', interactive=False)
+            output.append("✅ Fresh migration successful!")
         except Exception as mig_err:
-            if "already exists" in str(mig_err):
-                output.append("⚠️ Tables already exist, attempting to fake migrations...")
-                try:
-                    # If tables exist, fake the migrations so Django thinks they are done
-                    call_command('migrate', interactive=False, fake=True)
-                    output.append("✅ Migrations faked successfully!")
-                except Exception as fake_err:
-                    output.append(f"❌ Fake migration failed: {str(fake_err)}")
-            else:
-                output.append(f"❌ Migration failed: {str(mig_err)}")
-                raise mig_err
+            output.append(f"❌ Migration failed: {str(mig_err)}")
+            raise mig_err
         
         # Step 3: Create Superuser if not exists
         output.append("Checking for admin user...")
