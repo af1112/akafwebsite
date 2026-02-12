@@ -1,5 +1,6 @@
 {
     "version": 2,
+    "name": "pc-software-new",
     "builds": [
         {
             "src": "api/index.py",
