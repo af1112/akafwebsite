@@ -9,15 +9,30 @@ if parent_path not in sys.path:
     sys.path.insert(0, parent_path)
 
 try:
+    print("STARTING VERCEL BOOT...")
     from core.wsgi import application
     app = application
+    print("VERCEL BOOT SUCCESSFUL")
 except Exception as e:
     error_msg = traceback.format_exc()
-    print(f"CRITICAL ERROR IN api/index.py: {error_msg}")
+    print(f"CRITICAL BOOT ERROR: {error_msg}")
     
     def app(environ, start_response):
         status = '500 Internal Server Error'
-        body = f"<h1>Vercel Boot Error</h1><p>Error during core.wsgi import:</p><pre>{error_msg}</pre>".encode('utf-8')
+        # Displaying error directly in browser for emergency debugging
+        body = f"""
+        <html>
+        <body style="font-family: sans-serif; padding: 20px; line-height: 1.6;">
+            <h1 style="color: #d9534f;">❌ Vercel Boot Error</h1>
+            <p>The application failed to start. This is usually due to a configuration or dependency issue.</p>
+            <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+                <strong>Error Details:</strong>
+                <pre style="white-space: pre-wrap;">{error_msg}</pre>
+            </div>
+            <p style="margin-top: 20px;">Check your <code>requirements.txt</code> and <code>settings.py</code>.</p>
+        </body>
+        </html>
+        """.encode('utf-8')
         headers = [('Content-Type', 'text/html'), ('Content-Length', str(len(body)))]
         start_response(status, headers)
         return [body]
