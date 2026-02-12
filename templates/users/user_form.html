@@ -1,0 +1,89 @@
+{% extends 'dashboard_base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">{{ title }}</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    {% if user_form %}
+                    <h6 class="text-primary fw-bold mb-3">{% trans "Account Information" %}</h6>
+                    <div class="row g-3 mb-4">
+                        {% for field in user_form %}
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                            <div class="text-danger small mt-1">{{ field.errors|first }}</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <h6 class="text-primary fw-bold mb-3">{% trans "User Details" %}</h6>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">{% trans "First Name" %}</label>
+                            <input type="text" name="first_name" class="form-control" value="{{ edit_user.first_name }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">{% trans "Last Name" %}</label>
+                            <input type="text" name="last_name" class="form-control" value="{{ edit_user.last_name }}">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">{% trans "Email" %}</label>
+                            <input type="email" name="email" class="form-control" value="{{ edit_user.email }}">
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <hr class="my-4">
+
+                    <h6 class="text-success fw-bold mb-3">{% trans "Module Access Permissions" %}</h6>
+                    <p class="text-muted small mb-3">
+                        {% trans "Define which sections of the dashboard this user can access." %}
+                    </p>
+                    
+                    <div class="row g-3">
+                        {% for field in perm_form %}
+                        <div class="col-md-6">
+                            <div class="form-check form-switch">
+                                {{ field }}
+                                <label class="form-check-label ms-2" for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                </label>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mt-5 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary px-4 rounded-pill">
+                            <i class="fas fa-save me-1"></i> {% trans "Save User" %}
+                        </button>
+                        <a href="{% url 'user_list' %}" class="btn btn-light px-4 rounded-pill">
+                            {% trans "Cancel" %}
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-check-input:checked {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+</style>
+{% endblock %}

@@ -30,6 +30,27 @@ body {
     padding: 20px;
     transition: all 0.3s ease;
     z-index: 1000;
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Scrollbar styling for sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(67, 24, 255, 0.2);
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(67, 24, 255, 0.5);
 }
 
 .sidebar-header {

@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-13 00:00+0000\n"
+"PO-Revision-Date: 2026-02-13 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Turkish <tr@li.org>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Dashboard"
+msgstr "Panel"
+
+msgid "Expenses"
+msgstr "Giderler"
+
+msgid "User Management"
+msgstr "Kullanıcı Yönetimi"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "Logout"
+msgstr "Çıkış Yap"
+
+msgid "Home"
+msgstr "Ana Sayfa"
+
+msgid "Welcome"
+msgstr "Hoş Geldiniz"
+
+msgid "Expense Manager"
+msgstr "Gider Yöneticisi"
+
+msgid "Ticketing System"
+msgstr "Destek Sistemi"
+
+msgid "Project Control"
+msgstr "Proje Kontrolü"
+
+msgid "Document DMS"
+msgstr "Belge DMS"
+
+msgid "AI Engine"
+msgstr "AI Motoru"
+
+msgid "Digital Menu"
+msgstr "Dijital Menü"
+
+msgid "Customer Club"
+msgstr "Müşteri Kulübü"
+
+msgid "System Users"
+msgstr "Sistem Kullanıcıları"
+
+msgid "Create New User"
+msgstr "Yeni Kullanıcı Oluştur"
+
+msgid "User"
+msgstr "Kullanıcı"
+
+msgid "Email"
+msgstr "E-posta"
+
+msgid "Permissions"
+msgstr "Yetkiler"
+
+msgid "Status"
+msgstr "Durum"
+
+msgid "Actions"
+msgstr "İşlemler"
+
+msgid "Edit"
+msgstr "Düzenle"
+
+msgid "Delete"
+msgstr "Sil"
+
+msgid "Save User"
+msgstr "Kullanıcıyı Kaydet"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Language Settings"
+msgstr "Dil Ayarları"
+
+msgid "Save Settings"
+msgstr "Ayarları Kaydet"

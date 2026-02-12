@@ -7,15 +7,6 @@
 
 {% block content %}
 <div class="row">
-    <!-- Test Banner to confirm new deployment -->
-    <div class="col-12 mb-4">
-        <div class="alert alert-info border-0 shadow-sm d-flex align-items-center" role="alert">
-            <i class="fas fa-rocket me-3 fa-lg"></i>
-            <div>
-                <strong>🚀 سیستم بروزرسانی شد!</strong> این نسخه جدید (fix-deployment-v2) است که برای حل مشکل دیتابیس تنظیم شده است.
-            </div>
-        </div>
-    </div>
     <!-- Welcome Banner -->
     <div class="col-12">
         <div class="welcome-banner">
@@ -36,6 +27,7 @@
 
 <div class="row g-4">
     <!-- Expense Manager -->
+    {% if perms.users.can_access_expenses or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <a href="{% url 'dashboard' %}" class="text-decoration-none">
             <div class="dashboard-card">
@@ -50,8 +42,10 @@
             </div>
         </a>
     </div>
+    {% endif %}
 
     <!-- Ticketing System -->
+    {% if perms.users.can_access_ticketing or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <a href="{% url 'ticket_list' %}" class="text-decoration-none">
             <div class="dashboard-card">
@@ -66,8 +60,10 @@
             </div>
         </a>
     </div>
+    {% endif %}
 
     <!-- Project Control -->
+    {% if perms.users.can_access_projects or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <div class="dashboard-card opacity-75" style="cursor: not-allowed">
             <div class="card-icon-wrapper bg-light-info">
@@ -80,8 +76,10 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <!-- Document Management -->
+    {% if perms.users.can_access_dms or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <div class="dashboard-card opacity-75" style="cursor: not-allowed">
             <div class="card-icon-wrapper bg-light-danger">
@@ -94,8 +92,10 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <!-- AI Engine -->
+    {% if perms.users.can_access_ai or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <div class="dashboard-card opacity-75" style="cursor: not-allowed">
             <div class="card-icon-wrapper bg-light-warning">
@@ -108,8 +108,10 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <!-- Digital Menu Advertising -->
+    {% if perms.users.can_access_menu or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <a href="https://digitalmenu.akafbusiness.com/" target="_blank" class="text-decoration-none">
             <div class="dashboard-card border-primary border-top border-4">
@@ -124,8 +126,10 @@
             </div>
         </a>
     </div>
+    {% endif %}
 
     <!-- Digital Menu -->
+    {% if perms.users.can_access_menu or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <div class="dashboard-card opacity-75" style="cursor: not-allowed">
             <div class="card-icon-wrapper bg-light-success">
@@ -138,8 +142,10 @@
             </div>
         </div>
     </div>
+    {% endif %}
     
     <!-- Customer Club -->
+    {% if perms.users.can_access_club or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
         <div class="dashboard-card opacity-75" style="cursor: not-allowed">
             <div class="card-icon-wrapper bg-light-warning">
@@ -152,5 +158,6 @@
             </div>
         </div>
     </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-13 00:00+0000\n"
+"PO-Revision-Date: 2026-02-13 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Hindi <hi@li.org>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Dashboard"
+msgstr "डैशबोर्ड"
+
+msgid "Expenses"
+msgstr "खर्च"
+
+msgid "User Management"
+msgstr "उपयोगकर्ता प्रबंधन"
+
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+msgid "Logout"
+msgstr "लॉग आउट"
+
+msgid "Home"
+msgstr "होम"
+
+msgid "Welcome"
+msgstr "स्वागत है"
+
+msgid "Expense Manager"
+msgstr "व्यय प्रबंधक"
+
+msgid "Ticketing System"
+msgstr "टिकटिंग प्रणाली"
+
+msgid "Project Control"
+msgstr "परियोजना नियंत्रण"
+
+msgid "Document DMS"
+msgstr "दस्तावेज़ DMS"
+
+msgid "AI Engine"
+msgstr "AI इंजन"
+
+msgid "Digital Menu"
+msgstr "डिजिटल मेनू"
+
+msgid "Customer Club"
+msgstr "ग्राहक क्लब"
+
+msgid "System Users"
+msgstr "सिस्टम उपयोगकर्ता"
+
+msgid "Create New User"
+msgstr "नया उपयोगकर्ता बनाएँ"
+
+msgid "User"
+msgstr "उपयोगकर्ता"
+
+msgid "Email"
+msgstr "ईमेल"
+
+msgid "Permissions"
+msgstr "अनुमतियां"
+
+msgid "Status"
+msgstr "स्थिति"
+
+msgid "Actions"
+msgstr "कार्रवाई"
+
+msgid "Edit"
+msgstr "संपादित करें"
+
+msgid "Delete"
+msgstr "मिटाएँ"
+
+msgid "Save User"
+msgstr "उपयोगकर्ता सहेजें"
+
+msgid "Cancel"
+msgstr "रद्द करें"
+
+msgid "Language Settings"
+msgstr "भाषा सेटिंग्स"
+
+msgid "Save Settings"
+msgstr "सेटिंग्स सहेजें"

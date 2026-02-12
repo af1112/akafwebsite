@@ -19,6 +19,17 @@ class UserProfile(models.Model):
     def __str__(self):
         return f"{self.user.username} Profile"
 
+    class Meta:
+        permissions = [
+            ("can_access_expenses", "Can access Expense Manager"),
+            ("can_access_ticketing", "Can access Ticketing System"),
+            ("can_access_projects", "Can access Project Control"),
+            ("can_access_dms", "Can access Document DMS"),
+            ("can_access_ai", "Can access AI Engine"),
+            ("can_access_menu", "Can access Digital Menu"),
+            ("can_access_club", "Can access Customer Club"),
+        ]
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
