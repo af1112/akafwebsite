@@ -48,7 +48,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Application definition
 
-# Force redeploy to verify multi-tenancy changes
+# Force redeploy: 2026-02-13 18:35
+# Final attempt to trigger Vercel build after migration fixes
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
