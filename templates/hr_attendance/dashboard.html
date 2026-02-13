@@ -122,12 +122,18 @@
                         <input type="hidden" name="longitude" id="id_longitude">
                         <input type="hidden" name="photo" id="id_photo">
                         
+                        {% if require_photo %}
                         <button type="button" id="start-camera-btn" class="btn btn-action btn-clock-in mb-2">
                             <i class="fas fa-camera me-2"></i> {% trans "Take Selfie & Clock In" %}
                         </button>
                         <button type="submit" id="submit-btn" class="btn btn-action btn-clock-in" style="display:none;">
                             <i class="fas fa-sign-in-alt me-2"></i> {% trans "Confirm Clock In" %}
                         </button>
+                        {% else %}
+                        <button type="submit" class="btn btn-action btn-clock-in">
+                            <i class="fas fa-sign-in-alt me-2"></i> {% trans "Clock In Now" %}
+                        </button>
+                        {% endif %}
                     </form>
                     {% elif attendance.clock_in and not attendance.clock_out %}
                     <form id="attendance-form" action="{% url 'hr_attendance:clock_out' %}" method="post">
@@ -136,12 +142,18 @@
                         <input type="hidden" name="longitude" id="id_longitude">
                         <input type="hidden" name="photo" id="id_photo">
                         
+                        {% if require_photo %}
                         <button type="button" id="start-camera-btn" class="btn btn-action btn-clock-out mb-2">
                             <i class="fas fa-camera me-2"></i> {% trans "Take Selfie & Clock Out" %}
                         </button>
                         <button type="submit" id="submit-btn" class="btn btn-action btn-clock-out" style="display:none;">
                             <i class="fas fa-sign-out-alt me-2"></i> {% trans "Confirm Clock Out" %}
                         </button>
+                        {% else %}
+                        <button type="submit" class="btn btn-action btn-clock-out">
+                            <i class="fas fa-sign-out-alt me-2"></i> {% trans "Clock Out Now" %}
+                        </button>
+                        {% endif %}
                     </form>
                     {% else %}
                     <div class="alert alert-light bg-opacity-10 text-white border-0 py-3 px-4 rounded-pill">
@@ -265,18 +277,7 @@
     const requirePhoto = {{ require_photo|yesno:"true,false" }};
     
     if (startCameraBtn) {
-        // If photo is not required, show a direct clock-in button option or change text
-        if (!requirePhoto) {
-            startCameraBtn.innerHTML = '<i class="fas fa-clock me-2"></i> {% trans "Clock In Now" %}';
-            startCameraBtn.classList.remove('mb-2');
-            
-            startCameraBtn.addEventListener('click', () => {
-                // If not required, we can still allow taking photo or just submit
-                // For simplicity, if not required, clicking this just submits the form
-                document.getElementById('attendance-form').submit();
-            });
-        } else {
-            startCameraBtn.addEventListener('click', async () => {
+        startCameraBtn.addEventListener('click', async () => {
                 try {
                     const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
                     cameraPreview.srcObject = stream;
@@ -301,13 +302,13 @@
                         stream.getTracks().forEach(track => track.stop());
                         
                         startCameraBtn.style.display = 'none';
-                        submitBtn.style.display = 'inline-block';
+                        submitBtn.style.display = 'block';
                     };
                 } catch (err) {
-                    alert("{% trans 'Camera access is required for attendance.' %}");
+                    console.error("Camera access error:", err);
+                    alert("{% trans 'Error accessing camera. Please ensure permissions are granted.' %}");
                 }
-            });
-        }
+        });
     }
 </script>
 {% endblock %}
