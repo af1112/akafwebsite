@@ -26,17 +26,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom Typography (Offline) -->
+    <link href="{% static 'css/typography.css' %}" rel="stylesheet">
     <!-- Custom Dashboard CSS -->
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
     
-    <style>
-        {% if request.LANGUAGE_CODE in 'ar,fa,ur' %}
-        body { font-family: 'Tahoma', 'Arial', sans-serif; }
-        .sidebar { left: auto; right: 0; }
-        .main-content { margin-left: 0; margin-right: var(--sidebar-width); }
-        .nav-link i { margin-right: 0; margin-left: 15px; }
-        {% endif %}
-    </style>
     {% block extra_css %}{% endblock %}
 </head>
 <body>
