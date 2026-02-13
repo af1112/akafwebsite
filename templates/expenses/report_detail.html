@@ -3,13 +3,13 @@
 
 {% block content %}
 <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h4 class="mb-0">{{ report.title }}</h4>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="mb-0 fw-bold text-primary">{% trans "Statement Details" %}</h4>
         <div>
-            <a href="{% url 'export_report_pdf' report.id %}" class="btn btn-danger btn-sm">
-                <i class="fas fa-file-pdf"></i> PDF
+            <a href="{% url 'expenses:export_report_pdf' report.id %}" class="btn btn-danger btn-sm">
+                <i class="fas fa-file-pdf"></i> {% trans "Export PDF" %}
             </a>
-            <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-sm">Back</a>
+            <a href="{% url 'expenses:dashboard' %}" class="btn btn-secondary btn-sm">Back</a>
         </div>
     </div>
 

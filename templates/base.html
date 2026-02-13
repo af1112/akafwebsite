@@ -58,7 +58,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end border-0 shadow" aria-labelledby="userMenu">
                             <li><h6 class="dropdown-header">{{ user.username }}</h6></li>
-                            <li><a class="dropdown-item" href="{% url 'settings' %}">
+                            <li><a class="dropdown-item" href="{% url 'users:settings' %}">
                                 <i class="fas fa-cog me-2 text-muted"></i>{% trans "Settings" %}
                             </a></li>
                             <li><hr class="dropdown-divider"></li>

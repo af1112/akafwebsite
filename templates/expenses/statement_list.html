@@ -48,7 +48,7 @@
     <div class="container mt-3">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="{% url 'dashboard' %}" class="text-dark"><i class="fas fa-arrow-left fa-lg"></i></a>
+            <a href="{% url 'expenses:dashboard' %}" class="text-dark"><i class="fas fa-arrow-left fa-lg"></i></a>
             <h5 class="m-0 fw-bold">{% trans "All Statements" %}</h5>
             <div style="width: 20px;"></div>
         </div>
@@ -56,7 +56,7 @@
         <!-- Statements List -->
         <div class="list-group">
             {% for report in reports %}
-            <a href="{% url 'report_detail' report.id %}" class="list-group-item list-group-item-action">
+            <a href="{% url 'expenses:report_detail' report.id %}" class="list-group-item list-group-item-action">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                     <div>
                         <div class="fw-bold">{{ report.title }}</div>
@@ -73,14 +73,14 @@
             <div class="text-center text-muted py-5">
                 <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
                 <p>{% trans "No statements found." %}</p>
-                <a href="{% url 'create_report' %}" class="btn btn-primary mt-2">{% trans "Create New Statement" %}</a>
+                <a href="{% url 'expenses:create_report' %}" class="btn btn-primary mt-2">{% trans "Create New Statement" %}</a>
             </div>
             {% endfor %}
         </div>
         
         <!-- Floating Action Button -->
         <div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
-            <a href="{% url 'create_report' %}" class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+            <a href="{% url 'expenses:create_report' %}" class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
                 <i class="fas fa-plus fa-lg"></i>
             </a>
         </div>
