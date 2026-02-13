@@ -65,7 +65,7 @@
             </a>
             
             {% if user.is_staff or user.is_superuser %}
-            <a href="{% url 'user_list' %}" class="nav-link {% if 'users' in request.path %}active{% endif %}">
+            <a href="{% url 'users:user_list' %}" class="nav-link {% if 'users' in request.path %}active{% endif %}">
                 <i class="fas fa-user-shield text-danger"></i>
                 <span class="fw-bold">{% trans "User Management" %}</span>
             </a>
@@ -74,14 +74,14 @@
             <p class="text-uppercase text-secondary small fw-bold mt-4 mb-2 ps-3">{% trans "Modules" %}</p>
             
             {% if can_use_expenses or user.is_superuser %}
-            <a href="{% url 'dashboard' %}" class="nav-link {% if 'expenses' in request.path %}active{% endif %}">
+            <a href="{% url 'expenses:dashboard' %}" class="nav-link {% if 'expenses' in request.path %}active{% endif %}">
                 <i class="fas fa-wallet"></i>
                 <span>{% trans "Expenses" %}</span>
             </a>
             {% endif %}
 
             {% if can_use_ticketing or user.is_superuser %}
-            <a href="{% url 'ticket_list' %}" class="nav-link {% if 'ticketing' in request.path %}active{% endif %}">
+            <a href="{% url 'ticketing:ticket_list' %}" class="nav-link {% if 'ticketing' in request.path %}active{% endif %}">
                 <i class="fas fa-ticket-alt"></i>
                 <span>{% trans "Ticketing" %}</span>
             </a>
@@ -132,7 +132,7 @@
              <p class="text-uppercase text-secondary small fw-bold mt-4 mb-2 ps-3">{% trans "System" %}</p>
             
 
-            <a href="{% url 'settings' %}" class="nav-link {% if 'settings' in request.path %}active{% endif %}">
+            <a href="{% url 'users:settings' %}" class="nav-link {% if 'settings' in request.path %}active{% endif %}">
                 <i class="fas fa-cog"></i>
                 <span>{% trans "Settings" %}</span>
             </a>

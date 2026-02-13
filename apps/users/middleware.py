@@ -26,14 +26,14 @@ class LoginRequiredMiddleware:
     def __call__(self, request):
         # Use hardcoded paths to avoid NoReverseMatch during early boot/migration
         exempt_urls = [
-            '/users/login/',
-            '/users/register/',
+            '/accounts/login/',
+            '/accounts/register/',
             '/',
             '/run-migrations/',
         ]
         
         if not request.user.is_authenticated and request.path not in exempt_urls and not request.path.startswith('/static/'):
-            return redirect('/users/login/')
+            return redirect('/accounts/login/')
             
         response = self.get_response(request)
         return response

@@ -35,9 +35,11 @@ def main_dashboard(request):
 def run_migrations_view(request):
     """
     Safely run migrations on production.
-    Usage: /run-migrations/  OR  /run-migrations/?key=AKAF_SECRET_RESTORE_2026
+    Usage: /run-migrations/  OR  /run-migrations/?key=AKAF_SECRET_RESTORE_2026&fake=1
     """
     secret_key = request.GET.get('key')
+    force_fake = request.GET.get('fake') == '1'
+    
     # Use is_authenticated only if user is logged in, otherwise default to False
     is_authorized = False
     if request.user.is_authenticated:
@@ -79,35 +81,40 @@ def run_migrations_view(request):
                     cursor.execute("SET FOREIGN_KEY_CHECKS=1;")
                     output.append("✅ Successfully added organization_id column via raw SQL.")
                 except Exception as e:
-                    output.append(f"❌ Manual SQL failed: {str(e)}")
+                    output.append(f"❌ Manual SQL failed (maybe it exists?): {str(e)}")
 
         out = StringIO()
         
-        # Step 1: Try migrate organizations first
-        try:
-            output.append("Priority 1: Migrating 'organizations' app...")
-            call_command('migrate', 'organizations', interactive=False, stdout=out)
+        if force_fake:
+            output.append("🛠️ FORCE FAKE MODE ACTIVATED")
+            call_command('migrate', '--fake', interactive=False, stdout=out)
             output.append(out.getvalue())
-            out = StringIO() # reset for next command
-        except Exception as e:
-            output.append(f"Note: 'organizations' migration message: {str(e)}")
+            output.append("✅ Forced fake migration completed.")
+        else:
+            # Step 1: Try migrate organizations first
+            try:
+                output.append("Priority 1: Migrating 'organizations' app...")
+                call_command('migrate', 'organizations', interactive=False, stdout=out)
+                output.append(out.getvalue())
+                out = StringIO() # reset for next command
+            except Exception as e:
+                output.append(f"Note: 'organizations' migration message: {str(e)}")
 
-        # Step 2: Try normal migrate
-        try:
-            output.append("Priority 2: Running full migrate...")
-            call_command('migrate', interactive=False, stdout=out)
-        except Exception as e:
-            err_str = str(e).lower()
-            if "keyerror: 'organization'" in err_str or "already exists" in err_str or "1072" in err_str:
-                output.append(f"Detected migration conflict/error: {str(e)}")
-                output.append("Attempting recovery: --fake-initial...")
-                call_command('migrate', '--fake-initial', interactive=False, stdout=out)
-            else:
-                raise e
-                
-        result = out.getvalue()
-        output.append(result)
-        output.append("✅ Migrations completed successfully!")
+            # Step 2: Try normal migrate
+            try:
+                output.append("Priority 2: Running full migrate...")
+                call_command('migrate', interactive=False, stdout=out)
+            except Exception as e:
+                err_str = str(e).lower()
+                if "keyerror: 'organization'" in err_str or "already exists" in err_str or "1072" in err_str or "1060" in err_str:
+                    output.append(f"Detected migration conflict/error: {str(e)}")
+                    output.append("Attempting recovery: --fake-initial...")
+                    call_command('migrate', '--fake-initial', interactive=False, stdout=out)
+                else:
+                    raise e
+                    
+            output.append(out.getvalue())
+            output.append("✅ Migrations completed successfully!")
     except Exception as e:
         output.append(f"❌ Migration failed: {str(e)}")
         output.append(traceback.format_exc())
