@@ -215,8 +215,32 @@
     // Clock
     function updateClock() {
         const now = new Date();
-        document.getElementById('current-time').textContent = now.toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-        document.getElementById('current-date').textContent = now.toLocaleDateString('fa-IR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const isRtl = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'fa';
+        
+        const timeOptions = { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit', 
+            hour12: false 
+        };
+        const dateOptions = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        };
+
+        if (isRtl) {
+            timeOptions.numberingSystem = 'arab';
+            dateOptions.numberingSystem = 'arab';
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('fa-IR', timeOptions);
+            document.getElementById('current-date').textContent = now.toLocaleDateString('fa-IR', dateOptions);
+        } else {
+            timeOptions.numberingSystem = 'latn';
+            dateOptions.numberingSystem = 'latn';
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
     }
     setInterval(updateClock, 1000);
     updateClock();
@@ -238,38 +262,52 @@
     }
 
     // Camera
+    const requirePhoto = {{ require_photo|yesno:"true,false" }};
+    
     if (startCameraBtn) {
-        startCameraBtn.addEventListener('click', async () => {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
-                cameraPreview.srcObject = stream;
-                cameraContainer.style.display = 'block';
-                startCameraBtn.innerHTML = '<i class="fas fa-circle text-danger me-2"></i> {% trans "Capture Photo" %}';
-                
-                startCameraBtn.onclick = () => {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = cameraPreview.videoWidth;
-                    canvas.height = cameraPreview.videoHeight;
-                    const ctx = canvas.getContext('2d');
-                    ctx.translate(canvas.width, 0);
-                    ctx.scale(-1, 1);
-                    ctx.drawImage(cameraPreview, 0, 0);
+        // If photo is not required, show a direct clock-in button option or change text
+        if (!requirePhoto) {
+            startCameraBtn.innerHTML = '<i class="fas fa-clock me-2"></i> {% trans "Clock In Now" %}';
+            startCameraBtn.classList.remove('mb-2');
+            
+            startCameraBtn.addEventListener('click', () => {
+                // If not required, we can still allow taking photo or just submit
+                // For simplicity, if not required, clicking this just submits the form
+                document.getElementById('attendance-form').submit();
+            });
+        } else {
+            startCameraBtn.addEventListener('click', async () => {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
+                    cameraPreview.srcObject = stream;
+                    cameraContainer.style.display = 'block';
+                    startCameraBtn.innerHTML = '<i class="fas fa-circle text-danger me-2"></i> {% trans "Capture Photo" %}';
                     
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                    idPhoto.value = dataUrl;
-                    photoPreview.src = dataUrl;
-                    photoPreview.style.display = 'block';
-                    
-                    cameraContainer.style.display = 'none';
-                    stream.getTracks().forEach(track => track.stop());
-                    
-                    startCameraBtn.style.display = 'none';
-                    submitBtn.style.display = 'inline-block';
-                };
-            } catch (err) {
-                alert("{% trans 'Camera access is required for attendance.' %}");
-            }
-        });
+                    startCameraBtn.onclick = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = cameraPreview.videoWidth;
+                        canvas.height = cameraPreview.videoHeight;
+                        const ctx = canvas.getContext('2d');
+                        ctx.translate(canvas.width, 0);
+                        ctx.scale(-1, 1);
+                        ctx.drawImage(cameraPreview, 0, 0);
+                        
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.6); // Reduced quality to avoid "Data Too Long"
+                        idPhoto.value = dataUrl;
+                        photoPreview.src = dataUrl;
+                        photoPreview.style.display = 'block';
+                        
+                        cameraContainer.style.display = 'none';
+                        stream.getTracks().forEach(track => track.stop());
+                        
+                        startCameraBtn.style.display = 'none';
+                        submitBtn.style.display = 'inline-block';
+                    };
+                } catch (err) {
+                    alert("{% trans 'Camera access is required for attendance.' %}");
+                }
+            });
+        }
     }
 </script>
 {% endblock %}

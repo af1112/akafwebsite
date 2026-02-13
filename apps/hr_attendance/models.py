@@ -13,7 +13,7 @@ class Attendance(models.Model):
     latitude = models.DecimalField(_("Latitude"), max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(_("Longitude"), max_digits=9, decimal_places=6, null=True, blank=True)
     
-    # Photo proof (Stored as Base64 because of Read-only filesystem on production)
+    # Photo proof (Stored as LongText for large Base64 strings)
     photo_in = models.TextField(_("Photo In"), null=True, blank=True)
     photo_out = models.TextField(_("Photo Out"), null=True, blank=True)
     

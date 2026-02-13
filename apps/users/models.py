@@ -22,6 +22,9 @@ class UserProfile(models.Model):
     currency_symbol = models.CharField(max_length=10, default='ر.ع.', help_text="Currency Symbol (e.g. $, €)")
     currency_decimal_places = models.IntegerField(default=3, help_text="Number of decimal places (e.g. 3 for OMR, 2 for USD)")
 
+    # Attendance Settings
+    require_photo = models.BooleanField(default=True, help_text="Require a photo for attendance clock-in/out")
+
     def __str__(self):
         return f"{self.user.username} Profile"
 

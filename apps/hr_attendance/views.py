@@ -13,10 +13,16 @@ def attendance_dashboard(request):
     
     recent_attendances = Attendance.objects.filter(user=request.user).order_by('-date')[:5]
     
+    # Check if photo is required
+    require_photo = True
+    if hasattr(request.user, 'profile'):
+        require_photo = request.user.profile.require_photo
+    
     context = {
         'attendance': attendance,
         'recent_attendances': recent_attendances,
         'today': today,
+        'require_photo': require_photo,
     }
     return render(request, 'hr_attendance/dashboard.html', context)
 
