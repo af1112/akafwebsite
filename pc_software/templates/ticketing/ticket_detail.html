@@ -2,6 +2,117 @@
 {% load i18n %}
 
 {% block title %}{% trans "Ticket Details" %}{% endblock %}
+
+{% block extra_js %}
+<script>
+let mediaRecorder;
+let recordedChunks = [];
+let voiceBlob = null;
+let videoBlob = null;
+
+const recordVoiceBtn = document.getElementById('recordVoiceBtn');
+const recordVideoBtn = document.getElementById('recordVideoBtn');
+const stopRecordingBtn = document.getElementById('stopRecordingBtn');
+const recordingStatus = document.getElementById('recordingStatus');
+const statusText = document.getElementById('statusText');
+const previews = document.getElementById('previews');
+const commentForm = document.querySelector('form[enctype="multipart/form-data"]');
+
+async function startRecording(type) {
+    recordedChunks = [];
+    const constraints = type === 'voice' ? { audio: true } : { audio: true, video: true };
+    
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        mediaRecorder = new MediaRecorder(stream);
+        
+        mediaRecorder.ondataavailable = (e) => {
+            if (e.data.size > 0) recordedChunks.push(e.data);
+        };
+        
+        mediaRecorder.onstop = () => {
+            const blob = new Blob(recordedChunks, { type: type === 'voice' ? 'audio/webm' : 'video/webm' });
+            const url = URL.createObjectURL(blob);
+            
+            if (type === 'voice') {
+                voiceBlob = blob;
+                const audio = document.createElement('audio');
+                audio.controls = true;
+                audio.src = url;
+                audio.className = 'w-100 mt-2';
+                previews.innerHTML = '<h6>Voice Preview:</h6>';
+                previews.appendChild(audio);
+            } else {
+                videoBlob = blob;
+                const video = document.createElement('video');
+                video.controls = true;
+                video.src = url;
+                video.style.maxWidth = '200px';
+                previews.innerHTML = '<h6>Video Preview:</h6>';
+                previews.appendChild(video);
+            }
+            
+            stream.getTracks().forEach(track => track.stop());
+            recordingStatus.style.display = 'none';
+        };
+        
+        mediaRecorder.start();
+        recordingStatus.style.display = 'block';
+        statusText.innerText = `Recording ${type}...`;
+    } catch (err) {
+        alert('Could not access microphone/camera: ' + err);
+    }
+}
+
+if (recordVoiceBtn) {
+    recordVoiceBtn.addEventListener('click', () => startRecording('voice'));
+    recordVideoBtn.addEventListener('click', () => startRecording('video'));
+    stopRecordingBtn.addEventListener('click', () => {
+        if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+            mediaRecorder.stop();
+        }
+    });
+
+    commentForm.addEventListener('submit', async (e) => {
+        if (voiceBlob || videoBlob) {
+            e.preventDefault();
+            const formData = new FormData(commentForm);
+            
+            if (voiceBlob) {
+                formData.append('voice_recording', voiceBlob, 'voice_recording.webm');
+            }
+            if (videoBlob) {
+                formData.append('video_recording', videoBlob, 'video_recording.webm');
+            }
+            
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = 'Posting...';
+            
+            try {
+                const response = await fetch(window.location.href, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                });
+                
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    window.location.reload();
+                }
+            } catch (err) {
+                alert('Error posting reply: ' + err);
+                btn.disabled = false;
+                btn.innerText = 'Post Reply';
+            }
+        }
+    });
+}
+</script>
+{% endblock %}
 {% block page_title %}{% trans "Support" %}{% endblock %}
 {% block content_title %}{% trans "Ticket" %} #{{ ticket.id }}{% endblock %}
 
@@ -17,10 +128,38 @@
             <div class="card-body">
                 <p class="text-muted mb-4">{{ ticket.description|linebreaks }}</p>
                 
-                {% if ticket.attachment %}
-                <div class="alert alert-light border">
-                    <i class="fas fa-paperclip me-2"></i>
-                    <a href="{{ ticket.attachment.url }}" target="_blank">{% trans "View Attachment" %}</a>
+                <!-- Ticket Attachments -->
+                {% if ticket.attachments.exists or ticket.attachment %}
+                <div class="mb-4">
+                    <h6>{% trans "Attachments" %}</h6>
+                    <div class="row g-2">
+                        {% if ticket.attachment %}
+                        <div class="col-md-4">
+                            <div class="border rounded p-2 text-center">
+                                <i class="bi bi-file-earmark fs-4"></i>
+                                <div class="small text-truncate"><a href="{{ ticket.attachment.url }}" target="_blank">{% trans "Main Attachment" %}</a></div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% for attachment in ticket.attachments.all %}
+                        <div class="col-md-4">
+                            <div class="border rounded p-2">
+                                {% if attachment.file_type == 'voice' %}
+                                    <div class="small mb-1"><i class="bi bi-mic-fill me-1"></i>{% trans "Voice Message" %}</div>
+                                    <audio src="{{ attachment.file.url }}" controls class="w-100"></audio>
+                                {% elif attachment.file_type == 'video' %}
+                                    <div class="small mb-1"><i class="bi bi-camera-video-fill me-1"></i>{% trans "Video Message" %}</div>
+                                    <video src="{{ attachment.file.url }}" controls class="w-100" style="max-height: 200px;"></video>
+                                {% else %}
+                                    <div class="text-center">
+                                        <i class="bi bi-file-earmark fs-4"></i>
+                                        <div class="small text-truncate"><a href="{{ attachment.file.url }}" target="_blank">{% trans "View Attachment" %}</a></div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
                 {% endif %}
                 
@@ -47,6 +186,31 @@
                     <small class="text-muted">{{ comment.created_at|timesince }} ago</small>
                 </div>
                 <p class="mb-0">{{ comment.content|linebreaks }}</p>
+                
+                {% if comment.attachments.exists %}
+                <div class="mt-3 pt-3 border-top">
+                    <div class="row g-2">
+                        {% for attachment in comment.attachments.all %}
+                        <div class="col-md-6">
+                            <div class="border rounded p-2">
+                                {% if attachment.file_type == 'voice' %}
+                                    <div class="small mb-1"><i class="bi bi-mic-fill me-1"></i>{% trans "Voice Message" %}</div>
+                                    <audio src="{{ attachment.file.url }}" controls class="w-100"></audio>
+                                {% elif attachment.file_type == 'video' %}
+                                    <div class="small mb-1"><i class="bi bi-camera-video-fill me-1"></i>{% trans "Video Message" %}</div>
+                                    <video src="{{ attachment.file.url }}" controls class="w-100" style="max-height: 150px;"></video>
+                                {% else %}
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-file-earmark me-2"></i>
+                                        <div class="small text-truncate"><a href="{{ attachment.file.url }}" target="_blank">{% trans "Attachment" %}</a></div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
         {% empty %}
@@ -56,24 +220,56 @@
         {% endfor %}
 
         <!-- Add Comment -->
-        {% if ticket.status != 'closed' %}
         <div class="card">
             <div class="card-body">
-                <form method="post">
+                {% if ticket.status != 'closed' %}
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
                         <label class="form-label">{% trans "Add Reply" %}</label>
                         <textarea name="content" class="form-control" rows="3" required placeholder="Type your reply here..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">{% trans "Post Reply" %}</button>
+                    
+                    <div class="mb-3">
+                        <label class="form-label small">{% trans "Attachments" %}</label>
+                        <input type="file" name="attachments" class="form-control form-control-sm" multiple>
+                    </div>
+
+                    <!-- Voice & Video Recording Section -->
+                    <div class="mb-3 border rounded p-2 bg-light">
+                        <div class="d-flex gap-2 mb-2">
+                            <button type="button" id="recordVoiceBtn" class="btn btn-outline-danger btn-sm">
+                                <i class="bi bi-mic"></i>
+                            </button>
+                            <button type="button" id="recordVideoBtn" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-camera-video"></i>
+                            </button>
+                            <span class="small text-muted align-self-center">{% trans "Record voice or video" %}</span>
+                        </div>
+                        <div id="recordingStatus" class="small text-muted mb-2" style="display:none;">
+                            <span class="spinner-grow spinner-grow-sm text-danger" role="status"></span>
+                            <span id="statusText">Recording...</span>
+                            <button type="button" id="stopRecordingBtn" class="btn btn-link btn-sm text-danger p-0 ms-2">Stop</button>
+                        </div>
+                        <div id="previews" class="d-flex flex-wrap gap-2"></div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn btn-primary">{% trans "Post Reply" %}</button>
                 </form>
+                {% else %}
+                <div class="alert alert-warning mb-0">
+                    <p class="mb-2">{% trans "This ticket is closed." %}</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <textarea name="content" class="form-control" rows="2" required placeholder="Type a message to reopen the ticket..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-outline-primary">{% trans "Reopen & Send Message" %}</button>
+                    </form>
+                </div>
+                {% endif %}
             </div>
         </div>
-        {% else %}
-        <div class="alert alert-warning">
-            {% trans "This ticket is closed. You cannot add new comments." %}
-        </div>
-        {% endif %}
     </div>
 
     <!-- Sidebar Info -->
@@ -83,27 +279,93 @@
                 <h6 class="card-title text-muted mb-3">{% trans "Properties" %}</h6>
                 
                 <div class="mb-3">
-                    <label class="small text-muted d-block">{% trans "Status" %}</label>
-                    <span class="badge bg-success fs-6">{{ ticket.get_status_display }}</span>
+                    <label class="small text-muted d-block mb-1">{% trans "Status" %}</label>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success fs-6">{{ ticket.get_status_display }}</span>
+                        {% if user.is_staff or ticket.created_by == user %}
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% for status_val, status_label in status_choices %}
+                                    {% if user.is_staff or status_val == 'closed' %}
+                                    <li>
+                                        <form action="{% url 'ticket_update_status' ticket.id %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="{{ status_val }}">
+                                            <button type="submit" class="dropdown-item {% if ticket.status == status_val %}active{% endif %}">
+                                                {{ status_label }}
+                                            </button>
+                                        </form>
+                                    </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
                 
                 <div class="mb-3">
                     <label class="small text-muted d-block">{% trans "Priority" %}</label>
                     <span class="fw-bold">{{ ticket.get_priority_display }}</span>
                 </div>
-                
+
+                {% if ticket.remote_software_name or ticket.remote_software_id %}
+                <hr>
+                <h6 class="card-title text-muted mb-3">{% trans "Remote Access" %}</h6>
                 <div class="mb-3">
-                    <label class="small text-muted d-block">{% trans "Assigned To" %}</label>
-                    {% if ticket.assigned_to %}
-                        <div class="d-flex align-items-center">
-                            <div class="avatar-sm bg-light text-primary rounded-circle me-2 d-flex align-items-center justify-content-center" style="width:30px;height:30px">
-                                {{ ticket.assigned_to.first_name.0|default:ticket.assigned_to.username.0 }}
-                            </div>
-                            <span>{{ ticket.assigned_to.get_full_name|default:ticket.assigned_to.username }}</span>
+                    <label class="small text-muted d-block">{% trans "Software" %}</label>
+                    <span class="fw-bold text-primary">{{ ticket.remote_software_name|default:"-" }}</span>
+                </div>
+                <div class="mb-3">
+                    <label class="small text-muted d-block">{% trans "ID" %}</label>
+                    <code class="fs-6 fw-bold text-dark bg-light p-1 rounded">{{ ticket.remote_software_id|default:"-" }}</code>
+                </div>
+                {% endif %}
+                
+                <hr>
+                <div class="mb-3">
+                    <label class="small text-muted d-block mb-1">{% trans "Assigned To" %}</label>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            {% if ticket.assigned_to %}
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-sm bg-light text-primary rounded-circle me-2 d-flex align-items-center justify-content-center" style="width:30px;height:30px">
+                                        {{ ticket.assigned_to.first_name.0|default:ticket.assigned_to.username.0 }}
+                                    </div>
+                                    <span>{{ ticket.assigned_to.get_full_name|default:ticket.assigned_to.username }}</span>
+                                </div>
+                            {% else %}
+                                <span class="text-muted fst-italic">{% trans "Unassigned" %}</span>
+                            {% endif %}
                         </div>
-                    {% else %}
-                        <span class="text-muted fst-italic">{% trans "Unassigned" %}</span>
-                    {% endif %}
+                        
+                        {% if user.is_staff %}
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-plus"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 200px;">
+                                <form action="{% url 'ticket_assign' ticket.id %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="mb-2">
+                                        <select name="user_id" class="form-select form-select-sm">
+                                            <option value="">-- {% trans "Unassign" %} --</option>
+                                            {% for staff in all_users %}
+                                                <option value="{{ staff.id }}" {% if ticket.assigned_to == staff %}selected{% endif %}>
+                                                    {{ staff.get_full_name|default:staff.username }}
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm w-100">{% trans "Assign" %}</button>
+                                </form>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

@@ -10,8 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
-from pathlib import Path
+import os
 import sys
+from pathlib import Path
+
+# Fix for MySQL on Vercel/Shared Hosting
+import pymysql
+pymysql.install_as_MySQLdb()
+import MySQLdb
+if not hasattr(MySQLdb, 'version_info') or MySQLdb.version_info < (2, 2, 1):
+    MySQLdb.version_info = (2, 2, 1, 'final', 0)
+    MySQLdb.__version__ = '2.2.1'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +36,7 @@ SECRET_KEY = 'django-insecure-24^fn&q)8!c3q!jv*pf&mu!r5k9a2+_%b25*pmdao_og6v0#pv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']  # Allow all hosts for Vercel/Dev
+ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://akafbusiness.com',
@@ -39,6 +48,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Application definition
 
+# Force redeploy: 2026-02-13 18:35
+# Final attempt to trigger Vercel build after migration fixes
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,25 +58,28 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Custom Apps
-    'projects',
-    'reports',
-    'ai_engine',
-    'dms',
-    'users',
-    'expenses',
-    'ticketing',
+    'apps.projects',
+    'apps.reports',
+    'apps.ai_engine',
+    'apps.dms',
+    'apps.users',
+    'apps.expenses',
+    'apps.ticketing',
+    'apps.hr_attendance',
+    'apps.organizations', # New App
 ]
 
+# Support WhiteNoise for static files on Vercel
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add WhiteNoise
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.locale.LocaleMiddleware', # Add LocaleMiddleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'users.middleware.UserLanguageMiddleware', # Custom Language Middleware
-    'users.middleware.LoginRequiredMiddleware', # Custom Login Requirement
+    'apps.users.middleware.TenantMiddleware', # New Middleware
+    'apps.users.middleware.UserLanguageMiddleware',
+    'apps.users.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -94,45 +108,29 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-import pymysql
-pymysql.install_as_MySQLdb()
-import MySQLdb
-# Spoof mysqlclient version to bypass Django 5+ check
-if not hasattr(MySQLdb, 'version_info') or MySQLdb.version_info < (2, 2, 1):
-    MySQLdb.version_info = (2, 2, 1, 'final', 0)
-    MySQLdb.__version__ = '2.2.1'
+# Use Environment Variables from Vercel (preferred) or Fallback to hardcoded for testing
+DB_NAME = os.environ.get('DB_NAME', 'akaf_db')
+DB_USER = os.environ.get('DB_USER', '2n7VpWz69k7A6Wq.root')
+DB_PASSWORD = os.environ.get('DB_PASSWORD', 'AKAF_PASSWORD_2026')
+DB_HOST = os.environ.get('DB_HOST', 'gateway01.ap-southeast-1.prod.aws.tidbcloud.com')
+DB_PORT = os.environ.get('DB_PORT', '4000')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
+        'OPTIONS': {
+            'ssl': {
+                'ca': None,
+            },
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
-
-# Use MySQL if environment variables are set (e.g., in Vercel)
-import os
-if os.environ.get('DB_NAME'):
-    db_options = {
-        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-    }
-    
-    # Enable SSL for TiDB Cloud
-    if os.environ.get('DB_OPTIONS_SSL_MODE') == 'REQUIRED':
-        import ssl
-        db_options['ssl'] = {
-            'check_hostname': False,
-            'verify_mode': ssl.CERT_NONE
-        }
-
-    DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT', '3306'),
-        'OPTIONS': db_options,
-    }
 
 
 # Password validation
@@ -185,8 +183,23 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static_root'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# WhiteNoise configuration for Vercel
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

@@ -18,14 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import HttpResponse
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),  # Add Django auth URLs
     path('', views.main_dashboard, name='main_dashboard'), # Main Landing Dashboard
-    path('restore-data/', views.restore_data_view, name='restore_data'), # Emergency Data Restore
-    path('expenses/', include('expenses.urls')), # Move expenses to sub-path
-    path('ticketing/', include('ticketing.urls')), # Ticketing System
-    path('users/', include('users.urls')),
+    path('restore-data/', views.restore_data_view, name='restore_data'),
+    path('run-migrations/', views.run_migrations_view, name='run_migrations'),
+    path('ping/', lambda r: HttpResponse("pong"), name='ping'),
+    path('expenses/', include('apps.expenses.urls')), # Move expenses to sub-path
+    path('ticketing/', include('apps.ticketing.urls')), # Ticketing System
+    path('attendance/', include('apps.hr_attendance.urls')), # Attendance System
+    path('users/', include('apps.users.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,313 @@
+{% extends 'dashboard_base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Attendance Dashboard" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .clock-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .clock-display {
+        font-size: 3.5rem;
+        font-weight: 700;
+        letter-spacing: -1px;
+        margin-bottom: 0;
+    }
+    .date-display {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+    .btn-action {
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: none;
+        width: 100%;
+        max-width: 300px;
+    }
+    .btn-clock-in { background-color: #48bb78; color: white; box-shadow: 0 4px 14px 0 rgba(72, 187, 120, 0.39); }
+    .btn-clock-in:hover { background-color: #38a169; transform: translateY(-2px); color: white; }
+    .btn-clock-out { background-color: #f56565; color: white; box-shadow: 0 4px 14px 0 rgba(245, 101, 101, 0.39); }
+    .btn-clock-out:hover { background-color: #e53e3e; transform: translateY(-2px); color: white; }
+    
+    .status-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 5px 12px;
+        border-radius: 50px;
+        background: rgba(255,255,255,0.2);
+        backdrop-filter: blur(5px);
+        font-size: 0.75rem;
+    }
+    
+    #camera-container {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 20px;
+        border-radius: 15px;
+        overflow: hidden;
+        background: #000;
+        display: none;
+        position: relative;
+    }
+    #camera-preview { width: 100%; transform: scaleX(-1); }
+    #photo-preview { width: 100%; display: none; border-radius: 15px; margin-bottom: 20px; }
+    
+    .attendance-history-card { border-radius: 20px; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .history-item {
+        border-left: 4px solid #764ba2;
+        padding: 12px;
+        margin-bottom: 8px;
+        background: #f8f9fa;
+        border-radius: 0 10px 10px 0;
+    }
+    [dir="rtl"] .history-item { border-left: none; border-right: 4px solid #764ba2; border-radius: 10px 0 0 10px; }
+    
+    .location-info { font-size: 0.75rem; opacity: 0.8; margin-top: 10px; }
+    
+    @media (max-width: 768px) {
+        .clock-display { font-size: 2.5rem; }
+        .clock-card { padding: 30px 15px !important; }
+    }
+</style>
+{% endblock %}
+
+{% block content_title %}{% trans "Attendance System" %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 mb-4">
+            <div class="clock-card p-5 text-center">
+                <div class="status-badge">
+                    {% if not attendance.clock_in %}
+                        <i class="bi bi-circle-fill text-warning me-1"></i> {% trans "Not Clocked In" %}
+                    {% elif attendance.clock_in and not attendance.clock_out %}
+                        <i class="bi bi-circle-fill text-success me-1"></i> {% trans "Working" %}
+                    {% else %}
+                        <i class="bi bi-circle-fill text-danger me-1"></i> {% trans "Finished" %}
+                    {% endif %}
+                </div>
+                
+                <p class="date-display mt-2" id="current-date">--</p>
+                <h1 class="clock-display" id="current-time">00:00:00</h1>
+                
+                <div id="location-status" class="location-info">
+                    <i class="bi bi-geo-alt-fill"></i> <span id="location-text">{% trans "Detecting location..." %}</span>
+                </div>
+
+                <div class="mt-4">
+                    <div id="camera-container">
+                        <video id="camera-preview" autoplay playsinline></video>
+                    </div>
+                    <img id="photo-preview" alt="{% trans "Photo Preview" %}">
+                </div>
+                
+                <div class="mt-3 d-flex justify-content-center gap-3 flex-wrap">
+                    {% if not attendance.clock_in %}
+                    <form id="attendance-form" action="{% url 'hr_attendance:clock_in' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="latitude" id="id_latitude">
+                        <input type="hidden" name="longitude" id="id_longitude">
+                        <input type="hidden" name="photo" id="id_photo">
+                        
+                        <button type="button" id="start-camera-btn" class="btn btn-action btn-clock-in mb-2">
+                            <i class="fas fa-camera me-2"></i> {% trans "Take Selfie & Clock In" %}
+                        </button>
+                        <button type="submit" id="submit-btn" class="btn btn-action btn-clock-in" style="display:none;">
+                            <i class="fas fa-sign-in-alt me-2"></i> {% trans "Confirm Clock In" %}
+                        </button>
+                    </form>
+                    {% elif attendance.clock_in and not attendance.clock_out %}
+                    <form id="attendance-form" action="{% url 'hr_attendance:clock_out' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="latitude" id="id_latitude">
+                        <input type="hidden" name="longitude" id="id_longitude">
+                        <input type="hidden" name="photo" id="id_photo">
+                        
+                        <button type="button" id="start-camera-btn" class="btn btn-action btn-clock-out mb-2">
+                            <i class="fas fa-camera me-2"></i> {% trans "Take Selfie & Clock Out" %}
+                        </button>
+                        <button type="submit" id="submit-btn" class="btn btn-action btn-clock-out" style="display:none;">
+                            <i class="fas fa-sign-out-alt me-2"></i> {% trans "Confirm Clock Out" %}
+                        </button>
+                    </form>
+                    {% else %}
+                    <div class="alert alert-light bg-opacity-10 text-white border-0 py-3 px-4 rounded-pill">
+                        <i class="fas fa-check-circle me-2"></i> {% trans "Today's work completed." %}
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="row mt-5">
+                    <div class="col-6 border-end border-light border-opacity-25">
+                        <small class="opacity-75 d-block">{% trans "Entry" %}</small>
+                        <h5 class="mb-0">{{ attendance.clock_in|time:"H:i"|default:"--" }}</h5>
+                    </div>
+                    <div class="col-6">
+                        <small class="opacity-75 d-block">{% trans "Exit" %}</small>
+                        <h5 class="mb-0">{{ attendance.clock_out|time:"H:i"|default:"--" }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="card attendance-history-card h-100">
+                <div class="card-body">
+                    <h6 class="card-title fw-bold mb-3">{% trans "Recent History" %}</h6>
+                    <div class="history-list">
+                        {% for record in recent_attendances %}
+                        <div class="history-item">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <span class="fw-bold small">{{ record.date|date:"Y/m/d" }}</span>
+                                <div class="d-flex gap-1">
+                                    {% if record.photo_in %}
+                                        <img src="{{ record.photo_in }}" style="width: 30px; height: 30px; object-fit: cover; border-radius: 5px;" alt="In">
+                                    {% endif %}
+                                    {% if record.photo_out %}
+                                        <img src="{{ record.photo_out }}" style="width: 30px; height: 30px; object-fit: cover; border-radius: 5px;" alt="Out">
+                                    {% endif %}
+                                    <span class="badge bg-soft-primary text-primary small">{{ record.duration|default:"--" }}</span>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3 extra-small text-muted">
+                                <span><i class="bi bi-box-arrow-in-right"></i> {{ record.clock_in|time:"H:i" }}</span>
+                                {% if record.clock_out %}
+                                <span><i class="bi bi-box-arrow-right"></i> {{ record.clock_out|time:"H:i" }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="text-center py-4 text-muted small">{% trans "No history." %}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const cameraContainer = document.getElementById('camera-container');
+    const cameraPreview = document.getElementById('camera-preview');
+    const photoPreview = document.getElementById('photo-preview');
+    const startCameraBtn = document.getElementById('start-camera-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const idPhoto = document.getElementById('id_photo');
+    const idLat = document.getElementById('id_latitude');
+    const idLng = document.getElementById('id_longitude');
+    const locationText = document.getElementById('location-text');
+
+    // Clock
+    function updateClock() {
+        const now = new Date();
+        const isRtl = document.documentElement.dir === 'rtl' || document.documentElement.lang === 'fa';
+        
+        const timeOptions = { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit', 
+            hour12: false 
+        };
+        const dateOptions = { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        };
+
+        if (isRtl) {
+            timeOptions.numberingSystem = 'arab';
+            dateOptions.numberingSystem = 'arab';
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('fa-IR', timeOptions);
+            document.getElementById('current-date').textContent = now.toLocaleDateString('fa-IR', dateOptions);
+        } else {
+            timeOptions.numberingSystem = 'latn';
+            dateOptions.numberingSystem = 'latn';
+            document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Geolocation
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                idLat.value = position.coords.latitude;
+                idLng.value = position.coords.longitude;
+                locationText.textContent = "{% trans 'Location captured' %}";
+                locationText.parentElement.classList.add('text-success');
+            },
+            (error) => {
+                locationText.textContent = "{% trans 'Location access denied' %}";
+                locationText.parentElement.classList.add('text-warning');
+            }
+        );
+    }
+
+    // Camera
+    const requirePhoto = {{ require_photo|yesno:"true,false" }};
+    
+    if (startCameraBtn) {
+        // If photo is not required, show a direct clock-in button option or change text
+        if (!requirePhoto) {
+            startCameraBtn.innerHTML = '<i class="fas fa-clock me-2"></i> {% trans "Clock In Now" %}';
+            startCameraBtn.classList.remove('mb-2');
+            
+            startCameraBtn.addEventListener('click', () => {
+                // If not required, we can still allow taking photo or just submit
+                // For simplicity, if not required, clicking this just submits the form
+                document.getElementById('attendance-form').submit();
+            });
+        } else {
+            startCameraBtn.addEventListener('click', async () => {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
+                    cameraPreview.srcObject = stream;
+                    cameraContainer.style.display = 'block';
+                    startCameraBtn.innerHTML = '<i class="fas fa-circle text-danger me-2"></i> {% trans "Capture Photo" %}';
+                    
+                    startCameraBtn.onclick = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = cameraPreview.videoWidth;
+                        canvas.height = cameraPreview.videoHeight;
+                        const ctx = canvas.getContext('2d');
+                        ctx.translate(canvas.width, 0);
+                        ctx.scale(-1, 1);
+                        ctx.drawImage(cameraPreview, 0, 0);
+                        
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.6); // Reduced quality to avoid "Data Too Long"
+                        idPhoto.value = dataUrl;
+                        photoPreview.src = dataUrl;
+                        photoPreview.style.display = 'block';
+                        
+                        cameraContainer.style.display = 'none';
+                        stream.getTracks().forEach(track => track.stop());
+                        
+                        startCameraBtn.style.display = 'none';
+                        submitBtn.style.display = 'inline-block';
+                    };
+                } catch (err) {
+                    alert("{% trans 'Camera access is required for attendance.' %}");
+                }
+            });
+        }
+    }
+</script>
+{% endblock %}
