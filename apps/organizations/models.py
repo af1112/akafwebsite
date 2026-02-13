@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 class Organization(models.Model):
     name = models.CharField(_("Organization Name"), max_length=255)
     slug = models.SlugField(_("Subdomain/Slug"), unique=True, help_text=_("Used for URL routing (e.g., company-name)"))
-    logo = models.ImageField(_("Logo"), upload_to='org_logos/', blank=True, null=True)
+    logo = models.FileField(_("Logo"), upload_to='org_logos/', blank=True, null=True)
     
     # Subscription & Modules
     is_active = models.BooleanField(_("Is Active Subscription"), default=True)
