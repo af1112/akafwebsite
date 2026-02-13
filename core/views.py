@@ -51,15 +51,31 @@ def run_migrations_view(request):
     try:
         from django.core.management import call_command
         from io import StringIO
+        from django.db import connection
         
+        # Inspection part
+        output.append("Inspecting table 'users_userprofile'...")
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute("DESCRIBE users_userprofile")
+                columns = cursor.fetchall()
+                output.append("Columns in users_userprofile:")
+                for col in columns:
+                    output.append(f" - {col[0]} ({col[1]})")
+            except Exception as e:
+                output.append(f"Could not describe table: {str(e)}")
+
         out = StringIO()
         
         # Step 1: Try normal migrate first
         try:
+            output.append("Attempting: python manage.py migrate")
             call_command('migrate', interactive=False, stdout=out)
         except Exception as e:
-            if "KeyError: 'organization'" in str(e) or "already exists" in str(e).lower():
-                out.write(f"\nDetected migration conflict: {str(e)}\nAttempting --fake-initial...\n")
+            err_str = str(e).lower()
+            if "keyerror: 'organization'" in err_str or "already exists" in err_str or "1072" in err_str:
+                output.append(f"Detected migration conflict/error: {str(e)}")
+                output.append("Attempting recovery: --fake-initial...")
                 call_command('migrate', '--fake-initial', interactive=False, stdout=out)
             else:
                 raise e
