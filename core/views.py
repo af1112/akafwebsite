@@ -47,13 +47,23 @@ def run_migrations_view(request):
         return HttpResponse("Unauthorized. Please use the secret key or login as staff.", status=403)
         
     output = []
-    output.append("--- RUNNING MIGRATIONS ---")
+    output.append("--- RUNNING MIGRATIONS (Vercel Fix Mode) ---")
     try:
         from django.core.management import call_command
         from io import StringIO
         
         out = StringIO()
-        call_command('migrate', interactive=False, stdout=out)
+        
+        # Step 1: Try normal migrate first
+        try:
+            call_command('migrate', interactive=False, stdout=out)
+        except Exception as e:
+            if "KeyError: 'organization'" in str(e) or "already exists" in str(e).lower():
+                out.write(f"\nDetected migration conflict: {str(e)}\nAttempting --fake-initial...\n")
+                call_command('migrate', '--fake-initial', interactive=False, stdout=out)
+            else:
+                raise e
+                
         result = out.getvalue()
         output.append(result)
         output.append("✅ Migrations completed successfully!")
