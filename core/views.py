@@ -50,13 +50,39 @@ def run_migrations_view(request):
         
     output = []
     output.append("--- RUNNING MIGRATIONS (Vercel Fix Mode) ---")
+    output.append(f"Force Fake: {force_fake}")
+    
     try:
         from django.core.management import call_command
         from io import StringIO
         from django.db import connection
         
+        # Action 1: Create Default Organization if requested
+        if request.GET.get('init_org') == '1':
+            output.append("🚀 Initializing Default Organization...")
+            try:
+                with connection.cursor() as cursor:
+                    # Check if organizations table exists
+                    cursor.execute("SHOW TABLES LIKE 'organizations_organization'")
+                    if cursor.fetchone():
+                        cursor.execute("SELECT COUNT(*) FROM organizations_organization")
+                        count = cursor.fetchone()[0]
+                        if count == 0:
+                            cursor.execute("""
+                                INSERT INTO organizations_organization 
+                                (name, slug, is_active, can_use_expenses, can_use_ticketing, can_use_attendance, can_use_projects, can_use_dms, can_use_ai, can_use_menu, can_use_club, created_at, updated_at)
+                                VALUES ('Default Company', 'default', 1, 1, 1, 1, 1, 1, 1, 1, 1, NOW(), NOW())
+                            """)
+                            output.append("✅ Created 'Default Company'.")
+                        else:
+                            output.append(f"ℹ️ {count} organizations already exist.")
+                    else:
+                        output.append("❌ organizations_organization table does not exist yet. Run migrations first.")
+            except Exception as e:
+                output.append(f"❌ Org Init failed: {str(e)}")
+
         # Inspection part
-        output.append("Inspecting table 'users_userprofile'...")
+        output.append("\nInspecting table 'users_userprofile'...")
         has_org_col = False
         with connection.cursor() as cursor:
             try:
