@@ -24,16 +24,16 @@ class LoginRequiredMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # List of URLs that don't require login
+        # Use hardcoded paths to avoid NoReverseMatch during early boot/migration
         exempt_urls = [
-            reverse('users:login'),
-            reverse('users:register'),
-            reverse('core:home'),
-            '/run-migrations/', # Allow migration trigger without login
+            '/users/login/',
+            '/users/register/',
+            '/',
+            '/run-migrations/',
         ]
         
         if not request.user.is_authenticated and request.path not in exempt_urls and not request.path.startswith('/static/'):
-            return redirect('users:login')
+            return redirect('/users/login/')
             
         response = self.get_response(request)
         return response
