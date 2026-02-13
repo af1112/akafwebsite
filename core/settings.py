@@ -48,6 +48,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 # Application definition
 
+# Force redeploy to verify multi-tenancy changes
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
