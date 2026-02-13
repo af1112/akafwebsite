@@ -13,14 +13,17 @@ def main_dashboard(request):
     return render(request, 'main_dashboard.html')
 
     
-@login_required
+
 def run_migrations_view(request):
     """
     Safely run migrations on production.
     Usage: /run-migrations/  OR  /run-migrations/?key=AKAF_SECRET_RESTORE_2026
     """
     secret_key = request.GET.get('key')
-    is_authorized = request.user.is_authenticated and (request.user.is_superuser or request.user.is_staff)
+    # Use is_authenticated only if user is logged in, otherwise default to False
+    is_authorized = False
+    if request.user.is_authenticated:
+        is_authorized = (request.user.is_superuser or request.user.is_staff)
     
     if not is_authorized and secret_key != 'AKAF_SECRET_RESTORE_2026':
         return HttpResponse("Unauthorized. Please use the secret key or login as staff.", status=403)
