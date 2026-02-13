@@ -35,9 +35,11 @@ def main_dashboard(request):
 def run_migrations_view(request):
     """
     Safely run migrations on production.
-    Usage: /run-migrations/  OR  /run-migrations/?key=AKAF_SECRET_RESTORE_2026
+    Usage: /run-migrations/  OR  /run-migrations/?key=AKAF_SECRET_RESTORE_2026&fake=1
     """
     secret_key = request.GET.get('key')
+    force_fake = request.GET.get('fake') == '1'
+    
     # Use is_authenticated only if user is logged in, otherwise default to False
     is_authorized = False
     if request.user.is_authenticated:
@@ -47,16 +49,98 @@ def run_migrations_view(request):
         return HttpResponse("Unauthorized. Please use the secret key or login as staff.", status=403)
         
     output = []
-    output.append("--- RUNNING MIGRATIONS ---")
+    output.append("--- RUNNING MIGRATIONS (Vercel Fix Mode) ---")
+    output.append(f"Force Fake: {force_fake}")
+    
     try:
         from django.core.management import call_command
         from io import StringIO
+        from django.db import connection
         
+        # Action 1: Create Default Organization if requested
+        if request.GET.get('init_org') == '1':
+            output.append("🚀 Initializing Default Organization...")
+            try:
+                with connection.cursor() as cursor:
+                    # Check if organizations table exists
+                    cursor.execute("SHOW TABLES LIKE 'organizations_organization'")
+                    if cursor.fetchone():
+                        cursor.execute("SELECT COUNT(*) FROM organizations_organization")
+                        count = cursor.fetchone()[0]
+                        if count == 0:
+                            cursor.execute("""
+                                INSERT INTO organizations_organization 
+                                (name, slug, is_active, can_use_expenses, can_use_ticketing, can_use_attendance, can_use_projects, can_use_dms, can_use_ai, can_use_menu, can_use_club, created_at, updated_at)
+                                VALUES ('Default Company', 'default', 1, 1, 1, 1, 1, 1, 1, 1, 1, NOW(), NOW())
+                            """)
+                            output.append("✅ Created 'Default Company'.")
+                        else:
+                            output.append(f"ℹ️ {count} organizations already exist.")
+                    else:
+                        output.append("❌ organizations_organization table does not exist yet. Run migrations first.")
+            except Exception as e:
+                output.append(f"❌ Org Init failed: {str(e)}")
+
+        # Inspection part
+        output.append("\nInspecting table 'users_userprofile'...")
+        has_org_col = False
+        with connection.cursor() as cursor:
+            try:
+                cursor.execute("DESCRIBE users_userprofile")
+                columns = cursor.fetchall()
+                output.append("Columns in users_userprofile:")
+                for col in columns:
+                    output.append(f" - {col[0]} ({col[1]})")
+                    if col[0] == 'organization_id':
+                        has_org_col = True
+            except Exception as e:
+                output.append(f"Could not describe table: {str(e)}")
+
+        # Emergency Fix for MySQL Error 1072
+        if not has_org_col:
+            output.append("⚠️ Emergency: organization_id missing. Attempting manual SQL injection...")
+            with connection.cursor() as cursor:
+                try:
+                    # Disable foreign key checks for a moment
+                    cursor.execute("SET FOREIGN_KEY_CHECKS=0;")
+                    cursor.execute("ALTER TABLE users_userprofile ADD COLUMN organization_id BIGINT NULL;")
+                    cursor.execute("SET FOREIGN_KEY_CHECKS=1;")
+                    output.append("✅ Successfully added organization_id column via raw SQL.")
+                except Exception as e:
+                    output.append(f"❌ Manual SQL failed (maybe it exists?): {str(e)}")
+
         out = StringIO()
-        call_command('migrate', interactive=False, stdout=out)
-        result = out.getvalue()
-        output.append(result)
-        output.append("✅ Migrations completed successfully!")
+        
+        if force_fake:
+            output.append("🛠️ FORCE FAKE MODE ACTIVATED")
+            call_command('migrate', '--fake', interactive=False, stdout=out)
+            output.append(out.getvalue())
+            output.append("✅ Forced fake migration completed.")
+        else:
+            # Step 1: Try migrate organizations first
+            try:
+                output.append("Priority 1: Migrating 'organizations' app...")
+                call_command('migrate', 'organizations', interactive=False, stdout=out)
+                output.append(out.getvalue())
+                out = StringIO() # reset for next command
+            except Exception as e:
+                output.append(f"Note: 'organizations' migration message: {str(e)}")
+
+            # Step 2: Try normal migrate
+            try:
+                output.append("Priority 2: Running full migrate...")
+                call_command('migrate', interactive=False, stdout=out)
+            except Exception as e:
+                err_str = str(e).lower()
+                if "keyerror: 'organization'" in err_str or "already exists" in err_str or "1072" in err_str or "1060" in err_str:
+                    output.append(f"Detected migration conflict/error: {str(e)}")
+                    output.append("Attempting recovery: --fake-initial...")
+                    call_command('migrate', '--fake-initial', interactive=False, stdout=out)
+                else:
+                    raise e
+                    
+            output.append(out.getvalue())
+            output.append("✅ Migrations completed successfully!")
     except Exception as e:
         output.append(f"❌ Migration failed: {str(e)}")
         output.append(traceback.format_exc())

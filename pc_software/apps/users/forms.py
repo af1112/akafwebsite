@@ -74,20 +74,29 @@ class UserPermissionsForm(forms.Form):
     # Dynamic list of modules based on your requirement
     CAN_ACCESS_EXPENSES = forms.BooleanField(required=False, label="Access Expense Manager")
     CAN_ACCESS_TICKETING = forms.BooleanField(required=False, label="Access Ticketing System")
+    CAN_ACCESS_ATTENDANCE = forms.BooleanField(required=False, label="Access Presence & Attendance")
     CAN_ACCESS_PROJECTS = forms.BooleanField(required=False, label="Access Project Control")
     CAN_ACCESS_DMS = forms.BooleanField(required=False, label="Access Document DMS")
     CAN_ACCESS_AI = forms.BooleanField(required=False, label="Access AI Engine")
     CAN_ACCESS_MENU = forms.BooleanField(required=False, label="Access Digital Menu")
     CAN_ACCESS_CLUB = forms.BooleanField(required=False, label="Access Customer Club")
+    
+    REQUIRE_PHOTO = forms.BooleanField(required=False, label="Require Photo for Attendance")
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
         if user:
             # Get all codenames of permissions assigned directly to this user
-            # This is more reliable than has_perm for the edit form
             user_perms = set(user.user_permissions.values_list('codename', flat=True))
             for field_name in self.fields:
+                if field_name == 'REQUIRE_PHOTO':
+                    try:
+                        self.initial[field_name] = user.profile.require_photo
+                    except:
+                        self.initial[field_name] = True
+                    continue
+                
                 perm_codename = field_name.lower()
                 if perm_codename in user_perms:
                     self.initial[field_name] = True

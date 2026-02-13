@@ -65,7 +65,7 @@
             </a>
             
             {% if user.is_staff or user.is_superuser %}
-            <a href="{% url 'user_list' %}" class="nav-link {% if 'users' in request.path %}active{% endif %}">
+            <a href="{% url 'users:user_list' %}" class="nav-link {% if 'users' in request.path %}active{% endif %}">
                 <i class="fas fa-user-shield text-danger"></i>
                 <span class="fw-bold">{% trans "User Management" %}</span>
             </a>
@@ -73,56 +73,56 @@
 
             <p class="text-uppercase text-secondary small fw-bold mt-4 mb-2 ps-3">{% trans "Modules" %}</p>
             
-            {% if can_use_expenses or user.is_superuser %}
-            <a href="{% url 'dashboard' %}" class="nav-link {% if 'expenses' in request.path %}active{% endif %}">
+            {% if can_use_expenses and perms.users.can_access_expenses or user.is_superuser %}
+            <a href="{% url 'expenses:dashboard' %}" class="nav-link {% if 'expenses' in request.path %}active{% endif %}">
                 <i class="fas fa-wallet"></i>
                 <span>{% trans "Expenses" %}</span>
             </a>
             {% endif %}
 
-            {% if can_use_ticketing or user.is_superuser %}
-            <a href="{% url 'ticket_list' %}" class="nav-link {% if 'ticketing' in request.path %}active{% endif %}">
+            {% if can_use_ticketing and perms.users.can_access_ticketing or user.is_superuser %}
+            <a href="{% url 'ticketing:ticket_list' %}" class="nav-link {% if 'ticketing' in request.path %}active{% endif %}">
                 <i class="fas fa-ticket-alt"></i>
                 <span>{% trans "Ticketing" %}</span>
             </a>
             {% endif %}
 
-            {% if can_use_attendance or user.is_superuser %}
+            {% if can_use_attendance and perms.users.can_access_attendance or user.is_superuser %}
             <a href="{% url 'hr_attendance:dashboard' %}" class="nav-link {% if 'attendance' in request.path %}active{% endif %}">
                 <i class="fas fa-clock"></i>
                 <span>{% trans "Attendance" %}</span>
             </a>
             {% endif %}
             
-            {% if can_use_projects or user.is_superuser %}
+            {% if can_use_projects and perms.users.can_access_projects or user.is_superuser %}
             <a href="#" class="nav-link {% if 'projects' in request.path %}active{% endif %}">
                 <i class="fas fa-project-diagram"></i>
                 <span>{% trans "Projects" %}</span>
             </a>
             {% endif %}
             
-            {% if can_use_dms or user.is_superuser %}
+            {% if can_use_dms and perms.users.can_access_dms or user.is_superuser %}
             <a href="#" class="nav-link {% if 'dms' in request.path %}active{% endif %}">
                 <i class="fas fa-folder-open"></i>
                 <span>{% trans "Documents" %}</span>
             </a>
             {% endif %}
             
-            {% if can_use_ai or user.is_superuser %}
+            {% if can_use_ai and perms.users.can_access_ai or user.is_superuser %}
             <a href="#" class="nav-link {% if 'ai' in request.path %}active{% endif %}">
                 <i class="fas fa-brain"></i>
                 <span>{% trans "AI Engine" %}</span>
             </a>
             {% endif %}
             
-            {% if can_use_menu or user.is_superuser %}
+            {% if can_use_menu and perms.users.can_access_menu or user.is_superuser %}
             <a href="#" class="nav-link {% if 'menu' in request.path %}active{% endif %}">
                 <i class="fas fa-utensils"></i>
                 <span>{% trans "Digital Menu" %}</span>
             </a>
             {% endif %}
             
-            {% if can_use_club or user.is_superuser %}
+            {% if can_use_club and perms.users.can_access_club or user.is_superuser %}
             <a href="#" class="nav-link {% if 'club' in request.path %}active{% endif %}">
                 <i class="fas fa-users"></i>
                 <span>{% trans "Customer Club" %}</span>
@@ -132,7 +132,7 @@
              <p class="text-uppercase text-secondary small fw-bold mt-4 mb-2 ps-3">{% trans "System" %}</p>
             
 
-            <a href="{% url 'settings' %}" class="nav-link {% if 'settings' in request.path %}active{% endif %}">
+            <a href="{% url 'users:settings' %}" class="nav-link {% if 'settings' in request.path %}active{% endif %}">
                 <i class="fas fa-cog"></i>
                 <span>{% trans "Settings" %}</span>
             </a>
@@ -177,7 +177,7 @@
                         <span class="d-none d-md-block fw-bold text-dark">{{ user.first_name|default:user.username }}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
-                        <li><a class="dropdown-item" href="{% url 'settings' %}">{% trans "Profile Settings" %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:settings' %}">{% trans "Profile Settings" %}</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{% url 'logout' %}" method="post">
@@ -207,7 +207,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const themeToggle = document.getElementById('theme-toggle');
+        // Emergency cleanup for "frozen" screen issues (residual backdrops)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove any lingering bootstrap backdrops
+            const backdrops = document.querySelectorAll('.modal-backdrop, .offcanvas-backdrop');
+            backdrops.forEach(b => b.remove());
+            
+            // Reset body styles that might have been locked by a modal/offcanvas
+            document.body.classList.remove('modal-open', 'offcanvas-open');
+            document.body.style.overflow = '';
+            document.body.style.paddingRight = '';
+            
+            // Theme Toggle Logic
+            const themeToggle = document.getElementById('theme-toggle');
         const darkIcon = themeToggle.querySelector('.dark-icon');
         const lightIcon = themeToggle.querySelector('.light-icon');
 
@@ -232,6 +244,7 @@
             localStorage.setItem('theme', newTheme);
             updateIcons(newTheme);
         });
+    });
     </script>
     {% block extra_js %}{% endblock %}
 </body>

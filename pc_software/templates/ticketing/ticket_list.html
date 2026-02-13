@@ -8,7 +8,7 @@
 {% block content %}
 <div class="row mb-4">
     <div class="col-12 text-end">
-        <a href="{% url 'ticket_create' %}" class="btn btn-primary">
+        <a href="{% url 'ticketing:ticket_create' %}" class="btn btn-primary">
             <i class="fas fa-plus"></i> {% trans "New Ticket" %}
         </a>
     </div>
@@ -57,7 +57,7 @@
                         <td>{{ ticket.get_category_display }}</td>
                         <td class="text-muted small">{{ ticket.created_at|date:"M d, Y" }}</td>
                         <td>
-                            <a href="{% url 'ticket_detail' ticket.id %}" class="btn btn-sm btn-outline-primary">
+                            <a href="{% url 'ticketing:ticket_detail' ticket.id %}" class="btn btn-sm btn-outline-primary">
                                 {% trans "View" %}
                             </a>
                         </td>

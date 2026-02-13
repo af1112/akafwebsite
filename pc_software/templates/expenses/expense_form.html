@@ -87,7 +87,7 @@
     <div class="container mt-3">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="{% url 'dashboard' %}" class="text-white"><i class="fas fa-times fa-lg"></i></a>
+            <a href="{% url 'expenses:dashboard' %}" class="text-white"><i class="fas fa-times fa-lg"></i></a>
             <h5 class="m-0">{% trans "New Expense" %}</h5>
             <div style="width: 20px;"></div>
         </div>
@@ -184,7 +184,7 @@
 
             <div class="row mt-5">
                 <div class="col-6">
-                    <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary w-100 py-3">{% trans "Cancel" %}</a>
+                    <a href="{% url 'expenses:dashboard' %}" class="btn btn-outline-secondary w-100 py-3">{% trans "Cancel" %}</a>
                 </div>
                 <div class="col-6">
                     <button type="submit" class="btn btn-primary w-100 py-3">{% trans "Save" %}</button>

@@ -65,6 +65,11 @@ def user_create(request):
             
             # Save permissions
             for field, value in perm_form.cleaned_data.items():
+                if field == 'REQUIRE_PHOTO':
+                    profile.require_photo = value
+                    profile.save()
+                    continue
+                    
                 if value:
                     perm_codename = field.lower()
                     try:
@@ -138,6 +143,11 @@ def user_edit(request, pk):
             content_type = ContentType.objects.get_for_model(UserProfile)
             
             for field, value in perm_form.cleaned_data.items():
+                if field == 'REQUIRE_PHOTO':
+                    profile.require_photo = value
+                    profile.save()
+                    continue
+
                 if value:
                     perm_codename = field.lower()
                     try:

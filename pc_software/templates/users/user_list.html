@@ -8,7 +8,7 @@
 <div class="card border-0 shadow-sm">
     <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
         <h5 class="mb-0 fw-bold">{% trans "System Users" %}</h5>
-        <a href="{% url 'user_create' %}" class="btn btn-primary btn-sm rounded-pill">
+        <a href="{% url 'users:user_create' %}" class="btn btn-primary btn-sm rounded-pill">
             <i class="fas fa-plus me-1"></i> {% trans "Create New User" %}
         </a>
     </div>
@@ -59,11 +59,11 @@
                         </td>
                         <td>
                             <div class="btn-group">
-                                <a href="{% url 'user_edit' u.pk %}" class="btn btn-sm btn-outline-primary">
+                                <a href="{% url 'users:user_edit' u.pk %}" class="btn btn-sm btn-outline-primary">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 {% if u != user %}
-                                <form action="{% url 'user_delete' u.pk %}" method="post" class="d-inline" onsubmit="return confirm('{% trans "Are you sure you want to delete this user?" %}')">
+                                <form action="{% url 'users:user_delete' u.pk %}" method="post" class="d-inline" onsubmit="return confirm('{% trans "Are you sure you want to delete this user?" %}')">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-sm btn-outline-danger">
                                         <i class="fas fa-trash"></i>

@@ -26,7 +26,7 @@
     <!-- Expense Manager -->
     {% if can_use_expenses or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-        <a href="{% url 'dashboard' %}" class="text-decoration-none">
+        <a href="{% url 'expenses:dashboard' %}" class="text-decoration-none">
             <div class="dashboard-card">
                 <div class="card-icon-wrapper bg-light-primary">
                     <i class="fas fa-wallet"></i>
@@ -43,7 +43,7 @@
     <!-- Ticketing System -->
     {% if can_use_ticketing or user.is_superuser %}
     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-        <a href="{% url 'ticket_list' %}" class="text-decoration-none">
+        <a href="{% url 'ticketing:ticket_list' %}" class="text-decoration-none">
             <div class="dashboard-card">
                 <div class="card-icon-wrapper bg-light-success">
                     <i class="fas fa-ticket-alt"></i>
