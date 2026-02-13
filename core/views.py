@@ -55,6 +55,7 @@ def run_migrations_view(request):
         
         # Inspection part
         output.append("Inspecting table 'users_userprofile'...")
+        has_org_col = False
         with connection.cursor() as cursor:
             try:
                 cursor.execute("DESCRIBE users_userprofile")
@@ -62,14 +63,38 @@ def run_migrations_view(request):
                 output.append("Columns in users_userprofile:")
                 for col in columns:
                     output.append(f" - {col[0]} ({col[1]})")
+                    if col[0] == 'organization_id':
+                        has_org_col = True
             except Exception as e:
                 output.append(f"Could not describe table: {str(e)}")
 
+        # Emergency Fix for MySQL Error 1072
+        if not has_org_col:
+            output.append("⚠️ Emergency: organization_id missing. Attempting manual SQL injection...")
+            with connection.cursor() as cursor:
+                try:
+                    # Disable foreign key checks for a moment
+                    cursor.execute("SET FOREIGN_KEY_CHECKS=0;")
+                    cursor.execute("ALTER TABLE users_userprofile ADD COLUMN organization_id BIGINT NULL;")
+                    cursor.execute("SET FOREIGN_KEY_CHECKS=1;")
+                    output.append("✅ Successfully added organization_id column via raw SQL.")
+                except Exception as e:
+                    output.append(f"❌ Manual SQL failed: {str(e)}")
+
         out = StringIO()
         
-        # Step 1: Try normal migrate first
+        # Step 1: Try migrate organizations first
         try:
-            output.append("Attempting: python manage.py migrate")
+            output.append("Priority 1: Migrating 'organizations' app...")
+            call_command('migrate', 'organizations', interactive=False, stdout=out)
+            output.append(out.getvalue())
+            out = StringIO() # reset for next command
+        except Exception as e:
+            output.append(f"Note: 'organizations' migration message: {str(e)}")
+
+        # Step 2: Try normal migrate
+        try:
+            output.append("Priority 2: Running full migrate...")
             call_command('migrate', interactive=False, stdout=out)
         except Exception as e:
             err_str = str(e).lower()
