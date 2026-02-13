@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'apps.expenses',
     'apps.ticketing',
     'apps.hr_attendance',
+    'apps.organizations', # New App
 ]
 
 # Support WhiteNoise for static files on Vercel
@@ -74,6 +75,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'apps.users.middleware.TenantMiddleware', # New Middleware
     'apps.users.middleware.UserLanguageMiddleware',
     'apps.users.middleware.LoginRequiredMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
