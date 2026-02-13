@@ -1,4 +1,4 @@
-from apps.organizations.models import Organization
+# from apps.organizations.models import Organization
 
 class TenantMiddleware:
     def __init__(self, get_response):
@@ -9,7 +9,9 @@ class TenantMiddleware:
         if request.user.is_authenticated:
             try:
                 if hasattr(request.user, 'profile'):
-                    request.organization = request.user.profile.organization
+                    profile = request.user.profile
+                    # Avoid direct import to prevent circular issues or early crashes
+                    request.organization = getattr(profile, 'organization', None)
             except Exception:
                 # Handle cases where DB migration hasn't been run yet
                 pass

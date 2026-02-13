@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
-from apps.organizations.models import Organization
+# from apps.organizations.models import Organization
 
 class UserProfile(models.Model):
     ROLE_CHOICES = [
@@ -12,7 +12,7 @@ class UserProfile(models.Model):
         ('user', 'User'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, null=True, blank=True, related_name='members')
+    organization = models.ForeignKey('organizations.Organization', on_delete=models.SET_NULL, null=True, blank=True, related_name='members')
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='user')
     preferred_language = models.CharField(
         max_length=10,
