@@ -1,3 +1,5 @@
+# Force redeploy: 2026-02-13 19:43
+# Final attempt to trigger Vercel build
 import os
 import sys
 import traceback
