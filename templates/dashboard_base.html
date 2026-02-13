@@ -177,7 +177,7 @@
                         <span class="d-none d-md-block fw-bold text-dark">{{ user.first_name|default:user.username }}</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
-                        <li><a class="dropdown-item" href="{% url 'settings' %}">{% trans "Profile Settings" %}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'users:settings' %}">{% trans "Profile Settings" %}</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{% url 'logout' %}" method="post">
