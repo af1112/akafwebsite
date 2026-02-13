@@ -8,14 +8,14 @@
     --secondary-color: #6AD2FF;
     --dark-bg: #111c44;
     --light-bg: #f4f7fe;
-    --sidebar-width: 290px;
-    --card-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.05);
-    --card-shadow-hover: 0 20px 40px 0 rgba(67, 24, 255, 0.1);
+    --sidebar-width: 280px;
+    --card-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 10px 30px 0 rgba(67, 24, 255, 0.1);
     --text-primary: #1B2559;
-    --text-secondary: #A3AED0;
-    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    --border-radius-lg: 24px;
-    --border-radius-md: 16px;
+    --text-secondary: #707EAE;
+    --transition: all 0.2s ease-in-out;
+    --border-radius-lg: 20px;
+    --border-radius-md: 12px;
 }
 
 /* Glassmorphism Background Pattern */
@@ -70,7 +70,7 @@ body {
 
 .main-content {
     margin-left: var(--sidebar-width);
-    padding: 40px;
+    padding: 24px 32px;
     transition: var(--transition);
     min-height: 100vh;
 }
@@ -91,26 +91,26 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link {
     display: flex;
     align-items: center;
-    padding: 16px 24px;
+    padding: 12px 20px;
     color: var(--text-secondary);
     font-weight: 600;
     border-radius: var(--border-radius-md);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     transition: var(--transition);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .nav-link i {
-    width: 24px;
-    margin-right: 16px;
-    font-size: 22px;
+    width: 20px;
+    margin-right: 12px;
+    font-size: 18px;
     transition: var(--transition);
 }
 
 [dir="rtl"] .nav-link i {
     margin-right: 0;
-    margin-left: 16px;
+    margin-left: 12px;
 }
 
 .nav-link:hover {
@@ -136,32 +136,32 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Top Navbar (Glassmorphism) */
 .top-navbar {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 30px;
-    padding: 20px 32px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 12px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     position: sticky;
-    top: 24px;
+    top: 12px;
     z-index: 900;
-    box-shadow: 14px 17px 40px 4px rgba(112, 144, 176, 0.08);
+    box-shadow: 0 4px 20px rgba(112, 144, 176, 0.06);
 }
 
 /* Dashboard Card Styles */
 .dashboard-card {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
     border-radius: var(--border-radius-lg);
-    padding: 32px;
+    padding: 24px;
     box-shadow: var(--card-shadow);
     height: 100%;
     transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -169,38 +169,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dashboard-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: var(--card-shadow-hover);
-    border-color: rgba(67, 24, 255, 0.2);
-    background: white;
+    border-color: rgba(67, 24, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .card-icon-wrapper {
-    width: 64px;
-    height: 64px;
-    border-radius: 18px;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 24px;
-    font-size: 24px;
+    margin-bottom: 20px;
+    font-size: 20px;
     transition: var(--transition);
     position: relative;
     z-index: 1;
 }
 
 .card-title-lg {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     color: var(--text-primary);
 }
 
 .card-desc {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-secondary);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     flex-grow: 1;
+    line-height: 1.5;
 }
 
 .card-action {
@@ -259,37 +260,41 @@ h1, h2, h3, h4, h5, h6 {
 /* Welcome Banner */
 .welcome-banner {
     background: var(--dark-bg);
-    background-image: radial-gradient(circle at 20% 30%, rgba(67, 24, 255, 0.15) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 70%, rgba(118, 75, 162, 0.15) 0%, transparent 50%);
-    border-radius: 30px;
-    padding: 56px;
+    background-image: radial-gradient(circle at 10% 20%, rgba(67, 24, 255, 0.2) 0%, transparent 40%),
+                      radial-gradient(circle at 90% 80%, rgba(118, 75, 162, 0.2) 0%, transparent 40%);
+    border-radius: var(--border-radius-lg);
+    padding: 32px 40px;
     color: white;
     position: relative;
     overflow: hidden;
-    margin-bottom: 48px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 32px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .welcome-banner::after {
     content: "";
     position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 300px;
-    height: 300px;
+    top: -20%;
+    right: -5%;
+    width: 200px;
+    height: 200px;
     background: var(--primary-color);
-    filter: blur(100px);
-    opacity: 0.2;
+    filter: blur(80px);
+    opacity: 0.15;
     z-index: 0;
 }
 
 .welcome-title {
-    font-size: 42px;
+    font-size: 28px;
     font-weight: 800;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     line-height: 1.2;
-    background: linear-gradient(to right, #fff, #a3aed0);
+    background: linear-gradient(to right, #ffffff, #e2e8f0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
@@ -297,7 +302,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .welcome-subtitle {
-    font-size: 18px;
+    font-size: 15px;
+    color: #A3AED0;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+    opacity: 0.9;
+}
     opacity: 0.85;
     font-weight: 500;
     max-width: 600px;
