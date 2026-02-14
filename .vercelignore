@@ -1,0 +1,11 @@
+core/
+apps/
+manage.py
+api/
+pc_software/
+Dockerfile
+docker-compose.yml
+*.py
+requirements.txt
+Pipfile
+Pipfile.lock

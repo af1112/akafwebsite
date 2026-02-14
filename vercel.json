@@ -4,33 +4,6 @@
         {
             "src": "package.json",
             "use": "@vercel/next"
-        },
-        {
-            "src": "api/index.py",
-            "use": "@vercel/python",
-            "config": {
-                "runtime": "python3.10"
-            }
-        }
-    ],
-    "rewrites": [
-        {
-            "source": "/(dashboard|admin|accounts|expenses|ticketing|attendance|users|restore-data|run-migrations|ping|static|media)(.*)",
-            "has": [
-                { "type": "host", "value": "akafco.com" }
-            ],
-            "destination": "/api/index.py"
-        },
-        {
-            "source": "/(dashboard|admin|accounts|expenses|ticketing|attendance|users|restore-data|run-migrations|ping|static|media)(.*)",
-            "has": [
-                { "type": "host", "value": "www.akafco.com" }
-            ],
-            "destination": "/api/index.py"
-        },
-        {
-            "source": "/(dashboard|admin|accounts|expenses|ticketing|attendance|users|restore-data|run-migrations|ping|static|media)(.*)",
-            "destination": "/api/index.py"
         }
     ]
 }
