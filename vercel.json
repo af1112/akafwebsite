@@ -9,10 +9,10 @@
             }
         }
     ],
-    "routes": [
+    "rewrites": [
         {
-            "src": "/(dashboard|admin|accounts|expenses|ticketing|attendance|users|restore-data|run-migrations|ping|static|media)(.*)",
-            "dest": "api/index.py"
+            "source": "/(dashboard|admin|accounts|expenses|ticketing|attendance|users|restore-data|run-migrations|ping|static|media)(.*)",
+            "destination": "/api/index.py"
         }
     ]
 }
