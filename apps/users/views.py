@@ -92,8 +92,16 @@ def user_create(request):
                             )
                         
                         user.user_permissions.add(permission)
+                        # Also add to staff_user's group or direct perms if they are staff
+                        if user.is_staff:
+                            user.user_permissions.add(permission)
                     except Exception as e:
                         print(f"DEBUG: Error adding permission {perm_codename}: {e}")
+            
+            # CLEAR CACHE AFTER SAVING
+            settings_key = f'user_settings_{user.id}'
+            if settings_key in request.session:
+                del request.session[settings_key]
             
             messages.success(request, _('User created successfully.'))
             return redirect('users:user_list')
