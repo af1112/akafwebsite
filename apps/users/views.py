@@ -22,6 +22,10 @@ def settings_view(request):
         form = LanguageSettingsForm(request.POST, instance=profile)
         if form.is_valid():
             user_profile = form.save()
+            # Clear the session cache to force context processor to re-calculate
+            settings_key = f'user_settings_{request.user.id}'
+            if settings_key in request.session:
+                del request.session[settings_key]
             # Activate the new language immediately for this request
             activate(user_profile.preferred_language)
             messages.success(request, _('Language settings updated successfully.'))
@@ -170,6 +174,10 @@ def user_edit(request, pk):
                         print(f"DEBUG: Error adding permission {perm_codename}: {e}")
             
             messages.success(request, _('User updated successfully.'))
+            # Clear the session cache for the edited user
+            settings_key = f'user_settings_{user.id}'
+            if settings_key in request.session:
+                del request.session[settings_key]
             return redirect('users:user_list')
         else:
             messages.error(request, _('Please correct the errors below.'))

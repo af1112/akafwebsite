@@ -11,7 +11,8 @@ class UserLanguageMiddleware:
     def __call__(self, request):
         if request.user.is_authenticated:
             try:
-                lang = request.user.profile.language
+                # Use preferred_language from profile
+                lang = request.user.profile.preferred_language
                 activate(lang)
                 request.LANGUAGE_CODE = lang
             except Exception:

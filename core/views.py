@@ -16,15 +16,15 @@ def main_dashboard(request):
     
     context = {
         'organization': organization,
-        # Default all to False if no organization
-        'can_use_expenses': organization.can_use_expenses if organization else False,
-        'can_use_ticketing': organization.can_use_ticketing if organization else False,
-        'can_use_attendance': organization.can_use_attendance if organization else False,
-        'can_use_projects': organization.can_use_projects if organization else False,
-        'can_use_dms': organization.can_use_dms if organization else False,
-        'can_use_ai': organization.can_use_ai if organization else False,
-        'can_use_menu': organization.can_use_menu if organization else False,
-        'can_use_club': organization.can_use_club if organization else False,
+        # Access is granted if organization allows AND user has permission OR is superuser
+        'can_use_expenses': (organization.can_use_expenses if organization else False) and (request.user.has_perm('users.can_access_expenses') or request.user.is_superuser),
+        'can_use_ticketing': (organization.can_use_ticketing if organization else False) and (request.user.has_perm('users.can_access_ticketing') or request.user.is_superuser),
+        'can_use_attendance': (organization.can_use_attendance if organization else False) and (request.user.has_perm('users.can_access_attendance') or request.user.is_superuser),
+        'can_use_projects': (organization.can_use_projects if organization else False) and (request.user.has_perm('users.can_access_projects') or request.user.is_superuser),
+        'can_use_dms': (organization.can_use_dms if organization else False) and (request.user.has_perm('users.can_access_dms') or request.user.is_superuser),
+        'can_use_ai': (organization.can_use_ai if organization else False) and (request.user.has_perm('users.can_access_ai') or request.user.is_superuser),
+        'can_use_menu': (organization.can_use_menu if organization else False) and (request.user.has_perm('users.can_access_menu') or request.user.is_superuser),
+        'can_use_club': (organization.can_use_club if organization else False) and (request.user.has_perm('users.can_access_club') or request.user.is_superuser),
         'is_superuser': request.user.is_superuser
     }
     
