@@ -16,15 +16,17 @@ def main_dashboard(request):
     
     context = {
         'organization': organization,
-        # Access is granted if organization allows AND user has permission OR is superuser
-        'can_use_expenses': (organization.can_use_expenses if organization else False) and (request.user.has_perm('users.can_access_expenses') or request.user.is_superuser),
-        'can_use_ticketing': (organization.can_use_ticketing if organization else False) and (request.user.has_perm('users.can_access_ticketing') or request.user.is_superuser),
-        'can_use_attendance': (organization.can_use_attendance if organization else False) and (request.user.has_perm('users.can_access_attendance') or request.user.is_superuser),
-        'can_use_projects': (organization.can_use_projects if organization else False) and (request.user.has_perm('users.can_access_projects') or request.user.is_superuser),
-        'can_use_dms': (organization.can_use_dms if organization else False) and (request.user.has_perm('users.can_access_dms') or request.user.is_superuser),
-        'can_use_ai': (organization.can_use_ai if organization else False) and (request.user.has_perm('users.can_access_ai') or request.user.is_superuser),
-        'can_use_menu': (organization.can_use_menu if organization else False) and (request.user.has_perm('users.can_access_menu') or request.user.is_superuser),
-        'can_use_club': (organization.can_use_club if organization else False) and (request.user.has_perm('users.can_access_club') or request.user.is_superuser),
+        # Access is granted if:
+        # 1. User is superuser OR
+        # 2. (Organization allows OR no organization assigned) AND (User has direct permission)
+        'can_use_expenses': request.user.is_superuser or ((organization.can_use_expenses if organization else True) and request.user.has_perm('users.can_access_expenses')),
+        'can_use_ticketing': request.user.is_superuser or ((organization.can_use_ticketing if organization else True) and request.user.has_perm('users.can_access_ticketing')),
+        'can_use_attendance': request.user.is_superuser or ((organization.can_use_attendance if organization else True) and request.user.has_perm('users.can_access_attendance')),
+        'can_use_projects': request.user.is_superuser or ((organization.can_use_projects if organization else True) and request.user.has_perm('users.can_access_projects')),
+        'can_use_dms': request.user.is_superuser or ((organization.can_use_dms if organization else True) and request.user.has_perm('users.can_access_dms')),
+        'can_use_ai': request.user.is_superuser or ((organization.can_use_ai if organization else True) and request.user.has_perm('users.can_access_ai')),
+        'can_use_menu': request.user.is_superuser or ((organization.can_use_menu if organization else True) and request.user.has_perm('users.can_access_menu')),
+        'can_use_club': request.user.is_superuser or ((organization.can_use_club if organization else True) and request.user.has_perm('users.can_access_club')),
         'is_superuser': request.user.is_superuser
     }
     

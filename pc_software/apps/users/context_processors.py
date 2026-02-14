@@ -19,15 +19,17 @@ def user_settings(request):
                     'org_logo': org.logo.url if org and org.logo else None,
                     'org_id': org.id if org else None,
                     'organization': org,
-                    # Access logic: Organization allows AND User has permission OR is superuser
-                    'can_use_expenses': (org.can_use_expenses if org else False) and (request.user.has_perm('users.can_access_expenses') or request.user.is_superuser),
-                    'can_use_ticketing': (org.can_use_ticketing if org else False) and (request.user.has_perm('users.can_access_ticketing') or request.user.is_superuser),
-                    'can_use_attendance': (org.can_use_attendance if org else False) and (request.user.has_perm('users.can_access_attendance') or request.user.is_superuser),
-                    'can_use_projects': (org.can_use_projects if org else False) and (request.user.has_perm('users.can_access_projects') or request.user.is_superuser),
-                    'can_use_dms': (org.can_use_dms if org else False) and (request.user.has_perm('users.can_access_dms') or request.user.is_superuser),
-                    'can_use_ai': (org.can_use_ai if org else False) and (request.user.has_perm('users.can_access_ai') or request.user.is_superuser),
-                    'can_use_menu': (org.can_use_menu if org else False) and (request.user.has_perm('users.can_access_menu') or request.user.is_superuser),
-                    'can_use_club': (org.can_use_club if org else False) and (request.user.has_perm('users.can_access_club') or request.user.is_superuser),
+                    # Access logic: 
+                    # 1. Superuser has access to everything
+                    # 2. Regular user: (Organization allows OR no organization) AND (User has direct permission)
+                    'can_use_expenses': request.user.is_superuser or ((org.can_use_expenses if org else True) and request.user.has_perm('users.can_access_expenses')),
+                    'can_use_ticketing': request.user.is_superuser or ((org.can_use_ticketing if org else True) and request.user.has_perm('users.can_access_ticketing')),
+                    'can_use_attendance': request.user.is_superuser or ((org.can_use_attendance if org else True) and request.user.has_perm('users.can_access_attendance')),
+                    'can_use_projects': request.user.is_superuser or ((org.can_use_projects if org else True) and request.user.has_perm('users.can_access_projects')),
+                    'can_use_dms': request.user.is_superuser or ((org.can_use_dms if org else True) and request.user.has_perm('users.can_access_dms')),
+                    'can_use_ai': request.user.is_superuser or ((org.can_use_ai if org else True) and request.user.has_perm('users.can_access_ai')),
+                    'can_use_menu': request.user.is_superuser or ((org.can_use_menu if org else True) and request.user.has_perm('users.can_access_menu')),
+                    'can_use_club': request.user.is_superuser or ((org.can_use_club if org else True) and request.user.has_perm('users.can_access_club')),
                 }
             except Exception:
                 # Fallback if DB column doesn't exist yet
