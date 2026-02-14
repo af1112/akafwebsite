@@ -1,0 +1,7 @@
+from django.apps import AppConfig
+
+
+class HrAttendanceConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'apps.hr_attendance'
+    verbose_name = 'Attendance System'

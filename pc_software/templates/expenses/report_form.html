@@ -1,0 +1,71 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "New Statement" %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #000; color: #fff; padding-bottom: 80px; }
+        .form-control, .form-select {
+            background-color: #1a1a1a;
+            border: none;
+            border-bottom: 1px solid #333;
+            color: #fff;
+            border-radius: 0;
+            padding: 10px 0;
+        }
+        .form-control:focus, .form-select:focus {
+            background-color: #1a1a1a;
+            border-color: #3498db;
+            color: #fff;
+            box-shadow: none;
+        }
+        .form-label { color: #888; font-size: 0.9rem; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container mt-3">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="mb-0 fw-bold">{% trans "New Statement" %}</h4>
+            <a href="{% url 'expenses:dashboard' %}" class="text-white"><i class="fas fa-times fa-lg"></i></a>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label class="form-label">{% trans "Statement Name" %}</label>
+                {{ form.title }}
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Start Date" %}</label>
+                        {{ form.start_date }}
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "End Date" %}</label>
+                        {{ form.end_date }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">{% trans "Business Purpose" %}</label>
+                {{ form.business_purpose }}
+            </div>
+
+            <div class="mt-5">
+                <button type="submit" class="btn btn-primary w-100 py-3">{% trans "Save Statement" %}</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
