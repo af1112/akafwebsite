@@ -16,6 +16,20 @@
     "rewrites": [
         {
             "source": "/(dashboard|admin|accounts|expenses|ticketing|attendance|users|restore-data|run-migrations|ping|static|media)(.*)",
+            "has": [
+                { "type": "host", "value": "akafco.com" }
+            ],
+            "destination": "/api/index.py"
+        },
+        {
+            "source": "/(dashboard|admin|accounts|expenses|ticketing|attendance|users|restore-data|run-migrations|ping|static|media)(.*)",
+            "has": [
+                { "type": "host", "value": "www.akafco.com" }
+            ],
+            "destination": "/api/index.py"
+        },
+        {
+            "source": "/(dashboard|admin|accounts|expenses|ticketing|attendance|users|restore-data|run-migrations|ping|static|media)(.*)",
             "destination": "/api/index.py"
         }
     ]
