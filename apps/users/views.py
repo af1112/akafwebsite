@@ -25,7 +25,7 @@ def settings_view(request):
             # Activate the new language immediately for this request
             activate(user_profile.preferred_language)
             messages.success(request, _('Language settings updated successfully.'))
-            return redirect('settings')
+            return redirect('users:settings')
     else:
         form = LanguageSettingsForm(instance=profile)
 
@@ -92,7 +92,7 @@ def user_create(request):
                         print(f"DEBUG: Error adding permission {perm_codename}: {e}")
             
             messages.success(request, _('User created successfully.'))
-            return redirect('user_list')
+            return redirect('users:user_list')
     else:
         user_form = UserCreateForm()
         perm_form = UserPermissionsForm()
@@ -170,7 +170,7 @@ def user_edit(request, pk):
                         print(f"DEBUG: Error adding permission {perm_codename}: {e}")
             
             messages.success(request, _('User updated successfully.'))
-            return redirect('user_list')
+            return redirect('users:user_list')
         else:
             messages.error(request, _('Please correct the errors below.'))
     else:
@@ -194,4 +194,4 @@ def user_delete(request, pk):
             messages.success(request, _('User deleted successfully.'))
         else:
             messages.error(request, _('You cannot delete yourself.'))
-    return redirect('user_list')
+    return redirect('users:user_list')
