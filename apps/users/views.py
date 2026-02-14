@@ -186,7 +186,7 @@ def user_edit(request, pk):
             settings_key = f'user_settings_{user.id}'
             if settings_key in request.session:
                 del request.session[settings_key]
-            return redirect('users:user_list')
+            return redirect('main_dashboard')
         else:
             messages.error(request, _('Please correct the errors below.'))
     else:

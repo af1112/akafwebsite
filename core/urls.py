@@ -24,7 +24,8 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),  # Add Django auth URLs
-    path('', views.main_dashboard, name='main_dashboard'), # Main Landing Dashboard
+    path('dashboard/', views.main_dashboard, name='main_dashboard'), # Main Landing Dashboard
+    path('', lambda r: HttpResponse("Landing Page Placeholder - Next.js should handle this"), name='home'),
     path('restore-data/', views.restore_data_view, name='restore_data'),
     path('run-migrations/', views.run_migrations_view, name='run_migrations'),
     path('ping/', lambda r: HttpResponse("pong"), name='ping'),

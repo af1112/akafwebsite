@@ -26,6 +26,7 @@ class LoginRequiredMiddleware:
 
     def __call__(self, request):
         # Use hardcoded paths to avoid NoReverseMatch during early boot/migration
+        # Also exempt the landing page ('/') from redirecting to login
         exempt_urls = [
             '/accounts/login/',
             '/accounts/register/',
@@ -33,7 +34,15 @@ class LoginRequiredMiddleware:
             '/run-migrations/',
         ]
         
-        if not request.user.is_authenticated and request.path not in exempt_urls and not request.path.startswith('/static/'):
+        # Check if the path is the root OR an exempt URL
+        is_exempt = any(request.path == url or request.path.startswith(url) for url in exempt_urls)
+        
+        # SPECIAL CASE for Next.js Landing Page:
+        # If the path is just '/', don't enforce login so the Next.js site shows
+        if request.path == '/':
+            return self.get_response(request)
+
+        if not request.user.is_authenticated and not is_exempt and not request.path.startswith('/static/'):
             return redirect('/accounts/login/')
             
         response = self.get_response(request)
