@@ -6065,19 +6065,34 @@ footer {
     justify-content: space-between !important;
     align-items: center !important;
     flex-wrap: nowrap !important;
+    position: relative;
   }
 
   .nav-center {
     display: contents;
   }
 
+  .nav-actions {
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    width: calc(100% - 1.5rem);
+    justify-content: space-between;
+    direction: ltr;
+    pointer-events: none;
+  }
+
   .nav-language {
-    display: none;
+    display: inline-flex;
+    align-items: center;
+    order: 2;
+    pointer-events: auto;
   }
 
   .hamburger-menu {
     display: flex;
-    order: 2;
+    order: 1;
+    pointer-events: auto;
   }
 
   nav .logo {
@@ -6907,12 +6922,96 @@ html[lang='en'] .success-details li:hover {
   margin: 0.5rem 0;
 }
 
+.akaf-home-service-card,
+.akaf-home-project-card {
+  --card-accent: #2563eb;
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(37, 99, 235, 0.18);
+  background:
+    radial-gradient(circle at 100% -15%, rgba(56, 189, 248, 0.18), transparent 44%),
+    linear-gradient(165deg, #ffffff 0%, #f8fbff 62%, #eef5ff 100%);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.akaf-home-service-card::before,
+.akaf-home-project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--card-accent), #38bdf8);
+  opacity: 0.88;
+}
+
+.akaf-home-service-card::after,
+.akaf-home-project-card::after {
+  content: '';
+  position: absolute;
+  inset-inline-end: -54px;
+  bottom: -62px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--card-accent) 32%, white 68%), transparent 70%);
+  pointer-events: none;
+}
+
+.akaf-home-service-card:nth-child(4n + 1),
+.akaf-home-project-card:nth-child(3n + 1) {
+  --card-accent: #2563eb;
+}
+
+.akaf-home-service-card:nth-child(4n + 2),
+.akaf-home-project-card:nth-child(3n + 2) {
+  --card-accent: #0ea5e9;
+}
+
+.akaf-home-service-card:nth-child(4n + 3),
+.akaf-home-project-card:nth-child(3n + 3) {
+  --card-accent: #0f766e;
+}
+
+.akaf-home-service-card:nth-child(4n + 4) {
+  --card-accent: #7c3aed;
+}
+
+.akaf-home-service-card:hover,
+.akaf-home-project-card:hover {
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--card-accent) 48%, white 52%);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
+}
+
+.akaf-home-service-card .akaf-card-icon-wrap,
+.akaf-home-project-card .akaf-card-icon-wrap {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--card-accent) 22%, white 78%), #ffffff);
+  border-color: color-mix(in srgb, var(--card-accent) 42%, white 58%);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.09);
+}
+
+.akaf-home-project-card h3,
+.akaf-home-service-card p {
+  color: #0f172a;
+}
+
+.akaf-home-project-card p {
+  color: #334155;
+  line-height: 1.72;
+}
+
+.akaf-home-project-card .akaf-project-meta span {
+  background: color-mix(in srgb, var(--card-accent) 12%, white 88%);
+  color: color-mix(in srgb, var(--card-accent) 68%, #0f172a 32%);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 26%, white 74%);
+}
+
 .akaf-card-icon-wrap {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.8rem;
-  background: linear-gradient(145deg, #e2e8f0, #f8fafc);
-  border: 1px solid #cbd5e1;
+  width: 3.15rem;
+  height: 3.15rem;
+  border-radius: 0.95rem;
+  border: 1px solid transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -6930,8 +7029,8 @@ html[lang='en'] .success-details li:hover {
 }
 
 .akaf-card-icon {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.75rem;
+  height: 1.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -7039,6 +7138,11 @@ html[lang='en'] .success-details li:hover {
 
 .section-subtitle {
   max-width: 760px;
+}
+
+.akaf-home-projects-title {
+  font-size: clamp(1.85rem, 3vw, 2.35rem) !important;
+  line-height: 1.25;
 }
 
 .akaf-service-card-detailed p {
@@ -7347,9 +7451,9 @@ html[lang='en'] .success-details li:hover {
   }
 
   .akaf-card-icon-wrap {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 0.68rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.8rem;
   }
 }
 

@@ -322,7 +322,7 @@
     "subtitle": "Join hundreds of satisfied restaurants"
   },
   "Announcement": {
-    "message": "New: AI-powered menu recommendations are now available for all plans.",
+    "message": "New: Our professional Digital Menu for Restaurants / Cafes are now available for all plans.",
     "cta": "See Updates"
   },
   "Clients": {
@@ -600,27 +600,27 @@
       ]
     },
     "projects": {
-      "title": "Executed Projects",
-      "subtitle": "Selected examples of delivered engagements",
-      "cta": "View all projects",
+      "title": "Ongoing Projects",
+      "subtitle": "Three currently active AKAF projects in Oman",
+      "cta": "Review executed projects",
       "items": [
         {
-          "name": "Integrated Automation Upgrade",
-          "sector": "Industrial Automation",
-          "location": "Muscat, Oman",
-          "scope": "Control-system modernization and production reliability enhancement"
+          "name": "Plastic Injection Factory Launch",
+          "sector": "Plastics & Industrial Machinery",
+          "location": "Al Khazaen City, Oman",
+          "scope": "In cooperation with DKM (China), starting with a 2,250-ton servo-motor machine and a 6-axis robotic operator"
         },
         {
-          "name": "Process Control Implementation",
-          "sector": "Oil & Gas",
-          "location": "Sohar, Oman",
-          "scope": "Project controls setup, commissioning support, and performance reporting"
-        },
-        {
-          "name": "Smart Greenhouse Deployment",
+          "name": "Advanced Hydroponic Greenhouse Deployment",
           "sector": "Soilless Agriculture",
-          "location": "Al Batinah, Oman",
-          "scope": "Hydroponic system design, equipment integration, and automation"
+          "location": "Al Batinah Region, Oman",
+          "scope": "A 4-hectare project in cooperation with Rufepa (Spain) for advanced soilless farming infrastructure"
+        },
+        {
+          "name": "Frozen Semi-Prepared Potato Production Line Launch",
+          "sector": "Food Industry",
+          "location": "Barka City, Oman",
+          "scope": "In cooperation with Biaxin (China) to establish an industrial-capacity frozen semi-prepared potato production line"
         }
       ]
     },

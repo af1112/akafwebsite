@@ -109,13 +109,13 @@ export default async function HomePage() {
           </div>
           <div className="akaf-services-grid">
             {services.map((service, index) => (
-              <article key={service} className="akaf-service-card">
+              <article key={service} className="akaf-service-card akaf-home-service-card">
                 <div className="akaf-card-icon-wrap" aria-hidden="true">
                   <Image
                     src={serviceIcons[index] ?? '/images/icons/service1.png'}
                     alt=""
-                    width={28}
-                    height={28}
+                    width={36}
+                    height={36}
                     className="akaf-card-icon"
                   />
                 </div>
@@ -129,18 +129,18 @@ export default async function HomePage() {
       <section className="akaf-section akaf-section-light">
         <div className="container">
           <div className="section-header">
-            <h2>{t('projects.title')}</h2>
+            <h2 className="akaf-home-projects-title">{t('projects.title')}</h2>
             <p className="section-subtitle">{t('projects.subtitle')}</p>
           </div>
           <div className="akaf-projects-grid">
             {projects.map((project, index) => (
-              <article key={project.name} className="akaf-project-card">
+              <article key={project.name} className="akaf-project-card akaf-home-project-card">
                 <div className="akaf-card-icon-wrap akaf-card-icon-wrap-project">
                   <Image
                     src={projectIcons[index % projectIcons.length]}
                     alt=""
-                    width={26}
-                    height={26}
+                    width={34}
+                    height={34}
                     className="akaf-card-icon"
                   />
                 </div>
