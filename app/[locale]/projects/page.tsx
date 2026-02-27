@@ -49,7 +49,7 @@ export default async function ProjectsPage() {
           </div>
           <div className="akaf-page-hero-image">
             <Image
-              src="/images/hero/projects-hero.png"
+              src="/images/hero/projects-hero.webp"
               alt={t('title')}
               fill
               sizes="(max-width: 900px) 100vw, 40vw"
@@ -81,7 +81,7 @@ export default async function ProjectsPage() {
               const time = project.time ?? project.status ?? '-';
               const activity = project.activity ?? project.sector ?? project.challenge ?? '-';
               const role = project.role ?? project.solution ?? project.result ?? '-';
-              const image = project.image ?? '/images/hero/projects-hero.png';
+              const image = project.image ?? '/images/hero/projects-hero.webp';
 
               return (
                 <article

@@ -77,7 +77,7 @@ export default async function HomePage() {
           <div className="akaf-hero-visual-wrap">
             <div className="akaf-hero-image-frame">
               <Image
-                src="/images/hero/industrial-hero.png"
+                src="/images/hero/industrial-hero.webp"
                 alt={t('heroImageAlt')}
                 fill
                 className="akaf-hero-image"

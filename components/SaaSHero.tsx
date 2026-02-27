@@ -31,7 +31,7 @@ export default function SaaSHero() {
         <div className="hero-image">
           <div className="hero-image-frame">
             <Image
-              src="/images/hero/hero.png"
+              src="/images/hero/hero.webp"
               alt={t('heroImageAlt')}
               fill
               className="hero-main-image"

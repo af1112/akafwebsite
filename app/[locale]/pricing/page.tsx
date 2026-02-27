@@ -30,7 +30,7 @@ export default async function PricingPage() {
           </div>
           <div className="akaf-page-hero-image">
             <Image
-              src="/images/hero/pricing-hero.png"
+              src="/images/hero/pricing-hero.webp"
               alt={t('title')}
               fill
               sizes="(max-width: 900px) 100vw, 40vw"

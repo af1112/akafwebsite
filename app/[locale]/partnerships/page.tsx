@@ -58,7 +58,7 @@ export default async function PartnershipsPage() {
           </div>
           <div className="akaf-page-hero-image">
             <Image
-              src="/images/hero/partnerships-hero.png"
+              src="/images/hero/partnerships-hero.webp"
               alt={t('title')}
               fill
               sizes="(max-width: 900px) 100vw, 40vw"
@@ -92,7 +92,7 @@ export default async function PartnershipsPage() {
           </div>
           <div className="akaf-partner-story-list">
             {partners.map((partner, index) => {
-              const visual = partnerVisuals[partner.name] ?? '/images/hero/partnerships-hero.png';
+              const visual = partnerVisuals[partner.name] ?? '/images/hero/partnerships-hero.webp';
 
               return (
                 <article

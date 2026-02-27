@@ -41,7 +41,7 @@ export default async function AISoftwarePage() {
           </div>
           <div className="akaf-page-hero-image">
             <Image
-              src="/images/hero/ai-software-hero.png"
+              src="/images/hero/ai-software-hero.webp"
               alt={t('headline')}
               fill
               sizes="(max-width: 900px) 100vw, 40vw"

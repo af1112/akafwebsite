@@ -36,7 +36,7 @@ export default function AboutPage() {
           </div>
           <div className="akaf-page-hero-image akaf-page-inline-visual">
             <Image
-              src="/images/hero/about-hero.png"
+              src="/images/hero/about-hero.webp"
               alt={t('title')}
               fill
               sizes="(max-width: 900px) 100vw, 70vw"

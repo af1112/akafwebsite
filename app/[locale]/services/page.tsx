@@ -40,7 +40,7 @@ export default async function ServicesPage() {
           </div>
           <div className="akaf-page-hero-image">
             <Image
-              src="/images/hero/services-hero.png"
+              src="/images/hero/services-hero.webp"
               alt={t('title')}
               fill
               sizes="(max-width: 900px) 100vw, 40vw"

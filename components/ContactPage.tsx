@@ -16,7 +16,7 @@ export default function ContactPage() {
           <p className="contact-hero-subtitle">{t('description')}</p>
           <div className="akaf-page-hero-image akaf-page-inline-visual">
             <Image
-              src="/images/hero/contact-hero.png"
+              src="/images/hero/contact-hero.webp"
               alt={t('title')}
               fill
               sizes="(max-width: 900px) 100vw, 70vw"
