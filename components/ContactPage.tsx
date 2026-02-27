@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 import ContactForm from './ContactForm';
+import Image from 'next/image';
 
 export default function ContactPage() {
   const t = useTranslations('ContactPage');
@@ -14,6 +14,15 @@ export default function ContactPage() {
         <div className="container">
           <h1 className="contact-hero-title">{t('title')}</h1>
           <p className="contact-hero-subtitle">{t('description')}</p>
+          <div className="akaf-page-hero-image akaf-page-inline-visual">
+            <Image
+              src="/images/hero/contact-hero.png"
+              alt={t('title')}
+              fill
+              sizes="(max-width: 900px) 100vw, 70vw"
+              priority
+            />
+          </div>
         </div>
       </section>
 

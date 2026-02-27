@@ -39,17 +39,13 @@
       "description": "Most customers check your Instagram before visiting. With one beautiful menu link, they can see photos, prices and descriptions in seconds and decide to visit you."
     }
   },
-  "Demo": {
-    "subtitle": "See a real digital menu on your phone",
-    "title": "See What Your Customers Will See",
-    "cta": "View Sample Menu",
-    "videoUrl": "https://youtu.be/gb2ZtU2zKr0"
-  },
   "Navigation": {
     "home": "Home",
-    "features": "Features",
-    "pricing": "Pricing",
     "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "partnerships": "Partnerships",
+    "aiSoftware": "AI & Software",
     "contact": "Contact",
     "login": "Login",
     "signup": "Sign Up"
@@ -569,5 +565,417 @@
     },
     "needHelp": "Need Help?",
     "backToHome": "Back to Home"
+  },
+  "CorporateHome": {
+    "title": "AKAF | Industrial Engineering & Technology Solutions",
+    "subtitle": "An Oman-registered company delivering integrated industrial and technology execution",
+    "description": "AKAF provides accountable end-to-end delivery, from engineering and strategic sourcing to turnkey project execution, project controls, industrial automation, and AI-enabled software development.",
+    "heroImageAlt": "AKAF technical team reviewing industrial execution plans",
+    "heroEyebrow": "Officially Registered in the Sultanate of Oman",
+    "ctaServices": "Explore Services",
+    "ctaProjects": "View Executed Projects",
+    "trust": {
+      "item1": "Cross-sector delivery model",
+      "item2": "Execution-led management team in Oman",
+      "item3": "International collaboration-ready operations"
+    },
+    "highlights": {
+      "title": "AKAF at a glance",
+      "item1": "Officially operating from Oman with international execution capability",
+      "item2": "Multi-disciplinary team across engineering, technology, and project management",
+      "item3": "Growing partnerships with companies in Oman and worldwide"
+    },
+    "services": {
+      "title": "Core Services",
+      "subtitle": "Comprehensive scope across industrial execution and digital technologies",
+      "items": [
+        "Engineering",
+        "Equipment and spare parts supply",
+        "Turn-key industrial project management",
+        "Project Management / Project Controlling",
+        "Software engineering and AI development",
+        "Industrial automation and robotics systems",
+        "Advanced soilless agriculture systems",
+        "Industrial projects in oil and gas sectors"
+      ]
+    },
+    "projects": {
+      "title": "Executed Projects",
+      "subtitle": "Selected examples of delivered engagements",
+      "cta": "View all projects",
+      "items": [
+        {
+          "name": "Integrated Automation Upgrade",
+          "sector": "Industrial Automation",
+          "location": "Muscat, Oman",
+          "scope": "Control-system modernization and production reliability enhancement"
+        },
+        {
+          "name": "Process Control Implementation",
+          "sector": "Oil & Gas",
+          "location": "Sohar, Oman",
+          "scope": "Project controls setup, commissioning support, and performance reporting"
+        },
+        {
+          "name": "Smart Greenhouse Deployment",
+          "sector": "Soilless Agriculture",
+          "location": "Al Batinah, Oman",
+          "scope": "Hydroponic system design, equipment integration, and automation"
+        }
+      ]
+    },
+    "partnerships": {
+      "title": "International Partnerships",
+      "description": "AKAF has started strategic collaborations with partner companies in Oman and other countries, with active expansion across international markets.",
+      "cta": "Explore partnerships"
+    },
+    "ai": {
+      "title": "AI & Software Services",
+      "description": "The existing digital and AI offerings are now presented as a dedicated service line under AKAF.",
+      "cta": "Open AI & software services"
+    },
+    "team": {
+      "title": "Strong Oman-Based Team",
+      "description": "Our executive and management team in Oman combines deep experience and diverse academic backgrounds to deliver across multiple sectors."
+    }
+  },
+  "CorporateServicesPage": {
+    "title": "AKAF Services",
+    "description": "Integrated service lines engineered for disciplined planning, controlled execution, and measurable long-term operational value.",
+    "scopeLabel": "Scope",
+    "deliverablesLabel": "Deliverables",
+    "items": [
+      {
+        "title": "Engineering",
+        "summary": "Engineering planning and technical solution design tailored to industrial requirements.",
+        "scope": "Concept development, technical studies, and engineering documentation",
+        "deliverables": "Design packages, BOQ alignment, and implementation-ready specifications"
+      },
+      {
+        "title": "Equipment & Spare Parts Supply",
+        "summary": "Sourcing and delivery of reliable equipment and components for industrial continuity.",
+        "scope": "Vendor coordination, procurement process, and logistics management",
+        "deliverables": "Qualified equipment supply, traceable documentation, and delivery support"
+      },
+      {
+        "title": "Turn-key Project Management",
+        "summary": "Complete end-to-end delivery of industrial projects under a single accountable framework.",
+        "scope": "Planning, execution, supervision, commissioning, and handover",
+        "deliverables": "Operational project systems delivered against scope, schedule, and quality"
+      },
+      {
+        "title": "Project Management / Project Controlling",
+        "summary": "Professional governance of project cost, time, risk, and performance.",
+        "scope": "Baseline planning, progress control, reporting, and corrective-action management",
+        "deliverables": "Executive dashboards, control reports, and measurable execution KPIs"
+      },
+      {
+        "title": "Software Engineering & AI Development",
+        "summary": "Custom software and applied AI solutions for business and industrial use cases.",
+        "scope": "Web applications, automation workflows, data intelligence, and AI integration",
+        "deliverables": "Production-ready software, AI-enabled modules, and support documentation"
+      },
+      {
+        "title": "Industrial Automation & Robotics",
+        "summary": "Implementation of automation systems for efficiency, quality, and operational reliability.",
+        "scope": "Control panels, PLC integration, SCADA workflows, and robotic process solutions",
+        "deliverables": "Configured automation stack, commissioning records, and training handover"
+      },
+      {
+        "title": "Soilless Agriculture Systems",
+        "summary": "Deployment of modern hydroponic and controlled-environment agriculture solutions.",
+        "scope": "System design, technology selection, nutrient control, and monitoring",
+        "deliverables": "Operational soilless setup with optimized production workflows"
+      },
+      {
+        "title": "Oil & Gas Industrial Projects",
+        "summary": "Execution support for oil and gas facilities with strict technical and safety discipline.",
+        "scope": "Industrial package execution, integration, and performance follow-up",
+        "deliverables": "Reliable project outcomes aligned with sector compliance standards"
+      }
+    ]
+  },
+  "CorporateAboutPage": {
+    "title": "About AKAF",
+    "subtitle": "An Oman-registered enterprise focused on integrated industrial and technology execution",
+    "overviewTitle": "Company Overview",
+    "description": "AKAF's executive management team combines diverse expertise to form a powerful capability in engineering knowledge, innovation, execution management, and practical delivery experience.",
+    "capabilitiesTitle": "Operational Capabilities",
+    "capabilities": [
+      "Engineering and technical planning",
+      "Equipment and spare parts supply",
+      "Turn-key industrial project delivery",
+      "Project management and controlling",
+      "AI and software development",
+      "Industrial automation and robotics",
+      "Modern soilless agriculture projects",
+      "Oil and gas industrial execution"
+    ],
+    "internationalTitle": "International Collaboration",
+    "internationalDescription": "Our track record includes collaboration with TOTAL France in one of the world's most advanced executed projects (2008), as well as cooperation with HYUNDAI HEAVY INDUSTRIAL in installation and commissioning of refinery mechanical equipment.",
+    "teamTitle": "Executive Team in Oman",
+    "teamDescription": "The management team also takes pride in collaboration experience with global leaders such as DAELIM, SIEMENS, THERMODYN, FLOWSERVE, and hundreds of major international companies.",
+    "deliveryTitle": "Cross-Sector Delivery",
+    "deliveryDescription": "Another major execution milestone is launching one of the region's largest animal feed production plants in cooperation with AMANDUS KAHL (Germany) in 2000.",
+    "projectsPrompt": "Alongside these achievements, you can review this group's delivered portfolio in the",
+    "projectsLinkLabel": "Executed Projects"
+  },
+  "ProjectsPage": {
+    "title": "Executed Projects",
+    "description": "A modern portfolio of AKAF's executed industrial projects with clear execution scope, timeline, location, and leadership role.",
+    "stats": [
+      { "label": "Executed projects", "value": "12" },
+      { "label": "Primary region", "value": "Iran" },
+      { "label": "Delivery model", "value": "Project Management + Execution" }
+    ],
+    "labels": {
+      "location": "Location",
+      "time": "Execution Time",
+      "activity": "Activity",
+      "role": "AKAF Role",
+      "challenge": "Challenge",
+      "solution": "AKAF Solution",
+      "result": "Result"
+    },
+    "items": [
+      {
+        "name": "Animal, Poultry and Aquatic Feed Factory",
+        "location": "Gorgan, Iran",
+        "time": "1988",
+        "activity": "Turn-key feed production project in cooperation with AMANDUS KAHL (Germany), including high-capacity production for livestock and poultry feed.",
+        "role": "Project Management by Mr.Aboulfath Fekri",
+        "image": "/images/projects/animal-poultry-feed-factory.webp"
+      },
+      {
+        "name": "Dairy Production Factory",
+        "location": "Iran",
+        "time": "1993",
+        "activity": "Turn-key dairy production factory with complete process setup and operation readiness.",
+        "role": "Project Management by Mr.Aboulfath Fekri",
+        "image": "/images/projects/dairy-production.webp"
+      },
+      {
+        "name": "Chip-board and MDF Production Factory",
+        "location": "Gorgan, Iran",
+        "time": "1998",
+        "activity": "Factory transfer and re-installation from Austria to Iran with automation overhaul of the production process.",
+        "role": "Project Management by Mr.Aboulfath Fekri",
+        "image": "/images/projects/mdf-factory.webp"
+      },
+      {
+        "name": "Semi-Automatic Copper-Nickel-Chrome Plating Line for Plastic Auto Parts",
+        "location": "Hashtgerd Industrial City, Iran",
+        "time": "Industrial phase implementation",
+        "activity": "Semi-automatic plating line for copper, nickel, and chrome finishing dedicated to automotive plastic components.",
+        "role": "Project Management by Mr.Ali Fekri",
+        "image": "/images/projects/semi-automatic-plating.webp"
+      },
+      {
+        "name": "Full Automated ABS Plating Line",
+        "location": "Iran",
+        "time": "2016-2018",
+        "activity": "Commissioning of a fully automated ABS plating line purchased from China, including process renewal and line overhaul.",
+        "role": "Project Management and Execution by Mr.Ali Fekri",
+        "image": "/images/projects/plating-line.webp"
+      },
+      {
+        "name": "Plastic Injection Production and Assembly Factory",
+        "location": "Iran",
+        "time": "2019-2020",
+        "activity": "Launch of a one-hectare automotive polymer parts factory with 28 simultaneous injection machines, three shifts, and 3 independent assembly halls with 300 jobs created.",
+        "role": "Project Management and Execution by Mr.Ali Fekri",
+        "image": "/images/projects/plastic-injection.webp"
+      },
+      {
+        "name": "Electroforming Plating Line",
+        "location": "Iran",
+        "time": "2020-2021",
+        "activity": "Setup and process automation of an electroforming plating line for specialized industrial production.",
+        "role": "Project Management and Execution by Mr.Ali Fekri",
+        "image": "/images/projects/Electroforming-Facility.webp"
+      },
+      {
+        "name": "Karaneh Coastal Residential Investment Complex",
+        "location": "Kish Island Free Zone, Iran",
+        "time": "Operation started in 2017",
+        "activity": "A major coastal residential complex executed in 9 blocks with 769 units and 939 parking spaces (project land area: 56,000 m²; built-up area: 158,000 m²).",
+        "role": "Project Management by Mr.Aboulfath Fekri; the complex entered operation successfully and units were sold rapidly.",
+        "image": "/card/ali_fekri/karaneh-kish.webp"
+      },
+      {
+        "name": "Localized Construction Project Management Software",
+        "location": "Iran",
+        "time": "2012",
+        "activity": "Design and development of one of Iran's strongest localized project management software platforms for mass-building projects.",
+        "role": "AKAF software team delivery with national IT elite medal recognition in Iran.",
+        "image": "/images/projects/software.webp"
+      },
+      {
+        "name": "Suite of 17+ Financial and Administrative Software Systems",
+        "location": "Multi-country deployment",
+        "time": "Delivered in multiple phases",
+        "activity": "Design of more than 17 robust financial and administrative software systems, currently used in 400+ commercial and industrial organizations worldwide.",
+        "role": "Project Management by Mr.Ali Fekri with execution by AKAF software and AI development teams.",
+        "image": "/card/ali_fekri/AKAFOffice.webp"
+      },
+      {
+        "name": "Advanced Public Library Construction",
+        "location": "Gorgan, Iran",
+        "time": "2008",
+        "activity": "Construction of one of the most equipped libraries in Iran with distinctive architecture and full delivery to Mirdamad Cultural Institute.",
+        "role": "Project Management by Mr.Aboulfath Fekri.",
+        "image": "/images/projects/library.webp"
+      },
+      {
+        "name": "Industrial Robotics and Smart Automation Program",
+        "location": "Iran",
+        "time": "Continuous multi-year execution",
+        "activity": "Design and build of industrial robots, assembly and testing machinery, upgrade of traditional production lines to full automation, custom automatic cutting machines, and AI module integration in hardware/software products.",
+        "role": "Execution by AKAF's multidisciplinary engineering team (mechanical, electromechanical, software, and electronics).",
+        "image": "/card/ali_fekri/Robots.webp"
+      }
+    ]
+  },
+  "PartnershipsPage": {
+    "title": "Strategic International Partnerships",
+    "description": "AKAF develops and manages strategic alliances in Europe and Asia to deliver specialized technologies, industrial equipment, and turnkey implementation support across Oman.",
+    "strategicTitle": "A Multi-Sector Partnership Platform for Oman",
+    "strategicDescription": "Our partner network supports critical sectors including oil & gas, desalination, advanced polymer manufacturing, food technology, LSF construction systems, and float glass production lines.",
+    "growthTitle": "Execution-Driven Collaboration Model",
+    "growthDescription": "Each partnership is structured around practical delivery in Oman, from technical validation and sourcing to implementation planning and after-sales continuity.",
+    "teamTitle": "Local Presence, Global Technical Backbone",
+    "teamDescription": "AKAF serves as the Oman interface for technical coordination, project alignment, and long-term partner engagement.",
+    "partnersTitle": "Core Strategic and Commercial Partners",
+    "partnersSubtitle": "Current and near-term collaborations that strengthen AKAF delivery capacity in specialized industries.",
+    "labels": {
+      "country": "Country",
+      "role": "AKAF Role in Oman",
+      "focus": "Main Focus",
+      "status": "Partnership Status",
+      "website": "Visit official website"
+    },
+    "highlights": [
+      { "title": "Partner Countries", "value": "Germany + China + New Zealand" },
+      { "title": "Priority Sectors", "value": "6 industrial clusters" },
+      { "title": "Oman Delivery Model", "value": "Commercial + technical integration" }
+    ],
+    "partners": [
+      {
+        "name": "Galvatore",
+        "country": "Germany",
+        "role": "We are Galvatore's representative in Iran and Oman",
+        "focus": "Chemical materials and advanced protective coatings for harsh environments",
+        "status": "Active strategic collaboration",
+        "website": "https://www.galvatore.com/en-gb",
+        "logo": "/images/partners/galvatore-logo.png",
+        "summary": "Galvatore provides strong technical know-how in specialty coating systems, including hydrogen-resistant protection and corrosion control for demanding industrial assets.",
+        "expertise": [
+          "Hydrogen-resistant coating systems",
+          "Oil & gas corrosion protection",
+          "Industrial desalination durability solutions"
+        ]
+      },
+      {
+        "name": "DKM",
+        "country": "China",
+        "role": "Commercial partner and market representative in Oman",
+        "focus": "Plastic injection molding machinery",
+        "status": "Active commercial partnership",
+        "website": "https://www.dkmcn.com",
+        "logo": "/images/partners/dkm-logo.png",
+        "summary": "AKAF collaborates with DKM to introduce industrial injection molding machine solutions for manufacturing clients in Oman.",
+        "expertise": [
+          "Injection molding lines",
+          "Manufacturing productivity upgrades",
+          "Machine selection for local plants"
+        ]
+      },
+      {
+        "name": "SINO",
+        "country": "China",
+        "role": "Technical-commercial partner for mold capabilities",
+        "focus": "Advanced mold design and mold manufacturing",
+        "status": "Active collaboration",
+        "website": "https://www.sinomould.com",
+        "logo": "/images/partners/sino-logo.png",
+        "summary": "SINO strengthens AKAF's offering for precision mold programs in injection manufacturing and product industrialization initiatives.",
+        "expertise": [
+          "Advanced molds",
+          "Precision tooling",
+          "Injection process support"
+        ]
+      },
+      {
+        "name": "Baixin Machinery",
+        "country": "China",
+        "role": "Commercial partner for food processing solutions in Oman",
+        "focus": "Food machinery technology",
+        "status": "Active market partnership",
+        "website": "https://www.bxmachinery.com/",
+        "logo": "/images/partners/baixin-logo.png",
+        "summary": "AKAF works with Baixin to support supply and deployment of selected food machinery technologies for local production opportunities.",
+        "expertise": [
+          "Food process equipment",
+          "Production line planning",
+          "Applied food technology systems"
+        ]
+      },
+      {
+        "name": "FRAMECAD",
+        "country": "New Zealand",
+        "role": "Emerging partner for LSF opportunities in Oman",
+        "focus": "Cold-formed steel / LSF construction systems",
+        "status": "Partnership under development",
+        "website": "https://framecad.com/",
+        "logo": "/images/partners/framecad-logo.webp",
+        "summary": "AKAF is preparing technical and commercial groundwork for FRAMECAD-based LSF initiatives in the Oman construction market.",
+        "expertise": [
+          "LSF system implementation",
+          "Construction industrialization",
+          "Digitalized framing workflows"
+        ]
+      },
+      {
+        "name": "CMS",
+        "country": "Turkey",
+        "role": "Strategic partner candidate for major glass manufacturing project",
+        "focus": "Float glass production lines",
+        "status": "Large-scale partnership pipeline",
+        "website": "https://www.cmsmachine.com/float-glass-production-lines",
+        "logo": "/images/partners/cms-logo.png",
+        "summary": "AKAF is working toward a major cooperation track with CMS to support potential float-glass production initiatives in Oman.",
+        "expertise": [
+          "Float glass lines",
+          "Industrial plant planning",
+          "Project development support"
+        ]
+      }
+    ],
+    "galvatoreNoteTitle": "Galvatore Specialty Coatings - Technical Focus",
+    "galvatoreNoteDescription": "The following documents, available in our Temp repository, support technical understanding of coating performance and product capabilities relevant to Oman projects.",
+    "galvatoreHydrogenTitle": "Hydrogen-Resistant Coating Systems",
+    "galvatoreHydrogenDescription": "Galvatore's product portfolio includes high-performance coating options engineered for hydrogen exposure scenarios and severe industrial service conditions.",
+    "galvatoreOilGasTitle": "Oil, Gas and Desalination Durability",
+    "galvatoreOilGasDescription": "Galvatore solutions are relevant to high-salinity and corrosive process environments such as oil & gas assets and industrial desalination infrastructure.",
+    "galvatoreReferences": [
+      { "label": "Galvatore Corporate 2025 (EN)", "file": "Galvatore_Corporate_2025_EN_A.pdf" },
+      { "label": "Galvatore Corporate Brochure 2025", "file": "2025_GALVATORE_Corporate_Brochure_EN.pdf" },
+      { "label": "RACKSTAR Product Sheet", "file": "RACKSTAR_Pro_Plus_Prem_CHEM-RES_EN.pdf" },
+      { "label": "Technical Report EN_TR_250537", "file": "EN_TR_250537_C5 high_ILF.pdf" }
+    ],
+    "areasTitle": "Partnership Focus Areas",
+    "areas": [
+      "Specialty coatings and anti-corrosion systems",
+      "Plastic injection machines and molds",
+      "Food processing machinery",
+      "LSF engineering and prefabricated systems",
+      "Industrial glass production infrastructure",
+      "Technology transfer and local deployment in Oman"
+    ]
+  },
+  "AISoftwarePage": {
+    "title": "AI & Software Services",
+    "description": "Dedicated area for AKAF programming and artificial intelligence service offerings.",
+    "headline": "AI & Software Development Services"
   }
 }

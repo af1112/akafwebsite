@@ -4,6 +4,30 @@
   box-sizing: border-box;
 }
 
+.akaf-about-projects-note {
+  margin-top: 1.2rem;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+}
+
+.akaf-about-projects-link {
+  color: #1d4ed8;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.16rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .akaf-partner-story,
+  .akaf-partner-story::after,
+  .akaf-partner-story-image,
+  .akaf-partner-link-cta {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 :root {
   /* Modern Color Palette - Professional IT Company */
   --primary-color: #6366f1;
@@ -166,7 +190,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 1rem 0;
+  padding: 0.78rem 0;
   border-bottom: 1px solid var(--border-light);
   transition: all var(--transition-base);
 }
@@ -174,6 +198,8 @@ nav {
 nav.scrolled {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow-md);
+  padding: 0.52rem 0;
+  border-bottom-color: rgba(148, 163, 184, 0.35);
 }
 
 nav .container {
@@ -182,11 +208,60 @@ nav .container {
   align-items: center;
 }
 
+.nav-shell {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: clamp(0.9rem, 2.2vw, 2.2rem);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: clamp(120px, 10vw, 160px);
+  height: auto;
+  transition: transform var(--transition-base);
+}
+
+nav.scrolled .logo img {
+  transform: scale(0.93);
+}
+
+nav.scrolled .nav-links a {
+  padding-top: 0.36rem;
+  padding-bottom: 0.36rem;
+}
+
+.nav-center {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-self: end;
+}
+
+.nav-language {
+  display: inline-flex;
+  align-items: center;
+}
+
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: clamp(0.95rem, 1.6vw, 1.65rem);
   list-style: none;
   align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
@@ -194,9 +269,17 @@ nav .container {
   color: var(--text-secondary);
   font-weight: 500;
   font-size: 0.9375rem;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.44rem 0.75rem;
+  border-radius: 999px;
+  isolation: isolate;
+}
+
+@media (max-width: 1280px) {
+  .nav-links a {
+    font-size: 0.9rem;
+  }
 }
 
 /* Language Switcher Styles */
@@ -285,23 +368,58 @@ nav .container {
   to { opacity: 1; transform: translateY(0); }
 }
 
+.nav-links a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(14, 165, 233, 0.14));
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  z-index: -1;
+}
+
 .nav-links a::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 0.1rem;
+  left: 0.75rem;
   width: 0;
   height: 2px;
-  background: var(--primary-color);
-  transition: width var(--transition-base);
+  background: linear-gradient(90deg, #2563eb, #06b6d4);
+  border-radius: 2px;
+  transition: width var(--transition-base), opacity var(--transition-fast);
+  opacity: 0.8;
 }
 
 .nav-links a:hover {
   color: var(--primary-color);
 }
 
+.nav-links a:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .nav-links a:hover::after {
-  width: 100%;
+  width: calc(100% - 1.5rem);
+}
+
+.nav-links a.active {
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.24);
+}
+
+.nav-links a.active::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-links a.active::after {
+  width: calc(100% - 1.5rem);
+  opacity: 1;
 }
 
 .logo {
@@ -5939,7 +6057,7 @@ footer {
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   /* Ensure logo and hamburger stay in one line */
   nav .container {
     display: flex !important;
@@ -5947,6 +6065,14 @@ footer {
     justify-content: space-between !important;
     align-items: center !important;
     flex-wrap: nowrap !important;
+  }
+
+  .nav-center {
+    display: contents;
+  }
+
+  .nav-language {
+    display: none;
   }
 
   .hamburger-menu {
@@ -5960,7 +6086,7 @@ footer {
   }
 
   nav .logo img {
-    max-width: 120px;
+    max-width: 132px;
     height: auto;
   }
 
@@ -6572,4 +6698,829 @@ html[lang='en'] .success-details li:hover {
 .lang-dropdown-item.active {
   background: rgba(0, 0, 0, 0.12) !important;
   font-weight: 600 !important;
+}
+
+/* AKAF Corporate Pages */
+.akaf-section {
+  padding: 4.5rem 0;
+}
+
+.akaf-section-light {
+  background: var(--bg-light);
+}
+
+.akaf-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #0f172a 100%);
+  color: #fff;
+}
+
+.akaf-hero::after {
+  content: '';
+  position: absolute;
+  inset-inline-end: -120px;
+  top: -120px;
+  width: 340px;
+  height: 340px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.26) 0%, rgba(56, 189, 248, 0) 70%);
+  pointer-events: none;
+}
+
+.akaf-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.95fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.akaf-hero-content {
+  grid-column: 1;
+  max-width: 860px;
+}
+
+.akaf-hero-visual-wrap {
+  grid-column: 2;
+  justify-self: end;
+  width: min(460px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-self: start;
+}
+
+.akaf-hero-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: calc(var(--radius-xl) + 0.2rem);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 26px 52px rgba(2, 6, 23, 0.45);
+  overflow: hidden;
+  background: #0b1220;
+}
+
+.akaf-hero-image {
+  object-fit: cover;
+}
+
+.akaf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.42rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.52);
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.akaf-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.18;
+  margin-bottom: 0.9rem;
+  color: #f8fafc;
+  text-shadow: 0 8px 24px rgba(2, 6, 23, 0.34);
+}
+
+.akaf-subtitle {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.15rem;
+  margin: 0.75rem 0;
+}
+
+.akaf-description {
+  color: rgba(255, 255, 255, 0.84);
+  max-width: 780px;
+}
+
+.akaf-hero .hero-buttons {
+  margin-top: 1.6rem;
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.akaf-highlight-box {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: var(--radius-xl);
+  padding: 1.7rem;
+  backdrop-filter: blur(8px);
+}
+
+.akaf-highlight-box-floating {
+  width: 100%;
+  margin-top: 0;
+  z-index: 2;
+}
+
+.akaf-highlight-box h3,
+.akaf-highlight-box li {
+  color: #fff;
+}
+
+.akaf-highlight-box ul {
+  margin: 1rem 0 0;
+  padding-inline-start: 1.2rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.akaf-highlight-box li::marker {
+  color: #7dd3fc;
+}
+
+.akaf-trust-row {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.akaf-trust-item {
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.5);
+  color: #e2e8f0;
+  border-radius: var(--radius-full);
+  padding: 0.35rem 0.8rem;
+  font-size: 0.78rem;
+}
+
+.akaf-services-grid,
+.akaf-projects-grid,
+.akaf-stats-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.akaf-services-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.akaf-projects-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.akaf-projects-grid-full {
+  margin-top: 1.5rem;
+}
+
+.akaf-stats-grid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  margin-bottom: 1.25rem;
+}
+
+.akaf-service-card,
+.akaf-project-card,
+.akaf-info-card,
+.akaf-stat-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.akaf-service-card:hover,
+.akaf-project-card:hover,
+.akaf-info-card:hover,
+.akaf-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+.akaf-service-card-detailed h3 {
+  margin: 0.5rem 0;
+}
+
+.akaf-card-icon-wrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(145deg, #e2e8f0, #f8fafc);
+  border: 1px solid #cbd5e1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.7rem;
+}
+
+.akaf-card-icon-wrap-project {
+  background: linear-gradient(145deg, #dbeafe, #eff6ff);
+  border-color: #bfdbfe;
+}
+
+.akaf-card-icon-wrap-about {
+  background: linear-gradient(145deg, #ede9fe, #f8f7ff);
+  border-color: #ddd6fe;
+}
+
+.akaf-card-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #4c1d95;
+}
+
+.akaf-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.akaf-service-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-full);
+  background: #e2e8f0;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.akaf-project-meta {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.akaf-project-meta span {
+  background: #eef2ff;
+  color: #3730a3;
+  border-radius: var(--radius-full);
+  padding: 0.25rem 0.7rem;
+  font-size: 0.82rem;
+}
+
+.akaf-page-hero {
+  padding: 4rem 0 2rem;
+}
+
+.akaf-page-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.95fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.akaf-page-hero-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+  background: #0f172a;
+}
+
+.akaf-page-hero-image img {
+  object-fit: cover;
+}
+
+.akaf-page-inline-visual {
+  width: min(820px, 100%);
+  margin: 1.25rem auto 0;
+}
+
+.akaf-page-chip-row {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.akaf-page-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: #e2e8f0;
+  color: #0f172a;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.akaf-two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.akaf-center-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.akaf-team-section {
+  border-top: 1px solid var(--border-light);
+}
+
+.section-subtitle {
+  max-width: 760px;
+}
+
+.akaf-service-card-detailed p {
+  margin-bottom: 0.6rem;
+}
+
+.akaf-partner-story-list {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.akaf-partner-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  border-radius: calc(var(--radius-xl) + 0.2rem);
+  overflow: hidden;
+  border: 1px solid #dbe4ff;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.1);
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.35s ease;
+  animation: akafPartnerReveal 0.8s ease both;
+}
+
+.akaf-partner-story::before {
+  content: '';
+  position: absolute;
+  inset: -30% auto auto -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.35s ease;
+}
+
+.akaf-partner-story::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.38) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 0.8s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.akaf-partner-story:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 55px rgba(15, 23, 42, 0.16);
+  border-color: rgba(56, 189, 248, 0.45);
+}
+
+.akaf-partner-story:hover::before {
+  opacity: 0.9;
+}
+
+.akaf-partner-story:hover::after {
+  transform: translateX(120%);
+}
+
+.akaf-partner-story-reverse .akaf-partner-story-media {
+  order: 2;
+}
+
+.akaf-partner-story-reverse .akaf-partner-story-content {
+  order: 1;
+}
+
+.akaf-partner-story-media {
+  position: relative;
+  min-height: 320px;
+  background: #0f172a;
+  overflow: hidden;
+}
+
+.akaf-partner-story-image {
+  object-fit: cover;
+  transition: transform 0.9s ease;
+}
+
+.akaf-partner-story:hover .akaf-partner-story-image {
+  transform: scale(1.07);
+}
+
+.akaf-partner-story-content {
+  padding: clamp(1.1rem, 2vw, 1.7rem);
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+  position: relative;
+  z-index: 1;
+}
+
+.akaf-partner-story-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.akaf-partner-story-content h3 {
+  margin: 0.2rem 0 0.15rem;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+}
+
+.akaf-partner-story-lead {
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.akaf-partner-story-list .akaf-partner-story:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.akaf-partner-story-list .akaf-partner-story:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.akaf-partner-story-list .akaf-partner-story:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.akaf-partner-story-list .akaf-partner-story:nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+.akaf-partner-story-list .akaf-partner-story:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+.akaf-partner-card h3 {
+  margin-top: 0.85rem;
+  margin-bottom: 0.55rem;
+}
+
+.akaf-partner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.akaf-partner-logo-wrap {
+  border: 1px solid var(--border-light);
+  border-radius: 0.85rem;
+  padding: 0.35rem;
+  background: #f8fafc;
+}
+
+.akaf-partner-logo {
+  width: auto;
+  height: auto;
+  max-width: 210px;
+}
+
+.akaf-partner-link {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.akaf-partner-link-cta {
+  margin-top: 0.45rem;
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.44rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(14, 165, 233, 0.08));
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.akaf-partner-link-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.18);
+  border-color: rgba(37, 99, 235, 0.5);
+}
+
+.akaf-partner-link:hover {
+  text-decoration: underline;
+}
+
+@keyframes akafPartnerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.akaf-project-card p {
+  margin-bottom: 0.55rem;
+}
+
+.akaf-stat-card p {
+  margin-bottom: 0;
+}
+
+.akaf-stat-card h3 {
+  font-size: 1.7rem;
+  margin-bottom: 0.35rem;
+}
+
+.ai-header-section {
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .akaf-hero {
+    padding: 4.6rem 0 4rem;
+  }
+
+  .akaf-hero-grid,
+  .akaf-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .akaf-hero-visual-wrap,
+  .akaf-highlight-box-floating {
+    grid-column: 1;
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .akaf-highlight-box-floating {
+    margin-top: 0.75rem;
+  }
+
+  .akaf-page-hero-grid,
+  .akaf-hero-grid,
+  .akaf-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .akaf-partner-story {
+    grid-template-columns: 1fr;
+  }
+
+  .akaf-partner-story-reverse .akaf-partner-story-media,
+  .akaf-partner-story-reverse .akaf-partner-story-content {
+    order: initial;
+  }
+
+  .akaf-partner-story-media {
+    min-height: 240px;
+  }
+
+  .akaf-trust-row {
+    margin-top: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .akaf-section {
+    padding: 3.5rem 0;
+  }
+
+  .akaf-section .section-header h1,
+  .akaf-section .section-header h2 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .section-subtitle {
+    font-size: 0.98rem;
+  }
+
+  .akaf-hero .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .akaf-hero .btn,
+  .akaf-center-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .akaf-services-grid,
+  .akaf-projects-grid,
+  .akaf-stats-grid {
+    gap: 0.9rem;
+  }
+
+  .akaf-project-meta {
+    gap: 0.4rem;
+  }
+
+  .akaf-project-meta span {
+    font-size: 0.76rem;
+    padding: 0.22rem 0.55rem;
+  }
+
+  .akaf-highlight-box,
+  .akaf-service-card,
+  .akaf-project-card,
+  .akaf-info-card,
+  .akaf-stat-card {
+    padding: 1.05rem;
+  }
+
+  .akaf-card-icon-wrap {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.68rem;
+  }
+}
+
+/* About hero visual upgrade */
+.about-hero {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(56, 189, 248, 0.32), transparent 36%),
+    radial-gradient(circle at 82% 24%, rgba(125, 211, 252, 0.2), transparent 42%),
+    linear-gradient(128deg, #1d4ed8 0%, #4f46e5 52%, #7c3aed 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 -40px 80px rgba(15, 23, 42, 0.18);
+}
+
+.about-hero::before {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.2;
+}
+
+.about-hero::after {
+  content: '';
+  position: absolute;
+  width: min(42vw, 420px);
+  aspect-ratio: 1 / 1;
+  right: -8%;
+  top: -20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0) 68%);
+  filter: blur(0.2px);
+  pointer-events: none;
+}
+
+.about-hero-title {
+  text-shadow: 0 14px 34px rgba(15, 23, 42, 0.35);
+}
+
+.about-hero .contact-hero-subtitle {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+@media (max-width: 768px) {
+  .about-hero::after {
+    width: min(52vw, 320px);
+    right: -18%;
+    top: -12%;
+  }
+}
+
+/* Projects page premium story layout */
+.akaf-project-story-list {
+  margin-top: 1.8rem;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.akaf-project-story {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  border: 1px solid var(--border-light);
+  border-radius: 1.25rem;
+  background: linear-gradient(150deg, #ffffff 0%, #f8fbff 100%);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.akaf-project-story::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(105deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+}
+
+.akaf-project-story:hover {
+  transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: var(--shadow-md);
+}
+
+.akaf-project-story-reverse {
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+}
+
+.akaf-project-story-reverse .akaf-project-story-media {
+  order: 2;
+}
+
+.akaf-project-story-reverse .akaf-project-story-content {
+  order: 1;
+}
+
+.akaf-project-story-media {
+  position: relative;
+  min-height: 300px;
+  background: #0f172a;
+}
+
+.akaf-project-story-image {
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.akaf-project-story:hover .akaf-project-story-image {
+  transform: scale(1.04);
+}
+
+.akaf-project-story-content {
+  padding: 1.4rem 1.5rem;
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.akaf-project-story-content h3 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.35;
+  color: var(--text-color);
+}
+
+.akaf-project-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 1rem;
+}
+
+.akaf-project-meta-grid > div {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.9rem;
+  padding: 0.72rem 0.8rem;
+}
+
+.akaf-project-meta-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #475569;
+  margin-bottom: 0.34rem;
+  font-weight: 700;
+}
+
+.akaf-project-meta-grid p {
+  margin: 0;
+  color: #1f2937;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 960px) {
+  .akaf-project-story,
+  .akaf-project-story-reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .akaf-project-story-reverse .akaf-project-story-media,
+  .akaf-project-story-reverse .akaf-project-story-content {
+    order: initial;
+  }
+
+  .akaf-project-story-media {
+    min-height: 235px;
+  }
+
+  .akaf-project-meta-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -2,16 +2,14 @@
 
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
-import { Link, useRouter } from '@/routing';
+import { Link, usePathname } from '@/routing';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useEffect, useState } from 'react';
-import { useAuth } from '@/contexts/AuthContext';
 
 export default function Navigation() {
   const t = useTranslations('Navigation');
   const locale = useLocale();
-  const router = useRouter();
-  const { user, isAuthenticated, logout } = useAuth();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -33,7 +31,7 @@ export default function Navigation() {
   // Close mobile menu when window is resized to desktop
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth > 1100) {
         setMobileMenuOpen(false);
       }
     };
@@ -59,82 +57,75 @@ export default function Navigation() {
     setMobileMenuOpen(false);
   }, [locale]);
 
-  const handleLogout = () => {
-    logout();
-    setMobileMenuOpen(false);
-    router.push('/');
-  };
-
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
   };
 
+  const isActivePath = (href: string) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
   return (
     <nav className={scrolled ? 'scrolled' : ''}>
-      <div className="container">
+      <div className="container nav-shell">
         <Link href="/" className="logo">
           <Image
             src="/logo.png"
-            alt="AKAF Digital Menu"
+            alt="AKAF"
             width={160}
             height={48}
             priority
           />
         </Link>
 
-        {/* Hamburger Menu Button (Mobile Only) */}
-        <button 
-          className={`hamburger-menu ${mobileMenuOpen ? 'open' : ''}`}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={mobileMenuOpen}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-
-        {/* Navigation Links */}
-        <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
-          
-          <li>
-            <Link href="/" onClick={closeMobileMenu}>{t('home')}</Link>
-          </li>
-          <li>
-            <Link href="/features" onClick={closeMobileMenu}>{t('features')}</Link>
-          </li>
-          <li>
-            <Link href="/pricing" onClick={closeMobileMenu}>{t('pricing')}</Link>
-          </li>
-          <li>
-            <Link href="/about" onClick={closeMobileMenu}>{t('about')}</Link>
-          </li>
-          <li>
-            <Link href="/contact" onClick={closeMobileMenu}>{t('contact')}</Link>
-          </li>
-          
-          {!isAuthenticated ? (
+        <div className="nav-center">
+          {/* Navigation Links */}
+          <ul className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
             <li>
-              <Link href="/signup" className="nav-link">  {/* ← تغییر: فقط nav-link، بدون btn classes */}
-                Sign Up
-              </Link>
+              <Link href="/" className={isActivePath('/') ? 'active' : ''} onClick={closeMobileMenu}>{t('home')}</Link>
             </li>
-          ) : (
-            <>
-              <li className="user-info">
-                <span className="user-name">👤 {user?.name}</span>
-              </li>
-              <li>
-                <button onClick={handleLogout} className="btn btn-small btn-logout">
-                  Logout
-                </button>
-              </li>
-            </>
-          )}
-        </ul>
-        <div className="hidden md:block">
-          <LanguageSwitcher />
+            <li>
+              <Link href="/about" className={isActivePath('/about') ? 'active' : ''} onClick={closeMobileMenu}>{t('about')}</Link>
+            </li>
+            <li>
+              <Link href="/services" className={isActivePath('/services') ? 'active' : ''} onClick={closeMobileMenu}>{t('services')}</Link>
+            </li>
+            <li>
+              <Link href="/projects" className={isActivePath('/projects') ? 'active' : ''} onClick={closeMobileMenu}>{t('projects')}</Link>
+            </li>
+            <li>
+              <Link href="/partnerships" className={isActivePath('/partnerships') ? 'active' : ''} onClick={closeMobileMenu}>{t('partnerships')}</Link>
+            </li>
+            <li>
+              <Link href="/ai-software" className={isActivePath('/ai-software') ? 'active' : ''} onClick={closeMobileMenu}>{t('aiSoftware')}</Link>
+            </li>
+            <li>
+              <Link href="/contact" className={isActivePath('/contact') ? 'active' : ''} onClick={closeMobileMenu}>{t('contact')}</Link>
+            </li>
+          </ul>
         </div>
+
+        <div className="nav-actions">
+          <div className="nav-language">
+            <LanguageSwitcher />
+          </div>
+
+          {/* Hamburger Menu Button (Mobile Only) */}
+          <button
+            className={`hamburger-menu ${mobileMenuOpen ? 'open' : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
         {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
           <div 
