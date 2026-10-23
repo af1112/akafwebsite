@@ -4,7 +4,22 @@ import { routing } from '@/routing';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
 
-  const routes = ['', '/about', '/services', '/contact'];
+  const routes = [
+    '',
+    '/digital',
+    '/industrial',
+    '/smart-industry',
+    '/products/digital-menu',
+    '/projects',
+    '/about',
+    '/partnerships',
+    '/contact',
+    '/services',
+    '/features',
+    '/pricing',
+    '/signup',
+    '/login'
+  ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 

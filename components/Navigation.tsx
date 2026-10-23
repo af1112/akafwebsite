@@ -88,19 +88,22 @@ export default function Navigation() {
               <Link href="/" className={isActivePath('/') ? 'active' : ''} onClick={closeMobileMenu}>{t('home')}</Link>
             </li>
             <li>
-              <Link href="/about" className={isActivePath('/about') ? 'active' : ''} onClick={closeMobileMenu}>{t('about')}</Link>
+              <Link href="/digital" className={isActivePath('/digital') || isActivePath('/products') ? 'active' : ''} onClick={closeMobileMenu}>{t('digital')}</Link>
             </li>
             <li>
-              <Link href="/services" className={isActivePath('/services') ? 'active' : ''} onClick={closeMobileMenu}>{t('services')}</Link>
+              <Link href="/industrial" className={isActivePath('/industrial') ? 'active' : ''} onClick={closeMobileMenu}>{t('industrial')}</Link>
+            </li>
+            <li>
+              <Link href="/smart-industry" className={isActivePath('/smart-industry') ? 'active' : ''} onClick={closeMobileMenu}>{t('smartIndustry')}</Link>
             </li>
             <li>
               <Link href="/projects" className={isActivePath('/projects') ? 'active' : ''} onClick={closeMobileMenu}>{t('projects')}</Link>
             </li>
             <li>
-              <Link href="/partnerships" className={isActivePath('/partnerships') ? 'active' : ''} onClick={closeMobileMenu}>{t('partnerships')}</Link>
+              <Link href="/about" className={isActivePath('/about') ? 'active' : ''} onClick={closeMobileMenu}>{t('about')}</Link>
             </li>
             <li>
-              <Link href="/ai-software" className={isActivePath('/ai-software') ? 'active' : ''} onClick={closeMobileMenu}>{t('aiSoftware')}</Link>
+              <Link href="/partnerships" className={isActivePath('/partnerships') ? 'active' : ''} onClick={closeMobileMenu}>{t('partnerships')}</Link>
             </li>
             <li>
               <Link href="/contact" className={isActivePath('/contact') ? 'active' : ''} onClick={closeMobileMenu}>{t('contact')}</Link>

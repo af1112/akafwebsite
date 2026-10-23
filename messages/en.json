@@ -43,9 +43,13 @@
     "home": "Home",
     "about": "About",
     "services": "Services",
-    "projects": "Projects",
+    "projects": "Projects & Products",
     "partnerships": "Partnerships",
     "aiSoftware": "AI & Software",
+    "digital": "Digital & AI",
+    "industrial": "Industrial Engineering",
+    "smartIndustry": "Smart Industry",
+    "digitalMenu": "Digital Menu",
     "contact": "Contact",
     "login": "Login",
     "signup": "Sign Up"
@@ -55,7 +59,35 @@
   },
   "Footer": {
     "rights": "All rights reserved by AKAF Company",
-    "year": "2025"
+    "year": "2025",
+    "tagline": "Industrial Engineering & Digital Technologies — Two Specialized Divisions. One Integrated Vision.",
+    "company": {
+      "title": "AKAF",
+      "legalName": "AKAF Investment & Integrated Projects LLC",
+      "location": "Ghala Industrial Area, Bousher, Muscat, Sultanate of Oman",
+      "cr": "Commercial Registration: 1479852"
+    },
+    "divisions": {
+      "title": "Divisions",
+      "digital": "AKAF Digital",
+      "industrial": "AKAF Industrial",
+      "smartIndustry": "AKAF Smart Industry"
+    },
+    "products": {
+      "title": "Products",
+      "digitalMenu": "AKAF Digital Menu",
+      "pricing": "Plans & Pricing",
+      "signup": "Start Free Trial"
+    },
+    "corporate": {
+      "title": "Corporate",
+      "about": "About & Leadership",
+      "projects": "Projects & Products",
+      "partnerships": "Partnerships",
+      "contact": "Contact"
+    },
+    "email": "Info@akafco.com",
+    "phone": "+968 9406 3021"
   },
   "AboutPage": {
     "title": "About Us",
@@ -567,43 +599,57 @@
     "backToHome": "Back to Home"
   },
   "CorporateHome": {
-    "title": "AKAF | Industrial Engineering & Technology Solutions",
-    "subtitle": "An Oman-registered company delivering integrated industrial and technology execution",
-    "description": "AKAF provides accountable end-to-end delivery, from engineering and strategic sourcing to turnkey project execution, project controls, industrial automation, and AI-enabled software development.",
+    "title": "AKAF — Industrial Engineering & Digital Technologies",
+    "subtitle": "Two Specialized Divisions. One Integrated Vision.",
+    "description": "AKAF combines practical industrial engineering expertise with modern software development, enterprise technology, and applied artificial intelligence — serving industrial and non-industrial clients across Oman and beyond.",
     "heroImageAlt": "AKAF technical team reviewing industrial execution plans",
-    "heroEyebrow": "Officially Registered in the Sultanate of Oman",
+    "heroEyebrow": "AKAF Investment & Integrated Projects LLC — Muscat, Oman",
     "ctaServices": "Explore Services",
-    "ctaProjects": "View Executed Projects",
+    "ctaProjects": "View Projects & Products",
     "trust": {
-      "item1": "Cross-sector delivery model",
-      "item2": "Execution-led management team in Oman",
+      "item1": "Registered in the Sultanate of Oman (CR 1479852)",
+      "item2": "Headquartered in Ghala Industrial Area, Muscat",
       "item3": "International collaboration-ready operations"
     },
     "highlights": {
       "title": "AKAF at a glance",
-      "item1": "Officially operating from Oman with international execution capability",
-      "item2": "Multi-disciplinary team across engineering, technology, and project management",
-      "item3": "Growing partnerships with companies in Oman and worldwide"
+      "item1": "Two commercially independent divisions: AKAF Digital and AKAF Industrial",
+      "item2": "Industrial engineering, enterprise software, and applied AI under one corporate vision",
+      "item3": "Strategic partnerships across Europe, Asia, and the Gulf region"
     },
-    "services": {
-      "title": "Core Services",
-      "subtitle": "Comprehensive scope across industrial execution and digital technologies",
-      "items": [
-        "Engineering",
-        "Equipment and spare parts supply",
-        "Turn-key industrial project management",
-        "Project Management / Project Controlling",
-        "Software engineering and AI development",
-        "Industrial automation and robotics systems",
-        "Advanced soilless agriculture systems",
-        "Industrial projects in oil and gas sectors"
-      ]
+    "divisions": {
+      "title": "Two Specialized Divisions",
+      "subtitle": "Each division serves its own markets independently — and collaborates where industrial and digital expertise intersect.",
+      "digital": {
+        "name": "AKAF Digital",
+        "tagline": "Software Platforms, Enterprise Applications & Applied AI",
+        "description": "Enterprise software engineering, SaaS products, ERP systems, hospitality technology, and applied artificial intelligence — an independent, commercially scalable technology business.",
+        "cta": "Explore Digital Solutions"
+      },
+      "industrial": {
+        "name": "AKAF Industrial",
+        "tagline": "Factory Development, Production Lines & Industrial Engineering",
+        "description": "Industrial feasibility studies, factory establishment, production line planning, machinery sourcing, automation, and commissioning — a credible, independent industrial engineering operation.",
+        "cta": "Explore Industrial Solutions"
+      }
     },
-    "projects": {
-      "title": "Ongoing Projects",
-      "subtitle": "Three currently active AKAF projects in Oman",
-      "cta": "Review executed projects",
+    "connect": {
+      "title": "Where Our Expertise Connects",
+      "subtitle": "AKAF Smart Industry — a cross-division collaboration model, from factory floor to management intelligence.",
+      "description": "When a manufacturing project needs both physical engineering and digital systems, our two divisions work together: machinery and production lines from AKAF Industrial, connected to ERP, dashboards, and analytics from AKAF Digital.",
+      "cta": "Discover Smart Industry"
+    },
+    "products": {
+      "title": "Selected Products & Projects",
+      "subtitle": "Deployed software products and industrial initiatives across Oman",
+      "cta": "View full portfolio",
       "items": [
+        {
+          "name": "AKAF Digital Menu",
+          "sector": "Digital Product — Hospitality",
+          "location": "Commercially deployed",
+          "scope": "Multilingual digital menu and ordering platform for restaurants and hospitality businesses"
+        },
         {
           "name": "Plastic Injection Factory Launch",
           "sector": "Plastics & Industrial Machinery",
@@ -611,32 +657,37 @@
           "scope": "In cooperation with DKM (China), starting with a 2,250-ton servo-motor machine and a 6-axis robotic operator"
         },
         {
-          "name": "Advanced Hydroponic Greenhouse Deployment",
-          "sector": "Soilless Agriculture",
-          "location": "Al Batinah Region, Oman",
-          "scope": "A 4-hectare project in cooperation with Rufepa (Spain) for advanced soilless farming infrastructure"
-        },
-        {
-          "name": "Frozen Semi-Prepared Potato Production Line Launch",
+          "name": "Frozen Semi-Prepared Potato Production Line",
           "sector": "Food Industry",
           "location": "Barka City, Oman",
-          "scope": "In cooperation with Biaxin (China) to establish an industrial-capacity frozen semi-prepared potato production line"
+          "scope": "In cooperation with Baixin (China) to establish an industrial-capacity frozen semi-prepared potato production line"
         }
       ]
     },
+    "leadership": {
+      "title": "Leadership & Corporate Identity",
+      "subtitle": "AKAF Investment & Integrated Projects LLC — established April 2023 in Muscat, Sultanate of Oman.",
+      "ali": {
+        "name": "Ali Fekri",
+        "role": "Founder & Strategic Leader",
+        "summary": "Cross-disciplinary experience across industrial engineering, manufacturing operations, software engineering, and digital transformation."
+      },
+      "nawaz": {
+        "name": "Mohamed Nawaz Al Balushi",
+        "role": "Omani Partner & Strategic Relations",
+        "summary": "Registered Omani partner supporting local business relationships, stakeholder engagement, and strategic market positioning."
+      },
+      "cta": "About & Leadership"
+    },
     "partnerships": {
-      "title": "International Partnerships",
-      "description": "AKAF has started strategic collaborations with partner companies in Oman and other countries, with active expansion across international markets.",
+      "title": "Strategic Partnerships",
+      "description": "AKAF develops structured partnerships with technology and machinery companies in Europe and Asia to deliver specialized industrial and digital capabilities in Oman.",
       "cta": "Explore partnerships"
     },
-    "ai": {
-      "title": "AI & Software Services",
-      "description": "The existing digital and AI offerings are now presented as a dedicated service line under AKAF.",
-      "cta": "Open AI & software services"
-    },
-    "team": {
-      "title": "Strong Oman-Based Team",
-      "description": "Our executive and management team in Oman combines deep experience and diverse academic backgrounds to deliver across multiple sectors."
+    "contact": {
+      "title": "Start a Conversation",
+      "description": "Whether you are planning a factory, evaluating enterprise software, or exploring applied AI — our team is ready to discuss your requirements.",
+      "cta": "Contact & Consultation"
     }
   },
   "CorporateServicesPage": {
@@ -718,120 +769,256 @@
     "deliveryTitle": "Cross-Sector Delivery",
     "deliveryDescription": "Another major execution milestone is launching one of the region's largest animal feed production plants in cooperation with AMANDUS KAHL (Germany) in 2000.",
     "projectsPrompt": "Alongside these achievements, you can review this group's delivered portfolio in the",
-    "projectsLinkLabel": "Executed Projects"
+    "projectsLinkLabel": "Executed Projects",
+    "corporateTitle": "Corporate Identity",
+    "corporateFacts": [
+      { "label": "Legal name", "value": "AKAF Investment & Integrated Projects LLC" },
+      { "label": "Country", "value": "Sultanate of Oman" },
+      { "label": "Headquarters", "value": "Ghala Industrial Area, Bousher, Muscat" },
+      { "label": "Commercial Registration", "value": "1479852" },
+      { "label": "Established", "value": "April 2023" }
+    ],
+    "divisionsTitle": "Business Divisions",
+    "divisionsNote": "AKAF operates through two specialized business divisions — AKAF Digital and AKAF Industrial — under one legal entity. These divisions are business identities, not separate incorporated companies.",
+    "leadershipTitle": "Leadership & Governance",
+    "leadershipNote": "The company has two registered shareholders, both of whom are authorized company signatories.",
+    "leaders": [
+      {
+        "name": "Ali Fekri",
+        "role": "Founder & Strategic Leader",
+        "bio": "Cross-disciplinary experience spanning industrial engineering, manufacturing operations, factory and production line development, software engineering, business systems, industrial project management, and business strategy. Responsible for the company's technology direction, industrial strategy, business development, and coordination of the two divisions."
+      },
+      {
+        "name": "Mohamed Nawaz Al Balushi",
+        "role": "Omani Partner & Strategic Relations",
+        "bio": "The company's registered Omani partner, supporting local business relationships, stakeholder engagement, and strategic market positioning in the Sultanate of Oman."
+      }
+    ],
+    "attributionTitle": "Experience & Attribution",
+    "attributionNote": "AKAF was registered in April 2023. Industrial and software projects completed before that date are attributed to the founders, team members, or predecessor businesses that delivered them — not to the current legal entity."
   },
   "ProjectsPage": {
-    "title": "Executed Projects",
-    "description": "A modern portfolio of AKAF's executed industrial projects with clear execution scope, timeline, location, and leadership role.",
+    "title": "Projects & Products",
+    "description": "A categorized portfolio of AKAF corporate projects, digital products, industrial deliveries, and professional experience of the leadership team — with truthful status labels.",
     "stats": [
-      { "label": "Executed projects", "value": "12" },
-      { "label": "Primary region", "value": "Iran" },
-      { "label": "Delivery model", "value": "Project Management + Execution" }
+      { "label": "Portfolio items", "value": "15+" },
+      { "label": "Active markets", "value": "Oman & International" },
+      { "label": "Delivery model", "value": "Two specialized divisions" }
     ],
+    "filters": {
+      "all": "All",
+      "corporate": "AKAF Corporate Projects",
+      "digital": "Digital Products",
+      "industrial": "Industrial Projects",
+      "experience": "Leadership & Previous Experience",
+      "development": "Projects in Development"
+    },
+    "statusLabels": {
+      "completed": "Completed",
+      "underExecution": "Under Execution",
+      "inDevelopment": "In Development",
+      "proposed": "Proposed / Under Discussion"
+    },
     "labels": {
       "location": "Location",
       "time": "Execution Time",
       "activity": "Activity",
-      "role": "AKAF Role",
+      "role": "Role",
+      "status": "Status",
       "challenge": "Challenge",
       "solution": "AKAF Solution",
       "result": "Result"
     },
+    "attributionNote": "Projects completed before AKAF's incorporation in April 2023 are attributed to the individuals and predecessor businesses that delivered them.",
     "items": [
       {
+        "name": "AKAF Digital Menu",
+        "category": "digital",
+        "status": "completed",
+        "location": "Oman & international markets",
+        "time": "Commercially deployed",
+        "activity": "Multilingual digital menu and ordering platform for restaurants and hospitality businesses, with QR/NFC access, analytics, and management dashboard.",
+        "role": "Developed and operated by AKAF Digital.",
+        "image": "/images/hero/ai-software-hero.webp"
+      },
+      {
+        "name": "Plastic Injection Factory Launch",
+        "category": "corporate",
+        "status": "underExecution",
+        "location": "Al Khazaen City, Oman",
+        "time": "Ongoing",
+        "activity": "Factory establishment in cooperation with DKM (China), starting with a 2,250-ton servo-motor injection machine and a 6-axis robotic operator.",
+        "role": "AKAF Industrial project execution and coordination.",
+        "image": "/images/projects/plastic-injection.webp"
+      },
+      {
+        "name": "Advanced Hydroponic Greenhouse Deployment",
+        "category": "corporate",
+        "status": "underExecution",
+        "location": "Al Batinah Region, Oman",
+        "time": "Ongoing",
+        "activity": "A 4-hectare advanced soilless farming infrastructure project in cooperation with Rufepa (Spain).",
+        "role": "AKAF corporate project development.",
+        "image": "/images/projects/animal-poultry-feed-factory.webp"
+      },
+      {
+        "name": "Frozen Semi-Prepared Potato Production Line",
+        "category": "corporate",
+        "status": "proposed",
+        "location": "Barka City, Oman",
+        "time": "Under discussion",
+        "activity": "Proposed industrial-capacity frozen semi-prepared potato production line in cooperation with Baixin (China).",
+        "role": "AKAF Industrial project development and partner coordination.",
+        "image": "/images/projects/dairy-production.webp"
+      },
+      {
+        "name": "AKAF ERP",
+        "category": "development",
+        "status": "inDevelopment",
+        "location": "In development",
+        "time": "Roadmap active",
+        "activity": "Modular ERP platform covering financial management, accounting, inventory, sales, treasury, and operational workflows.",
+        "role": "AKAF Digital product engineering.",
+        "image": "/images/projects/AKAFOffice.webp"
+      },
+      {
+        "name": "Hospitality F&B Operations Platform",
+        "category": "development",
+        "status": "inDevelopment",
+        "location": "In development",
+        "time": "Roadmap active",
+        "activity": "Hotel-grade digital ordering, F&B workflows, kitchen operations, and inventory connectivity; enterprise POS integration (including Oracle MICROS Simphony) is planned and under development.",
+        "role": "AKAF Digital product engineering.",
+        "image": "/images/projects/software.webp"
+      },
+      {
+        "name": "Construction Project Management Platform",
+        "category": "development",
+        "status": "inDevelopment",
+        "location": "Prototype / active development",
+        "time": "Prototype stage",
+        "activity": "WBS management, scheduling, project progress tracking, quality workflows, reporting, and cost visibility for construction projects.",
+        "role": "AKAF Digital product engineering, building on earlier localized construction software experience.",
+        "image": "/images/projects/software.webp"
+      },
+      {
         "name": "Animal, Poultry and Aquatic Feed Factory",
+        "category": "experience",
+        "status": "completed",
         "location": "Gorgan, Iran",
         "time": "1988",
         "activity": "Turn-key feed production project in cooperation with AMANDUS KAHL (Germany), including high-capacity production for livestock and poultry feed.",
-        "role": "Project Management by Mr.Aboulfath Fekri",
+        "role": "Project management by Mr. Aboulfath Fekri — delivered prior to AKAF's incorporation.",
         "image": "/images/projects/animal-poultry-feed-factory.webp"
       },
       {
         "name": "Dairy Production Factory",
+        "category": "experience",
+        "status": "completed",
         "location": "Iran",
         "time": "1993",
         "activity": "Turn-key dairy production factory with complete process setup and operation readiness.",
-        "role": "Project Management by Mr.Aboulfath Fekri",
+        "role": "Project management by Mr. Aboulfath Fekri — delivered prior to AKAF's incorporation.",
         "image": "/images/projects/dairy-production.webp"
       },
       {
         "name": "Chip-board and MDF Production Factory",
+        "category": "experience",
+        "status": "completed",
         "location": "Gorgan, Iran",
         "time": "1998",
         "activity": "Factory transfer and re-installation from Austria to Iran with automation overhaul of the production process.",
-        "role": "Project Management by Mr.Aboulfath Fekri",
+        "role": "Project management by Mr. Aboulfath Fekri — delivered prior to AKAF's incorporation.",
         "image": "/images/projects/mdf-factory.webp"
       },
       {
         "name": "Semi-Automatic Copper-Nickel-Chrome Plating Line for Plastic Auto Parts",
+        "category": "industrial",
+        "status": "completed",
         "location": "Hashtgerd Industrial City, Iran",
         "time": "Industrial phase implementation",
         "activity": "Semi-automatic plating line for copper, nickel, and chrome finishing dedicated to automotive plastic components.",
-        "role": "Project Management by Mr.Ali Fekri",
+        "role": "Project management by Mr. Ali Fekri — professional experience prior to AKAF's incorporation.",
         "image": "/images/projects/semi-automatic-plating.webp"
       },
       {
         "name": "Full Automated ABS Plating Line",
+        "category": "industrial",
+        "status": "completed",
         "location": "Iran",
         "time": "2016-2018",
         "activity": "Commissioning of a fully automated ABS plating line purchased from China, including process renewal and line overhaul.",
-        "role": "Project Management and Execution by Mr.Ali Fekri",
+        "role": "Project management and execution by Mr. Ali Fekri — professional experience prior to AKAF's incorporation.",
         "image": "/images/projects/plating-line.webp"
       },
       {
         "name": "Plastic Injection Production and Assembly Factory",
+        "category": "industrial",
+        "status": "completed",
         "location": "Iran",
         "time": "2019-2020",
         "activity": "Launch of a one-hectare automotive polymer parts factory with 28 simultaneous injection machines, three shifts, and 3 independent assembly halls with 300 jobs created.",
-        "role": "Project Management and Execution by Mr.Ali Fekri",
+        "role": "Project management and execution by Mr. Ali Fekri — professional experience prior to AKAF's incorporation.",
         "image": "/images/projects/plastic-injection.webp"
       },
       {
         "name": "Electroforming Plating Line",
+        "category": "industrial",
+        "status": "completed",
         "location": "Iran",
         "time": "2020-2021",
         "activity": "Setup and process automation of an electroforming plating line for specialized industrial production.",
-        "role": "Project Management and Execution by Mr.Ali Fekri",
+        "role": "Project management and execution by Mr. Ali Fekri — professional experience prior to AKAF's incorporation.",
         "image": "/images/projects/Electroforming-Facility.webp"
       },
       {
         "name": "Karaneh Coastal Residential Investment Complex",
+        "category": "experience",
+        "status": "completed",
         "location": "Kish Island Free Zone, Iran",
         "time": "Operation started in 2017",
         "activity": "A major coastal residential complex executed in 9 blocks with 769 units and 939 parking spaces (project land area: 56,000 m²; built-up area: 158,000 m²).",
-        "role": "Project Management by Mr.Aboulfath Fekri; the complex entered operation successfully and units were sold rapidly.",
+        "role": "Project management by Mr. Aboulfath Fekri — delivered prior to AKAF's incorporation.",
         "image": "/images/projects/karaneh-kish.webp"
       },
       {
         "name": "Localized Construction Project Management Software",
+        "category": "digital",
+        "status": "completed",
         "location": "Iran",
         "time": "2012",
         "activity": "Design and development of one of Iran's strongest localized project management software platforms for mass-building projects.",
-        "role": "AKAF software team delivery with national IT elite medal recognition in Iran.",
+        "role": "Delivered by the predecessor software team with national IT elite medal recognition in Iran.",
         "image": "/images/projects/software.webp"
       },
       {
         "name": "Suite of 17+ Financial and Administrative Software Systems",
+        "category": "digital",
+        "status": "completed",
         "location": "Multi-country deployment",
         "time": "Delivered in multiple phases",
-        "activity": "Design of more than 17 robust financial and administrative software systems, currently used in 400+ commercial and industrial organizations worldwide.",
-        "role": "Project Management by Mr.Ali Fekri with execution by AKAF software and AI development teams.",
+        "activity": "Design of more than 17 financial and administrative software systems used by commercial and industrial organizations.",
+        "role": "Project management by Mr. Ali Fekri with the predecessor software development team — prior to AKAF's incorporation.",
         "image": "/images/projects/AKAFOffice.webp"
       },
       {
         "name": "Advanced Public Library Construction",
+        "category": "experience",
+        "status": "completed",
         "location": "Gorgan, Iran",
         "time": "2008",
         "activity": "Construction of one of the most equipped libraries in Iran with distinctive architecture and full delivery to Mirdamad Cultural Institute.",
-        "role": "Project Management by Mr.Aboulfath Fekri.",
+        "role": "Project management by Mr. Aboulfath Fekri — delivered prior to AKAF's incorporation.",
         "image": "/images/projects/library.webp"
       },
       {
         "name": "Industrial Robotics and Smart Automation Program",
+        "category": "industrial",
+        "status": "completed",
         "location": "Iran",
         "time": "Continuous multi-year execution",
         "activity": "Design and build of industrial robots, assembly and testing machinery, upgrade of traditional production lines to full automation, custom automatic cutting machines, and AI module integration in hardware/software products.",
-        "role": "Execution by AKAF's multidisciplinary engineering team (mechanical, electromechanical, software, and electronics).",
+        "role": "Execution by the multidisciplinary engineering team (mechanical, electromechanical, software, and electronics) — prior to AKAF's incorporation.",
         "image": "/images/projects/Robots.webp"
       }
     ]
@@ -974,8 +1161,198 @@
     ]
   },
   "AISoftwarePage": {
-    "title": "AI & Software Services",
-    "description": "Dedicated area for AKAF programming and artificial intelligence service offerings.",
-    "headline": "AI & Software Development Services"
+    "title": "AKAF Digital Menu — Multilingual Digital Menu for Restaurants",
+    "description": "AKAF Digital Menu is a commercially deployed multilingual digital menu and ordering platform for restaurants, cafés, and hospitality businesses.",
+    "headline": "AKAF Digital Menu",
+    "subheadline": "A deployed AKAF Digital product — multilingual menus, QR/NFC access, ordering workflows, and analytics for hospitality businesses.",
+    "pricingCta": "Plans & Pricing"
+  },
+  "DigitalPage": {
+    "title": "AKAF Digital — Software, AI & Digital Product Engineering",
+    "description": "AKAF Digital is the software and technology division of AKAF: enterprise software engineering, SaaS products, hospitality technology, ERP, applied AI, and cloud engineering.",
+    "headline": "AKAF Digital",
+    "tagline": "Software, AI & Digital Product Engineering",
+    "intro": "AKAF Digital is an independent, commercially scalable software and technology business within AKAF. It serves B2B software buyers, hospitality operators, enterprises, and technology partners with proprietary products and custom engineering services.",
+    "audienceTitle": "Who We Serve",
+    "audience": [
+      "B2B SaaS customers",
+      "Hotel and hospitality operators",
+      "Enterprise software buyers",
+      "Technology partners and system integrators",
+      "Startup accelerators and AI development programs"
+    ],
+    "productsTitle": "Product Portfolio",
+    "productsSubtitle": "Proprietary products at different stages of their lifecycle — presented with accurate status.",
+    "statusLabels": {
+      "deployed": "Commercially deployed",
+      "inDevelopment": "In development",
+      "prototype": "Prototype / active development"
+    },
+    "products": [
+      {
+        "name": "AKAF Digital Menu",
+        "status": "deployed",
+        "tagline": "Multilingual digital menu platform for restaurants and hospitality",
+        "description": "A commercially deployed product: multilingual menus, QR/NFC access, ordering workflows, management dashboard, and analytics for restaurants, cafés, and hospitality businesses.",
+        "cta": "Open Digital Menu",
+        "href": "/products/digital-menu"
+      },
+      {
+        "name": "Hospitality F&B Operations Platform",
+        "status": "inDevelopment",
+        "tagline": "Hotel-grade F&B and kitchen operations",
+        "description": "A roadmap product toward hotel-grade digital ordering, F&B workflows, kitchen operations, inventory connectivity, and enterprise POS integration. Oracle MICROS Simphony integration is planned and under development.",
+        "cta": "Discuss this product",
+        "href": "/contact"
+      },
+      {
+        "name": "AKAF ERP",
+        "status": "inDevelopment",
+        "tagline": "Modular enterprise resource planning",
+        "description": "A modular ERP platform in development covering financial management, accounting, inventory, sales, treasury, and operational management capabilities.",
+        "cta": "Discuss this product",
+        "href": "/contact"
+      },
+      {
+        "name": "Construction Project Management Platform",
+        "status": "prototype",
+        "tagline": "WBS, scheduling, quality, and cost visibility",
+        "description": "A construction project management platform at prototype stage: WBS management, scheduling, project progress tracking, quality workflows, reporting, and cost visibility.",
+        "cta": "Discuss this product",
+        "href": "/contact"
+      }
+    ],
+    "servicesTitle": "Engineering Services",
+    "servicesSubtitle": "Custom software and technology services — separate from our proprietary products.",
+    "services": [
+      "Enterprise software engineering and custom business applications",
+      "SaaS product development",
+      "ERP and financial management systems",
+      "Hospitality technology solutions",
+      "Construction project management platforms",
+      "Workflow automation",
+      "Applied artificial intelligence and intelligent document processing",
+      "Data analytics and decision-support applications",
+      "API integration and enterprise systems connectivity",
+      "Cloud infrastructure, CI/CD, DevOps, and software maintenance"
+    ],
+    "aiNote": "AI capabilities are presented realistically: applied AI features are developed per project, and planned solutions are not implied to be already commercially deployed.",
+    "smartCta": {
+      "title": "Manufacturing digitalization?",
+      "description": "Where software meets production lines, AKAF Digital works with AKAF Industrial under the Smart Industry collaboration model.",
+      "cta": "Explore Smart Industry"
+    },
+    "cta": "Contact AKAF Digital"
+  },
+  "IndustrialPage": {
+    "title": "AKAF Industrial — Industrial Engineering & Factory Solutions",
+    "description": "AKAF Industrial is the industrial engineering division of AKAF: feasibility studies, factory development, production lines, machinery sourcing, automation, and commissioning.",
+    "headline": "AKAF Industrial",
+    "tagline": "Industrial Engineering & Factory Solutions",
+    "intro": "AKAF Industrial is a credible, commercially independent industrial engineering operation. It supports investors and factory owners through the full lifecycle — from feasibility and engineering to machinery, installation, and operational readiness.",
+    "capabilitiesTitle": "Service Areas",
+    "capabilities": [
+      {
+        "title": "Factory Planning & Development",
+        "description": "Industrial feasibility studies, site and layout planning, and factory establishment."
+      },
+      {
+        "title": "Production Line Establishment",
+        "description": "Production line planning, setup, and modernization for new and existing plants."
+      },
+      {
+        "title": "Industrial Machinery & Equipment",
+        "description": "Machinery sourcing, technical evaluation, and custom industrial equipment solutions."
+      },
+      {
+        "title": "Engineering & Procurement",
+        "description": "Equipment procurement, vendor coordination, and engineering-driven supply."
+      },
+      {
+        "title": "Industrial Automation",
+        "description": "Automation and robotics solutions for production efficiency and reliability."
+      },
+      {
+        "title": "Commissioning & Operational Readiness",
+        "description": "Machinery installation, commissioning, and operational improvement programs."
+      }
+    ],
+    "sectorsTitle": "Sector Experience",
+    "sectorsSubtitle": "Industrial experience presented by actual sector.",
+    "sectors": [
+      "Plastics and injection molding",
+      "Food processing and production lines",
+      "General manufacturing and assembly",
+      "Plating and surface finishing",
+      "Industrial machinery and automation",
+      "Soilless agriculture infrastructure"
+    ],
+    "smartCta": {
+      "title": "Connected factory ambitions?",
+      "description": "AKAF Industrial works with AKAF Digital on manufacturing digitalization under the Smart Industry model — from machine data to management dashboards.",
+      "cta": "Explore Smart Industry"
+    },
+    "cta": "Discuss an industrial project"
+  },
+  "SmartIndustryPage": {
+    "title": "AKAF Smart Industry — From Factory Floor to Management Intelligence",
+    "description": "AKAF Smart Industry is the cross-division collaboration model connecting AKAF Industrial engineering with AKAF Digital software — manufacturing digitalization, IT/OT integration, and industrial analytics.",
+    "headline": "AKAF Smart Industry",
+    "tagline": "From Factory Floor to Management Intelligence",
+    "intro": "Smart Industry is a collaboration model between AKAF's two divisions — not a separate company. AKAF Industrial engineers the physical factory; AKAF Digital connects it to enterprise software, dashboards, and applied analytics.",
+    "capabilitiesTitle": "Cross-Division Capabilities",
+    "capabilities": [
+      "Manufacturing digitalization",
+      "IT/OT integration",
+      "ERP and manufacturing system connectivity",
+      "Production performance monitoring",
+      "Machine data collection",
+      "Industrial dashboards",
+      "Manufacturing cost and operational analysis",
+      "Applied industrial AI",
+      "Intelligent machinery modernization"
+    ],
+    "exampleTitle": "A Realistic Example",
+    "exampleSubtitle": "A plastics injection molding factory with multiple production machines — how a potential engagement could be delivered.",
+    "steps": [
+      {
+        "title": "Factory & production-line engineering",
+        "description": "AKAF Industrial plans the factory, layout, and production line configuration."
+      },
+      {
+        "title": "Machinery sourcing, installation & commissioning",
+        "description": "Injection molding machines are sourced, installed, and commissioned with technical evaluation."
+      },
+      {
+        "title": "Production-data acquisition & connectivity",
+        "description": "Machine and production data are collected and connected, subject to each machine's technical capabilities and a site assessment."
+      },
+      {
+        "title": "ERP, inventory & production management integration",
+        "description": "AKAF Digital integrates production data with ERP, inventory, and production management workflows."
+      },
+      {
+        "title": "Operational dashboards & manufacturing KPIs",
+        "description": "Factory owners and operations directors gain dashboards for output, downtime, quality, and cost indicators."
+      },
+      {
+        "title": "Analytics & AI-assisted decision support",
+        "description": "Applied analytics and AI-assisted tools support planning, maintenance, and operational decisions."
+      }
+    ],
+    "scopeTitle": "Standard Capabilities vs. Project-Specific Work",
+    "scopeDescription": "Capabilities such as ERP connectivity, dashboards, and production monitoring are standard offerings. Connectivity to specific machines, PLC models, or legacy equipment is evaluated per project and confirmed after technical assessment. We do not claim universal PLC compatibility or fully autonomous industrial control.",
+    "audienceTitle": "Built For",
+    "audience": [
+      "Factory owners planning modernization",
+      "Operations directors seeking visibility",
+      "Industrial investors evaluating digitalized plants"
+    ],
+    "cta": "Discuss a Smart Industry project"
+  },
+  "RedirectPage": {
+    "title": "Page Moved",
+    "message": "This page has moved to a new location.",
+    "cta": "Continue"
   }
 }

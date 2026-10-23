@@ -7628,3 +7628,522 @@ html[lang='en'] .success-details li:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== Corporate rebrand: divisions, products, leadership, filters ===== */
+
+.akaf-divisions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.akaf-division-card {
+  display: block;
+  text-decoration: none;
+  color: var(--text-color);
+  border-radius: calc(var(--radius-xl) + 0.2rem);
+  padding: 1.8rem;
+  border: 1px solid var(--border-light);
+  background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.akaf-division-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+}
+
+.akaf-division-digital::before {
+  background: linear-gradient(90deg, #6366f1, #38bdf8);
+}
+
+.akaf-division-industrial::before {
+  background: linear-gradient(90deg, #b45309, #f59e0b);
+}
+
+.akaf-division-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.akaf-division-industrial:hover {
+  border-color: rgba(180, 83, 9, 0.35);
+}
+
+.akaf-division-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.9rem;
+}
+
+.akaf-division-digital .akaf-division-badge {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4f46e5;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.akaf-division-industrial .akaf-division-badge {
+  background: rgba(180, 83, 9, 0.08);
+  color: #92400e;
+  border: 1px solid rgba(180, 83, 9, 0.28);
+}
+
+.akaf-division-card h3 {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.akaf-division-card p {
+  color: var(--text-secondary);
+  margin-bottom: 1.1rem;
+}
+
+.akaf-division-cta {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #4f46e5;
+}
+
+.akaf-division-industrial .akaf-division-cta {
+  color: #b45309;
+}
+
+/* Division page heroes */
+.akaf-division-hero {
+  padding: 4rem 0 2.5rem;
+}
+
+.akaf-division-kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 0.4rem;
+}
+
+.akaf-division-tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.akaf-division-hero-digital .akaf-division-tagline { color: #4f46e5; }
+.akaf-division-hero-industrial .akaf-division-tagline { color: #b45309; }
+.akaf-division-hero-smart .akaf-division-tagline { color: #0f766e; }
+
+/* Product cards + status badges */
+.akaf-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.2rem;
+}
+
+.akaf-product-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 1.4rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.akaf-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.akaf-product-card .btn {
+  margin-top: auto;
+  width: fit-content;
+}
+
+.akaf-product-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.akaf-product-head h3 {
+  margin: 0;
+}
+
+.akaf-product-tagline {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.akaf-status-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.akaf-status-deployed {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.akaf-status-exec {
+  background: rgba(37, 99, 235, 0.1);
+  color: #1d4ed8;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+.akaf-status-dev {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.akaf-status-proposed {
+  background: rgba(100, 116, 139, 0.12);
+  color: #475569;
+  border: 1px solid rgba(100, 116, 139, 0.32);
+}
+
+/* Capability / inline lists */
+.akaf-capability-list,
+.akaf-inline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.akaf-capability-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.55rem 1.4rem;
+}
+
+.akaf-capability-list li,
+.akaf-inline-list li {
+  padding-inline-start: 1.35rem;
+  position: relative;
+  color: var(--text-secondary);
+}
+
+.akaf-capability-list li::before,
+.akaf-inline-list li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.52em;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #6366f1, #38bdf8);
+}
+
+.akaf-scope-note {
+  margin-top: 1.4rem;
+  padding: 0.9rem 1.1rem;
+  border-inline-start: 3px solid #f59e0b;
+  background: rgba(245, 158, 11, 0.07);
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+/* Connect card on homepage */
+.akaf-connect-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  background: linear-gradient(140deg, #0f172a 0%, #1e293b 100%);
+  border-radius: calc(var(--radius-xl) + 0.2rem);
+  padding: clamp(1.5rem, 3vw, 2.4rem);
+  color: #e2e8f0;
+}
+
+.akaf-connect-card h2,
+.akaf-connect-card p {
+  color: #e2e8f0;
+}
+
+.akaf-connect-card .section-subtitle {
+  color: rgba(226, 232, 240, 0.85);
+}
+
+.akaf-connect-card .btn-primary {
+  flex-shrink: 0;
+}
+
+/* Smart industry steps */
+.akaf-smart-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+  counter-reset: step;
+}
+
+.akaf-smart-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.akaf-smart-step-number {
+  flex-shrink: 0;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+}
+
+.akaf-smart-step h3 {
+  margin: 0.15rem 0 0.3rem;
+  font-size: 1.02rem;
+}
+
+.akaf-smart-step p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+}
+
+/* Leadership cards */
+.akaf-leader-card {
+  text-align: center;
+}
+
+.akaf-leader-avatar {
+  width: 4.4rem;
+  height: 4.4rem;
+  margin: 0 auto 0.9rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #1e293b, #475569);
+  letter-spacing: 0.05em;
+}
+
+.akaf-leader-card h3 {
+  margin-bottom: 0.2rem;
+}
+
+.akaf-leader-role {
+  font-weight: 700;
+  color: #4f46e5;
+  font-size: 0.9rem;
+  margin-bottom: 0.7rem;
+}
+
+.akaf-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem 1rem;
+}
+
+.akaf-fact-item {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 0.9rem;
+  padding: 0.8rem 0.9rem;
+}
+
+.akaf-fact-item p {
+  margin: 0;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.akaf-divisions-note {
+  margin-top: 2rem;
+}
+
+.akaf-contact-card {
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Portfolio filter chips */
+.akaf-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.6rem;
+}
+
+.akaf-filter-chip {
+  border: 1px solid var(--border-color);
+  background: #fff;
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.akaf-filter-chip:hover {
+  border-color: #6366f1;
+  color: #4f46e5;
+}
+
+.akaf-filter-chip.active {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: #fff;
+}
+
+/* Corporate footer */
+.akaf-footer {
+  background: #0f172a;
+  color: #cbd5e1;
+  padding: 3rem 0 1.5rem;
+  margin-top: 2rem;
+}
+
+.akaf-footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.akaf-footer strong {
+  color: #f8fafc;
+  display: block;
+  margin-bottom: 0.7rem;
+  font-size: 0.95rem;
+}
+
+.akaf-footer-brand p {
+  margin: 0.3rem 0;
+  font-size: 0.88rem;
+}
+
+.akaf-footer-legal {
+  color: #94a3b8;
+  font-size: 0.82rem !important;
+}
+
+.akaf-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.akaf-footer-col a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+
+.akaf-footer-col a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.akaf-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  align-items: center;
+  padding-top: 1.4rem;
+  font-size: 0.85rem;
+}
+
+.akaf-footer-bottom a {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.akaf-footer-bottom a:hover {
+  color: #fff;
+}
+
+.akaf-footer-bottom p {
+  margin: 0 0 0 auto;
+  color: #94a3b8;
+}
+
+@media (max-width: 960px) {
+  .akaf-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .akaf-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .akaf-divisions-grid,
+  .akaf-products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .akaf-connect-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .akaf-smart-step {
+    padding: 0.95rem;
+  }
+
+  .akaf-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .akaf-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .akaf-footer-bottom p {
+    margin: 0;
+  }
+}

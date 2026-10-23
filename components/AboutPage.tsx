@@ -8,6 +8,8 @@ export default function AboutPage() {
   const t = useTranslations('CorporateAboutPage');
   const locale = useLocale();
   const capabilities = t.raw('capabilities') as string[];
+  const corporateFacts = t.raw('corporateFacts') as Array<{ label: string; value: string }>;
+  const leaders = t.raw('leaders') as Array<{ name: string; role: string; bio: string }>;
   const capabilityIcons = [
     'M12 3v4M12 17v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M3 12h4M17 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6',
     'M4 7.5 12 3l8 4.5M4 7.5v9L12 21l8-4.5v-9M12 12l8-4.5M12 12 4 7.5M12 12v9',
@@ -64,6 +66,48 @@ export default function AboutPage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="akaf-section akaf-section-light">
+        <div className="container">
+          <div className="section-header">
+            <h2>{t('corporateTitle')}</h2>
+          </div>
+          <div className="akaf-facts-grid">
+            {corporateFacts.map((fact) => (
+              <div key={fact.label} className="akaf-fact-item">
+                <span className="akaf-project-meta-label">{fact.label}</span>
+                <p>{fact.value}</p>
+              </div>
+            ))}
+          </div>
+          <div className="section-header akaf-divisions-note">
+            <h2>{t('divisionsTitle')}</h2>
+            <p className="section-subtitle">{t('divisionsNote')}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="akaf-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>{t('leadershipTitle')}</h2>
+            <p className="section-subtitle">{t('leadershipNote')}</p>
+          </div>
+          <div className="akaf-two-col">
+            {leaders.map((leader) => (
+              <article key={leader.name} className="akaf-info-card akaf-leader-card">
+                <div className="akaf-leader-avatar" aria-hidden="true">
+                  {leader.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
+                </div>
+                <h3>{leader.name}</h3>
+                <p className="akaf-leader-role">{leader.role}</p>
+                <p>{leader.bio}</p>
+              </article>
+            ))}
+          </div>
+          <p className="akaf-scope-note">{t('attributionNote')}</p>
         </div>
       </section>
 
