@@ -43,11 +43,11 @@
     "home": "خانه",
     "about": "درباره ما",
     "services": "خدمات",
-    "projects": "پروژه ها و محصولات",
+    "projects": "پروژه ها",
     "partnerships": "همکاری ها",
     "aiSoftware": "برنامه نویسی و هوش مصنوعی",
     "digital": "دیجیتال و هوش مصنوعی",
-    "industrial": "مهندسی صنایع",
+    "industrial": "صنایع",
     "smartIndustry": "صنعت هوشمند",
     "digitalMenu": "منوی دیجیتال",
     "contact": "تماس با ما",
@@ -591,10 +591,22 @@
     "title": "بیشتر رستوران‌ها مشتری آنلاین از دست می‌دهند",
     "subtitle": "وقتی منوی واضح و مناسب موبایل در دسترس نباشد، مشتری می‌رود.",
     "items": [
-      { "key": "photoVideo", "icon": "📸" },
-      { "key": "translation", "icon": "🌍" },
-      { "key": "consulting", "icon": "🤝" },
-      { "key": "hardware", "icon": "💻" }
+      {
+        "key": "photoVideo",
+        "icon": "📸"
+      },
+      {
+        "key": "translation",
+        "icon": "🌍"
+      },
+      {
+        "key": "consulting",
+        "icon": "🤝"
+      },
+      {
+        "key": "hardware",
+        "icon": "💻"
+      }
     ],
     "itemsText": {
       "photoVideo": {
@@ -635,18 +647,10 @@
     "description": "AKAF تخصص عملی در مهندسی صنایع را با توسعه نرم‌افزار مدرن، فناوری‌های سازمانی و هوش مصنوعی کاربردی ترکیب می‌کند — در خدمت مشتریان صنعتی و غیرصنعتی در عمان و فراتر از آن.",
     "heroImageAlt": "تیم فنی AKAF در حال بررسی برنامه اجرای پروژه صنعتی",
     "heroEyebrow": "AKAF Investment & Integrated Projects LLC — مسقط، عمان",
-    "ctaServices": "مشاهده خدمات",
-    "ctaProjects": "مشاهده پروژه ها و محصولات",
     "trust": {
       "item1": "ثبت‌شده در سلطنت عمان (ثبت تجاری 1479852)",
       "item2": "دفتر مرکزی در منطقه صنعتی غلا، مسقط",
       "item3": "آمادگی عملیاتی برای همکاری های بین المللی"
-    },
-    "highlights": {
-      "title": "نگاه سریع به AKAF",
-      "item1": "دو بخش مستقل تجاری: AKAF Digital و AKAF Industrial",
-      "item2": "مهندسی صنایع، نرم‌افزار سازمانی و هوش مصنوعی کاربردی در یک چشم‌انداز واحد",
-      "item3": "شراکت‌های استراتژیک در اروپا، آسیا و منطقه خلیج فارس"
     },
     "divisions": {
       "title": "دو بخش تخصصی",
@@ -803,11 +807,26 @@
     "projectsLinkLabel": "پروژه های اجراشده",
     "corporateTitle": "هویت سازمانی",
     "corporateFacts": [
-      { "label": "نام قانونی", "value": "AKAF Investment & Integrated Projects LLC" },
-      { "label": "کشور", "value": "سلطنت عمان" },
-      { "label": "دفتر مرکزی", "value": "منطقه صنعتی غلا، بوشر، مسقط" },
-      { "label": "ثبت تجاری", "value": "1479852" },
-      { "label": "تاسیس", "value": "آوریل 2023" }
+      {
+        "label": "نام قانونی",
+        "value": "AKAF Investment & Integrated Projects LLC"
+      },
+      {
+        "label": "کشور",
+        "value": "سلطنت عمان"
+      },
+      {
+        "label": "دفتر مرکزی",
+        "value": "منطقه صنعتی غلا، بوشر، مسقط"
+      },
+      {
+        "label": "ثبت تجاری",
+        "value": "1479852"
+      },
+      {
+        "label": "تاسیس",
+        "value": "آوریل 2023"
+      }
     ],
     "divisionsTitle": "بخش‌های تجاری",
     "divisionsNote": "AKAF از طریق دو بخش تخصصی — AKAF Digital و AKAF Industrial — تحت یک نهاد حقوقی واحد فعالیت می‌کند. این بخش‌ها هویت‌های تجاری هستند، نه شرکت‌های مستقل ثبت‌شده.",
@@ -832,9 +851,18 @@
     "title": "پروژه ها و محصولات",
     "description": "نمونه‌کار دسته‌بندی‌شده شامل پروژه‌های سازمانی AKAF، محصولات دیجیتال، تحویل‌های صنعتی و تجربه حرفه‌ای رهبری — با برچسب‌های وضعیت صادقانه.",
     "stats": [
-      { "label": "اقلام نمونه‌کار", "value": "+15" },
-      { "label": "بازارهای فعال", "value": "عمان و بین‌المللی" },
-      { "label": "مدل تحویل", "value": "دو بخش تخصصی" }
+      {
+        "label": "اقلام نمونه‌کار",
+        "value": "+15"
+      },
+      {
+        "label": "بازارهای فعال",
+        "value": "عمان و بین‌المللی"
+      },
+      {
+        "label": "مدل تحویل",
+        "value": "دو بخش تخصصی"
+      }
     ],
     "filters": {
       "all": "همه",
@@ -875,7 +903,7 @@
       {
         "name": "راه اندازی کارخانه تزریق پلاستیک",
         "category": "corporate",
-        "status": "underExecution",
+        "status": "proposed",
         "location": "شهر خزائن، عمان",
         "time": "در حال انجام",
         "activity": "احداث کارخانه با همکاری DKM چین؛ شروع با دستگاه تزریق 2,250 تنی سروو موتور و اپراتور ربات 6 محور.",
@@ -885,7 +913,7 @@
       {
         "name": "استقرار گلخانه پیشرفته هیدروپونیک",
         "category": "corporate",
-        "status": "underExecution",
+        "status": "proposed",
         "location": "منطقه الباطنه، عمان",
         "time": "در حال انجام",
         "activity": "پروژه 4 هکتاری زیرساخت کشاورزی بدون خاک با همکاری Rufepa اسپانیا.",
@@ -1073,9 +1101,18 @@
       "website": "مشاهده وب سایت رسمی"
     },
     "highlights": [
-      { "title": "کشورهای شریک", "value": "آلمان + چین + نیوزیلند" },
-      { "title": "صنایع اولویت دار", "value": "6 خوشه صنعتی" },
-      { "title": "مدل تحویل در عمان", "value": "تجاری + یکپارچه سازی فنی" }
+      {
+        "title": "کشورهای شریک",
+        "value": "آلمان + چین + نیوزیلند"
+      },
+      {
+        "title": "صنایع اولویت دار",
+        "value": "6 خوشه صنعتی"
+      },
+      {
+        "title": "مدل تحویل در عمان",
+        "value": "تجاری + یکپارچه سازی فنی"
+      }
     ],
     "partners": [
       {
@@ -1176,10 +1213,22 @@
     "galvatoreOilGasTitle": "دوام در نفت، گاز و آب شیرین کن",
     "galvatoreOilGasDescription": "راهکارهای Galvatore برای محیط های خورنده و با شوری بالا مانند زیرساخت های نفت و گاز و تاسیسات آب شیرین کن صنعتی بسیار کاربردی هستند.",
     "galvatoreReferences": [
-      { "label": "کاتالوگ شرکتی Galvatore 2025 (EN)", "file": "Galvatore_Corporate_2025_EN_A.pdf" },
-      { "label": "Galvatore Corporate Brochure 2025", "file": "2025_GALVATORE_Corporate_Brochure_EN.pdf" },
-      { "label": "RACKSTAR Product Sheet", "file": "RACKSTAR_Pro_Plus_Prem_CHEM-RES_EN.pdf" },
-      { "label": "Technical Report EN_TR_250537", "file": "EN_TR_250537_C5 high_ILF.pdf" }
+      {
+        "label": "کاتالوگ شرکتی Galvatore 2025 (EN)",
+        "file": "Galvatore_Corporate_2025_EN_A.pdf"
+      },
+      {
+        "label": "Galvatore Corporate Brochure 2025",
+        "file": "2025_GALVATORE_Corporate_Brochure_EN.pdf"
+      },
+      {
+        "label": "RACKSTAR Product Sheet",
+        "file": "RACKSTAR_Pro_Plus_Prem_CHEM-RES_EN.pdf"
+      },
+      {
+        "label": "Technical Report EN_TR_250537",
+        "file": "EN_TR_250537_C5 high_ILF.pdf"
+      }
     ],
     "areasTitle": "محورهای اصلی همکاری",
     "areas": [

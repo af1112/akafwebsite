@@ -5,10 +5,11 @@ import { Link } from '@/routing';
 
 export default function Footer() {
   const t = useTranslations('Footer');
+  const year = new Date().getFullYear();
 
   return (
     <footer className="akaf-footer">
-      <div className="container">
+      <div className="container akaf-footer-inner">
         <div className="akaf-footer-grid">
           <div className="akaf-footer-brand">
             <strong>{t('company.title')}</strong>
@@ -18,33 +19,33 @@ export default function Footer() {
             <p className="akaf-footer-legal">{t('company.cr')}</p>
           </div>
 
-          <nav className="akaf-footer-col" aria-label={t('divisions.title')}>
+          <div className="akaf-footer-col">
             <strong>{t('divisions.title')}</strong>
             <Link href="/digital">{t('divisions.digital')}</Link>
             <Link href="/industrial">{t('divisions.industrial')}</Link>
             <Link href="/smart-industry">{t('divisions.smartIndustry')}</Link>
-          </nav>
+          </div>
 
-          <nav className="akaf-footer-col" aria-label={t('products.title')}>
+          <div className="akaf-footer-col">
             <strong>{t('products.title')}</strong>
             <Link href="/products/digital-menu">{t('products.digitalMenu')}</Link>
             <Link href="/pricing">{t('products.pricing')}</Link>
             <Link href="/signup">{t('products.signup')}</Link>
-          </nav>
+          </div>
 
-          <nav className="akaf-footer-col" aria-label={t('corporate.title')}>
+          <div className="akaf-footer-col">
             <strong>{t('corporate.title')}</strong>
             <Link href="/about">{t('corporate.about')}</Link>
             <Link href="/projects">{t('corporate.projects')}</Link>
             <Link href="/partnerships">{t('corporate.partnerships')}</Link>
             <Link href="/contact">{t('corporate.contact')}</Link>
-          </nav>
+          </div>
         </div>
 
         <div className="akaf-footer-bottom">
           <a href={`mailto:${t('email')}`}>{t('email')}</a>
           <a href="tel:+96894063021">{t('phone')}</a>
-          <p>© {t('year')} - {t('rights')}</p>
+          <p>© {year} - {t('rights')}</p>
         </div>
       </div>
     </footer>

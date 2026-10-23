@@ -43,11 +43,11 @@
     "home": "Home",
     "about": "About",
     "services": "Services",
-    "projects": "Projects & Products",
+    "projects": "Projects",
     "partnerships": "Partnerships",
     "aiSoftware": "AI & Software",
     "digital": "Digital & AI",
-    "industrial": "Industrial Engineering",
+    "industrial": "Industrial",
     "smartIndustry": "Smart Industry",
     "digitalMenu": "Digital Menu",
     "contact": "Contact",
@@ -526,10 +526,22 @@
     "title": "Most Restaurants Lose Customers Online",
     "subtitle": "When there is no clear, mobile-friendly menu link, people leave.",
     "items": [
-      { "key": "photoVideo", "icon": "📸" },
-      { "key": "translation", "icon": "🌍" },
-      { "key": "consulting", "icon": "🤝" },
-      { "key": "hardware", "icon": "💻" }
+      {
+        "key": "photoVideo",
+        "icon": "📸"
+      },
+      {
+        "key": "translation",
+        "icon": "🌍"
+      },
+      {
+        "key": "consulting",
+        "icon": "🤝"
+      },
+      {
+        "key": "hardware",
+        "icon": "💻"
+      }
     ],
     "itemsText": {
       "photoVideo": {
@@ -604,18 +616,10 @@
     "description": "AKAF combines practical industrial engineering expertise with modern software development, enterprise technology, and applied artificial intelligence — serving industrial and non-industrial clients across Oman and beyond.",
     "heroImageAlt": "AKAF technical team reviewing industrial execution plans",
     "heroEyebrow": "AKAF Investment & Integrated Projects LLC — Muscat, Oman",
-    "ctaServices": "Explore Services",
-    "ctaProjects": "View Projects & Products",
     "trust": {
       "item1": "Registered in the Sultanate of Oman (CR 1479852)",
       "item2": "Headquartered in Ghala Industrial Area, Muscat",
       "item3": "International collaboration-ready operations"
-    },
-    "highlights": {
-      "title": "AKAF at a glance",
-      "item1": "Two commercially independent divisions: AKAF Digital and AKAF Industrial",
-      "item2": "Industrial engineering, enterprise software, and applied AI under one corporate vision",
-      "item3": "Strategic partnerships across Europe, Asia, and the Gulf region"
     },
     "divisions": {
       "title": "Two Specialized Divisions",
@@ -772,11 +776,26 @@
     "projectsLinkLabel": "Executed Projects",
     "corporateTitle": "Corporate Identity",
     "corporateFacts": [
-      { "label": "Legal name", "value": "AKAF Investment & Integrated Projects LLC" },
-      { "label": "Country", "value": "Sultanate of Oman" },
-      { "label": "Headquarters", "value": "Ghala Industrial Area, Bousher, Muscat" },
-      { "label": "Commercial Registration", "value": "1479852" },
-      { "label": "Established", "value": "April 2023" }
+      {
+        "label": "Legal name",
+        "value": "AKAF Investment & Integrated Projects LLC"
+      },
+      {
+        "label": "Country",
+        "value": "Sultanate of Oman"
+      },
+      {
+        "label": "Headquarters",
+        "value": "Ghala Industrial Area, Bousher, Muscat"
+      },
+      {
+        "label": "Commercial Registration",
+        "value": "1479852"
+      },
+      {
+        "label": "Established",
+        "value": "April 2023"
+      }
     ],
     "divisionsTitle": "Business Divisions",
     "divisionsNote": "AKAF operates through two specialized business divisions — AKAF Digital and AKAF Industrial — under one legal entity. These divisions are business identities, not separate incorporated companies.",
@@ -801,9 +820,18 @@
     "title": "Projects & Products",
     "description": "A categorized portfolio of AKAF corporate projects, digital products, industrial deliveries, and professional experience of the leadership team — with truthful status labels.",
     "stats": [
-      { "label": "Portfolio items", "value": "15+" },
-      { "label": "Active markets", "value": "Oman & International" },
-      { "label": "Delivery model", "value": "Two specialized divisions" }
+      {
+        "label": "Portfolio items",
+        "value": "15+"
+      },
+      {
+        "label": "Active markets",
+        "value": "Oman & International"
+      },
+      {
+        "label": "Delivery model",
+        "value": "Two specialized divisions"
+      }
     ],
     "filters": {
       "all": "All",
@@ -844,7 +872,7 @@
       {
         "name": "Plastic Injection Factory Launch",
         "category": "corporate",
-        "status": "underExecution",
+        "status": "proposed",
         "location": "Al Khazaen City, Oman",
         "time": "Ongoing",
         "activity": "Factory establishment in cooperation with DKM (China), starting with a 2,250-ton servo-motor injection machine and a 6-axis robotic operator.",
@@ -854,7 +882,7 @@
       {
         "name": "Advanced Hydroponic Greenhouse Deployment",
         "category": "corporate",
-        "status": "underExecution",
+        "status": "proposed",
         "location": "Al Batinah Region, Oman",
         "time": "Ongoing",
         "activity": "A 4-hectare advanced soilless farming infrastructure project in cooperation with Rufepa (Spain).",
@@ -1042,9 +1070,18 @@
       "website": "Visit official website"
     },
     "highlights": [
-      { "title": "Partner Countries", "value": "Germany + China + New Zealand" },
-      { "title": "Priority Sectors", "value": "6 industrial clusters" },
-      { "title": "Oman Delivery Model", "value": "Commercial + technical integration" }
+      {
+        "title": "Partner Countries",
+        "value": "Germany + China + New Zealand"
+      },
+      {
+        "title": "Priority Sectors",
+        "value": "6 industrial clusters"
+      },
+      {
+        "title": "Oman Delivery Model",
+        "value": "Commercial + technical integration"
+      }
     ],
     "partners": [
       {
@@ -1145,10 +1182,22 @@
     "galvatoreOilGasTitle": "Oil, Gas and Desalination Durability",
     "galvatoreOilGasDescription": "Galvatore solutions are relevant to high-salinity and corrosive process environments such as oil & gas assets and industrial desalination infrastructure.",
     "galvatoreReferences": [
-      { "label": "Galvatore Corporate 2025 (EN)", "file": "Galvatore_Corporate_2025_EN_A.pdf" },
-      { "label": "Galvatore Corporate Brochure 2025", "file": "2025_GALVATORE_Corporate_Brochure_EN.pdf" },
-      { "label": "RACKSTAR Product Sheet", "file": "RACKSTAR_Pro_Plus_Prem_CHEM-RES_EN.pdf" },
-      { "label": "Technical Report EN_TR_250537", "file": "EN_TR_250537_C5 high_ILF.pdf" }
+      {
+        "label": "Galvatore Corporate 2025 (EN)",
+        "file": "Galvatore_Corporate_2025_EN_A.pdf"
+      },
+      {
+        "label": "Galvatore Corporate Brochure 2025",
+        "file": "2025_GALVATORE_Corporate_Brochure_EN.pdf"
+      },
+      {
+        "label": "RACKSTAR Product Sheet",
+        "file": "RACKSTAR_Pro_Plus_Prem_CHEM-RES_EN.pdf"
+      },
+      {
+        "label": "Technical Report EN_TR_250537",
+        "file": "EN_TR_250537_C5 high_ILF.pdf"
+      }
     ],
     "areasTitle": "Partnership Focus Areas",
     "areas": [

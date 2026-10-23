@@ -43,11 +43,11 @@
     "home": "الرئيسية",
     "about": "من نحن",
     "services": "الخدمات",
-    "projects": "المشاريع والمنتجات",
+    "projects": "المشاريع",
     "partnerships": "الشراكات",
     "aiSoftware": "البرمجة والذكاء الاصطناعي",
     "digital": "الرقمية والذكاء الاصطناعي",
-    "industrial": "الهندسة الصناعية",
+    "industrial": "الصناعية",
     "smartIndustry": "الصناعة الذكية",
     "digitalMenu": "القائمة الرقمية",
     "contact": "اتصل بنا",
@@ -561,10 +561,22 @@
     "title": "معظم المطاعم تخسر زبائن أونلاين",
     "subtitle": "عندما لا توجد قائمة واضحة ومناسبة للموبايل، يغادر الزبون بسرعة.",
     "items": [
-      { "key": "photoVideo", "icon": "📸" },
-      { "key": "translation", "icon": "🌍" },
-      { "key": "consulting", "icon": "🤝" },
-      { "key": "hardware", "icon": "💻" }
+      {
+        "key": "photoVideo",
+        "icon": "📸"
+      },
+      {
+        "key": "translation",
+        "icon": "🌍"
+      },
+      {
+        "key": "consulting",
+        "icon": "🤝"
+      },
+      {
+        "key": "hardware",
+        "icon": "💻"
+      }
     ],
     "itemsText": {
       "photoVideo": {
@@ -635,18 +647,10 @@
     "description": "تجمع AKAF بين الخبرة العملية في الهندسة الصناعية وتطوير البرمجيات الحديثة وتقنيات المؤسسات والذكاء الاصطناعي التطبيقي — لخدمة العملاء الصناعيين وغير الصناعيين في عُمان وخارجها.",
     "heroImageAlt": "فريق AKAF الفني يراجع خطة تنفيذ مشروع صناعي",
     "heroEyebrow": "AKAF Investment & Integrated Projects LLC — مسقط، عُمان",
-    "ctaServices": "استعراض الخدمات",
-    "ctaProjects": "عرض المشاريع والمنتجات",
     "trust": {
       "item1": "مسجلة في سلطنة عُمان (س.ت 1479852)",
       "item2": "المقر الرئيسي في المنطقة الصناعية غلا، مسقط",
       "item3": "جاهزية تشغيلية للشراكات الدولية"
-    },
-    "highlights": {
-      "title": "لمحة سريعة عن AKAF",
-      "item1": "قسمان مستقلان تجارياً: AKAF Digital وAKAF Industrial",
-      "item2": "هندسة صناعية وبرمجيات مؤسسات وذكاء اصطناعي تطبيقي ضمن رؤية مؤسسية واحدة",
-      "item3": "شراكات استراتيجية في أوروبا وآسيا ومنطقة الخليج"
     },
     "divisions": {
       "title": "قسمان متخصصان",
@@ -803,11 +807,26 @@
     "projectsLinkLabel": "المشاريع المنفذة",
     "corporateTitle": "الهوية المؤسسية",
     "corporateFacts": [
-      { "label": "الاسم القانوني", "value": "AKAF Investment & Integrated Projects LLC" },
-      { "label": "الدولة", "value": "سلطنة عُمان" },
-      { "label": "المقر الرئيسي", "value": "المنطقة الصناعية غلا، بوشر، مسقط" },
-      { "label": "السجل التجاري", "value": "1479852" },
-      { "label": "التأسيس", "value": "أبريل 2023" }
+      {
+        "label": "الاسم القانوني",
+        "value": "AKAF Investment & Integrated Projects LLC"
+      },
+      {
+        "label": "الدولة",
+        "value": "سلطنة عُمان"
+      },
+      {
+        "label": "المقر الرئيسي",
+        "value": "المنطقة الصناعية غلا، بوشر، مسقط"
+      },
+      {
+        "label": "السجل التجاري",
+        "value": "1479852"
+      },
+      {
+        "label": "التأسيس",
+        "value": "أبريل 2023"
+      }
     ],
     "divisionsTitle": "الأقسام التجارية",
     "divisionsNote": "تعمل AKAF من خلال قسمين متخصصين — AKAF Digital وAKAF Industrial — تحت كيان قانوني واحد. هذه الأقسام هويات تجارية وليست شركات مستقلة مسجلة.",
@@ -832,9 +851,18 @@
     "title": "المشاريع والمنتجات",
     "description": "محفظة مصنفة لمشاريع AKAF المؤسسية والمنتجات الرقمية والإنجازات الصناعية والخبرة المهنية للقيادة — مع مؤشرات حالة صادقة.",
     "stats": [
-      { "label": "عناصر المحفظة", "value": "+15" },
-      { "label": "الأسواق النشطة", "value": "عُمان ودولياً" },
-      { "label": "نموذج التسليم", "value": "قسمان متخصصان" }
+      {
+        "label": "عناصر المحفظة",
+        "value": "+15"
+      },
+      {
+        "label": "الأسواق النشطة",
+        "value": "عُمان ودولياً"
+      },
+      {
+        "label": "نموذج التسليم",
+        "value": "قسمان متخصصان"
+      }
     ],
     "filters": {
       "all": "الكل",
@@ -875,7 +903,7 @@
       {
         "name": "إطلاق مصنع حقن البلاستيك",
         "category": "corporate",
-        "status": "underExecution",
+        "status": "proposed",
         "location": "مدينة الخزائن، عُمان",
         "time": "جارٍ",
         "activity": "تأسيس مصنع بالتعاون مع DKM الصينية، بدءاً بآلة حقن سيرفو بقدرة 2,250 طن وروبوت تشغيل بـ6 محاور.",
@@ -885,7 +913,7 @@
       {
         "name": "نشر بيت زراعي هيدروبونيك متقدم",
         "category": "corporate",
-        "status": "underExecution",
+        "status": "proposed",
         "location": "منطقة الباطنة، عُمان",
         "time": "جارٍ",
         "activity": "مشروع بمساحة 4 هكتارات للزراعة بدون تربة بالتعاون مع Rufepa الإسبانية.",
@@ -1073,9 +1101,18 @@
       "website": "زيارة الموقع الرسمي"
     },
     "highlights": [
-      { "title": "دول الشركاء", "value": "ألمانيا + الصين + نيوزيلندا" },
-      { "title": "القطاعات ذات الأولوية", "value": "6 مجموعات صناعية" },
-      { "title": "نموذج العمل في عُمان", "value": "تكامل تجاري + تقني" }
+      {
+        "title": "دول الشركاء",
+        "value": "ألمانيا + الصين + نيوزيلندا"
+      },
+      {
+        "title": "القطاعات ذات الأولوية",
+        "value": "6 مجموعات صناعية"
+      },
+      {
+        "title": "نموذج العمل في عُمان",
+        "value": "تكامل تجاري + تقني"
+      }
     ],
     "partners": [
       {
@@ -1176,10 +1213,22 @@
     "galvatoreOilGasTitle": "متانة لقطاعات النفط والغاز والتحلية",
     "galvatoreOilGasDescription": "حلول Galvatore مناسبة لبيئات التشغيل عالية الملوحة والتآكل مثل أصول النفط والغاز والبنية التحتية للتحلية الصناعية.",
     "galvatoreReferences": [
-      { "label": "Galvatore Corporate 2025 (EN)", "file": "Galvatore_Corporate_2025_EN_A.pdf" },
-      { "label": "Galvatore Corporate Brochure 2025", "file": "2025_GALVATORE_Corporate_Brochure_EN.pdf" },
-      { "label": "RACKSTAR Product Sheet", "file": "RACKSTAR_Pro_Plus_Prem_CHEM-RES_EN.pdf" },
-      { "label": "Technical Report EN_TR_250537", "file": "EN_TR_250537_C5 high_ILF.pdf" }
+      {
+        "label": "Galvatore Corporate 2025 (EN)",
+        "file": "Galvatore_Corporate_2025_EN_A.pdf"
+      },
+      {
+        "label": "Galvatore Corporate Brochure 2025",
+        "file": "2025_GALVATORE_Corporate_Brochure_EN.pdf"
+      },
+      {
+        "label": "RACKSTAR Product Sheet",
+        "file": "RACKSTAR_Pro_Plus_Prem_CHEM-RES_EN.pdf"
+      },
+      {
+        "label": "Technical Report EN_TR_250537",
+        "file": "EN_TR_250537_C5 high_ILF.pdf"
+      }
     ],
     "areasTitle": "محاور الشراكة الرئيسية",
     "areas": [

@@ -72,14 +72,6 @@ export default async function HomePage() {
                 priority
               />
             </div>
-            <div className="akaf-highlight-box akaf-highlight-box-floating">
-              <h3>{t('highlights.title')}</h3>
-              <ul>
-                <li>{t('highlights.item1')}</li>
-                <li>{t('highlights.item2')}</li>
-                <li>{t('highlights.item3')}</li>
-              </ul>
-            </div>
           </div>
         </div>
         <div className="container akaf-trust-row">
