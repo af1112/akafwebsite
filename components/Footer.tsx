@@ -29,6 +29,7 @@ export default function Footer() {
           <div className="akaf-footer-col">
             <strong>{t('products.title')}</strong>
             <Link href="/products/digital-menu">{t('products.digitalMenu')}</Link>
+            <Link href="/products/weighbridge">{t('products.weighbridge')}</Link>
             <Link href="/pricing">{t('products.pricing')}</Link>
             <Link href="/signup">{t('products.signup')}</Link>
           </div>

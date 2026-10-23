@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/industrial',
     '/smart-industry',
     '/products/digital-menu',
+    '/products/weighbridge',
     '/projects',
     '/about',
     '/partnerships',

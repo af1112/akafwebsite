@@ -10,6 +10,8 @@ export default function AboutPage() {
   const capabilities = t.raw('capabilities') as string[];
   const corporateFacts = t.raw('corporateFacts') as Array<{ label: string; value: string }>;
   const leaders = t.raw('leaders') as Array<{ name: string; role: string; bio: string }>;
+  const presence = t.raw('presence') as string[];
+  const stats = t.raw('stats') as Array<{ value: string; label: string }>;
   const capabilityIcons = [
     'M12 3v4M12 17v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M3 12h4M17 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6',
     'M4 7.5 12 3l8 4.5M4 7.5v9L12 21l8-4.5v-9M12 12l8-4.5M12 12 4 7.5M12 12v9',
@@ -80,6 +82,23 @@ export default function AboutPage() {
                 <span className="akaf-project-meta-label">{fact.label}</span>
                 <p>{fact.value}</p>
               </div>
+            ))}
+          </div>
+          <div className="section-header akaf-divisions-note">
+            <h2>{t('presenceTitle')}</h2>
+            <p className="section-subtitle">{t('presenceNote')}</p>
+          </div>
+          <div className="akaf-presence-grid">
+            {presence.map((item) => (
+              <div key={item} className="akaf-presence-item">{item}</div>
+            ))}
+          </div>
+          <div className="akaf-stats-grid" style={{ marginTop: '1.4rem' }}>
+            {stats.map((stat) => (
+              <article key={stat.label} className="akaf-stat-card">
+                <h3>{stat.value}</h3>
+                <p>{stat.label}</p>
+              </article>
             ))}
           </div>
           <div className="section-header akaf-divisions-note">

@@ -48,7 +48,7 @@ export default async function DigitalPage() {
     cta: string;
     href: string;
   }>;
-  const services = t.raw('services') as string[];
+  const services = t.raw('servicesGroups') as Array<{ title: string; description: string }>;
   const statusLabels = t.raw('statusLabels') as Record<string, string>;
 
   return (
@@ -105,12 +105,14 @@ export default async function DigitalPage() {
             <h2>{t('servicesTitle')}</h2>
             <p className="section-subtitle">{t('servicesSubtitle')}</p>
           </div>
-          <ul className="akaf-capability-list">
+          <div className="akaf-services-grid">
             {services.map((service) => (
-              <li key={service}>{service}</li>
+              <article key={service.title} className="akaf-service-card akaf-service-card-detailed">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </article>
             ))}
-          </ul>
-          <p className="akaf-scope-note">{t('aiNote')}</p>
+          </div>
         </div>
       </section>
 

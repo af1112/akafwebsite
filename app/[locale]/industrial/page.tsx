@@ -38,6 +38,7 @@ export default async function IndustrialPage() {
     description: string;
   }>;
   const sectors = t.raw('sectors') as string[];
+  const process = t.raw('process') as string[];
 
   return (
     <>
@@ -79,6 +80,20 @@ export default async function IndustrialPage() {
       </section>
 
       <section className="akaf-section akaf-section-light">
+        <div className="container">
+          <div className="section-header">
+            <h2>{t('processTitle')}</h2>
+            <p className="section-subtitle">{t('processSubtitle')}</p>
+          </div>
+          <div className="akaf-process-row">
+            {process.map((step) => (
+              <div key={step} className="akaf-process-step">{step}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="akaf-section">
         <div className="container">
           <div className="section-header">
             <h2>{t('sectorsTitle')}</h2>

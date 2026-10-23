@@ -39,6 +39,7 @@ export default async function HomePage() {
     location: string;
     scope: string;
   }>;
+  const proof = t.raw('proof') as Array<{ value: string; label: string }>;
   const leaders = [
     { name: t('leadership.ali.name'), role: t('leadership.ali.role'), summary: t('leadership.ali.summary') },
     { name: t('leadership.nawaz.name'), role: t('leadership.nawaz.role'), summary: t('leadership.nawaz.summary') }
@@ -78,6 +79,19 @@ export default async function HomePage() {
           <span className="akaf-trust-item">{t('trust.item1')}</span>
           <span className="akaf-trust-item">{t('trust.item2')}</span>
           <span className="akaf-trust-item">{t('trust.item3')}</span>
+        </div>
+      </section>
+
+      <section className="akaf-section" style={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}>
+        <div className="container">
+          <div className="akaf-proof-bar">
+            {proof.map((item) => (
+              <div key={item.label} className="akaf-proof-item">
+                <span className="akaf-proof-value">{item.value}</span>
+                <span className="akaf-proof-label">{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
