@@ -8445,3 +8445,53 @@ html, body { overflow-x: clip; }
   .akaf-hero h1 { font-size: 1.7rem; }
   .akaf-eyebrow { font-size: 0.68rem; }
 }
+
+/* ===== Milestone H: typography scale & hierarchy ===== */
+
+/* Standard card titles: restrained 19-22px, never competing with section H2 */
+.akaf-service-card h3,
+.akaf-project-card h3,
+.akaf-product-card h3,
+.akaf-leader-card h3,
+.akaf-stat-card h3,
+.akaf-home-project-card h3,
+.akaf-smart-step h3 {
+  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+  font-weight: 650;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+}
+
+/* Info/CTA card headings (partnerships, contact, smart-cta): ~24-26px */
+.akaf-info-card h2,
+.akaf-connect-card h2 {
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.28;
+}
+
+.akaf-division-card h3 {
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+}
+
+/* Product card tagline stays smaller than title */
+.akaf-product-tagline { font-size: 0.92rem; }
+
+/* Sticky-header offset for anchored sections */
+.akaf-section,
+.akaf-page-hero,
+section[id] { scroll-margin-top: 96px; }
+
+/* RTL: disable Latin letter-spacing which breaks joined glyphs */
+[dir='rtl'] .akaf-eyebrow,
+[dir='rtl'] .akaf-division-badge,
+[dir='rtl'] .akaf-division-kicker,
+[dir='rtl'] .akaf-status-badge,
+[dir='rtl'] .akaf-project-meta-label,
+[dir='rtl'] .akaf-page-chip,
+[dir='rtl'] .nav-dropdown-item-label,
+[dir='rtl'] h1,
+[dir='rtl'] h2,
+[dir='rtl'] h3 {
+  letter-spacing: normal;
+}

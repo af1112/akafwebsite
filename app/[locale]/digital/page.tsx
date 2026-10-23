@@ -42,6 +42,7 @@ export default async function DigitalPage() {
   const audience = t.raw('audience') as string[];
   const products = t.raw('products') as Array<{
     name: string;
+    displayTitle?: string;
     status: string;
     tagline: string;
     description: string;
@@ -83,7 +84,7 @@ export default async function DigitalPage() {
             {products.map((product) => (
               <article key={product.name} className="akaf-product-card">
                 <div className="akaf-product-head">
-                  <h3>{product.name}</h3>
+                  <h3>{product.displayTitle ?? product.name}</h3>
                   <span className={`akaf-status-badge ${STATUS_CLASS[product.status] ?? ''}`}>
                     {statusLabels[product.status] ?? product.status}
                   </span>

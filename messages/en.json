@@ -658,7 +658,7 @@
       "cta": "View full portfolio",
       "items": [
         {
-          "name": "AI-Powered Weighbridge Management",
+          "name": "AI Weighbridge System",
           "sector": "Digital Product — Industrial Software",
           "location": "60+ factories deployed",
           "scope": "Automated weighbridge operations with AI-assisted vehicle handling, plate recognition and access control"
@@ -1300,7 +1300,8 @@
         "tagline": "Industrial software for automated weighbridge operations",
         "description": "Deployed in more than 60 factories outside Oman: AI-assisted vehicle handling, license plate recognition, gate and barrier control, entry logging, and operational monitoring.",
         "cta": "Explore the product",
-        "href": "/products/weighbridge"
+        "href": "/products/weighbridge",
+        "displayTitle": "AI Weighbridge System"
       },
       {
         "name": "AKAF Digital Menu",
@@ -1332,7 +1333,8 @@
         "tagline": "WBS, scheduling, quality, and cost visibility",
         "description": "A construction project management platform at prototype stage: WBS management, scheduling, project progress tracking, quality workflows, reporting, and cost visibility.",
         "cta": "Discuss this product",
-        "href": "/contact"
+        "href": "/contact",
+        "displayTitle": "Construction Project Management"
       }
     ],
     "servicesTitle": "Engineering Services",
