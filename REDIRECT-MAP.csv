@@ -1,0 +1,24 @@
+old_url,new_url,action,status,evidence
+/ai-software,/en/products/digital-menu,308,IMPLEMENTED existing configuration,next.config.js
+/en/ai-software,/en/products/digital-menu,308,IMPLEMENTED existing configuration,next.config.js
+/fa/ai-software,/fa/products/digital-menu,308,IMPLEMENTED existing configuration,next.config.js
+/ar/ai-software,/ar/products/digital-menu,308,IMPLEMENTED existing configuration,next.config.js
+/en/services,/en/services,retain 200,VERIFIED live source and route,live services page
+/fa/services,/fa/services,retain 200,REQUIRES rendered verification,existing route
+/ar/services,/ar/services,retain 200,REQUIRES rendered verification,existing route
+/en/projects,/en/projects,retain 200 and revise historical attribution,VERIFIED live content differs from branch,live projects page
+/fa/projects,/fa/projects,retain 200 and historical attribution,REQUIRES live comparison,existing localized route
+/ar/projects,/ar/projects,retain 200 and historical attribution,REQUIRES live comparison,existing localized route
+/en/partnerships,/en/partnerships,retain 200,VERIFIED linked from live services navigation,live services page
+/fa/partnerships,/fa/partnerships,retain 200,REQUIRES live comparison,existing localized route
+/ar/partnerships,/ar/partnerships,retain 200,REQUIRES live comparison,existing localized route
+/en/about,/en/about,retain 200,VERIFIED live sitemap,live sitemap
+/fa/about,/fa/about,retain 200,VERIFIED live sitemap,live sitemap
+/ar/about,/ar/about,retain 200,VERIFIED live sitemap,live sitemap
+/en/contact,/en/contact,retain 200,VERIFIED live sitemap,live sitemap
+/fa/contact,/fa/contact,retain 200,VERIFIED live sitemap,live sitemap
+/ar/contact,/ar/contact,retain 200,VERIFIED live sitemap,live sitemap
+/en,/en,retain 200,VERIFIED live sitemap,live sitemap
+/fa,/fa,retain 200,VERIFIED live sitemap,live sitemap
+/ar,/ar,retain 200,VERIFIED live sitemap,live sitemap
+/pc_software/:path*,external existing application rewrite,retain rewrite,IMPLEMENTED existing configuration,next.config.js

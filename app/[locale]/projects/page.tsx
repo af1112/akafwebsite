@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import { localizedMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import ProjectsPortfolio from '@/components/ProjectsPortfolio';
 
@@ -11,18 +12,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'ProjectsPage' });
 
-  return {
-    title: t('title'),
-    description: t('description'),
-    alternates: {
-      canonical: `/${locale}/projects`,
-      languages: {
-        'en': '/en/projects',
-        'fa': '/fa/projects',
-        'ar': '/ar/projects'
-      }
-    }
-  };
+  return localizedMetadata(locale, '/projects', t('title'), t('description'));
 }
 
 export default async function ProjectsPage() {

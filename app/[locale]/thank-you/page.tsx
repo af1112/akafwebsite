@@ -9,7 +9,8 @@ export async function generateMetadata({
   const { locale } = await params;
   return {
     title: 'Payment Successful',
-    description: 'Thank you for your payment'
+    description: 'Thank you for your payment',
+    robots: { index: false, follow: true }
   };
 }
 

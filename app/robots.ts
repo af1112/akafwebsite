@@ -1,15 +1,15 @@
 import { MetadataRoute } from 'next';
-import { routing } from '@/routing';
+import { siteUrl } from '@/lib/seo';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
+  const baseUrl = siteUrl;
 
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/_next/']
+        disallow: ['/api/']
       }
     ],
     sitemap: `${baseUrl}/sitemap.xml`

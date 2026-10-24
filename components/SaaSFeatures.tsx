@@ -3,8 +3,9 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-export default function SaaSFeatures() {
+export default function SaaSFeatures({ headingAs: Heading = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
   const t = useTranslations('HomePage.features');
+  const CardHeading = Heading === 'h1' ? 'h2' : 'h3';
 
   const features = [
     {
@@ -37,7 +38,7 @@ export default function SaaSFeatures() {
     <section className="saas-features">
       <div className="container">
         <div className="section-header">
-          <h2>{t('title')}</h2>
+          <Heading>{t('title')}</Heading>
           <p className="section-subtitle">{t('subtitle')}</p>
         </div>
         <div className="features-grid">
@@ -52,7 +53,7 @@ export default function SaaSFeatures() {
                   className="feature-icon"
                 />
               </div>
-              <h3>{t(`${feature.key}.title`)}</h3>
+              <CardHeading>{t(`${feature.key}.title`)}</CardHeading>
               <p>{t(`${feature.key}.description`)}</p>
             </div>
           ))}

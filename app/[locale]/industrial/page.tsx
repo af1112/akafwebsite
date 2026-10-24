@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import { localizedMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { Link } from '@/routing';
 
@@ -11,24 +12,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'IndustrialPage' });
 
-  return {
-    title: t('title'),
-    description: t('description'),
-    alternates: {
-      canonical: `/${locale}/industrial`,
-      languages: {
-        'en': '/en/industrial',
-        'fa': '/fa/industrial',
-        'ar': '/ar/industrial'
-      }
-    },
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      locale: locale,
-      alternateLocale: ['en', 'fa', 'ar']
-    }
-  };
+  return localizedMetadata(locale, '/industrial', t('title'), t('description'));
 }
 
 export default async function IndustrialPage() {

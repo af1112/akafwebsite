@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import { localizedMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { Link } from '@/routing';
 import SaaSHero from '@/components/SaaSHero';
@@ -24,24 +25,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'AISoftwarePage' });
 
-  return {
-    title: t('title'),
-    description: t('description'),
-    alternates: {
-      canonical: `/${locale}/products/digital-menu`,
-      languages: {
-        'en': '/en/products/digital-menu',
-        'fa': '/fa/products/digital-menu',
-        'ar': '/ar/products/digital-menu'
-      }
-    },
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      locale: locale,
-      alternateLocale: ['en', 'fa', 'ar']
-    }
-  };
+  return localizedMetadata(locale, '/products/digital-menu', t('title'), t('description'));
 }
 
 export default async function DigitalMenuPage() {
@@ -71,7 +55,7 @@ export default async function DigitalMenuPage() {
           </div>
         </div>
       </section>
-      <SaaSHero />
+      <SaaSHero headingAs="h2" />
       <SaaSFeatures />
       <WorkflowSection />
       <ServicesHighlights />

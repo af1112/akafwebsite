@@ -500,6 +500,7 @@ nav.scrolled .nav-links a {
   box-shadow: var(--shadow-lg);
 }
 
+.feature-card h2,
 .feature-card h3 {
   color: var(--primary-color);
   margin-bottom: 1rem;
@@ -947,6 +948,7 @@ footer a:hover {
   transform: rotate(5deg);
 }
 
+.feature-card h2,
 .feature-card h3 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -3045,6 +3047,7 @@ nav .container {
   box-shadow: var(--shadow-lg);
 }
 
+.feature-card h2,
 .feature-card h3 {
   color: var(--primary-color);
   margin-bottom: 1rem;
@@ -3311,6 +3314,7 @@ footer {
   display: block;
 }
 
+.feature-card h2,
 .feature-card h3 {
   font-size: 1.5rem;
   font-weight: 700;

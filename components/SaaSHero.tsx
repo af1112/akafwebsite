@@ -4,14 +4,14 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/routing';
 
-export default function SaaSHero() {
+export default function SaaSHero({ headingAs: Heading = 'h1' }: { headingAs?: 'h1' | 'h2' }) {
   const t = useTranslations('HomePage');
 
   return (
     <section className="saas-hero">
       <div className="container">
         <div className="hero-content">
-          <h1 className="hero-title">{t('title')}</h1>
+          <Heading className="hero-title">{t('title')}</Heading>
           <p className="hero-subtitle">{t('subtitle')}</p>
           <p className="hero-description">{t('description')}</p>
           <div className="hero-buttons">
