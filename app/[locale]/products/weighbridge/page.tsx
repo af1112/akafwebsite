@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
 import { localizedMetadata } from '@/lib/seo';
-import Image from 'next/image';
 import { Link } from '@/routing';
 
 export async function generateMetadata({
@@ -34,15 +33,12 @@ export default async function WeighbridgePage() {
               <Link href="/contact" className="btn btn-primary">{t('cta')}</Link>
             </div>
           </div>
-          <div className="akaf-page-hero-image">
-            <Image
-              src="/images/products/weighbridge-ui.webp"
-              alt={t('imageAlt')}
-              fill
-              sizes="(max-width: 900px) 100vw, 40vw"
-              priority
-            />
-          </div>
+          <article className="akaf-info-card">
+            <h2>{t('modulesTitle')}</h2>
+            <ul className="akaf-capability-list">
+              {modules.map((mod) => <li key={mod}>{mod}</li>)}
+            </ul>
+          </article>
         </div>
       </section>
 
@@ -54,34 +50,12 @@ export default async function WeighbridgePage() {
             </div>
             <p className="akaf-body-text">{t('overview')}</p>
           </article>
-          <figure className="akaf-screenshot-frame">
-            <div className="akaf-screenshot-media">
-              <Image
-                src="/images/products/weighbridge-ui.webp"
-                alt={t('imageAlt')}
-                fill
-                sizes="(max-width: 900px) 100vw, 50vw"
-                className="akaf-screenshot-image"
-              />
-            </div>
-            <figcaption>{t('imageCaption')}</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section className="akaf-section akaf-section-light">
-        <div className="container akaf-two-col">
-          <article className="akaf-info-card">
-            <h2>{t('modulesTitle')}</h2>
-            <ul className="akaf-capability-list">
-              {modules.map((mod) => <li key={mod}>{mod}</li>)}
-            </ul>
-          </article>
           <article className="akaf-info-card">
             <h2>{t('useCasesTitle')}</h2>
             <ul className="akaf-capability-list">
               {useCases.map((u) => <li key={u}>{u}</li>)}
             </ul>
+            <p className="akaf-body-text">{t('visualNote')}</p>
           </article>
         </div>
       </section>

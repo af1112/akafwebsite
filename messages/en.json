@@ -463,7 +463,7 @@
       },
       {
         "question": "How secure is the platform?",
-        "answer": "All data is encrypted, hosted on ISO-certified infrastructure, and protected by role-based access controls."
+        "answer": "All data is encrypted and protected by role-based access controls."
       }
     ]
   },
@@ -654,7 +654,7 @@
     },
     "products": {
       "title": "Selected Products & Projects",
-      "subtitle": "Deployed software products and industrial initiatives across Oman",
+      "subtitle": "Deployed software products and industrial initiatives across our international operating network.",
       "cta": "View full portfolio",
       "items": [
         {
@@ -913,7 +913,7 @@
         "time": "Commercially deployed",
         "activity": "Industrial software for automated weighbridge operations — AI-assisted vehicle handling, ANPR plate recognition, gate and barrier control, and operational monitoring. Deployed in more than 60 factories.",
         "role": "Developed and deployed by the founder-led software engineering team.",
-        "image": "/images/products/weighbridge-ui.webp"
+        "image": "/images/hero/industrial-hero.webp"
       },
       {
         "name": "AKAF Digital Menu",
@@ -1529,6 +1529,13 @@
     "tech": "The platform supports camera-based ANPR workflows, barrier and gate hardware integration, ERP connectivity, and configurable verification rules per site. Integration scope is assessed per deployment.",
     "ctaTitle": "Request a Demo",
     "ctaDescription": "See the weighbridge system in action and discuss deployment for your facility.",
-    "cta": "Contact Sales"
+    "cta": "Contact Sales",
+    "visualNote": "Product interface screenshots are available upon request during a live demo."
+  },
+  "ForgotPasswordPage": {
+    "title": "Password Recovery",
+    "description": "For security reasons, password recovery for Digital Menu accounts is handled through our support team. Contact us and we will verify your account and restore your access.",
+    "contact": "Contact Support",
+    "backToLogin": "Back to Login"
   }
 }

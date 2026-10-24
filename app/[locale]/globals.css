@@ -6102,7 +6102,7 @@ footer {
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     height: auto;
     min-height: 100vh;
     width: 80%;
@@ -6112,13 +6112,24 @@ footer {
     padding: 1.5rem 1.5rem 2rem;
     gap: 1.5rem;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    transition: right 0.3s ease;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+    transform: translateX(110%);
+    visibility: hidden;
+    display: none;
     z-index: 999;
     overflow-y: auto;
   }
 
   .nav-links.mobile-open {
-    right: 0;
+    display: flex;
+    transform: none;
+    visibility: visible;
+    animation: akafNavSlideIn 0.3s ease;
+  }
+
+  @keyframes akafNavSlideIn {
+    from { transform: translateX(110%); }
+    to { transform: none; }
   }
 
   .nav-links li {
@@ -6141,7 +6152,7 @@ footer {
   /* RTL Support for Mobile Menu */
   html[lang='fa'] .nav-links,
   html[lang='ar'] .nav-links {
-    right: -100%;
+    right: 0;
     left: auto;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
   }
@@ -8242,22 +8253,40 @@ html[lang='en'] .success-details li:hover {
   }
 
   .mobile-nav-panel {
-    display: block;
+    display: none;
     position: fixed;
     top: 0;
-    inset-inline-end: -100%;
+    inset-inline-end: 0;
     width: min(340px, 88vw);
     height: 100dvh;
     background: #fff;
     box-shadow: -8px 0 30px rgba(15, 23, 42, 0.15);
     z-index: 1001;
     overflow-y: auto;
-    transition: inset-inline-end 0.3s ease;
+    transition: transform 0.3s ease, visibility 0.3s ease;
+    transform: translateX(110%);
+    visibility: hidden;
     padding: 5rem 1.25rem 2rem;
   }
 
   .mobile-nav-panel.open {
-    inset-inline-end: 0;
+    display: block;
+    transform: none;
+    visibility: visible;
+    animation: akafNavSlideIn 0.3s ease;
+  }
+
+  html[dir='rtl'] .mobile-nav-panel:not(.open) {
+    transform: translateX(-110%);
+  }
+
+  html[dir='rtl'] .mobile-nav-panel.open {
+    animation-name: akafNavSlideInRtl;
+  }
+
+  @keyframes akafNavSlideInRtl {
+    from { transform: translateX(-110%); }
+    to { transform: none; }
   }
 
   .mobile-nav-list {
