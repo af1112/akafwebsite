@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import { localizedMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import PricingSection from '@/components/PricingSection';
 
@@ -11,10 +12,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'PricingPage' });
 
-  return {
-    title: t('title'),
-    description: t('subtitle')
-  };
+  return localizedMetadata(locale, '/pricing', t('title'), t('subtitle'));
 }
 
 export default async function PricingPage() {

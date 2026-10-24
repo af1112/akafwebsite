@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import { localizedMetadata } from '@/lib/seo';
 import AboutPage from '@/components/AboutPage';
 
 export async function generateMetadata({
@@ -10,10 +11,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'CorporateAboutPage' });
 
-  return {
-    title: t('title'),
-    description: t('description')
-  };
+  return localizedMetadata(locale, '/about', t('title'), t('description'));
 }
 
 export default async function AboutPageWrapper({

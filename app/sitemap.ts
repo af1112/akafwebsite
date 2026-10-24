@@ -1,10 +1,25 @@
 import { MetadataRoute } from 'next';
 import { routing } from '@/routing';
+import { siteUrl } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
+  const baseUrl = siteUrl;
 
-  const routes = ['', '/about', '/services', '/contact'];
+  const routes = [
+    '',
+    '/digital',
+    '/industrial',
+    '/smart-industry',
+    '/products/digital-menu',
+    '/products/weighbridge',
+    '/projects',
+    '/about',
+    '/partnerships',
+    '/contact',
+    '/services',
+    '/features',
+    '/pricing'
+  ];
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
@@ -12,14 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     routes.forEach((route) => {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}${route}`,
-        lastModified: new Date(),
         changeFrequency: 'monthly',
         priority: route === '' ? 1 : 0.8,
         alternates: {
           languages: {
             en: `${baseUrl}/en${route}`,
             fa: `${baseUrl}/fa${route}`,
-            ar: `${baseUrl}/ar${route}`
+            ar: `${baseUrl}/ar${route}`,
+            'x-default': `${baseUrl}/en${route}`
           }
         }
       });

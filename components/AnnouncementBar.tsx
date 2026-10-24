@@ -1,13 +1,18 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Link } from '@/routing';
+import { Link, usePathname } from '@/routing';
 import { useState, useEffect } from 'react';
+
+const PROMO_ROUTES = ['/products/digital-menu', '/pricing', '/signup', '/features'];
 
 export default function AnnouncementBar() {
   const t = useTranslations('Announcement');
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const onPromoPage = PROMO_ROUTES.some((route) => pathname.startsWith(route));
 
   useEffect(() => {
     // Check if user has dismissed the announcement
@@ -24,7 +29,9 @@ export default function AnnouncementBar() {
   };
 
   // Don't render until loaded (prevents flash)
-  if (!isLoaded || !isVisible) {
+  // Only show the Digital Menu promo on digital-product pages,
+  // not on the corporate pages.
+  if (!isLoaded || !isVisible || !onPromoPage) {
     return null;
   }
 

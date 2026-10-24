@@ -16,6 +16,12 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  async redirects() {
+    return [
+      { source: '/ai-software', destination: '/en/products/digital-menu', permanent: true },
+      { source: '/:locale(en|fa|ar)/ai-software', destination: '/:locale/products/digital-menu', permanent: true },
+    ];
+  },
   async rewrites() {
     return [
       {

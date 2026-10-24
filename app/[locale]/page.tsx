@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Metadata } from 'next';
+import { localizedMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { Link } from '@/routing';
 
@@ -11,50 +12,22 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'CorporateHome' });
 
-  return {
-    title: t('title'),
-    description: t('description'),
-    alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        'en': '/en',
-        'fa': '/fa',
-        'ar': '/ar'
-      }
-    },
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      locale: locale,
-      alternateLocale: ['en', 'fa', 'ar']
-    }
-  };
+  return localizedMetadata(locale, '', t('title'), t('description'));
 }
 
 export default async function HomePage() {
   const t = await getTranslations('CorporateHome');
-  const serviceIcons = [
-    '/icons/icon-implementation.png',
-    '/icons/icon-hardware.png',
-    '/icons/icon-consulting.png',
-    '/icons/icon-analytics.png',
-    '/icons/icon-real-time.png',
-    '/icons/icon-mobile.png',
-    '/icons/icon-qr-code.png',
-    '/icons/icon-account-manager.png'
-  ];
-  const projectIcons = [
-    '/icons/icon-implementation.png',
-    '/icons/icon-analytics.png',
-    '/icons/icon-real-time.png'
-  ];
-  const services = t.raw('services.items') as string[];
-  const projects = t.raw('projects.items') as Array<{
+  const products = t.raw('products.items') as Array<{
     name: string;
     sector: string;
     location: string;
     scope: string;
   }>;
+  const proof = t.raw('proof') as Array<{ value: string; label: string }>;
+  const leaders = [
+    { name: t('leadership.ali.name'), role: t('leadership.ali.role'), summary: t('leadership.ali.summary') },
+    { name: t('leadership.nawaz.name'), role: t('leadership.nawaz.role'), summary: t('leadership.nawaz.summary') }
+  ];
 
   return (
     <>
@@ -66,11 +39,11 @@ export default async function HomePage() {
             <p className="akaf-subtitle">{t('subtitle')}</p>
             <p className="akaf-description">{t('description')}</p>
             <div className="hero-buttons">
-              <Link href="/services" className="btn btn-primary">
-                {t('ctaServices')}
+              <Link href="/digital" className="btn btn-primary">
+                {t('divisions.digital.cta')}
               </Link>
-              <Link href="/projects" className="btn btn-secondary">
-                {t('ctaProjects')}
+              <Link href="/industrial" className="btn btn-secondary">
+                {t('divisions.industrial.cta')}
               </Link>
             </div>
           </div>
@@ -84,14 +57,6 @@ export default async function HomePage() {
                 priority
               />
             </div>
-            <div className="akaf-highlight-box akaf-highlight-box-floating">
-              <h3>{t('highlights.title')}</h3>
-              <ul>
-                <li>{t('highlights.item1')}</li>
-                <li>{t('highlights.item2')}</li>
-                <li>{t('highlights.item3')}</li>
-              </ul>
-            </div>
           </div>
         </div>
         <div className="container akaf-trust-row">
@@ -101,49 +66,66 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section className="akaf-section" style={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}>
+        <div className="container">
+          <div className="akaf-proof-bar">
+            {proof.map((item) => (
+              <div key={item.label} className="akaf-proof-item">
+                <span className="akaf-proof-value">{item.value}</span>
+                <span className="akaf-proof-label">{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="akaf-section">
         <div className="container">
           <div className="section-header">
-            <h2>{t('services.title')}</h2>
-            <p className="section-subtitle">{t('services.subtitle')}</p>
+            <h2>{t('divisions.title')}</h2>
+            <p className="section-subtitle">{t('divisions.subtitle')}</p>
           </div>
-          <div className="akaf-services-grid">
-            {services.map((service, index) => (
-              <article key={service} className="akaf-service-card akaf-home-service-card">
-                <div className="akaf-card-icon-wrap" aria-hidden="true">
-                  <Image
-                    src={serviceIcons[index] ?? '/images/icons/service1.png'}
-                    alt=""
-                    width={36}
-                    height={36}
-                    className="akaf-card-icon"
-                  />
-                </div>
-                <p>{service}</p>
-              </article>
-            ))}
+          <div className="akaf-divisions-grid">
+            <Link href="/digital" className="akaf-division-card akaf-division-digital">
+              <span className="akaf-division-badge">AKAF Digital</span>
+              <h3>{t('divisions.digital.tagline')}</h3>
+              <p>{t('divisions.digital.description')}</p>
+              <span className="akaf-division-cta">{t('divisions.digital.cta')} →</span>
+            </Link>
+            <Link href="/industrial" className="akaf-division-card akaf-division-industrial">
+              <span className="akaf-division-badge">AKAF Industrial</span>
+              <h3>{t('divisions.industrial.tagline')}</h3>
+              <p>{t('divisions.industrial.description')}</p>
+              <span className="akaf-division-cta">{t('divisions.industrial.cta')} →</span>
+            </Link>
           </div>
         </div>
       </section>
 
       <section className="akaf-section akaf-section-light">
         <div className="container">
+          <article className="akaf-connect-card">
+            <div>
+              <h2>{t('connect.title')}</h2>
+              <p className="section-subtitle">{t('connect.subtitle')}</p>
+              <p>{t('connect.description')}</p>
+            </div>
+            <Link href="/smart-industry" className="btn btn-primary">
+              {t('connect.cta')}
+            </Link>
+          </article>
+        </div>
+      </section>
+
+      <section className="akaf-section">
+        <div className="container">
           <div className="section-header">
-            <h2 className="akaf-home-projects-title">{t('projects.title')}</h2>
-            <p className="section-subtitle">{t('projects.subtitle')}</p>
+            <h2 className="akaf-home-projects-title">{t('products.title')}</h2>
+            <p className="section-subtitle">{t('products.subtitle')}</p>
           </div>
           <div className="akaf-projects-grid">
-            {projects.map((project, index) => (
+            {products.map((project) => (
               <article key={project.name} className="akaf-project-card akaf-home-project-card">
-                <div className="akaf-card-icon-wrap akaf-card-icon-wrap-project">
-                  <Image
-                    src={projectIcons[index % projectIcons.length]}
-                    alt=""
-                    width={34}
-                    height={34}
-                    className="akaf-card-icon"
-                  />
-                </div>
                 <h3>{project.name}</h3>
                 <p>{project.scope}</p>
                 <div className="akaf-project-meta">
@@ -155,7 +137,33 @@ export default async function HomePage() {
           </div>
           <div className="akaf-center-cta">
             <Link href="/projects" className="btn btn-outline">
-              {t('projects.cta')}
+              {t('products.cta')}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="akaf-section akaf-section-light">
+        <div className="container">
+          <div className="section-header">
+            <h2>{t('leadership.title')}</h2>
+            <p className="section-subtitle">{t('leadership.subtitle')}</p>
+          </div>
+          <div className="akaf-two-col">
+            {leaders.map((leader) => (
+              <article key={leader.name} className="akaf-info-card akaf-leader-card">
+                <div className="akaf-leader-avatar" aria-hidden="true">
+                  {leader.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
+                </div>
+                <h3>{leader.name}</h3>
+                <p className="akaf-leader-role">{leader.role}</p>
+                <p>{leader.summary}</p>
+              </article>
+            ))}
+          </div>
+          <div className="akaf-center-cta">
+            <Link href="/about" className="btn btn-outline">
+              {t('leadership.cta')}
             </Link>
           </div>
         </div>
@@ -170,27 +178,15 @@ export default async function HomePage() {
               {t('partnerships.cta')}
             </Link>
           </article>
-          <article className="akaf-info-card">
-            <h2>{t('ai.title')}</h2>
-            <p>{t('ai.description')}</p>
-            <Link href="/ai-software" className="btn btn-outline">
-              {t('ai.cta')}
+          <article className="akaf-info-card akaf-contact-card">
+            <h2>{t('contact.title')}</h2>
+            <p>{t('contact.description')}</p>
+            <Link href="/contact" className="btn btn-primary">
+              {t('contact.cta')}
             </Link>
           </article>
-        </div>
-      </section>
-
-      <section className="akaf-section akaf-team-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>{t('team.title')}</h2>
-            <p className="section-subtitle">{t('team.description')}</p>
-          </div>
         </div>
       </section>
     </>
   );
 }
-
-
-

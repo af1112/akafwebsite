@@ -11,6 +11,7 @@ import Footer from '@/components/Footer';
 import ClientLayout from '@/components/ClientLayout';
 import RouteProgressBar from '@/components/RouteProgressBar';
 import ChatWidget from '@/components/ChatWidget';
+import { siteUrl } from '@/lib/seo';
 import './fonts.css';
 import './globals.css';
 
@@ -24,19 +25,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = await getMessages({ locale });
-  
-  return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com'),
-    alternates: {
-      canonical: `/${locale}`,
-      languages: {
-        'en': '/en',
-        'fa': '/fa',
-        'ar': '/ar'
-      }
-    }
-  };
+  return { metadataBase: new URL(siteUrl) };
 }
 
 export default async function LocaleLayout({
@@ -57,7 +46,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : locale === 'fa' ? 'rtl' : 'ltr'}>
       <head>
-        <link rel="canonical" href={`${process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com'}/${locale}`} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': [{ '@type': 'Organization', '@id': `${siteUrl}/#organization`, name: 'AKAF', legalName: 'AKAF Investment & Integrated Projects LLC', url: siteUrl }, { '@type': 'WebSite', '@id': `${siteUrl}/#website`, url: siteUrl, name: 'AKAF', inLanguage: ['en', 'fa', 'ar'], publisher: { '@id': `${siteUrl}/#organization` } }] }).replace(/</g, '\\u003c') }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
